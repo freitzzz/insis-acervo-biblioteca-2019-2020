@@ -1,6 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="acervoProcess" name="Processo de Acervo de Biblioteca" isExecutable="true">
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <callActivity id="propostaAquisicaoObraActivity" name="Propõe aquisição de obra"></callActivity>
+    <callActivity id="indicaPeritosActivity" name="Indica pelo menos 2 peritos"></callActivity>
+    <callActivity id="daParecerActivity" name="Dá parecer"></callActivity>
+    <exclusiveGateway id="daParecerGateway" name="Gateway de dar parecer"></exclusiveGateway>
+    <callActivity id="afereDiaponibilidadeActivity" name="Afere disponibilidade financeira"></callActivity>
+    <callActivity id="decideAquisicaoActivity" name="Decide aquisição"></callActivity>
+    <sequenceFlow id="flow1" sourceRef="propostaAquisicaoObraActivity" targetRef="indicaPeritosActivity"></sequenceFlow>
+    <sequenceFlow id="flow2" sourceRef="indicaPeritosActivity" targetRef="daParecerActivity"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="daParecerActivity" targetRef="daParecerGateway"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="daParecerGateway" targetRef="afereDiaponibilidadeActivity"></sequenceFlow>
+    <exclusiveGateway id="afereDiaponibilidadeGateway" name="Gateway de aferir disponibilidade"></exclusiveGateway>
+    <sequenceFlow id="flow5" sourceRef="afereDiaponibilidadeActivity" targetRef="afereDiaponibilidadeGateway"></sequenceFlow>
+    <sequenceFlow id="flow6" sourceRef="afereDiaponibilidadeGateway" targetRef="decideAquisicaoActivity"></sequenceFlow>
+    <exclusiveGateway id="decideAquisicaoGateway" name="Gateway de decidir aquisição"></exclusiveGateway>
+    <sequenceFlow id="flow7" sourceRef="decideAquisicaoActivity" targetRef="decideAquisicaoGateway"></sequenceFlow>
+    <callActivity id="elaboraPADActivity" name="Elabora PAD"></callActivity>
+    <sequenceFlow id="flow8" sourceRef="decideAquisicaoGateway" targetRef="elaboraPADActivity"></sequenceFlow>
+    <callActivity id="decidePADActivity" name="Decide PAD"></callActivity>
+    <exclusiveGateway id="decidePADGateway" name="Gateway de decidir PAD"></exclusiveGateway>
+    <sequenceFlow id="flow9" sourceRef="elaboraPADActivity" targetRef="decidePADActivity"></sequenceFlow>
+    <sequenceFlow id="flow10" sourceRef="decidePADActivity" targetRef="decidePADGateway"></sequenceFlow>
+    <sequenceFlow id="flow11" sourceRef="decidePADGateway" targetRef="elaboraPADActivity"></sequenceFlow>
+    <callActivity id="adquireObraActivity" name="Adquire obra"></callActivity>
+    <sequenceFlow id="flow12" sourceRef="decidePADGateway" targetRef="adquireObraActivity"></sequenceFlow>
+    <endEvent id="afereDisponibilidadeEndEvent" name="Fim Afere Disponibilidade"></endEvent>
+    <endEvent id="daParecerEndEvent" name="Fim Dá Parecer"></endEvent>
+    <sequenceFlow id="flow13" sourceRef="daParecerGateway" targetRef="daParecerEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow14" sourceRef="afereDiaponibilidadeGateway" targetRef="afereDisponibilidadeEndEvent"></sequenceFlow>
+    <endEvent id="decideAquisicaoEndEvent" name="Fim Decide Aquisição"></endEvent>
+    <sequenceFlow id="flow15" sourceRef="decideAquisicaoGateway" targetRef="decideAquisicaoEndEvent"></sequenceFlow>
+    <endEvent id="decidePADEndEvent" name="Fim Decide PAD"></endEvent>
+    <sequenceFlow id="flow16" sourceRef="decidePADGateway" targetRef="decidePADEndEvent"></sequenceFlow>
+    <endEvent id="adquireObraEndEvent" name="Fim Adquire Obra"></endEvent>
+    <sequenceFlow id="flow17" sourceRef="adquireObraActivity" targetRef="adquireObraEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow18" sourceRef="startevent1" targetRef="propostaAquisicaoObraActivity"></sequenceFlow>
+  </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_acervoProcess">
-    <bpmndi:BPMNPlane bpmnElement="acervoProcess" id="BPMNPlane_acervoProcess"></bpmndi:BPMNPlane>
+    <bpmndi:BPMNPlane bpmnElement="acervoProcess" id="BPMNPlane_acervoProcess">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="9.0" y="23.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="propostaAquisicaoObraActivity" id="BPMNShape_propostaAquisicaoObraActivity">
+        <omgdc:Bounds height="64.0" width="181.0" x="110.0" y="9.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="indicaPeritosActivity" id="BPMNShape_indicaPeritosActivity">
+        <omgdc:Bounds height="55.0" width="181.0" x="110.0" y="192.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerActivity" id="BPMNShape_daParecerActivity">
+        <omgdc:Bounds height="55.0" width="105.0" x="148.0" y="360.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerGateway" id="BPMNShape_daParecerGateway">
+        <omgdc:Bounds height="40.0" width="40.0" x="305.0" y="367.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="afereDiaponibilidadeActivity" id="BPMNShape_afereDiaponibilidadeActivity">
+        <omgdc:Bounds height="58.0" width="231.0" x="210.0" y="480.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="decideAquisicaoActivity" id="BPMNShape_decideAquisicaoActivity">
+        <omgdc:Bounds height="62.0" width="125.0" x="500.0" y="346.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="afereDiaponibilidadeGateway" id="BPMNShape_afereDiaponibilidadeGateway">
+        <omgdc:Bounds height="40.0" width="40.0" x="542.0" y="488.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="decideAquisicaoGateway" id="BPMNShape_decideAquisicaoGateway">
+        <omgdc:Bounds height="40.0" width="40.0" x="720.0" y="356.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="elaboraPADActivity" id="BPMNShape_elaboraPADActivity">
+        <omgdc:Bounds height="55.0" width="105.0" x="688.0" y="219.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="decidePADActivity" id="BPMNShape_decidePADActivity">
+        <omgdc:Bounds height="55.0" width="105.0" x="950.0" y="349.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="decidePADGateway" id="BPMNShape_decidePADGateway">
+        <omgdc:Bounds height="40.0" width="40.0" x="1140.0" y="356.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="adquireObraActivity" id="BPMNShape_adquireObraActivity">
+        <omgdc:Bounds height="55.0" width="105.0" x="1108.0" y="481.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="afereDisponibilidadeEndEvent" id="BPMNShape_afereDisponibilidadeEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="654.0" y="491.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerEndEvent" id="BPMNShape_daParecerEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="406.0" y="370.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="decideAquisicaoEndEvent" id="BPMNShape_decideAquisicaoEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="810.0" y="359.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="decidePADEndEvent" id="BPMNShape_decidePADEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="1230.0" y="359.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="adquireObraEndEvent" id="BPMNShape_adquireObraEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="1264.0" y="491.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="200.0" y="73.0"></omgdi:waypoint>
+        <omgdi:waypoint x="200.0" y="192.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="200.0" y="247.0"></omgdi:waypoint>
+        <omgdi:waypoint x="200.0" y="360.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="253.0" y="387.0"></omgdi:waypoint>
+        <omgdi:waypoint x="305.0" y="387.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="325.0" y="407.0"></omgdi:waypoint>
+        <omgdi:waypoint x="325.0" y="480.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="441.0" y="509.0"></omgdi:waypoint>
+        <omgdi:waypoint x="542.0" y="508.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="562.0" y="488.0"></omgdi:waypoint>
+        <omgdi:waypoint x="562.0" y="408.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="625.0" y="377.0"></omgdi:waypoint>
+        <omgdi:waypoint x="720.0" y="376.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="740.0" y="356.0"></omgdi:waypoint>
+        <omgdi:waypoint x="740.0" y="274.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="793.0" y="246.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1002.0" y="246.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1002.0" y="349.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
+        <omgdi:waypoint x="1055.0" y="376.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1140.0" y="376.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="1160.0" y="356.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1160.0" y="187.0"></omgdi:waypoint>
+        <omgdi:waypoint x="740.0" y="187.0"></omgdi:waypoint>
+        <omgdi:waypoint x="740.0" y="219.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
+        <omgdi:waypoint x="1160.0" y="396.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1160.0" y="481.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">
+        <omgdi:waypoint x="345.0" y="387.0"></omgdi:waypoint>
+        <omgdi:waypoint x="406.0" y="387.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow14" id="BPMNEdge_flow14">
+        <omgdi:waypoint x="582.0" y="508.0"></omgdi:waypoint>
+        <omgdi:waypoint x="654.0" y="508.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">
+        <omgdi:waypoint x="760.0" y="376.0"></omgdi:waypoint>
+        <omgdi:waypoint x="810.0" y="376.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow16" id="BPMNEdge_flow16">
+        <omgdi:waypoint x="1180.0" y="376.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1230.0" y="376.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow17" id="BPMNEdge_flow17">
+        <omgdi:waypoint x="1213.0" y="508.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1264.0" y="508.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow18" id="BPMNEdge_flow18">
+        <omgdi:waypoint x="44.0" y="40.0"></omgdi:waypoint>
+        <omgdi:waypoint x="110.0" y="41.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </definitions>
