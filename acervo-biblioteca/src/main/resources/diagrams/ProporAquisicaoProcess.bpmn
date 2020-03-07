@@ -7,8 +7,8 @@
         <activiti:formProperty id="titulo" name="Titulo" type="string" required="true"></activiti:formProperty>
         <activiti:formProperty id="autores" name="Autores" type="string" required="true"></activiti:formProperty>
         <activiti:formProperty id="anoPublicacao" name="Ano de Publicação" type="long" required="true"></activiti:formProperty>
-        <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="polo" name="Polo" type="string" variable="polo" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="string" variable="areaConhecimento" required="true"></activiti:formProperty>
+        <activiti:formProperty id="polo" name="Polo" type="string" variable="polo" required="true"></activiti:formProperty>
         <activiti:formProperty id="peritos" name="Peritos" type="string" required="true"></activiti:formProperty>
       </extensionElements>
     </userTask>
