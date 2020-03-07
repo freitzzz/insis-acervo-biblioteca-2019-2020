@@ -7,8 +7,8 @@
         <activiti:formProperty id="titulo" name="Titulo" type="string" required="true"></activiti:formProperty>
         <activiti:formProperty id="autores" name="Autores" type="string" required="true"></activiti:formProperty>
         <activiti:formProperty id="anoPublicacao" name="Ano de Publicação" type="long" required="true"></activiti:formProperty>
-        <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="string" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="polo" name="Polo" type="string" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="polo" name="Polo" type="string" variable="polo" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="peritos" name="Peritos" type="string" required="true"></activiti:formProperty>
       </extensionElements>
     </userTask>
@@ -16,38 +16,32 @@
     <serviceTask id="obterPolosRESTTask" name="Obter Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:string>http://www.mocky.io/v2/5e62cefa3600008300e8dc47</activiti:string>
+          <activiti:string>http://www.mocky.io/v2/5e63da4a3600007100e8ddac</activiti:string>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
         </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "text/plain"}</activiti:string>
+        </activiti:field>
         <activiti:field name="outputVariable">
           <activiti:string>polo</activiti:string>
-        </activiti:field>
-        <activiti:field name="outputMappings">
-          <activiti:string>polo</activiti:string>
-        </activiti:field>
-        <activiti:field name="headers">
-          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
         </activiti:field>
       </extensionElements>
     </serviceTask>
     <serviceTask id="areasConhecimentoRESTTask" name="Obter Áreas de Conhecimento" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:string>http://www.mocky.io/v2/5e62cc9c3600006f00e8dc41</activiti:string>
+          <activiti:string>http://www.mocky.io/v2/5e63da78360000b511e8ddad</activiti:string>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
         </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "text/plain"}</activiti:string>
+        </activiti:field>
         <activiti:field name="outputVariable">
           <activiti:string>areaConhecimento</activiti:string>
-        </activiti:field>
-        <activiti:field name="outputMappings">
-          <activiti:string>areaConhecimento</activiti:string>
-        </activiti:field>
-        <activiti:field name="headers">
-          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
         </activiti:field>
       </extensionElements>
     </serviceTask>
@@ -57,9 +51,9 @@
     <sequenceFlow id="flow3" sourceRef="obterPolosRESTTask" targetRef="parallelgateway2"></sequenceFlow>
     <sequenceFlow id="flow4" sourceRef="areasConhecimentoRESTTask" targetRef="parallelgateway2"></sequenceFlow>
     <sequenceFlow id="flow5" sourceRef="startevent1" targetRef="parallelgateway1"></sequenceFlow>
-    <sequenceFlow id="flow6" sourceRef="parallelgateway2" targetRef="proporAquisicaoUserTask"></sequenceFlow>
     <endEvent id="endevent1" name="End"></endEvent>
     <sequenceFlow id="flow7" sourceRef="proporAquisicaoUserTask" targetRef="endevent1"></sequenceFlow>
+    <sequenceFlow id="flow8" sourceRef="parallelgateway2" targetRef="proporAquisicaoUserTask"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_proporAquisicaoProcess">
     <bpmndi:BPMNPlane bpmnElement="proporAquisicaoProcess" id="BPMNPlane_proporAquisicaoProcess">
@@ -67,7 +61,7 @@
         <omgdc:Bounds height="35.0" width="35.0" x="60.0" y="177.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="proporAquisicaoUserTask" id="BPMNShape_proporAquisicaoUserTask">
-        <omgdc:Bounds height="75.0" width="135.0" x="690.0" y="157.0"></omgdc:Bounds>
+        <omgdc:Bounds height="75.0" width="135.0" x="800.0" y="157.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="parallelgateway1" id="BPMNShape_parallelgateway1">
         <omgdc:Bounds height="40.0" width="40.0" x="170.0" y="174.0"></omgdc:Bounds>
@@ -82,7 +76,7 @@
         <omgdc:Bounds height="40.0" width="40.0" x="540.0" y="174.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
-        <omgdc:Bounds height="35.0" width="35.0" x="890.0" y="177.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="970.0" y="177.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
         <omgdi:waypoint x="190.0" y="174.0"></omgdi:waypoint>
@@ -108,13 +102,13 @@
         <omgdi:waypoint x="95.0" y="194.0"></omgdi:waypoint>
         <omgdi:waypoint x="170.0" y="194.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
-        <omgdi:waypoint x="580.0" y="194.0"></omgdi:waypoint>
-        <omgdi:waypoint x="690.0" y="194.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
-        <omgdi:waypoint x="825.0" y="194.0"></omgdi:waypoint>
-        <omgdi:waypoint x="890.0" y="194.0"></omgdi:waypoint>
+        <omgdi:waypoint x="935.0" y="194.0"></omgdi:waypoint>
+        <omgdi:waypoint x="970.0" y="194.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="580.0" y="194.0"></omgdi:waypoint>
+        <omgdi:waypoint x="800.0" y="194.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
