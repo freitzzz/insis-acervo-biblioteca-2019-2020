@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="proporAquisicaoProcess" name="Processo que Propor Aquisição" isExecutable="true">
-    <startEvent id="startevent1" name="Start" activiti:initiator="admin"></startEvent>
+    <startEvent id="proporAquisicaoStartEvent" name="Propor Aquisição Start Event" activiti:initiator="admin"></startEvent>
     <userTask id="proporAquisicaoUserTask" name="Propõe Aquisição de Obra" activiti:assignee="admin">
       <extensionElements>
         <activiti:formProperty id="titulo" name="Titulo" type="string" required="true"></activiti:formProperty>
@@ -12,8 +12,8 @@
         <activiti:formProperty id="peritos" name="Peritos" type="string" required="true"></activiti:formProperty>
       </extensionElements>
     </userTask>
-    <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
-    <serviceTask id="obterPolosRESTTask" name="Obter Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+    <parallelGateway id="proporAquisicaoBuscarInformacaoParallelGatewayStart" name="Buscar Informação Parallel Gateway Start"></parallelGateway>
+    <serviceTask id="proporAquisicaoObterPolosRESTTask" name="Obter Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
           <activiti:string>http://www.mocky.io/v2/5e63da4a3600007100e8ddac</activiti:string>
@@ -29,7 +29,7 @@
         </activiti:field>
       </extensionElements>
     </serviceTask>
-    <serviceTask id="areasConhecimentoRESTTask" name="Obter Áreas de Conhecimento" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+    <serviceTask id="proporAquisicaoAreasConhecimentoRESTTask" name="Obter Áreas de Conhecimento" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
           <activiti:string>http://www.mocky.io/v2/5e63da78360000b511e8ddad</activiti:string>
@@ -45,38 +45,34 @@
         </activiti:field>
       </extensionElements>
     </serviceTask>
-    <sequenceFlow id="flow1" sourceRef="parallelgateway1" targetRef="obterPolosRESTTask"></sequenceFlow>
-    <sequenceFlow id="flow2" sourceRef="parallelgateway1" targetRef="areasConhecimentoRESTTask"></sequenceFlow>
-    <parallelGateway id="parallelgateway2" name="Parallel Gateway"></parallelGateway>
-    <sequenceFlow id="flow3" sourceRef="obterPolosRESTTask" targetRef="parallelgateway2"></sequenceFlow>
-    <sequenceFlow id="flow4" sourceRef="areasConhecimentoRESTTask" targetRef="parallelgateway2"></sequenceFlow>
-    <sequenceFlow id="flow5" sourceRef="startevent1" targetRef="parallelgateway1"></sequenceFlow>
-    <endEvent id="endevent1" name="End"></endEvent>
-    <sequenceFlow id="flow7" sourceRef="proporAquisicaoUserTask" targetRef="endevent1"></sequenceFlow>
-    <sequenceFlow id="flow8" sourceRef="parallelgateway2" targetRef="proporAquisicaoUserTask"></sequenceFlow>
+    <sequenceFlow id="flow1" sourceRef="proporAquisicaoBuscarInformacaoParallelGatewayStart" targetRef="proporAquisicaoObterPolosRESTTask"></sequenceFlow>
+    <sequenceFlow id="flow2" sourceRef="proporAquisicaoBuscarInformacaoParallelGatewayStart" targetRef="proporAquisicaoAreasConhecimentoRESTTask"></sequenceFlow>
+    <parallelGateway id="proporAquisicaoBuscarInformacaoParallelGatewayEnd" name="Busca Informação Parallel Gateway End"></parallelGateway>
+    <sequenceFlow id="flow3" sourceRef="proporAquisicaoObterPolosRESTTask" targetRef="proporAquisicaoBuscarInformacaoParallelGatewayEnd"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="proporAquisicaoAreasConhecimentoRESTTask" targetRef="proporAquisicaoBuscarInformacaoParallelGatewayEnd"></sequenceFlow>
+    <sequenceFlow id="flow5" sourceRef="proporAquisicaoStartEvent" targetRef="proporAquisicaoBuscarInformacaoParallelGatewayStart"></sequenceFlow>
+    <sequenceFlow id="flow7" sourceRef="proporAquisicaoUserTask" targetRef="proporAquisicaoBuscarInformacaoEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow8" sourceRef="proporAquisicaoBuscarInformacaoParallelGatewayEnd" targetRef="proporAquisicaoUserTask"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_proporAquisicaoProcess">
     <bpmndi:BPMNPlane bpmnElement="proporAquisicaoProcess" id="BPMNPlane_proporAquisicaoProcess">
-      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+      <bpmndi:BPMNShape bpmnElement="proporAquisicaoStartEvent" id="BPMNShape_proporAquisicaoStartEvent">
         <omgdc:Bounds height="35.0" width="35.0" x="60.0" y="177.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="proporAquisicaoUserTask" id="BPMNShape_proporAquisicaoUserTask">
-        <omgdc:Bounds height="75.0" width="135.0" x="800.0" y="157.0"></omgdc:Bounds>
+        <omgdc:Bounds height="75.0" width="135.0" x="670.0" y="157.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="parallelgateway1" id="BPMNShape_parallelgateway1">
+      <bpmndi:BPMNShape bpmnElement="proporAquisicaoBuscarInformacaoParallelGatewayStart" id="BPMNShape_proporAquisicaoBuscarInformacaoParallelGatewayStart">
         <omgdc:Bounds height="40.0" width="40.0" x="170.0" y="174.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="obterPolosRESTTask" id="BPMNShape_obterPolosRESTTask">
+      <bpmndi:BPMNShape bpmnElement="proporAquisicaoObterPolosRESTTask" id="BPMNShape_proporAquisicaoObterPolosRESTTask">
         <omgdc:Bounds height="55.0" width="105.0" x="320.0" y="120.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="areasConhecimentoRESTTask" id="BPMNShape_areasConhecimentoRESTTask">
+      <bpmndi:BPMNShape bpmnElement="proporAquisicaoAreasConhecimentoRESTTask" id="BPMNShape_proporAquisicaoAreasConhecimentoRESTTask">
         <omgdc:Bounds height="65.0" width="125.0" x="310.0" y="220.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="parallelgateway2" id="BPMNShape_parallelgateway2">
+      <bpmndi:BPMNShape bpmnElement="proporAquisicaoBuscarInformacaoParallelGatewayEnd" id="BPMNShape_proporAquisicaoBuscarInformacaoParallelGatewayEnd">
         <omgdc:Bounds height="40.0" width="40.0" x="540.0" y="174.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
-        <omgdc:Bounds height="35.0" width="35.0" x="970.0" y="177.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
         <omgdi:waypoint x="190.0" y="174.0"></omgdi:waypoint>
@@ -102,13 +98,9 @@
         <omgdi:waypoint x="95.0" y="194.0"></omgdi:waypoint>
         <omgdi:waypoint x="170.0" y="194.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
-        <omgdi:waypoint x="935.0" y="194.0"></omgdi:waypoint>
-        <omgdi:waypoint x="970.0" y="194.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
         <omgdi:waypoint x="580.0" y="194.0"></omgdi:waypoint>
-        <omgdi:waypoint x="800.0" y="194.0"></omgdi:waypoint>
+        <omgdi:waypoint x="670.0" y="194.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
