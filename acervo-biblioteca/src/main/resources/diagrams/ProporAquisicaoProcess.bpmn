@@ -16,7 +16,7 @@
     <serviceTask id="proporAquisicaoObterPolosRESTTask" name="Obter Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:string>http://www.mocky.io/v2/5e63da4a3600007100e8ddac</activiti:string>
+          <activiti:string>http://www.mocky.io/v2/5e65406d3400007b663389b9</activiti:string>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
@@ -32,7 +32,7 @@
     <serviceTask id="proporAquisicaoAreasConhecimentoRESTTask" name="Obter Áreas de Conhecimento" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:string>http://www.mocky.io/v2/5e63da78360000b511e8ddad</activiti:string>
+          <activiti:string>http://www.mocky.io/v2/5e65405734000092003389b8</activiti:string>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
