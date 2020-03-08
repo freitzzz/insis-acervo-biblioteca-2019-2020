@@ -2,8 +2,22 @@
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="acervoProcess" name="Processo de Acervo de Biblioteca" isExecutable="true">
     <startEvent id="startevent1" name="Start"></startEvent>
-    <callActivity id="propostaAquisicaoObraActivity" name="Propõe aquisição de obra"></callActivity>
-    <callActivity id="indicaPeritosActivity" name="Indica pelo menos 2 peritos"></callActivity>
+    <callActivity id="propostaAquisicaoObraActivity" name="Propõe aquisição de obra" calledElement="proporAquisicaoProcess">
+      <extensionElements>
+        <activiti:out source="titulo" target="globalTitulo"></activiti:out>
+        <activiti:out source="autores" target="globalAutores"></activiti:out>
+        <activiti:out source="anoPublicacao" target="globalAnoPublicacao"></activiti:out>
+        <activiti:out source="areaConhecimento" target="globalAreaConhecimento"></activiti:out>
+        <activiti:out source="polo" target="globalPolo"></activiti:out>
+        <activiti:out source="peritos" target="globalPeritos"></activiti:out>
+      </extensionElements>
+    </callActivity>
+    <callActivity id="indicaPeritosActivity" name="Indica pelo menos 2 peritos" calledElement="indicarPeritosProcess">
+      <extensionElements>
+        <activiti:in source="globalPeritos" target="peritos"></activiti:in>
+        <activiti:out source="peritosByBM" target="globalPeritosByBM"></activiti:out>
+      </extensionElements>
+    </callActivity>
     <callActivity id="daParecerActivity" name="Dá parecer"></callActivity>
     <exclusiveGateway id="daParecerGateway" name="Gateway de dar parecer"></exclusiveGateway>
     <callActivity id="afereDiaponibilidadeActivity" name="Afere disponibilidade financeira"></callActivity>
