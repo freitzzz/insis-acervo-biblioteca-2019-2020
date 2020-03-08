@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="indicarPeritosProcess" name="Processo de Indicar pelo menos 2 Peritos" isExecutable="true">
+    <startEvent id="indicarPeritosStartEvent" name="Indicar Peritos Start Event"></startEvent>
+    <userTask id="indicarPeritosUserTask" name="Indicar pelo menos 2 peritos" activiti:assignee="admin">
+      <extensionElements>
+        <activiti:formProperty id="peritosByBM" name="Peritos" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="peritos" name="Peritos indicados pelo Proponente" type="string" writable="false" required="true"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow1" sourceRef="indicarPeritosStartEvent" targetRef="indicarPeritosUserTask"></sequenceFlow>
+    <endEvent id="indicarPeritosEndEvent" name="Indicar Peritos End Event"></endEvent>
+    <sequenceFlow id="flow2" sourceRef="indicarPeritosUserTask" targetRef="indicarPeritosEndEvent"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_indicarPeritosProcess">
+    <bpmndi:BPMNPlane bpmnElement="indicarPeritosProcess" id="BPMNPlane_indicarPeritosProcess">
+      <bpmndi:BPMNShape bpmnElement="indicarPeritosStartEvent" id="BPMNShape_indicarPeritosStartEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="170.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="indicarPeritosUserTask" id="BPMNShape_indicarPeritosUserTask">
+        <omgdc:Bounds height="61.0" width="171.0" x="300.0" y="187.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="indicarPeritosEndEvent" id="BPMNShape_indicarPeritosEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="580.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="205.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="300.0" y="217.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="471.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="580.0" y="217.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
