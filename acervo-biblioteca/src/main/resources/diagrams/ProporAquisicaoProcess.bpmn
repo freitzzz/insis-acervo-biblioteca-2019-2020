@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
-  <process id="proporAquisicaoProcess" name="Processo que Propor Aquisição" isExecutable="true">
+  <process id="proporAquisicaoProcess" name="Processo de Propor Aquisição" isExecutable="true">
     <startEvent id="proporAquisicaoStartEvent" name="Propor Aquisição Start Event" activiti:initiator="admin"></startEvent>
     <userTask id="proporAquisicaoUserTask" name="Propõe Aquisição de Obra" activiti:assignee="admin">
       <extensionElements>
         <activiti:formProperty id="titulo" name="Titulo" type="string" required="true"></activiti:formProperty>
         <activiti:formProperty id="autores" name="Autores" type="string" required="true"></activiti:formProperty>
-        <activiti:formProperty id="anoPublicacao" name="Ano de Publicação" type="long" required="true"></activiti:formProperty>
+        <activiti:formProperty id="anoPublicacao" name="Ano de Publicação" type="long" datePattern="yyyy" required="true"></activiti:formProperty>
         <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="string" variable="areaConhecimento" required="true"></activiti:formProperty>
         <activiti:formProperty id="polo" name="Polo" type="string" variable="polo" required="true"></activiti:formProperty>
         <activiti:formProperty id="peritos" name="Peritos" type="string" required="true"></activiti:formProperty>
@@ -51,8 +51,9 @@
     <sequenceFlow id="flow3" sourceRef="proporAquisicaoObterPolosRESTTask" targetRef="proporAquisicaoBuscarInformacaoParallelGatewayEnd"></sequenceFlow>
     <sequenceFlow id="flow4" sourceRef="proporAquisicaoAreasConhecimentoRESTTask" targetRef="proporAquisicaoBuscarInformacaoParallelGatewayEnd"></sequenceFlow>
     <sequenceFlow id="flow5" sourceRef="proporAquisicaoStartEvent" targetRef="proporAquisicaoBuscarInformacaoParallelGatewayStart"></sequenceFlow>
-    <sequenceFlow id="flow7" sourceRef="proporAquisicaoUserTask" targetRef="proporAquisicaoBuscarInformacaoEndEvent"></sequenceFlow>
     <sequenceFlow id="flow8" sourceRef="proporAquisicaoBuscarInformacaoParallelGatewayEnd" targetRef="proporAquisicaoUserTask"></sequenceFlow>
+    <endEvent id="proporAquisicaoBuscarInformacaoEndEvent" name="Propor Aquisição End Event"></endEvent>
+    <sequenceFlow id="flow9" sourceRef="proporAquisicaoUserTask" targetRef="proporAquisicaoBuscarInformacaoEndEvent"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_proporAquisicaoProcess">
     <bpmndi:BPMNPlane bpmnElement="proporAquisicaoProcess" id="BPMNPlane_proporAquisicaoProcess">
@@ -73,6 +74,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="proporAquisicaoBuscarInformacaoParallelGatewayEnd" id="BPMNShape_proporAquisicaoBuscarInformacaoParallelGatewayEnd">
         <omgdc:Bounds height="40.0" width="40.0" x="540.0" y="174.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="proporAquisicaoBuscarInformacaoEndEvent" id="BPMNShape_proporAquisicaoBuscarInformacaoEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="920.0" y="177.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
         <omgdi:waypoint x="190.0" y="174.0"></omgdi:waypoint>
@@ -101,6 +105,10 @@
       <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
         <omgdi:waypoint x="580.0" y="194.0"></omgdi:waypoint>
         <omgdi:waypoint x="670.0" y="194.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="805.0" y="194.0"></omgdi:waypoint>
+        <omgdi:waypoint x="920.0" y="194.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
