@@ -85,12 +85,18 @@
       <extensionElements>
         <activiti:formProperty id="areaConhecimento" name="Área de conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="fornecedoresInfo" name="Informação Fornecedores" type="table" variable="fornecedoresTable" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="estadosObraPorPolo" name="Estado da Obra por Polos" type="table" variable="estadosObraPorPoloTable" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="informacoesExemplaresPolo" name="Exemplares por Polo" type="table" variable="exemplaresPoloTable" writable="false" required="true"></activiti:formProperty>
       </extensionElements>
     </userTask>
     <endEvent id="daParecerEndEvent" name="Da Parecer End Event"></endEvent>
     <sequenceFlow id="flow10" sourceRef="daParecerPreencheParecerUserTask" targetRef="daParecerEndEvent"></sequenceFlow>
     <scriptTask id="daParecerAgregaInformacaoScriptTask" name="Agrega Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
       <script>//println(execution.getVariablesLocal())
+
+import groovy.json.JsonBuilder
+
+// TABELA FORNECEDORES
 
 def fornecedoresTable = []
 
@@ -118,7 +124,7 @@ for (int i=0; i &lt; fornecedores.size(); i++) {
 
 	fornecedorRow.add(fornecedorData.get('availableNumber').asText())
 
-	fornecedorRow.add(fornecedorData.get('price').asText())
+	fornecedorRow.add(fornecedorData.get('price').asText().concat(fornecedorData.get('currency').asText()))
 
 	fornecedoresTableRows.add(fornecedorRow)
 
@@ -128,15 +134,106 @@ fornecedoresTable.add(fornecedoresTableHeaders)
 
 fornecedoresTable.add(fornecedoresTableRows)
 
-import groovy.json.JsonBuilder
-
 def fornecedoresTableJson = new JsonBuilder([headers: fornecedoresTableHeaders, rows: fornecedoresTableRows]).toPrettyString()
 
 execution.setVariable('fornecedoresTable', fornecedoresTableJson)
 
 println(fornecedoresTable)
 
-println(fornecedoresTableJson)</script>
+println(fornecedoresTableJson)
+
+
+// TABELA EXEMPLARES POR POLO
+
+def exemplaresPoloTable = []
+
+def exemplaresPoloTableHeaders = ['Polo', 'Nº Exemplares Existentes']
+
+def exemplaresPoloTableRows = []
+
+for (int i=0; i &lt; polos.size(); i++) {
+
+	def polo = polos.get(i)
+
+	println(polo)
+
+	def poloRow = []
+
+	def poloName = polo.get('name').asText()
+
+	println(poloName)
+
+	def poloData = execution.getVariableLocal(poloName)
+
+	println(poloData)
+
+	poloRow.add(poloName)
+
+	poloRow.add(poloData.size())
+
+	exemplaresPoloTableRows.add(poloRow)
+
+}
+
+exemplaresPoloTable.add(exemplaresPoloTableHeaders)
+
+exemplaresPoloTable.add(exemplaresPoloTableRows)
+
+def exemplaresPoloTableJson = new JsonBuilder([headers: exemplaresPoloTableHeaders, rows: exemplaresPoloTableRows]).toPrettyString()
+
+execution.setVariable('exemplaresPoloTable', exemplaresPoloTableJson)
+
+println(exemplaresPoloTable)
+
+println(exemplaresPoloTableJson)
+
+// TABELA ESTADO OBRAS POR POLO
+
+def estadosObraPorPoloTable = []
+
+def estadosObraPorPoloTableHeaders = ['Estado', 'Polo']
+
+def estadosObraPorPoloTableRows = []
+
+for (int i=0; i &lt; polos.size(); i++) {
+
+	def polo = polos.get(i)
+
+	println(polo)
+
+	def poloName = polo.get('name').asText()
+
+	println(poloName)
+
+	def poloData = execution.getVariableLocal(poloName)
+
+  println(poloData)
+
+  for (int j = 0; j &lt; poloData.size(); j++) {
+
+    def poloRow = []
+
+	  poloRow.add(poloData.get(j).get('state').asText())
+
+	  poloRow.add(poloName)
+
+	  estadosObraPorPoloTableRows.add(poloRow)
+
+  }
+
+}
+
+estadosObraPorPoloTable.add(estadosObraPorPoloTableHeaders)
+
+estadosObraPorPoloTable.add(estadosObraPorPoloTableRows)
+
+def estadosObraPorPoloTableJson = new JsonBuilder([headers: estadosObraPorPoloTableHeaders, rows: estadosObraPorPoloTableRows]).toPrettyString()
+
+execution.setVariable('estadosObraPorPoloTable', estadosObraPorPoloTableJson)
+
+println(estadosObraPorPoloTable)
+
+println(estadosObraPorPoloTableJson)</script>
     </scriptTask>
     <sequenceFlow id="flow12" sourceRef="daParecerObterInformacaoParallelGatewayEnd" targetRef="daParecerAgregaInformacaoScriptTask"></sequenceFlow>
     <sequenceFlow id="flow13" sourceRef="daParecerAgregaInformacaoScriptTask" targetRef="daParecerPreencheParecerUserTask"></sequenceFlow>
