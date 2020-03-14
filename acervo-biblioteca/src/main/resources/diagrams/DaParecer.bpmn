@@ -67,7 +67,7 @@
           <activiti:string>GET</activiti:string>
         </activiti:field>
         <activiti:field name="outputVariable">
-          <activiti:expression>${polos.get(loopCounter).get("name").asText()}</activiti:expression>
+          <activiti:expression>${fornecedores.get(loopCounter).get("name").asText()}</activiti:expression>
         </activiti:field>
         <activiti:field name="headers">
           <activiti:string>{"Content-Type": "application/json"}</activiti:string>
@@ -81,79 +81,141 @@
     <parallelGateway id="daParecerObterInformacaoParallelGatewayEnd" name="Obter Informação End"></parallelGateway>
     <sequenceFlow id="flow7" sourceRef="daParecerBuscaObraPorFornecedorRestTask" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
     <sequenceFlow id="flow8" sourceRef="daParecerBuscaExemplaresPorPoloRestTask" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
-    <userTask id="daParecerPreencheParecerUserTask" name="Preenche Parecer"></userTask>
+    <userTask id="daParecerPreencheParecerUserTask" name="Preenche Parecer" activiti:assignee="admin">
+      <extensionElements>
+        <activiti:formProperty id="areaConhecimento" name="Área de conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="fornecedoresInfo" name="Informação Fornecedores" type="table" variable="fornecedoresTable" writable="false" required="true"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
     <endEvent id="daParecerEndEvent" name="Da Parecer End Event"></endEvent>
     <sequenceFlow id="flow10" sourceRef="daParecerPreencheParecerUserTask" targetRef="daParecerEndEvent"></sequenceFlow>
-    <sequenceFlow id="flow11" sourceRef="daParecerObterInformacaoParallelGatewayEnd" targetRef="daParecerPreencheParecerUserTask"></sequenceFlow>
+    <scriptTask id="daParecerAgregaInformacaoScriptTask" name="Agrega Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>//println(execution.getVariablesLocal())
+
+def fornecedoresTable = []
+
+def fornecedoresTableHeaders = ['Fornecedor', 'Nº Exemplares Disponiveis para Compra', 'Preço']
+
+def fornecedoresTableRows = []
+
+for (int i=0; i &lt; fornecedores.size(); i++) {
+
+	def fornecedor = fornecedores.get(i)
+
+	println(fornecedor)
+
+	def fornecedorRow = []
+
+	def fornecedorName = fornecedor.get('name').asText()
+
+	println(fornecedorName)
+
+	def fornecedorData = execution.getVariableLocal(fornecedorName)
+
+	println(fornecedorData)
+
+	fornecedorRow.add(fornecedorName)
+
+	fornecedorRow.add(fornecedorData.get('availableNumber').asText())
+
+	fornecedorRow.add(fornecedorData.get('price').asText())
+
+	fornecedoresTableRows.add(fornecedorRow)
+
+}
+
+fornecedoresTable.add(fornecedoresTableHeaders)
+
+fornecedoresTable.add(fornecedoresTableRows)
+
+import groovy.json.JsonBuilder
+
+def fornecedoresTableJson = new JsonBuilder([headers: fornecedoresTableHeaders, rows: fornecedoresTableRows]).toPrettyString()
+
+execution.setVariable('fornecedoresTable', fornecedoresTableJson)
+
+println(fornecedoresTable)
+
+println(fornecedoresTableJson)</script>
+    </scriptTask>
+    <sequenceFlow id="flow12" sourceRef="daParecerObterInformacaoParallelGatewayEnd" targetRef="daParecerAgregaInformacaoScriptTask"></sequenceFlow>
+    <sequenceFlow id="flow13" sourceRef="daParecerAgregaInformacaoScriptTask" targetRef="daParecerPreencheParecerUserTask"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_daParecerProcess">
     <bpmndi:BPMNPlane bpmnElement="daParecerProcess" id="BPMNPlane_daParecerProcess">
       <bpmndi:BPMNShape bpmnElement="daParecerStartEvent" id="BPMNShape_daParecerStartEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="50.0" y="140.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="0.0" y="140.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerBuscaPolosRestTask" id="BPMNShape_daParecerBuscaPolosRestTask">
-        <omgdc:Bounds height="55.0" width="105.0" x="250.0" y="80.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="200.0" y="80.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerObterInformacaoParallelGatewayStart" id="BPMNShape_daParecerObterInformacaoParallelGatewayStart">
-        <omgdc:Bounds height="40.0" width="40.0" x="150.0" y="138.0"></omgdc:Bounds>
+        <omgdc:Bounds height="40.0" width="40.0" x="100.0" y="138.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerBuscaExemplaresPorPoloRestTask" id="BPMNShape_daParecerBuscaExemplaresPorPoloRestTask">
-        <omgdc:Bounds height="58.0" width="121.0" x="420.0" y="79.0"></omgdc:Bounds>
+        <omgdc:Bounds height="58.0" width="121.0" x="370.0" y="79.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerBuscaFornecedoresRestTask" id="BPMNShape_daParecerBuscaFornecedoresRestTask">
-        <omgdc:Bounds height="55.0" width="105.0" x="250.0" y="190.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="200.0" y="190.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerBuscaObraPorFornecedorRestTask" id="BPMNShape_daParecerBuscaObraPorFornecedorRestTask">
-        <omgdc:Bounds height="61.0" width="113.0" x="424.0" y="187.0"></omgdc:Bounds>
+        <omgdc:Bounds height="61.0" width="113.0" x="374.0" y="187.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerObterInformacaoParallelGatewayEnd" id="BPMNShape_daParecerObterInformacaoParallelGatewayEnd">
-        <omgdc:Bounds height="40.0" width="40.0" x="600.0" y="138.0"></omgdc:Bounds>
+        <omgdc:Bounds height="40.0" width="40.0" x="550.0" y="138.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerPreencheParecerUserTask" id="BPMNShape_daParecerPreencheParecerUserTask">
-        <omgdc:Bounds height="55.0" width="105.0" x="685.0" y="131.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="830.0" y="130.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerEndEvent" id="BPMNShape_daParecerEndEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="835.0" y="141.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="960.0" y="141.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerAgregaInformacaoScriptTask" id="BPMNShape_daParecerAgregaInformacaoScriptTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="660.0" y="130.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
-        <omgdi:waypoint x="85.0" y="157.0"></omgdi:waypoint>
-        <omgdi:waypoint x="150.0" y="158.0"></omgdi:waypoint>
+        <omgdi:waypoint x="35.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="100.0" y="158.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
-        <omgdi:waypoint x="170.0" y="138.0"></omgdi:waypoint>
-        <omgdi:waypoint x="170.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="250.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="120.0" y="138.0"></omgdi:waypoint>
+        <omgdi:waypoint x="120.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="200.0" y="107.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
-        <omgdi:waypoint x="355.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="420.0" y="108.0"></omgdi:waypoint>
+        <omgdi:waypoint x="305.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="370.0" y="108.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
-        <omgdi:waypoint x="170.0" y="178.0"></omgdi:waypoint>
-        <omgdi:waypoint x="169.0" y="217.0"></omgdi:waypoint>
-        <omgdi:waypoint x="250.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="120.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="119.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="200.0" y="217.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
-        <omgdi:waypoint x="355.0" y="217.0"></omgdi:waypoint>
-        <omgdi:waypoint x="424.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="305.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="374.0" y="217.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
-        <omgdi:waypoint x="537.0" y="217.0"></omgdi:waypoint>
-        <omgdi:waypoint x="620.0" y="217.0"></omgdi:waypoint>
-        <omgdi:waypoint x="620.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="487.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="570.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="570.0" y="178.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
-        <omgdi:waypoint x="541.0" y="108.0"></omgdi:waypoint>
-        <omgdi:waypoint x="620.0" y="108.0"></omgdi:waypoint>
-        <omgdi:waypoint x="620.0" y="138.0"></omgdi:waypoint>
+        <omgdi:waypoint x="491.0" y="108.0"></omgdi:waypoint>
+        <omgdi:waypoint x="570.0" y="108.0"></omgdi:waypoint>
+        <omgdi:waypoint x="570.0" y="138.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
-        <omgdi:waypoint x="790.0" y="158.0"></omgdi:waypoint>
-        <omgdi:waypoint x="835.0" y="158.0"></omgdi:waypoint>
+        <omgdi:waypoint x="935.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="960.0" y="158.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
-        <omgdi:waypoint x="640.0" y="158.0"></omgdi:waypoint>
-        <omgdi:waypoint x="685.0" y="158.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
+        <omgdi:waypoint x="590.0" y="158.0"></omgdi:waypoint>
+        <omgdi:waypoint x="660.0" y="157.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">
+        <omgdi:waypoint x="765.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="830.0" y="157.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
