@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
-  <process id="myProcess" name="My process" isExecutable="true">
+  <process id="daParecerProcess" name="Processo de Dar Parecer" isExecutable="true">
     <startEvent id="daParecerStartEvent" name="Da Parecer Start Event"></startEvent>
     <serviceTask id="daParecerBuscaPolosRestTask" name="Busca Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
@@ -24,13 +24,13 @@
     <serviceTask id="daParecerBuscaExemplaresPorPoloRestTask" name="Busca Exemplares Por Polo" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:expression>${polos.get(loopCounter).get("apiUrl")}</activiti:expression>
+          <activiti:expression>${polos.get(loopCounter).get("apiUrl").asText()}</activiti:expression>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
         </activiti:field>
         <activiti:field name="outputVariable">
-          <activiti:expression>${polos.get(loopCounter).get("name")}</activiti:expression>
+          <activiti:expression>${polos.get(loopCounter).get("name").asText()}</activiti:expression>
         </activiti:field>
         <activiti:field name="headers">
           <activiti:string>{"Content-Type": "application/json"}</activiti:string>
@@ -61,13 +61,13 @@
     <serviceTask id="daParecerBuscaObraPorFornecedorRestTask" name="Busca Obra Por Fornecedor" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:expression>${fornecedores.get(loopCounter).get("apiUrl")}</activiti:expression>
+          <activiti:expression>${fornecedores.get(loopCounter).get("apiUrl").asText()}</activiti:expression>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
         </activiti:field>
         <activiti:field name="outputVariable">
-          <activiti:expression>${polos.get(loopCounter).get("name")}</activiti:expression>
+          <activiti:expression>${polos.get(loopCounter).get("name").asText()}</activiti:expression>
         </activiti:field>
         <activiti:field name="headers">
           <activiti:string>{"Content-Type": "application/json"}</activiti:string>
@@ -82,12 +82,12 @@
     <sequenceFlow id="flow7" sourceRef="daParecerBuscaObraPorFornecedorRestTask" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
     <sequenceFlow id="flow8" sourceRef="daParecerBuscaExemplaresPorPoloRestTask" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
     <userTask id="daParecerPreencheParecerUserTask" name="Preenche Parecer"></userTask>
-    <sequenceFlow id="flow9" sourceRef="daParecerObterInformacaoParallelGatewayEnd" targetRef="daParecerPreencheParecerUserTask"></sequenceFlow>
     <endEvent id="daParecerEndEvent" name="Da Parecer End Event"></endEvent>
     <sequenceFlow id="flow10" sourceRef="daParecerPreencheParecerUserTask" targetRef="daParecerEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow11" sourceRef="daParecerObterInformacaoParallelGatewayEnd" targetRef="daParecerPreencheParecerUserTask"></sequenceFlow>
   </process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_myProcess">
-    <bpmndi:BPMNPlane bpmnElement="myProcess" id="BPMNPlane_myProcess">
+  <bpmndi:BPMNDiagram id="BPMNDiagram_daParecerProcess">
+    <bpmndi:BPMNPlane bpmnElement="daParecerProcess" id="BPMNPlane_daParecerProcess">
       <bpmndi:BPMNShape bpmnElement="daParecerStartEvent" id="BPMNShape_daParecerStartEvent">
         <omgdc:Bounds height="35.0" width="35.0" x="50.0" y="140.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
@@ -147,13 +147,13 @@
         <omgdi:waypoint x="620.0" y="108.0"></omgdi:waypoint>
         <omgdi:waypoint x="620.0" y="138.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
-        <omgdi:waypoint x="640.0" y="158.0"></omgdi:waypoint>
-        <omgdi:waypoint x="685.0" y="158.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
         <omgdi:waypoint x="790.0" y="158.0"></omgdi:waypoint>
         <omgdi:waypoint x="835.0" y="158.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="640.0" y="158.0"></omgdi:waypoint>
+        <omgdi:waypoint x="685.0" y="158.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
