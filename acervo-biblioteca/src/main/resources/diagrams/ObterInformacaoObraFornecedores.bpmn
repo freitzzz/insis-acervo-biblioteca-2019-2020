@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="obterInformacaoObraFornecedores" name="Obtém informação de uma obra de vários fornecedores" isExecutable="true">
+    <startEvent id="obterInformacaoObraFornecedoresStartEvent" name="Obter Informacao Obra Fornecedores Start Event"></startEvent>
+    <serviceTask id="obterInformacaoObraFornecedoresBuscaFornecedoresRestTask" name="Busca Fornecedores" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+      <extensionElements>
+        <activiti:field name="serviceURL">
+          <activiti:string>http://www.mocky.io/v2/5e6ce3642e000057000eea83</activiti:string>
+        </activiti:field>
+        <activiti:field name="method">
+          <activiti:string>GET</activiti:string>
+        </activiti:field>
+        <activiti:field name="outputVariable">
+          <activiti:string>fornecedores</activiti:string>
+        </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow1" sourceRef="obterInformacaoObraFornecedoresStartEvent" targetRef="obterInformacaoObraFornecedoresBuscaFornecedoresRestTask"></sequenceFlow>
+    <serviceTask id="obterInformacaoObraFornecedoresBuscaObraPorFornecedorRestTask" name="Obter Informação de Obra por Fornecedor" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+      <extensionElements>
+        <activiti:field name="serviceURL">
+          <activiti:expression>${fornecedores.get(loopCounter).get("apiUrl").asText()}</activiti:expression>
+        </activiti:field>
+        <activiti:field name="method">
+          <activiti:string>GET</activiti:string>
+        </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
+        </activiti:field>
+        <activiti:field name="outputVariable">
+          <activiti:expression>${fornecedores.get(loopCounter).get("name").asText()}</activiti:expression>
+        </activiti:field>
+      </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false">
+        <loopCardinality>${fornecedores.size()}</loopCardinality>
+      </multiInstanceLoopCharacteristics>
+    </serviceTask>
+    <endEvent id="obterInformacaoObraFornecedoresBuscaFornecedoresEndEvent" name="Obter Informacao Obra Fornecedores End Event"></endEvent>
+    <scriptTask id="obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask" name="Agrupa Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>def fornecedoresInfo = []
+
+for(int i = 0; i &lt; fornecedores.size(); i++) {
+
+	def fornecedorName = fornecedores.get(i).get('name').asText()
+
+	def fornecedor = execution.getVariableLocal(fornecedorName)
+
+	def price = fornecedor.get('price').asDouble()
+
+	def currency = fornecedor.get('currency').asText()
+
+	def availableNumber = fornecedor.get('availableNumber').asInt()
+
+	def entry = [name: fornecedorName, price: price, currency: currency, availableNumber: availableNumber]
+
+	fornecedoresInfo.add(entry)
+	
+}
+
+execution.setVariable('fornecedores', fornecedoresInfo)</script>
+    </scriptTask>
+    <sequenceFlow id="flow4" sourceRef="obterInformacaoObraFornecedoresBuscaObraPorFornecedorRestTask" targetRef="obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask"></sequenceFlow>
+    <sequenceFlow id="flow5" sourceRef="obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask" targetRef="obterInformacaoObraFornecedoresBuscaFornecedoresEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow6" sourceRef="obterInformacaoObraFornecedoresBuscaFornecedoresRestTask" targetRef="obterInformacaoObraFornecedoresBuscaObraPorFornecedorRestTask"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_obterInformacaoObraFornecedores">
+    <bpmndi:BPMNPlane bpmnElement="obterInformacaoObraFornecedores" id="BPMNPlane_obterInformacaoObraFornecedores">
+      <bpmndi:BPMNShape bpmnElement="obterInformacaoObraFornecedoresStartEvent" id="BPMNShape_obterInformacaoObraFornecedoresStartEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="70.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterInformacaoObraFornecedoresBuscaFornecedoresRestTask" id="BPMNShape_obterInformacaoObraFornecedoresBuscaFornecedoresRestTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="180.0" y="80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterInformacaoObraFornecedoresBuscaObraPorFornecedorRestTask" id="BPMNShape_obterInformacaoObraFornecedoresBuscaObraPorFornecedorRestTask">
+        <omgdc:Bounds height="71.0" width="131.0" x="360.0" y="72.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterInformacaoObraFornecedoresBuscaFornecedoresEndEvent" id="BPMNShape_obterInformacaoObraFornecedoresBuscaFornecedoresEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="720.0" y="90.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask" id="BPMNShape_obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="560.0" y="80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="105.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="180.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="491.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="560.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="665.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="720.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="285.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="360.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
