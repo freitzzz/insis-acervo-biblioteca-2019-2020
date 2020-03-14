@@ -2,21 +2,87 @@
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="myProcess" name="My process" isExecutable="true">
     <startEvent id="daParecerStartEvent" name="Da Parecer Start Event"></startEvent>
-    <serviceTask id="daParecerBuscaPolosRestTask" name="Busca Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask"></serviceTask>
+    <serviceTask id="daParecerBuscaPolosRestTask" name="Busca Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+      <extensionElements>
+        <activiti:field name="serviceURL">
+          <activiti:string>http://www.mocky.io/v2/5e6cdc3b2e000072000eea6e</activiti:string>
+        </activiti:field>
+        <activiti:field name="method">
+          <activiti:string>GET</activiti:string>
+        </activiti:field>
+        <activiti:field name="outputVariable">
+          <activiti:string>polos</activiti:string>
+        </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
     <parallelGateway id="daParecerObterInformacaoParallelGatewayStart" name="Obter Informação Start"></parallelGateway>
     <sequenceFlow id="flow1" sourceRef="daParecerStartEvent" targetRef="daParecerObterInformacaoParallelGatewayStart"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="daParecerObterInformacaoParallelGatewayStart" targetRef="daParecerBuscaPolosRestTask"></sequenceFlow>
-    <serviceTask id="daParecerBuscaExemplaresPorPoloRestTask" name="Busca Exemplares Por Polo" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask"></serviceTask>
+    <serviceTask id="daParecerBuscaExemplaresPorPoloRestTask" name="Busca Exemplares Por Polo" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+      <extensionElements>
+        <activiti:field name="serviceURL">
+          <activiti:expression>${polos.get(loopCounter).get("apiUrl")}</activiti:expression>
+        </activiti:field>
+        <activiti:field name="method">
+          <activiti:string>GET</activiti:string>
+        </activiti:field>
+        <activiti:field name="outputVariable">
+          <activiti:expression>${polos.get(loopCounter).get("name")}</activiti:expression>
+        </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
+        </activiti:field>
+      </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false">
+        <loopCardinality>${polos.size()}</loopCardinality>
+      </multiInstanceLoopCharacteristics>
+    </serviceTask>
     <sequenceFlow id="flow3" sourceRef="daParecerBuscaPolosRestTask" targetRef="daParecerBuscaExemplaresPorPoloRestTask"></sequenceFlow>
-    <serviceTask id="daParecerBuscaFornecedoresRestTask" name="Busca Fornecedores" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask"></serviceTask>
+    <serviceTask id="daParecerBuscaFornecedoresRestTask" name="Busca Fornecedores" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+      <extensionElements>
+        <activiti:field name="serviceURL">
+          <activiti:string>http://www.mocky.io/v2/5e6ce3642e000057000eea83</activiti:string>
+        </activiti:field>
+        <activiti:field name="method">
+          <activiti:string>GET</activiti:string>
+        </activiti:field>
+        <activiti:field name="outputVariable">
+          <activiti:string>fornecedores</activiti:string>
+        </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
     <sequenceFlow id="flow4" sourceRef="daParecerObterInformacaoParallelGatewayStart" targetRef="daParecerBuscaFornecedoresRestTask"></sequenceFlow>
-    <serviceTask id="daParecerBuscaObraPorFornecedorRestTask" name="Busca Obra Por Fornecedor" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask"></serviceTask>
+    <serviceTask id="daParecerBuscaObraPorFornecedorRestTask" name="Busca Obra Por Fornecedor" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+      <extensionElements>
+        <activiti:field name="serviceURL">
+          <activiti:expression>${fornecedores.get(loopCounter).get("apiUrl")}</activiti:expression>
+        </activiti:field>
+        <activiti:field name="method">
+          <activiti:string>GET</activiti:string>
+        </activiti:field>
+        <activiti:field name="outputVariable">
+          <activiti:expression>${polos.get(loopCounter).get("name")}</activiti:expression>
+        </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
+        </activiti:field>
+      </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false">
+        <loopCardinality>${fornecedores.size()}</loopCardinality>
+      </multiInstanceLoopCharacteristics>
+    </serviceTask>
     <sequenceFlow id="flow5" sourceRef="daParecerBuscaFornecedoresRestTask" targetRef="daParecerBuscaObraPorFornecedorRestTask"></sequenceFlow>
-    <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
-    <sequenceFlow id="flow7" sourceRef="daParecerBuscaObraPorFornecedorRestTask" targetRef="parallelgateway1"></sequenceFlow>
-    <sequenceFlow id="flow8" sourceRef="daParecerBuscaExemplaresPorPoloRestTask" targetRef="parallelgateway1"></sequenceFlow>
+    <parallelGateway id="daParecerObterInformacaoParallelGatewayEnd" name="Obter Informação End"></parallelGateway>
+    <sequenceFlow id="flow7" sourceRef="daParecerBuscaObraPorFornecedorRestTask" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
+    <sequenceFlow id="flow8" sourceRef="daParecerBuscaExemplaresPorPoloRestTask" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
     <userTask id="daParecerPreencheParecerUserTask" name="Preenche Parecer"></userTask>
-    <sequenceFlow id="flow9" sourceRef="parallelgateway1" targetRef="daParecerPreencheParecerUserTask"></sequenceFlow>
+    <sequenceFlow id="flow9" sourceRef="daParecerObterInformacaoParallelGatewayEnd" targetRef="daParecerPreencheParecerUserTask"></sequenceFlow>
     <endEvent id="daParecerEndEvent" name="Da Parecer End Event"></endEvent>
     <sequenceFlow id="flow10" sourceRef="daParecerPreencheParecerUserTask" targetRef="daParecerEndEvent"></sequenceFlow>
   </process>
@@ -40,7 +106,7 @@
       <bpmndi:BPMNShape bpmnElement="daParecerBuscaObraPorFornecedorRestTask" id="BPMNShape_daParecerBuscaObraPorFornecedorRestTask">
         <omgdc:Bounds height="61.0" width="113.0" x="424.0" y="187.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="parallelgateway1" id="BPMNShape_parallelgateway1">
+      <bpmndi:BPMNShape bpmnElement="daParecerObterInformacaoParallelGatewayEnd" id="BPMNShape_daParecerObterInformacaoParallelGatewayEnd">
         <omgdc:Bounds height="40.0" width="40.0" x="600.0" y="138.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerPreencheParecerUserTask" id="BPMNShape_daParecerPreencheParecerUserTask">
