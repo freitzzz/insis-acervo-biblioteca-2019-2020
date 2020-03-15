@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="daParecerProcess" name="Processo de Dar Parecer" isExecutable="true">
-    <startEvent id="daParecerStartEvent" name="Da Parecer Start Event"></startEvent>
+    <startEvent id="daParecerStartEvent" name="Da Parecer Start Event" activiti:initiator="perito"></startEvent>
     <serviceTask id="daParecerBuscaPolosRestTask" name="Busca Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
