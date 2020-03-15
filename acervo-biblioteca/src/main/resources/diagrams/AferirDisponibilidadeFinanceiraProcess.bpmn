@@ -58,7 +58,7 @@ execution.setVariable('fornecedorMaisBaratoTable', fornecedorMaisBaratoTableJson
     <sequenceFlow id="flow1" sourceRef="aferirDisponibilidadeFinanceiraStartEvent" targetRef="aferirDisponibilidadeFinanceiraBuscaInformacaoObraFornecedoresCallActivity"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="aferirDisponibilidadeFinanceiraBuscaInformacaoObraFornecedoresCallActivity" targetRef="aferirDisponibilidadeFinanceiraObterPrecoMaisBaixoScriptTask"></sequenceFlow>
     <sequenceFlow id="flow3" sourceRef="aferirDisponibilidadeFinanceiraObterPrecoMaisBaixoScriptTask" targetRef="aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask"></sequenceFlow>
-    <userTask id="aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask" name="Verificar Disponibilidade Financeira" activiti:assignee="admin">
+    <userTask id="aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask" name="Verificar Disponibilidade Financeira" activiti:candidateGroups="servico_administrativo">
       <extensionElements>
         <activiti:formProperty id="titulo" name="Titulo" type="string" variable="titulo" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="fornecedorMelhorPreco" name="Fornecedor com Melhor Preço" type="table" variable="fornecedorMaisBaratoTable" writable="false" required="true"></activiti:formProperty>
