@@ -20,7 +20,12 @@
     </callActivity>
     <callActivity id="daParecerActivity" name="Dá parecer"></callActivity>
     <exclusiveGateway id="daParecerGateway" name="Gateway de dar parecer"></exclusiveGateway>
-    <callActivity id="afereDiaponibilidadeActivity" name="Afere disponibilidade financeira"></callActivity>
+    <callActivity id="afereDiaponibilidadeActivity" name="Afere disponibilidade financeira" calledElement="aferirDisponibilidadeFinanceiraProcess">
+      <extensionElements>
+        <activiti:in source="globalTitulo" target="titulo"></activiti:in>
+        <activiti:out source="disponibilidadeFinanceira" target="globalDisponibilidadeFinanceira"></activiti:out>
+      </extensionElements>
+    </callActivity>
     <callActivity id="decideAquisicaoActivity" name="Decide aquisição"></callActivity>
     <sequenceFlow id="flow1" sourceRef="propostaAquisicaoObraActivity" targetRef="indicaPeritosActivity"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="indicaPeritosActivity" targetRef="daParecerActivity"></sequenceFlow>
