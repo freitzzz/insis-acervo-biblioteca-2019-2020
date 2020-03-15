@@ -39,7 +39,7 @@
     <exclusiveGateway id="afereDiaponibilidadeGateway" name="Gateway de aferir disponibilidade"></exclusiveGateway>
     <sequenceFlow id="flow5" sourceRef="afereDiaponibilidadeActivity" targetRef="afereDiaponibilidadeGateway"></sequenceFlow>
     <sequenceFlow id="flow6" sourceRef="afereDiaponibilidadeGateway" targetRef="decideAquisicaoActivity">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${disponibilidadeFinanceira == 'true'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalDisponibilidadeFinanceira == 'true'}]]></conditionExpression>
     </sequenceFlow>
     <exclusiveGateway id="decideAquisicaoGateway" name="Gateway de decidir aquisição"></exclusiveGateway>
     <sequenceFlow id="flow7" sourceRef="decideAquisicaoActivity" targetRef="decideAquisicaoGateway"></sequenceFlow>
@@ -56,7 +56,7 @@
     <endEvent id="daParecerEndEvent" name="Fim Dá Parecer"></endEvent>
     <sequenceFlow id="flow13" sourceRef="daParecerGateway" targetRef="daParecerEndEvent"></sequenceFlow>
     <sequenceFlow id="flow14" sourceRef="afereDiaponibilidadeGateway" targetRef="afereDisponibilidadeEndEvent">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${disponibilidadeFinanceira == 'false'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalDisponibilidadeFinanceira == 'false'}]]></conditionExpression>
     </sequenceFlow>
     <endEvent id="decideAquisicaoEndEvent" name="Fim Decide Aquisição"></endEvent>
     <sequenceFlow id="flow15" sourceRef="decideAquisicaoGateway" targetRef="decideAquisicaoEndEvent"></sequenceFlow>
