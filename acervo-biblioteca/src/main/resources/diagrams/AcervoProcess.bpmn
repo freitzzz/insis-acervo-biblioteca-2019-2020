@@ -18,7 +18,12 @@
         <activiti:out source="peritosByBM" target="globalPeritosByBM"></activiti:out>
       </extensionElements>
     </callActivity>
-    <callActivity id="daParecerActivity" name="Dá parecer"></callActivity>
+    <callActivity id="daParecerActivity" name="Dá parecer" calledElement="daParecerProcess">
+      <extensionElements>
+        <activiti:in source="globalTitulo" target="titulo"></activiti:in>
+        <activiti:in source="globalAreaConhecimento" target="areaConhecimento"></activiti:in>
+      </extensionElements>
+    </callActivity>
     <exclusiveGateway id="daParecerGateway" name="Gateway de dar parecer"></exclusiveGateway>
     <callActivity id="afereDiaponibilidadeActivity" name="Afere disponibilidade financeira" calledElement="aferirDisponibilidadeFinanceiraProcess">
       <extensionElements>
