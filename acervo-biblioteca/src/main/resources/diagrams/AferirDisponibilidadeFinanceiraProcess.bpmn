@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="aferirDisponibilidadeFinanceiraProcess" name="Processo de Aferir Disponibilidade Financeira" isExecutable="true">
+    <startEvent id="aferirDisponibilidadeFinanceiraStartEvent" name="Aferir Disponibilidade Financeira Start Event"></startEvent>
+    <endEvent id="aferirDisponibilidadeFinanceiraEndEvent" name="Aferir Disponibilidade Financeira End Event"></endEvent>
+    <scriptTask id="aferirDisponibilidadeFinanceiraObterPrecoMaisBaixoScriptTask" name="Obter Preço Mais Baixo" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>// Obter preço mais baixo
+import groovy.json.JsonBuilder
+
+println("** Obter preço mais baixo **")
+
+def fornecedor = fornecedores.get(0)
+
+println(fornecedor)
+
+def lowerPrice = fornecedor.price
+
+def fornecedorRow = [[fornecedor.name, lowerPrice.toString().concat(fornecedor.currency.toString())]]
+
+println(lowerPrice.toString())
+
+
+for (int i = 1; i &lt; fornecedores.size(); i++) {
+
+	fornecedor = fornecedores.get(i)
+	
+	def price = fornecedor.price
+
+	println(price.toString())
+	
+	if(price &lt; lowerPrice) {
+	
+		println(price + " &lt; " + lowerPrice)
+	
+		lowerPrice = price
+		
+		fornecedorRow = [[fornecedor.name, lowerPrice.toString().concat(fornecedor.currency.toString())]]
+		
+	}
+	
+}
+
+
+def fornecedoresTableHeaders = ['Fornecedor', 'Preço']
+
+def fornecedorMaisBaratoTableJson = new JsonBuilder([headers: fornecedoresTableHeaders, rows: fornecedorRow]).toPrettyString()
+
+println(fornecedorMaisBaratoTableJson)
+
+execution.setVariable('fornecedorMaisBaratoTable', fornecedorMaisBaratoTableJson)</script>
+    </scriptTask>
+    <callActivity id="aferirDisponibilidadeFinanceiraBuscaInformacaoObraFornecedoresCallActivity" name="Busca Informação Obra Fornecedores" calledElement="obterInformacaoObraFornecedores">
+      <extensionElements>
+        <activiti:in source="titulo" target="titulo"></activiti:in>
+        <activiti:out source="fornecedores" target="fornecedores"></activiti:out>
+      </extensionElements>
+    </callActivity>
+    <sequenceFlow id="flow1" sourceRef="aferirDisponibilidadeFinanceiraStartEvent" targetRef="aferirDisponibilidadeFinanceiraBuscaInformacaoObraFornecedoresCallActivity"></sequenceFlow>
+    <sequenceFlow id="flow2" sourceRef="aferirDisponibilidadeFinanceiraBuscaInformacaoObraFornecedoresCallActivity" targetRef="aferirDisponibilidadeFinanceiraObterPrecoMaisBaixoScriptTask"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="aferirDisponibilidadeFinanceiraObterPrecoMaisBaixoScriptTask" targetRef="aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask"></sequenceFlow>
+    <userTask id="aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask" name="Verificar Disponibilidade Financeira" activiti:assignee="admin">
+      <extensionElements>
+        <activiti:formProperty id="titulo" name="Titulo" type="string" variable="titulo" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="fornecedorMelhorPreco" name="Fornecedor com Melhor Preço" type="table" variable="fornecedorMaisBaratoTable" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="disponibilidadeFinanceira" name="Decisão em Relação à Disponibilidade Financeira" type="enum" required="true">
+          <activiti:value id="true" name="Aceita"></activiti:value>
+          <activiti:value id="false" name="Rejeita"></activiti:value>
+        </activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow4" sourceRef="aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask" targetRef="aferirDisponibilidadeFinanceiraEndEvent"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_aferirDisponibilidadeFinanceiraProcess">
+    <bpmndi:BPMNPlane bpmnElement="aferirDisponibilidadeFinanceiraProcess" id="BPMNPlane_aferirDisponibilidadeFinanceiraProcess">
+      <bpmndi:BPMNShape bpmnElement="aferirDisponibilidadeFinanceiraStartEvent" id="BPMNShape_aferirDisponibilidadeFinanceiraStartEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="100.0" y="143.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="aferirDisponibilidadeFinanceiraEndEvent" id="BPMNShape_aferirDisponibilidadeFinanceiraEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="820.0" y="143.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="aferirDisponibilidadeFinanceiraObterPrecoMaisBaixoScriptTask" id="BPMNShape_aferirDisponibilidadeFinanceiraObterPrecoMaisBaixoScriptTask">
+        <omgdc:Bounds height="55.0" width="145.0" x="430.0" y="133.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="aferirDisponibilidadeFinanceiraBuscaInformacaoObraFornecedoresCallActivity" id="BPMNShape_aferirDisponibilidadeFinanceiraBuscaInformacaoObraFornecedoresCallActivity">
+        <omgdc:Bounds height="61.0" width="181.0" x="190.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask" id="BPMNShape_aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask">
+        <omgdc:Bounds height="81.0" width="146.0" x="620.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="135.0" y="160.0"></omgdi:waypoint>
+        <omgdi:waypoint x="190.0" y="160.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="371.0" y="160.0"></omgdi:waypoint>
+        <omgdi:waypoint x="430.0" y="160.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="575.0" y="160.0"></omgdi:waypoint>
+        <omgdi:waypoint x="620.0" y="160.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="766.0" y="160.0"></omgdi:waypoint>
+        <omgdi:waypoint x="820.0" y="160.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
