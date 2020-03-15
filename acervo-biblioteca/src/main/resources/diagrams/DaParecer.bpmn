@@ -43,12 +43,16 @@
     <sequenceFlow id="flow3" sourceRef="daParecerBuscaPolosRestTask" targetRef="daParecerBuscaExemplaresPorPoloRestTask"></sequenceFlow>
     <parallelGateway id="daParecerObterInformacaoParallelGatewayEnd" name="Obter Informação End"></parallelGateway>
     <sequenceFlow id="flow8" sourceRef="daParecerBuscaExemplaresPorPoloRestTask" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
-    <userTask id="daParecerPreencheParecerUserTask" name="Preenche Parecer" activiti:assignee="admin">
+    <userTask id="daParecerPreencheParecerUserTask" name="Preenche Parecer" activiti:assignee="perito">
       <extensionElements>
         <activiti:formProperty id="areaConhecimento" name="Área de conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="fornecedoresInfo" name="Informação Fornecedores" type="table" variable="fornecedoresTable" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="estadosObraPorPolo" name="Estado da Obra por Polos" type="table" variable="estadosObraPorPoloTable" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="informacoesExemplaresPolo" name="Exemplares por Polo" type="table" variable="exemplaresPoloTable" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="preencheParece" name="Preencha o seu parecer" type="enum" required="true">
+          <activiti:value id="true" name="Aceito a proposta"></activiti:value>
+          <activiti:value id="false" name="Rejeito a proposta"></activiti:value>
+        </activiti:formProperty>
       </extensionElements>
     </userTask>
     <endEvent id="daParecerEndEvent" name="Da Parecer End Event"></endEvent>

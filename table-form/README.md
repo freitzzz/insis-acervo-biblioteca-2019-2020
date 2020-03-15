@@ -6,6 +6,19 @@ Abstract form type that allows the integration of a table in a WSO2 User Task fo
 
 - Copy `jar/table-form-0.0.1-SNAPSHOT.jar` into `<EI_HOME>/lib`
 
+- Open `<EI_HOME>/wso2/business-process/conf/activiti.xml` and place the following elements in `customFormTypes` node:
+
+```
+<bean id="processEngineConfiguration" ... >
+    ...
+    <property name="customFormTypes">
+        <list>
+            <bean class="insis.type.TableFormType"/>
+        </list>
+    </property>
+</bean>
+```
+
 - Open `<EI_HOME>/wso2/business-process/repository/deployment/server/jaggeryapps/bpmn-explorer/assets/dynamicFormGen.js` and place the following code snippet inside `generateForm` function:
 
 ```
