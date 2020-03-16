@@ -20,6 +20,7 @@ This set is composed by the following elements:
         <list>
             <bean class="insis.acervo.DropdownFormType"/>
             <bean class="insis.acervo.TableFormType"/>
+            <bean class="insis.acervo.ErrorHeaderFormType"/>
         </list>
     </property>
 </bean>
@@ -36,6 +37,8 @@ function generateForm(data, disabled) {
             formContent += genTable(data[i], disabled);
         } else if (data[i].type == "dropdown") {
             formContent += genDropdown(data[i], disabled);
+        } else if (data[i].type == "error_header") {
+            formContent += genErrorHeader(data[i], disabled);
         }
     }
     return formContent;
@@ -144,6 +147,23 @@ function genDropdown(data, disabled) {
   return content;
 }
 
+function genErrorHeader(data, disabled) {
+  var content = "";
+
+    if(data.value !== 'undefined' && data.value !== null && data.value.length > 0) {
+
+        content += '<div style="padding: 60px; text-align: center; background: #db5656; color: white; font-size: 30px;">';
+        content += "<h1>Erro</h1>";
+        content += "<p>";
+        content += data.value;
+        content += "</p>";
+        content += "</div>";
+
+    }
+
+  return content;
+}
+
 ```
 
 - Open `<EI_HOME>/wso2/business-process/repository/deployment/server/jaggeryapps/bpmn-explorer/js/action.js` and place the following code snippet inside `completeTask` function:
@@ -164,6 +184,11 @@ function completeTask(data, id) {
           "value": data[i].value,
       });
   } else if (vData[j].type === "dropdown") {
+      variables.push({
+          "name": data[i].name,
+          "value": data[i].value,
+      });
+  } else if (vData[j].type === "error_header") {
       variables.push({
           "name": data[i].name,
           "value": data[i].value,
