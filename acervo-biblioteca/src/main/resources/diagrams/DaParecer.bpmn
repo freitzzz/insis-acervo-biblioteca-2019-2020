@@ -1,49 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="daParecerProcess" name="Processo de Dar Parecer" isExecutable="true">
-    <startEvent id="daParecerStartEvent" name="Da Parecer Start Event" activiti:initiator="perito"></startEvent>
-    <serviceTask id="daParecerBuscaPolosRestTask" name="Busca Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
-      <extensionElements>
-        <activiti:field name="serviceURL">
-          <activiti:string>http://www.mocky.io/v2/5e6cdc3b2e000072000eea6e</activiti:string>
-        </activiti:field>
-        <activiti:field name="method">
-          <activiti:string>GET</activiti:string>
-        </activiti:field>
-        <activiti:field name="outputVariable">
-          <activiti:string>polos</activiti:string>
-        </activiti:field>
-        <activiti:field name="headers">
-          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
-        </activiti:field>
-      </extensionElements>
-    </serviceTask>
+    <startEvent id="daParecerStartEvent" name="Da Parecer Start Event"></startEvent>
     <parallelGateway id="daParecerObterInformacaoParallelGatewayStart" name="Obter Informação Start"></parallelGateway>
     <sequenceFlow id="flow1" sourceRef="daParecerStartEvent" targetRef="daParecerObterInformacaoParallelGatewayStart"></sequenceFlow>
-    <sequenceFlow id="flow2" sourceRef="daParecerObterInformacaoParallelGatewayStart" targetRef="daParecerBuscaPolosRestTask"></sequenceFlow>
-    <serviceTask id="daParecerBuscaExemplaresPorPoloRestTask" name="Busca Exemplares Por Polo" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
-      <extensionElements>
-        <activiti:field name="serviceURL">
-          <activiti:expression>${polos.get(loopCounter).get("apiUrl").asText()}</activiti:expression>
-        </activiti:field>
-        <activiti:field name="method">
-          <activiti:string>GET</activiti:string>
-        </activiti:field>
-        <activiti:field name="outputVariable">
-          <activiti:expression>${polos.get(loopCounter).get("name").asText()}</activiti:expression>
-        </activiti:field>
-        <activiti:field name="headers">
-          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
-        </activiti:field>
-      </extensionElements>
-      <multiInstanceLoopCharacteristics isSequential="false">
-        <loopCardinality>${polos.size()}</loopCardinality>
-      </multiInstanceLoopCharacteristics>
-    </serviceTask>
-    <sequenceFlow id="flow3" sourceRef="daParecerBuscaPolosRestTask" targetRef="daParecerBuscaExemplaresPorPoloRestTask"></sequenceFlow>
     <parallelGateway id="daParecerObterInformacaoParallelGatewayEnd" name="Obter Informação End"></parallelGateway>
-    <sequenceFlow id="flow8" sourceRef="daParecerBuscaExemplaresPorPoloRestTask" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
-    <userTask id="daParecerPreencheParecerUserTask" name="Preenche Parecer" activiti:assignee="perito">
+    <userTask id="daParecerPreencheParecerUserTask" name="Preenche Parecer" activiti:assignee="admin">
       <extensionElements>
         <activiti:formProperty id="areaConhecimento" name="Área de conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="fornecedoresInfo" name="Informação Fornecedores" type="table" variable="fornecedoresTable" writable="false" required="true"></activiti:formProperty>
@@ -209,75 +171,71 @@ println(estadosObraPorPoloTableJson)</script>
     </callActivity>
     <sequenceFlow id="flow14" sourceRef="daParecerObterInformacaoParallelGatewayStart" targetRef="daParecerBuscaInformacaoObraFornecedoresCallActivity"></sequenceFlow>
     <sequenceFlow id="flow15" sourceRef="daParecerBuscaInformacaoObraFornecedoresCallActivity" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
+    <callActivity id="daParecerbuscaExemplaresPoloProcessCallActivity" name="Busca Exemplares por Polo" calledElement="obterExemplaresPoloProcess"></callActivity>
+    <sequenceFlow id="flow16" sourceRef="daParecerObterInformacaoParallelGatewayStart" targetRef="daParecerbuscaExemplaresPoloProcessCallActivity"></sequenceFlow>
+    <sequenceFlow id="flow17" sourceRef="daParecerbuscaExemplaresPoloProcessCallActivity" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_daParecerProcess">
     <bpmndi:BPMNPlane bpmnElement="daParecerProcess" id="BPMNPlane_daParecerProcess">
       <bpmndi:BPMNShape bpmnElement="daParecerStartEvent" id="BPMNShape_daParecerStartEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="0.0" y="140.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerBuscaPolosRestTask" id="BPMNShape_daParecerBuscaPolosRestTask">
-        <omgdc:Bounds height="55.0" width="105.0" x="200.0" y="80.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="140.0" y="140.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerObterInformacaoParallelGatewayStart" id="BPMNShape_daParecerObterInformacaoParallelGatewayStart">
-        <omgdc:Bounds height="40.0" width="40.0" x="100.0" y="138.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerBuscaExemplaresPorPoloRestTask" id="BPMNShape_daParecerBuscaExemplaresPorPoloRestTask">
-        <omgdc:Bounds height="58.0" width="121.0" x="370.0" y="79.0"></omgdc:Bounds>
+        <omgdc:Bounds height="40.0" width="40.0" x="240.0" y="138.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerObterInformacaoParallelGatewayEnd" id="BPMNShape_daParecerObterInformacaoParallelGatewayEnd">
         <omgdc:Bounds height="40.0" width="40.0" x="550.0" y="138.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerPreencheParecerUserTask" id="BPMNShape_daParecerPreencheParecerUserTask">
-        <omgdc:Bounds height="55.0" width="105.0" x="830.0" y="130.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="115.0" x="820.0" y="130.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerEndEvent" id="BPMNShape_daParecerEndEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="960.0" y="141.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="970.0" y="141.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerAgregaInformacaoScriptTask" id="BPMNShape_daParecerAgregaInformacaoScriptTask">
-        <omgdc:Bounds height="55.0" width="105.0" x="660.0" y="130.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="125.0" x="641.0" y="130.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerBuscaInformacaoObraFornecedoresCallActivity" id="BPMNShape_daParecerBuscaInformacaoObraFornecedoresCallActivity">
-        <omgdc:Bounds height="81.0" width="131.0" x="280.0" y="184.0"></omgdc:Bounds>
+        <omgdc:Bounds height="81.0" width="131.0" x="347.0" y="184.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerbuscaExemplaresPoloProcessCallActivity" id="BPMNShape_daParecerbuscaExemplaresPoloProcessCallActivity">
+        <omgdc:Bounds height="61.0" width="145.0" x="340.0" y="65.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
-        <omgdi:waypoint x="35.0" y="157.0"></omgdi:waypoint>
-        <omgdi:waypoint x="100.0" y="158.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
-        <omgdi:waypoint x="120.0" y="138.0"></omgdi:waypoint>
-        <omgdi:waypoint x="120.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="200.0" y="107.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
-        <omgdi:waypoint x="305.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="370.0" y="108.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
-        <omgdi:waypoint x="491.0" y="108.0"></omgdi:waypoint>
-        <omgdi:waypoint x="570.0" y="108.0"></omgdi:waypoint>
-        <omgdi:waypoint x="570.0" y="138.0"></omgdi:waypoint>
+        <omgdi:waypoint x="175.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="240.0" y="158.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
         <omgdi:waypoint x="935.0" y="157.0"></omgdi:waypoint>
-        <omgdi:waypoint x="960.0" y="158.0"></omgdi:waypoint>
+        <omgdi:waypoint x="970.0" y="158.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
         <omgdi:waypoint x="590.0" y="158.0"></omgdi:waypoint>
-        <omgdi:waypoint x="660.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="641.0" y="157.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">
-        <omgdi:waypoint x="765.0" y="157.0"></omgdi:waypoint>
-        <omgdi:waypoint x="830.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="766.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="820.0" y="157.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow14" id="BPMNEdge_flow14">
-        <omgdi:waypoint x="120.0" y="178.0"></omgdi:waypoint>
-        <omgdi:waypoint x="120.0" y="224.0"></omgdi:waypoint>
-        <omgdi:waypoint x="280.0" y="224.0"></omgdi:waypoint>
+        <omgdi:waypoint x="260.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="260.0" y="224.0"></omgdi:waypoint>
+        <omgdi:waypoint x="347.0" y="224.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">
-        <omgdi:waypoint x="411.0" y="224.0"></omgdi:waypoint>
+        <omgdi:waypoint x="478.0" y="224.0"></omgdi:waypoint>
         <omgdi:waypoint x="570.0" y="224.0"></omgdi:waypoint>
         <omgdi:waypoint x="570.0" y="178.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow16" id="BPMNEdge_flow16">
+        <omgdi:waypoint x="260.0" y="138.0"></omgdi:waypoint>
+        <omgdi:waypoint x="259.0" y="95.0"></omgdi:waypoint>
+        <omgdi:waypoint x="340.0" y="95.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow17" id="BPMNEdge_flow17">
+        <omgdi:waypoint x="485.0" y="95.0"></omgdi:waypoint>
+        <omgdi:waypoint x="570.0" y="95.0"></omgdi:waypoint>
+        <omgdi:waypoint x="570.0" y="138.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
