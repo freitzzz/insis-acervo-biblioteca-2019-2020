@@ -40,9 +40,8 @@
     </serviceTask>
     <sequenceFlow id="flow1" sourceRef="obterExemplaresPoloStartEvent" targetRef="obterExemplaresPoloBuscaPolosRestTask"></sequenceFlow>
     <scriptTask id="obterExemplaresPoloAgregaInformacaoScriptTask" name="Agrega Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
-      <script>
-import groovy.json.JsonBuilder
-import com.google.gson.*
+      <script>import groovy.json.JsonBuilder
+import com.google.gson.Gson
 
 class Book {
 	String state
