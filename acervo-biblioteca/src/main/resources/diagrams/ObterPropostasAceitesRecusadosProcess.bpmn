@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="obterPropostasAceitesRecusadasProcess" name="Processo de Obter as Propostas Aceites e Recusadas" isExecutable="true">
+    <startEvent id="obterPropostasAceitesRecusadasObterPropostasStartEvent" name="Obter as Propostas Aceites e Recusadas Start Event"></startEvent>
+    <serviceTask id="obterPropostasAceitesRecusadasObterPolosRESTTask" name="Obter Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+      <extensionElements>
+        <activiti:field name="serviceURL">
+          <activiti:string>http://www.mocky.io/v2/5e6cdc3b2e000072000eea6e</activiti:string>
+        </activiti:field>
+        <activiti:field name="method">
+          <activiti:string>GET</activiti:string>
+        </activiti:field>
+        <activiti:field name="outputVariable">
+          <activiti:string>polos</activiti:string>
+        </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="obterPropostasAceitesRecusadasObterPropostasRESTTask" name="Obter Propostas" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+      <extensionElements>
+        <activiti:field name="method">
+          <activiti:string>GET</activiti:string>
+        </activiti:field>
+        <activiti:field name="outputVariable">
+          <activiti:string>propostas</activiti:string>
+        </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
+        </activiti:field>
+        <activiti:field name="serviceURL">
+          <activiti:string>http://www.mocky.io/v2/5e6cdc3b2e000072000eea6e</activiti:string>
+        </activiti:field>
+      </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false">
+        <loopCardinality>${polos.size()}</loopCardinality>
+      </multiInstanceLoopCharacteristics>
+    </serviceTask>
+    <sequenceFlow id="flow1" sourceRef="obterPropostasAceitesRecusadasObterPropostasStartEvent" targetRef="obterPropostasAceitesRecusadasObterPolosRESTTask"></sequenceFlow>
+    <sequenceFlow id="flow2" sourceRef="obterPropostasAceitesRecusadasObterPolosRESTTask" targetRef="obterPropostasAceitesRecusadasObterPropostasRESTTask"></sequenceFlow>
+    <scriptTask id="obterPropostasAceitesRecusadasAgregaInformacaoScriptTask" name="Agrupa Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>execution.setVariable('propostas', "not implemented yet")</script>
+    </scriptTask>
+    <endEvent id="obterPropostasAceitesRecusadasObterPropostasEndEvent" name="Obter as Propostas Aceites e Recusadas End Event"></endEvent>
+    <sequenceFlow id="flow5" sourceRef="obterPropostasAceitesRecusadasObterPropostasRESTTask" targetRef="obterPropostasAceitesRecusadasAgregaInformacaoScriptTask"></sequenceFlow>
+    <sequenceFlow id="flow6" sourceRef="obterPropostasAceitesRecusadasAgregaInformacaoScriptTask" targetRef="obterPropostasAceitesRecusadasObterPropostasEndEvent"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_obterPropostasAceitesRecusadasProcess">
+    <bpmndi:BPMNPlane bpmnElement="obterPropostasAceitesRecusadasProcess" id="BPMNPlane_obterPropostasAceitesRecusadasProcess">
+      <bpmndi:BPMNShape bpmnElement="obterPropostasAceitesRecusadasObterPropostasStartEvent" id="BPMNShape_obterPropostasAceitesRecusadasObterPropostasStartEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="50.0" y="140.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterPropostasAceitesRecusadasObterPolosRESTTask" id="BPMNShape_obterPropostasAceitesRecusadasObterPolosRESTTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="170.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterPropostasAceitesRecusadasObterPropostasRESTTask" id="BPMNShape_obterPropostasAceitesRecusadasObterPropostasRESTTask">
+        <omgdc:Bounds height="55.0" width="131.0" x="340.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterPropostasAceitesRecusadasAgregaInformacaoScriptTask" id="BPMNShape_obterPropostasAceitesRecusadasAgregaInformacaoScriptTask">
+        <omgdc:Bounds height="55.0" width="131.0" x="540.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterPropostasAceitesRecusadasObterPropostasEndEvent" id="BPMNShape_obterPropostasAceitesRecusadasObterPropostasEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="750.0" y="140.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="85.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="170.0" y="157.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="275.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="340.0" y="157.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="471.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="540.0" y="157.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="671.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="750.0" y="157.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
