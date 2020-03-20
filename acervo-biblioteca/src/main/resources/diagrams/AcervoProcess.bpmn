@@ -58,7 +58,9 @@
     <exclusiveGateway id="decideAquisicaoGateway" name="Gateway de decidir aquisição"></exclusiveGateway>
     <sequenceFlow id="flow7" sourceRef="decideAquisicaoActivity" targetRef="decideAquisicaoGateway"></sequenceFlow>
     <callActivity id="elaboraPADActivity" name="Elabora PAD"></callActivity>
-    <sequenceFlow id="flow8" sourceRef="decideAquisicaoGateway" targetRef="elaboraPADActivity"></sequenceFlow>
+    <sequenceFlow id="flow8" sourceRef="decideAquisicaoGateway" targetRef="elaboraPADActivity">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalAquisicaoAprovada == 'true'}]]></conditionExpression>
+    </sequenceFlow>
     <callActivity id="decidePADActivity" name="Decide PAD"></callActivity>
     <exclusiveGateway id="decidePADGateway" name="Gateway de decidir PAD"></exclusiveGateway>
     <sequenceFlow id="flow9" sourceRef="elaboraPADActivity" targetRef="decidePADActivity"></sequenceFlow>
@@ -73,7 +75,9 @@
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalDisponibilidadeFinanceira == 'false'}]]></conditionExpression>
     </sequenceFlow>
     <endEvent id="decideAquisicaoEndEvent" name="Fim Decide Aquisição"></endEvent>
-    <sequenceFlow id="flow15" sourceRef="decideAquisicaoGateway" targetRef="decideAquisicaoEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow15" sourceRef="decideAquisicaoGateway" targetRef="decideAquisicaoEndEvent">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalAquisicaoAprovada == 'true'}]]></conditionExpression>
+    </sequenceFlow>
     <endEvent id="decidePADEndEvent" name="Fim Decide PAD"></endEvent>
     <sequenceFlow id="flow16" sourceRef="decidePADGateway" targetRef="decidePADEndEvent"></sequenceFlow>
     <endEvent id="adquireObraEndEvent" name="Fim Adquire Obra"></endEvent>
