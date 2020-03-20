@@ -10,6 +10,8 @@
         <activiti:out source="areaConhecimento" target="globalAreaConhecimento"></activiti:out>
         <activiti:out source="polo" target="globalPolo"></activiti:out>
         <activiti:out source="peritos" target="globalPeritos"></activiti:out>
+        <activiti:out source="email" target="globalEmail"></activiti:out>
+        <activiti:out source="telefone" target="globalTelefone"></activiti:out>
       </extensionElements>
     </callActivity>
     <callActivity id="indicaPeritosActivity" name="Indica pelo menos 2 peritos" calledElement="indicarPeritosProcess">
