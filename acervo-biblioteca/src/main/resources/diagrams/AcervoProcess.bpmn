@@ -42,8 +42,8 @@
     </callActivity>
     <callActivity id="decideAquisicaoActivity" name="Decide aquisição" calledElement="decidirAquisicaoProcess">
       <extensionElements>
-        <activiti:in source="globalTelefone" target="userPhoneNumber"></activiti:in>
-        <activiti:in source="globalEmail" target="userEmail"></activiti:in>
+        <activiti:in source="globalProponenteTelemovel" target="userPhoneNumber"></activiti:in>
+        <activiti:in source="globalProponenteEmail" target="userEmail"></activiti:in>
         <activiti:in source="globalTitulo" target="titulo"></activiti:in>
         <activiti:out source="aquisicaoAprovada" target="globalAquisicaoAprovada"></activiti:out>
       </extensionElements>
