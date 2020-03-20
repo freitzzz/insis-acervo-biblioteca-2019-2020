@@ -20,11 +20,12 @@
     <endEvent id="daParecerEndEvent" name="Da Parecer End Event"></endEvent>
     <sequenceFlow id="flow10" sourceRef="daParecerPreencheParecerUserTask" targetRef="daParecerEndEvent"></sequenceFlow>
     <scriptTask id="daParecerAgregaInformacaoScriptTask" name="Agrega Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
-      <script>//println(execution.getVariablesLocal())
+      <script>import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
 
-import groovy.json.JsonBuilder
-
+println("** Processo de Dar Parecer **")
 println(fornecedores)
+
 
 // TABELA FORNECEDORES
 
@@ -64,12 +65,14 @@ def fornecedoresTableJson = new JsonBuilder([headers: fornecedoresTableHeaders, 
 
 execution.setVariable('fornecedoresTable', fornecedoresTableJson)
 
-println(fornecedoresTable)
+println("fornecedoresTable")
 
 println(fornecedoresTableJson)
 
 
 // TABELA EXEMPLARES POR POLO
+
+def exemplaresPolosJson = new JsonSlurper().parseText(exemplaresPolos)
 
 def exemplaresPoloTable = []
 
@@ -77,21 +80,15 @@ def exemplaresPoloTableHeaders = ['Polo', 'Nº Exemplares Existentes']
 
 def exemplaresPoloTableRows = []
 
-for (int i=0; i &lt; polos.size(); i++) {
+for (int i=0; i &lt; exemplaresPolosJson.size(); i++) {
 
-	def polo = polos.get(i)
-
-	println(polo)
+	def polo = exemplaresPolosJson[i]
 
 	def poloRow = []
 
-	def poloName = polo.get('name').asText()
+	def poloName = polo.name
 
-	println(poloName)
-
-	def poloData = execution.getVariableLocal(poloName)
-
-	println(poloData)
+	def poloData = polo.books
 
 	poloRow.add(poloName)
 
@@ -109,9 +106,10 @@ def exemplaresPoloTableJson = new JsonBuilder([headers: exemplaresPoloTableHeade
 
 execution.setVariable('exemplaresPoloTable', exemplaresPoloTableJson)
 
-println(exemplaresPoloTable)
+println("exemplaresPoloTable")
 
 println(exemplaresPoloTableJson)
+
 
 // TABELA ESTADO OBRAS POR POLO
 
@@ -121,29 +119,23 @@ def estadosObraPorPoloTableHeaders = ['Estado', 'Polo']
 
 def estadosObraPorPoloTableRows = []
 
-for (int i=0; i &lt; polos.size(); i++) {
+for (int i=0; i &lt; exemplaresPolosJson.size(); i++) {
 
-	def polo = polos.get(i)
+	def polo = exemplaresPolosJson[i]
 
-	println(polo)
+	def poloName = polo.name
 
-	def poloName = polo.get('name').asText()
-
-	println(poloName)
-
-	def poloData = execution.getVariableLocal(poloName)
-
-  println(poloData)
+	def poloData = polo.books
 
   for (int j = 0; j &lt; poloData.size(); j++) {
 
     def poloRow = []
 
-	  poloRow.add(poloData.get(j).get('state').asText())
+	poloRow.add(poloData.get(j).state)
 
-	  poloRow.add(poloName)
-
-	  estadosObraPorPoloTableRows.add(poloRow)
+	poloRow.add(poloName)
+	
+    estadosObraPorPoloTableRows.add(poloRow)
 
   }
 
@@ -157,7 +149,7 @@ def estadosObraPorPoloTableJson = new JsonBuilder([headers: estadosObraPorPoloTa
 
 execution.setVariable('estadosObraPorPoloTable', estadosObraPorPoloTableJson)
 
-println(estadosObraPorPoloTable)
+println("estadosObraPorPoloTable")
 
 println(estadosObraPorPoloTableJson)</script>
     </scriptTask>
@@ -171,7 +163,11 @@ println(estadosObraPorPoloTableJson)</script>
     </callActivity>
     <sequenceFlow id="flow14" sourceRef="daParecerObterInformacaoParallelGatewayStart" targetRef="daParecerBuscaInformacaoObraFornecedoresCallActivity"></sequenceFlow>
     <sequenceFlow id="flow15" sourceRef="daParecerBuscaInformacaoObraFornecedoresCallActivity" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
-    <callActivity id="daParecerbuscaExemplaresPoloProcessCallActivity" name="Busca Exemplares por Polo" calledElement="obterExemplaresPoloProcess"></callActivity>
+    <callActivity id="daParecerbuscaExemplaresPoloProcessCallActivity" name="Busca Exemplares por Polo" calledElement="obterExemplaresPoloProcess">
+      <extensionElements>
+        <activiti:out source="exemplaresPolos" target="exemplaresPolos"></activiti:out>
+      </extensionElements>
+    </callActivity>
     <sequenceFlow id="flow16" sourceRef="daParecerObterInformacaoParallelGatewayStart" targetRef="daParecerbuscaExemplaresPoloProcessCallActivity"></sequenceFlow>
     <sequenceFlow id="flow17" sourceRef="daParecerbuscaExemplaresPoloProcessCallActivity" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
   </process>
