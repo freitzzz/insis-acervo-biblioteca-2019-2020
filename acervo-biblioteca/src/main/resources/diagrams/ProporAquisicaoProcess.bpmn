@@ -11,6 +11,8 @@
         <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="dropdown" variable="areasConhecimentoData" required="true"></activiti:formProperty>
         <activiti:formProperty id="polo" name="Polo" type="dropdown" variable="polosData" required="true"></activiti:formProperty>
         <activiti:formProperty id="peritos" name="Indique pelo menos dois peritos dos quais a obra vai ser avaliada (separados por ; )" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="email" name="Email" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="telefone" name="Número de Telefone" type="string" required="true"></activiti:formProperty>
       </extensionElements>
     </userTask>
     <parallelGateway id="proporAquisicaoBuscarInformacaoParallelGatewayStart" name="Buscar Informação Parallel Gateway Start"></parallelGateway>
@@ -127,6 +129,8 @@ execution.setVariableLocal('errorHeader', errorMessage)</script>
         <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="dropdown" variable="areasConhecimentoData" required="true"></activiti:formProperty>
         <activiti:formProperty id="polo" name="Polo" type="dropdown" variable="polosData" required="true"></activiti:formProperty>
         <activiti:formProperty id="peritos" name="Indique pelo menos dois peritos dos quais a obra vai ser avaliada (separados por ; )" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="telefone" name="Número de Telefone" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="email" name="Email" type="string" required="true"></activiti:formProperty>
       </extensionElements>
     </userTask>
     <sequenceFlow id="flow15" sourceRef="proporAquisicaoFlowErrorUserTask" targetRef="proporAquisicaoValidaInformacaoPropostaScriptTask"></sequenceFlow>
@@ -220,14 +224,14 @@ execution.setVariableLocal('errorHeader', errorMessage)</script>
         <omgdi:waypoint x="1170.0" y="194.0"></omgdi:waypoint>
         <omgdi:waypoint x="1310.0" y="194.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="13.0" width="97.0" x="1179.0" y="209.0"></omgdc:Bounds>
+          <omgdc:Bounds height="48.0" width="97.0" x="1179.0" y="209.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="proporAquisicaoInformacaoNaoValidada" id="BPMNEdge_proporAquisicaoInformacaoNaoValidada">
         <omgdi:waypoint x="1098.0" y="356.0"></omgdi:waypoint>
         <omgdi:waypoint x="995.0" y="356.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="39.0" width="100.0" x="1109.0" y="412.0"></omgdc:Bounds>
+          <omgdc:Bounds height="48.0" width="100.0" x="1109.0" y="412.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">
