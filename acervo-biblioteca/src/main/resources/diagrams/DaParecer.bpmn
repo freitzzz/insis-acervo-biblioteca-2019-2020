@@ -170,6 +170,12 @@ println(estadosObraPorPoloTableJson)</script>
     </callActivity>
     <sequenceFlow id="flow16" sourceRef="daParecerObterInformacaoParallelGatewayStart" targetRef="daParecerbuscaExemplaresPoloProcessCallActivity"></sequenceFlow>
     <sequenceFlow id="flow17" sourceRef="daParecerbuscaExemplaresPoloProcessCallActivity" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
+    <boundaryEvent id="daParecerExpiracaoDadosBoundaryTimer" name="Expiração dos Dados Boundary Timer" attachedToRef="daParecerPreencheParecerUserTask" cancelActivity="true">
+      <timerEventDefinition>
+        <timeDuration>PT60S</timeDuration>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <sequenceFlow id="flow19" sourceRef="daParecerExpiracaoDadosBoundaryTimer" targetRef="daParecerStartEvent"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_daParecerProcess">
     <bpmndi:BPMNPlane bpmnElement="daParecerProcess" id="BPMNPlane_daParecerProcess">
@@ -184,6 +190,9 @@ println(estadosObraPorPoloTableJson)</script>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerPreencheParecerUserTask" id="BPMNShape_daParecerPreencheParecerUserTask">
         <omgdc:Bounds height="55.0" width="115.0" x="820.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerExpiracaoDadosBoundaryTimer" id="BPMNShape_daParecerExpiracaoDadosBoundaryTimer">
+        <omgdc:Bounds height="30.0" width="30.0" x="860.0" y="120.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerEndEvent" id="BPMNShape_daParecerEndEvent">
         <omgdc:Bounds height="35.0" width="35.0" x="970.0" y="141.0"></omgdc:Bounds>
@@ -232,6 +241,12 @@ println(estadosObraPorPoloTableJson)</script>
         <omgdi:waypoint x="485.0" y="95.0"></omgdi:waypoint>
         <omgdi:waypoint x="570.0" y="95.0"></omgdi:waypoint>
         <omgdi:waypoint x="570.0" y="138.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow19" id="BPMNEdge_flow19">
+        <omgdi:waypoint x="875.0" y="120.0"></omgdi:waypoint>
+        <omgdi:waypoint x="874.0" y="10.0"></omgdi:waypoint>
+        <omgdi:waypoint x="157.0" y="10.0"></omgdi:waypoint>
+        <omgdi:waypoint x="157.0" y="140.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
