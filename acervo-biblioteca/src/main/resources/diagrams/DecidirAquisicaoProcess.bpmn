@@ -4,70 +4,68 @@
     <startEvent id="decidirAquisicaoStartEvent" name="Decidir Aquisição Start Event"></startEvent>
     <callActivity id="decidirAquisicaoObterInformacaoTomadaDeciaoCallActivity" name="Obter Informação de Tomada de Decisão" calledElement="obterInformacaoTomadaDecisaoProcess">
       <extensionElements>
+        <activiti:in source="titulo" target="titulo"></activiti:in>
         <activiti:out source="exemplaresPolos" target="exemplaresPolos"></activiti:out>
         <activiti:out source="fornecedores" target="fornecedores"></activiti:out>
         <activiti:out source="propostas" target="propostas"></activiti:out>
       </extensionElements>
     </callActivity>
-    <userTask id="decidirAquisicaoPreencheDecisaoAquisicaoUserTask" name="Preenche Decisão de Aquisição">
+    <userTask id="decidirAquisicaoPreencheDecisaoAquisicaoUserTask" name="Preenche Decisão de Aquisição" activiti:candidateGroups="admin">
       <extensionElements>
         <activiti:formProperty id="aquisicaoAprovada" name="Decisão da Aquisição" type="enum" required="true">
           <activiti:value id="true" name="Aceitar"></activiti:value>
           <activiti:value id="false" name="Recusar"></activiti:value>
         </activiti:formProperty>
+        <activiti:formProperty id="informacaoExemplaresPolo" name="Exemplares por Polo" type="table" expression="exemplaresPolo" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="fornecedores" name="Informação Fornecedores" type="table" expression="fornecedores" writable="false" required="true"></activiti:formProperty>
       </extensionElements>
     </userTask>
     <endEvent id="decidirAquisicaoEndEvent" name="Decidir Aquisição End Event"></endEvent>
-    <serviceTask id="decidirAquisicaoEnviarNotificacaoProponenteMailTask" name="Enviar Notificação ao Proponente acerca da Decisão" activiti:type="mail">
-      <extensionElements>
-        <activiti:field name="to">
-          <activiti:string><![CDATA[1160663@isep.ipp.pt]]></activiti:string>
-        </activiti:field>
-        <activiti:field name="subject">
-          <activiti:string><![CDATA[test]]></activiti:string>
-        </activiti:field>
-        <activiti:field name="html">
-          <activiti:string><![CDATA[test]]></activiti:string>
-        </activiti:field>
-      </extensionElements>
-    </serviceTask>
     <sequenceFlow id="flow1" sourceRef="decidirAquisicaoStartEvent" targetRef="decidirAquisicaoObterInformacaoTomadaDeciaoCallActivity"></sequenceFlow>
-    <sequenceFlow id="flow4" sourceRef="decidirAquisicaoEnviarNotificacaoProponenteMailTask" targetRef="decidirAquisicaoEndEvent"></sequenceFlow>
     <sequenceFlow id="flow5" sourceRef="decidirAquisicaoObterInformacaoTomadaDeciaoCallActivity" targetRef="decidirAquisicaoPreencheDecisaoAquisicaoUserTask"></sequenceFlow>
-    <sequenceFlow id="flow6" sourceRef="decidirAquisicaoPreencheDecisaoAquisicaoUserTask" targetRef="decidirAquisicaoEnviarNotificacaoProponenteMailTask"></sequenceFlow>
+    <callActivity id="decidirAquisicaoEnviarNotificacaoProponenteCallActivity" name="Enviar Notificação ao Proponente acerca da Decisão" calledElement="enviaNotificacaoUtilizadorProcess">
+      <extensionElements>
+        <activiti:in source="userEmail" target="userEmail"></activiti:in>
+        <activiti:in source="userPhoneNumber" target="userPhoneNumber"></activiti:in>
+        <activiti:in sourceExpression="Decisão da Aquisição" target="subject"></activiti:in>
+        <activiti:in sourceExpression="O sua proposta de aquisição de obra foi ${aquisicaoAprovada}" target="message"></activiti:in>
+      </extensionElements>
+    </callActivity>
+    <sequenceFlow id="flow6" sourceRef="decidirAquisicaoPreencheDecisaoAquisicaoUserTask" targetRef="decidirAquisicaoEnviarNotificacaoProponenteCallActivity"></sequenceFlow>
+    <sequenceFlow id="flow7" sourceRef="decidirAquisicaoEnviarNotificacaoProponenteCallActivity" targetRef="decidirAquisicaoEndEvent"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_decidirAquisicaoProcess">
     <bpmndi:BPMNPlane bpmnElement="decidirAquisicaoProcess" id="BPMNPlane_decidirAquisicaoProcess">
       <bpmndi:BPMNShape bpmnElement="decidirAquisicaoStartEvent" id="BPMNShape_decidirAquisicaoStartEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="181.0" y="277.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="110.0" y="158.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="decidirAquisicaoObterInformacaoTomadaDeciaoCallActivity" id="BPMNShape_decidirAquisicaoObterInformacaoTomadaDeciaoCallActivity">
-        <omgdc:Bounds height="71.0" width="141.0" x="271.0" y="259.0"></omgdc:Bounds>
+        <omgdc:Bounds height="71.0" width="141.0" x="200.0" y="140.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="decidirAquisicaoPreencheDecisaoAquisicaoUserTask" id="BPMNShape_decidirAquisicaoPreencheDecisaoAquisicaoUserTask">
-        <omgdc:Bounds height="76.0" width="141.0" x="480.0" y="257.0"></omgdc:Bounds>
+        <omgdc:Bounds height="76.0" width="141.0" x="409.0" y="138.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="decidirAquisicaoEndEvent" id="BPMNShape_decidirAquisicaoEndEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="900.0" y="280.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="829.0" y="158.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="decidirAquisicaoEnviarNotificacaoProponenteMailTask" id="BPMNShape_decidirAquisicaoEnviarNotificacaoProponenteMailTask">
-        <omgdc:Bounds height="76.0" width="191.0" x="670.0" y="260.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="decidirAquisicaoEnviarNotificacaoProponenteCallActivity" id="BPMNShape_decidirAquisicaoEnviarNotificacaoProponenteCallActivity">
+        <omgdc:Bounds height="74.0" width="141.0" x="630.0" y="139.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
-        <omgdi:waypoint x="216.0" y="294.0"></omgdi:waypoint>
-        <omgdi:waypoint x="271.0" y="294.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
-        <omgdi:waypoint x="861.0" y="298.0"></omgdi:waypoint>
-        <omgdi:waypoint x="900.0" y="297.0"></omgdi:waypoint>
+        <omgdi:waypoint x="145.0" y="175.0"></omgdi:waypoint>
+        <omgdi:waypoint x="200.0" y="175.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
-        <omgdi:waypoint x="412.0" y="294.0"></omgdi:waypoint>
-        <omgdi:waypoint x="480.0" y="295.0"></omgdi:waypoint>
+        <omgdi:waypoint x="341.0" y="175.0"></omgdi:waypoint>
+        <omgdi:waypoint x="409.0" y="176.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
-        <omgdi:waypoint x="621.0" y="295.0"></omgdi:waypoint>
-        <omgdi:waypoint x="670.0" y="298.0"></omgdi:waypoint>
+        <omgdi:waypoint x="550.0" y="176.0"></omgdi:waypoint>
+        <omgdi:waypoint x="630.0" y="176.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="771.0" y="176.0"></omgdi:waypoint>
+        <omgdi:waypoint x="829.0" y="175.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
