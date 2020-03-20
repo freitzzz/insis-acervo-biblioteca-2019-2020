@@ -49,8 +49,6 @@ class Book {
 
 println("\n ** Processo de Obter Exemplares por Polo ** \n")
 
-println(polos)
-
 // VARIAVEL EXEMPLARES POR POLO
 def exemplaresPoloTableRows = []
 Gson gson = new Gson()
@@ -63,8 +61,6 @@ for (int i=0; i &lt; polos.size(); i++) {
 
 	def poloData = execution.getVariableLocal(poloName)
 	
-	println(poloData)
-
     def exemplaresDataRows = []
 
     for(int j=0; j &lt; poloData.size(); j++){
@@ -80,13 +76,13 @@ for (int i=0; i &lt; polos.size(); i++) {
 	exemplaresPoloTableRows.add(poloRow)
 
 }
-
 exemplaresPoloTableRows =  new JsonBuilder(exemplaresPoloTableRows).toPrettyString()
 
 execution.setVariable('exemplaresPolos', exemplaresPoloTableRows)
 
-println(exemplaresPoloTableRows)
-</script>
+println("exemplaresPolos")
+
+println(exemplaresPoloTableRows)</script>
     </scriptTask>
     <sequenceFlow id="flow4" sourceRef="obterExemplaresPoloAgregaInformacaoScriptTask" targetRef="obterExemplaresPoloEndEvent"></sequenceFlow>
     <sequenceFlow id="flow5" sourceRef="obterExemplaresPoloBuscaPolosRestTask" targetRef="obterExemplaresPoloBuscaExemplaresPorPoloRestTask"></sequenceFlow>
