@@ -40,7 +40,9 @@
     </serviceTask>
     <endEvent id="obterInformacaoObraFornecedoresBuscaFornecedoresEndEvent" name="Obter Informacao Obra Fornecedores End Event"></endEvent>
     <scriptTask id="obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask" name="Agrupa Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
-      <script>def fornecedoresInfo = []
+      <script>println("** Obtém informação de uma obra de vários fornecedores **")
+
+def fornecedoresInfo = []
 
 for(int i = 0; i &lt; fornecedores.size(); i++) {
 
@@ -60,7 +62,11 @@ for(int i = 0; i &lt; fornecedores.size(); i++) {
 	
 }
 
-execution.setVariable('fornecedores', fornecedoresInfo)</script>
+execution.setVariable('fornecedores', fornecedoresInfo)
+
+println("fornecedores")
+
+println(fornecedoresInfo)</script>
     </scriptTask>
     <sequenceFlow id="flow4" sourceRef="obterInformacaoObraFornecedoresBuscaObraPorFornecedorRestTask" targetRef="obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask"></sequenceFlow>
     <sequenceFlow id="flow5" sourceRef="obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask" targetRef="obterInformacaoObraFornecedoresBuscaFornecedoresEndEvent"></sequenceFlow>
