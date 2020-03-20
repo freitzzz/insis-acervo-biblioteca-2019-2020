@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="enviaNotificacaoUtilizadorProcess" name="Envia uma notificação a um utilizador" isExecutable="true">
+    <startEvent id="enviaNotificacaoUtilizadorStartEvent" name="Start Event"></startEvent>
+    <exclusiveGateway id="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" name="Decide Método Notificação"></exclusiveGateway>
+    <sequenceFlow id="flow1" sourceRef="enviaNotificacaoUtilizadorStartEvent" targetRef="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway"></sequenceFlow>
+    <serviceTask id="enviaNotificacaoUtilizadorMailTask" name="Envia Notificação Por Email" activiti:type="mail">
+      <extensionElements>
+        <activiti:field name="to">
+          <activiti:expression><![CDATA[${user}@gmail.com]]></activiti:expression>
+        </activiti:field>
+        <activiti:field name="subject">
+          <activiti:expression><![CDATA[${subject}]]></activiti:expression>
+        </activiti:field>
+        <activiti:field name="from">
+          <activiti:string><![CDATA[insis.notificacoes@gmail.com]]></activiti:string>
+        </activiti:field>
+        <activiti:field name="html">
+          <activiti:expression><![CDATA[${message}]]></activiti:expression>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow2" sourceRef="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" targetRef="enviaNotificacaoUtilizadorMailTask">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${notificationChannel} == 'email']]></conditionExpression>
+    </sequenceFlow>
+    <serviceTask id="enviaNotificacaoUtilizadorSMSServiceTask" name="Envia Notificação Por SMS"></serviceTask>
+    <sequenceFlow id="flow3" sourceRef="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" targetRef="enviaNotificacaoUtilizadorSMSServiceTask">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${notificationChannel} == 'sms']]></conditionExpression>
+    </sequenceFlow>
+    <endEvent id="enviaNotificacaoUtilizadorEndEvent" name="End Event"></endEvent>
+    <sequenceFlow id="flow4" sourceRef="enviaNotificacaoUtilizadorSMSServiceTask" targetRef="enviaNotificacaoUtilizadorEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow5" sourceRef="enviaNotificacaoUtilizadorMailTask" targetRef="enviaNotificacaoUtilizadorEndEvent"></sequenceFlow>
+    <textAnnotation id="enviaNotificacaoUtilizadorInputVariablesNote">
+      <text>Requer:
+- user: Utilizador cuja notificação vai ser enviada
+- subject: Titulo da notificação
+- message: Mensagem da notificação
+- notificationChannel: Canal de comunicação da notificação. Ou 'email' ou 'sms'. Omissão deste valor indica a preferência por email</text>
+    </textAnnotation>
+    <association id="association1" sourceRef="textannotation1" targetRef="enviaNotificacaoUtilizadorStartEvent"></association>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_enviaNotificacaoUtilizadorProcess">
+    <bpmndi:BPMNPlane bpmnElement="enviaNotificacaoUtilizadorProcess" id="BPMNPlane_enviaNotificacaoUtilizadorProcess">
+      <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorStartEvent" id="BPMNShape_enviaNotificacaoUtilizadorStartEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="60.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" id="BPMNShape_enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway">
+        <omgdc:Bounds height="40.0" width="40.0" x="140.0" y="148.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorMailTask" id="BPMNShape_enviaNotificacaoUtilizadorMailTask">
+        <omgdc:Bounds height="61.0" width="111.0" x="307.0" y="70.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorSMSServiceTask" id="BPMNShape_enviaNotificacaoUtilizadorSMSServiceTask">
+        <omgdc:Bounds height="61.0" width="105.0" x="310.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorEndEvent" id="BPMNShape_enviaNotificacaoUtilizadorEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="530.0" y="146.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorInputVariablesNote" id="BPMNShape_enviaNotificacaoUtilizadorInputVariablesNote">
+        <omgdc:Bounds height="161.0" width="153.0" x="1.0" y="260.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="95.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="140.0" y="168.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="160.0" y="148.0"></omgdi:waypoint>
+        <omgdi:waypoint x="160.0" y="100.0"></omgdi:waypoint>
+        <omgdi:waypoint x="307.0" y="100.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="160.0" y="188.0"></omgdi:waypoint>
+        <omgdi:waypoint x="160.0" y="230.0"></omgdi:waypoint>
+        <omgdi:waypoint x="310.0" y="230.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="415.0" y="230.0"></omgdi:waypoint>
+        <omgdi:waypoint x="547.0" y="230.0"></omgdi:waypoint>
+        <omgdi:waypoint x="547.0" y="181.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="418.0" y="100.0"></omgdi:waypoint>
+        <omgdi:waypoint x="547.0" y="100.0"></omgdi:waypoint>
+        <omgdi:waypoint x="547.0" y="146.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
