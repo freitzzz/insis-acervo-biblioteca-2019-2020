@@ -13,7 +13,7 @@
           <activiti:expression><![CDATA[${subject}]]></activiti:expression>
         </activiti:field>
         <activiti:field name="from">
-          <activiti:string><![CDATA[insis.notificacoes@gmail.com]]></activiti:string>
+          <activiti:string><![CDATA[$FILE:notificationEmail]]></activiti:string>
         </activiti:field>
         <activiti:field name="html">
           <activiti:expression><![CDATA[${message}]]></activiti:expression>
