@@ -57,8 +57,8 @@ execution.setVariable('fornecedorMaisBaratoTable', fornecedorMaisBaratoTableJson
     </callActivity>
     <sequenceFlow id="flow1" sourceRef="aferirDisponibilidadeFinanceiraStartEvent" targetRef="aferirDisponibilidadeFinanceiraBuscaInformacaoObraFornecedoresCallActivity"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="aferirDisponibilidadeFinanceiraBuscaInformacaoObraFornecedoresCallActivity" targetRef="aferirDisponibilidadeFinanceiraObterPrecoMaisBaixoScriptTask"></sequenceFlow>
-    <sequenceFlow id="flow3" sourceRef="aferirDisponibilidadeFinanceiraObterPrecoMaisBaixoScriptTask" targetRef="aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask"></sequenceFlow>
-    <userTask id="aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask" name="Verificar Disponibilidade Financeira" activiti:candidateGroups="servico_administrativo">
+    <sequenceFlow id="flow3" sourceRef="aferirDisponibilidadeFinanceiraObterPrecoMaisBaixoScriptTask" targetRef="aferirDisponibilidadeFinanceiraVerificarDisponibilidadeFinanceiraUserTask"></sequenceFlow>
+    <userTask id="aferirDisponibilidadeFinanceiraVerificarDisponibilidadeFinanceiraUserTask" name="Verificar Disponibilidade Financeira" activiti:candidateGroups="servico_administrativo">
       <extensionElements>
         <activiti:formProperty id="titulo" name="Titulo" type="string" variable="titulo" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="fornecedorMelhorPreco" name="Fornecedor com Melhor Preço" type="table" variable="fornecedorMaisBaratoTable" writable="false" required="true"></activiti:formProperty>
@@ -68,7 +68,7 @@ execution.setVariable('fornecedorMaisBaratoTable', fornecedorMaisBaratoTableJson
         </activiti:formProperty>
       </extensionElements>
     </userTask>
-    <sequenceFlow id="flow4" sourceRef="aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask" targetRef="aferirDisponibilidadeFinanceiraEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="aferirDisponibilidadeFinanceiraVerificarDisponibilidadeFinanceiraUserTask" targetRef="aferirDisponibilidadeFinanceiraEndEvent"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_aferirDisponibilidadeFinanceiraProcess">
     <bpmndi:BPMNPlane bpmnElement="aferirDisponibilidadeFinanceiraProcess" id="BPMNPlane_aferirDisponibilidadeFinanceiraProcess">
@@ -84,7 +84,7 @@ execution.setVariable('fornecedorMaisBaratoTable', fornecedorMaisBaratoTableJson
       <bpmndi:BPMNShape bpmnElement="aferirDisponibilidadeFinanceiraBuscaInformacaoObraFornecedoresCallActivity" id="BPMNShape_aferirDisponibilidadeFinanceiraBuscaInformacaoObraFornecedoresCallActivity">
         <omgdc:Bounds height="61.0" width="181.0" x="190.0" y="130.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask" id="BPMNShape_aferirDisponibilidadeFinanceiraverificarDisponibilidadeFinanceiraUserTask">
+      <bpmndi:BPMNShape bpmnElement="aferirDisponibilidadeFinanceiraVerificarDisponibilidadeFinanceiraUserTask" id="BPMNShape_aferirDisponibilidadeFinanceiraVerificarDisponibilidadeFinanceiraUserTask">
         <omgdc:Bounds height="81.0" width="146.0" x="620.0" y="120.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">

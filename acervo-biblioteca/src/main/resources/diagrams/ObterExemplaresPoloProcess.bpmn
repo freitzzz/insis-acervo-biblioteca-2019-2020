@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="obterExemplaresPoloProcess" name="Processo de Obter Exemplares por Polo" isExecutable="true">
+    <startEvent id="obterExemplaresPoloStartEvent" name="Obter Exemplares por Polo Start Event"></startEvent>
+    <endEvent id="obterExemplaresPoloEndEvent" name="Obter Exemplares por Polo End Event"></endEvent>
+    <serviceTask id="obterExemplaresPoloBuscaPolosRestTask" name="Busca Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+      <extensionElements>
+        <activiti:field name="serviceURL">
+          <activiti:string>http://www.mocky.io/v2/5e6cdc3b2e000072000eea6e</activiti:string>
+        </activiti:field>
+        <activiti:field name="method">
+          <activiti:string>GET</activiti:string>
+        </activiti:field>
+        <activiti:field name="outputVariable">
+          <activiti:string>polos</activiti:string>
+        </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="obterExemplaresPoloBuscaExemplaresPorPoloRestTask" name="Busca Exemplares Por Polo" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+      <extensionElements>
+        <activiti:field name="serviceURL">
+          <activiti:expression>${polos.get(loopCounter).get("apiUrl").asText()}</activiti:expression>
+        </activiti:field>
+        <activiti:field name="method">
+          <activiti:string>GET</activiti:string>
+        </activiti:field>
+        <activiti:field name="outputVariable">
+          <activiti:expression>${polos.get(loopCounter).get("name").asText()}</activiti:expression>
+        </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
+        </activiti:field>
+      </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false">
+        <loopCardinality>${polos.size()}</loopCardinality>
+      </multiInstanceLoopCharacteristics>
+    </serviceTask>
+    <sequenceFlow id="flow1" sourceRef="obterExemplaresPoloStartEvent" targetRef="obterExemplaresPoloBuscaPolosRestTask"></sequenceFlow>
+    <scriptTask id="obterExemplaresPoloAgregaInformacaoScriptTask" name="Agrega Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>import groovy.json.JsonBuilder
+import com.google.gson.Gson
+
+class Book {
+	String state
+} 
+
+println("\n ** Processo de Obter Exemplares por Polo ** \n")
+
+println(polos)
+
+// VARIAVEL EXEMPLARES POR POLO
+def exemplaresPoloTableRows = []
+Gson gson = new Gson()
+
+for (int i=0; i &lt; polos.size(); i++) {
+
+	def polo = polos.get(i)
+
+	def poloName = polo.get('name').asText()
+
+	def poloData = execution.getVariableLocal(poloName)
+	
+	println(poloData)
+
+    def exemplaresDataRows = []
+
+    for(int j=0; j &lt; poloData.size(); j++){
+        
+        Book book = gson.fromJson(poloData.get(j).toString(), Book.class)
+        
+        exemplaresDataRows.add(book)
+    
+    }
+
+	def poloRow = [name: poloName, books: exemplaresDataRows]
+
+	exemplaresPoloTableRows.add(poloRow)
+
+}
+
+exemplaresPoloTableRows =  new JsonBuilder(exemplaresPoloTableRows).toPrettyString()
+
+execution.setVariable('exemplaresPolos', exemplaresPoloTableRows)
+
+println(exemplaresPoloTableRows)
+</script>
+    </scriptTask>
+    <sequenceFlow id="flow4" sourceRef="obterExemplaresPoloAgregaInformacaoScriptTask" targetRef="obterExemplaresPoloEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow5" sourceRef="obterExemplaresPoloBuscaPolosRestTask" targetRef="obterExemplaresPoloBuscaExemplaresPorPoloRestTask"></sequenceFlow>
+    <sequenceFlow id="flow6" sourceRef="obterExemplaresPoloBuscaExemplaresPorPoloRestTask" targetRef="obterExemplaresPoloAgregaInformacaoScriptTask"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_obterExemplaresPoloProcess">
+    <bpmndi:BPMNPlane bpmnElement="obterExemplaresPoloProcess" id="BPMNPlane_obterExemplaresPoloProcess">
+      <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloStartEvent" id="BPMNShape_obterExemplaresPoloStartEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="50.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloEndEvent" id="BPMNShape_obterExemplaresPoloEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="760.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloBuscaPolosRestTask" id="BPMNShape_obterExemplaresPoloBuscaPolosRestTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="170.0" y="140.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloBuscaExemplaresPorPoloRestTask" id="BPMNShape_obterExemplaresPoloBuscaExemplaresPorPoloRestTask">
+        <omgdc:Bounds height="65.0" width="181.0" x="341.0" y="135.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloAgregaInformacaoScriptTask" id="BPMNShape_obterExemplaresPoloAgregaInformacaoScriptTask">
+        <omgdc:Bounds height="55.0" width="121.0" x="580.0" y="140.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="85.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="170.0" y="167.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="701.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="760.0" y="167.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="275.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="341.0" y="167.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="522.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="580.0" y="167.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
