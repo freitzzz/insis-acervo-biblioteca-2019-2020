@@ -26,6 +26,8 @@
         <activiti:in source="globalTitulo" target="titulo"></activiti:in>
         <activiti:in source="globalAreaConhecimento" target="areaConhecimento"></activiti:in>
         <activiti:in sourceExpression="${globalTodosPeritos.get(loopCounter)}" target="perito"></activiti:in>
+        <activiti:in source="globalProponenteEmail" target="proponenteEmail"></activiti:in>
+        <activiti:in source="globalProponenteTelemovel" target="proponentePhoneNumber"></activiti:in>
       </extensionElements>
       <multiInstanceLoopCharacteristics isSequential="false">
         <loopCardinality>${globalTodosPeritos.size()}</loopCardinality>
