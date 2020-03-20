@@ -23,7 +23,7 @@
     <sequenceFlow id="flow2" sourceRef="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" targetRef="enviaNotificacaoUtilizadorMailTask">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${notificationChannel} == 'email']]></conditionExpression>
     </sequenceFlow>
-    <serviceTask id="enviaNotificacaoUtilizadorSMSServiceTask" name="Envia Notificação Por SMS"></serviceTask>
+    <serviceTask id="enviaNotificacaoUtilizadorSMSServiceTask" name="Envia Notificação Por SMS" activiti:class="org.wso2.bpmn.helloworld.v1.HelloWorldServiceTaskV1"></serviceTask>
     <sequenceFlow id="flow3" sourceRef="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" targetRef="enviaNotificacaoUtilizadorSMSServiceTask">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${notificationChannel} == 'sms']]></conditionExpression>
     </sequenceFlow>
