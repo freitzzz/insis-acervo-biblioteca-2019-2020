@@ -18,7 +18,6 @@
       </extensionElements>
     </userTask>
     <endEvent id="daParecerEndEvent" name="Da Parecer End Event"></endEvent>
-    <sequenceFlow id="flow10" sourceRef="daParecerPreencheParecerUserTask" targetRef="daParecerEndEvent"></sequenceFlow>
     <scriptTask id="daParecerAgregaInformacaoScriptTask" name="Agrega Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
       <script>import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
@@ -176,6 +175,36 @@ println(estadosObraPorPoloTableJson)</script>
       </timerEventDefinition>
     </boundaryEvent>
     <sequenceFlow id="flow19" sourceRef="daParecerExpiracaoDadosBoundaryTimer" targetRef="daParecerStartEvent"></sequenceFlow>
+    <sequenceFlow id="flow20" sourceRef="daParecerTarefasDepoisDePreencheParecerParallelGateway" targetRef="daParecerEndEvent"></sequenceFlow>
+    <parallelGateway id="daParecerTarefasDepoisDePreencheParecerParallelGateway" name="Tarefas depois de preenche parecer"></parallelGateway>
+    <sequenceFlow id="flow21" sourceRef="daParecerPreencheParecerUserTask" targetRef="daParecerTarefasDepoisDePreencheParecerParallelGateway"></sequenceFlow>
+    <callActivity id="daParecerEnviaNotificacaoProponenteAceitePorPeritoCallActivity" name="Envia Notificação Proponente (Proposta Aceite Por Perito)" calledElement="enviaNotificacaoUtilizadorProcess">
+      <extensionElements>
+        <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
+        <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
+        <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
+        <activiti:in sourceExpression="Um perito aceitou a sua proposta de aquisição de obra" target="message"></activiti:in>
+        <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
+      </extensionElements>
+    </callActivity>
+    <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow24" sourceRef="daParecerTarefasDepoisDePreencheParecerParallelGateway" targetRef="exclusivegateway2"></sequenceFlow>
+    <sequenceFlow id="flow25" sourceRef="exclusivegateway2" targetRef="daParecerEnviaNotificacaoProponenteAceitePorPeritoCallActivity">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${decisao} == 'true']]></conditionExpression>
+    </sequenceFlow>
+    <callActivity id="daParecerEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity" name="Envia Notificação Proponente (Proposta Rejeitada Por Perito)" calledElement="enviaNotificacaoUtilizadorProcess">
+      <extensionElements>
+        <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
+        <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
+        <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
+        <activiti:in sourceExpression="Um perito rejeitou a sua proposta de aquisição de obra" target="message"></activiti:in>
+        <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
+      </extensionElements>
+    </callActivity>
+    <sequenceFlow id="flow26" sourceRef="exclusivegateway2" targetRef="daParecerEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity"></sequenceFlow>
+    <endEvent id="daParecerNotificationEndEvent" name="Da Parecer NotificationEndEvent"></endEvent>
+    <sequenceFlow id="flow29" sourceRef="daParecerEnviaNotificacaoProponenteAceitePorPeritoCallActivity" targetRef="daParecerNotificationEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow30" sourceRef="daParecerEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity" targetRef="daParecerNotificationEndEvent"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_daParecerProcess">
     <bpmndi:BPMNPlane bpmnElement="daParecerProcess" id="BPMNPlane_daParecerProcess">
@@ -206,13 +235,24 @@ println(estadosObraPorPoloTableJson)</script>
       <bpmndi:BPMNShape bpmnElement="daParecerbuscaExemplaresPoloProcessCallActivity" id="BPMNShape_daParecerbuscaExemplaresPoloProcessCallActivity">
         <omgdc:Bounds height="61.0" width="145.0" x="340.0" y="65.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerTarefasDepoisDePreencheParecerParallelGateway" id="BPMNShape_daParecerTarefasDepoisDePreencheParecerParallelGateway">
+        <omgdc:Bounds height="40.0" width="40.0" x="857.0" y="240.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerEnviaNotificacaoProponenteAceitePorPeritoCallActivity" id="BPMNShape_daParecerEnviaNotificacaoProponenteAceitePorPeritoCallActivity">
+        <omgdc:Bounds height="81.0" width="140.0" x="700.0" y="400.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway2" id="BPMNShape_exclusivegateway2">
+        <omgdc:Bounds height="40.0" width="40.0" x="857.0" y="330.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity" id="BPMNShape_daParecerEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity">
+        <omgdc:Bounds height="76.0" width="146.0" x="910.0" y="405.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerNotificationEndEvent" id="BPMNShape_daParecerNotificationEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="857.0" y="530.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
         <omgdi:waypoint x="175.0" y="157.0"></omgdi:waypoint>
         <omgdi:waypoint x="240.0" y="158.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
-        <omgdi:waypoint x="935.0" y="157.0"></omgdi:waypoint>
-        <omgdi:waypoint x="970.0" y="158.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
         <omgdi:waypoint x="590.0" y="158.0"></omgdi:waypoint>
@@ -247,6 +287,39 @@ println(estadosObraPorPoloTableJson)</script>
         <omgdi:waypoint x="874.0" y="10.0"></omgdi:waypoint>
         <omgdi:waypoint x="157.0" y="10.0"></omgdi:waypoint>
         <omgdi:waypoint x="157.0" y="140.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow20" id="BPMNEdge_flow20">
+        <omgdi:waypoint x="897.0" y="260.0"></omgdi:waypoint>
+        <omgdi:waypoint x="987.0" y="259.0"></omgdi:waypoint>
+        <omgdi:waypoint x="987.0" y="176.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow21" id="BPMNEdge_flow21">
+        <omgdi:waypoint x="877.0" y="185.0"></omgdi:waypoint>
+        <omgdi:waypoint x="877.0" y="240.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow24" id="BPMNEdge_flow24">
+        <omgdi:waypoint x="877.0" y="280.0"></omgdi:waypoint>
+        <omgdi:waypoint x="877.0" y="330.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow25" id="BPMNEdge_flow25">
+        <omgdi:waypoint x="857.0" y="350.0"></omgdi:waypoint>
+        <omgdi:waypoint x="770.0" y="350.0"></omgdi:waypoint>
+        <omgdi:waypoint x="770.0" y="400.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow26" id="BPMNEdge_flow26">
+        <omgdi:waypoint x="897.0" y="350.0"></omgdi:waypoint>
+        <omgdi:waypoint x="983.0" y="349.0"></omgdi:waypoint>
+        <omgdi:waypoint x="983.0" y="405.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow29" id="BPMNEdge_flow29">
+        <omgdi:waypoint x="770.0" y="481.0"></omgdi:waypoint>
+        <omgdi:waypoint x="770.0" y="547.0"></omgdi:waypoint>
+        <omgdi:waypoint x="857.0" y="547.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow30" id="BPMNEdge_flow30">
+        <omgdi:waypoint x="983.0" y="481.0"></omgdi:waypoint>
+        <omgdi:waypoint x="982.0" y="547.0"></omgdi:waypoint>
+        <omgdi:waypoint x="892.0" y="547.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
