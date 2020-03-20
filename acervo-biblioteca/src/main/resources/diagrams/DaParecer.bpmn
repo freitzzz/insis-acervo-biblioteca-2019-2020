@@ -5,7 +5,7 @@
     <parallelGateway id="daParecerObterInformacaoParallelGatewayStart" name="Obter Informação Start"></parallelGateway>
     <sequenceFlow id="flow1" sourceRef="daParecerStartEvent" targetRef="daParecerObterInformacaoParallelGatewayStart"></sequenceFlow>
     <parallelGateway id="daParecerObterInformacaoParallelGatewayEnd" name="Obter Informação End"></parallelGateway>
-    <userTask id="daParecerPreencheParecerUserTask" name="Preenche Parecer" activiti:assignee="admin">
+    <userTask id="daParecerPreencheParecerUserTask" name="Preenche Parecer" activiti:assignee="${perito}">
       <extensionElements>
         <activiti:formProperty id="areaConhecimento" name="Área de conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="fornecedoresInfo" name="Informação Fornecedores" type="table" variable="fornecedoresTable" writable="false" required="true"></activiti:formProperty>
