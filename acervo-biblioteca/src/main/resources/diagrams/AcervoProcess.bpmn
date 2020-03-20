@@ -36,7 +36,6 @@
         <activiti:out source="disponibilidadeFinanceira" target="globalDisponibilidadeFinanceira"></activiti:out>
       </extensionElements>
     </callActivity>
-    <callActivity id="decideAquisicaoActivity" name="Decide aquisição" calledElement="decidirAquisicaoProcess"></callActivity>
     <sequenceFlow id="flow1" sourceRef="propostaAquisicaoObraActivity" targetRef="indicaPeritosActivity"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="indicaPeritosActivity" targetRef="daParecerActivity"></sequenceFlow>
     <sequenceFlow id="flow3" sourceRef="daParecerActivity" targetRef="daParecerGateway"></sequenceFlow>
