@@ -11,7 +11,7 @@
         <activiti:formProperty id="fornecedoresInfo" name="Informação Fornecedores" type="table" variable="fornecedoresTable" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="estadosObraPorPolo" name="Estado da Obra por Polos" type="table" variable="estadosObraPorPoloTable" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="informacoesExemplaresPolo" name="Exemplares por Polo" type="table" variable="exemplaresPoloTable" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="preencheParece" name="Preencha o seu parecer" type="enum" required="true">
+        <activiti:formProperty id="preencheParecerDecisao" name="Preencha o seu parecer" type="enum" required="true">
           <activiti:value id="true" name="Aceito a proposta"></activiti:value>
           <activiti:value id="false" name="Rejeito a proposta"></activiti:value>
         </activiti:formProperty>
@@ -190,7 +190,7 @@ println(estadosObraPorPoloTableJson)</script>
     <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow24" sourceRef="daParecerTarefasDepoisDePreencheParecerParallelGateway" targetRef="exclusivegateway2"></sequenceFlow>
     <sequenceFlow id="flow25" sourceRef="exclusivegateway2" targetRef="daParecerEnviaNotificacaoProponenteAceitePorPeritoCallActivity">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${decisao} == 'true']]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${preencheParecerDecisao == 'true'}]]></conditionExpression>
     </sequenceFlow>
     <callActivity id="daParecerEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity" name="Envia Notificação Proponente (Proposta Rejeitada Por Perito)" calledElement="enviaNotificacaoUtilizadorProcess">
       <extensionElements>
