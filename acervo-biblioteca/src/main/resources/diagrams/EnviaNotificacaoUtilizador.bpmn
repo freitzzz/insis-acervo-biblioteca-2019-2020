@@ -7,7 +7,7 @@
     <serviceTask id="enviaNotificacaoUtilizadorMailTask" name="Envia Notificação Por Email" activiti:type="mail">
       <extensionElements>
         <activiti:field name="to">
-          <activiti:expression><![CDATA[${user}@gmail.com]]></activiti:expression>
+          <activiti:expression><![CDATA[${userEmail}]]></activiti:expression>
         </activiti:field>
         <activiti:field name="subject">
           <activiti:expression><![CDATA[${subject}]]></activiti:expression>
@@ -31,8 +31,9 @@
     <sequenceFlow id="flow4" sourceRef="enviaNotificacaoUtilizadorSMSServiceTask" targetRef="enviaNotificacaoUtilizadorEndEvent"></sequenceFlow>
     <sequenceFlow id="flow5" sourceRef="enviaNotificacaoUtilizadorMailTask" targetRef="enviaNotificacaoUtilizadorEndEvent"></sequenceFlow>
     <textAnnotation id="enviaNotificacaoUtilizadorInputVariablesNote">
-      <text>Requer:
-- user: Utilizador cuja notificação vai ser enviada
+      <text>Requer como parâmetros de input:
+- userEmail: Email do utilizador cuja notificação vai ser enviada
+- userPhoneNumber: Número de telemóvel do utilizador cuja notificação vai ser enviada
 - subject: Titulo da notificação
 - message: Mensagem da notificação
 - notificationChannel: Canal de comunicação da notificação. Ou 'email' ou 'sms'. Omissão deste valor indica a preferência por email</text>
@@ -45,7 +46,7 @@
         <omgdc:Bounds height="35.0" width="35.0" x="60.0" y="150.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" id="BPMNShape_enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway">
-        <omgdc:Bounds height="40.0" width="40.0" x="140.0" y="148.0"></omgdc:Bounds>
+        <omgdc:Bounds height="40.0" width="40.0" x="140.0" y="147.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorMailTask" id="BPMNShape_enviaNotificacaoUtilizadorMailTask">
         <omgdc:Bounds height="61.0" width="111.0" x="307.0" y="70.0"></omgdc:Bounds>
@@ -57,30 +58,30 @@
         <omgdc:Bounds height="35.0" width="35.0" x="530.0" y="146.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorInputVariablesNote" id="BPMNShape_enviaNotificacaoUtilizadorInputVariablesNote">
-        <omgdc:Bounds height="161.0" width="153.0" x="1.0" y="260.0"></omgdc:Bounds>
+        <omgdc:Bounds height="150.0" width="240.0" x="1.0" y="260.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
         <omgdi:waypoint x="95.0" y="167.0"></omgdi:waypoint>
-        <omgdi:waypoint x="140.0" y="168.0"></omgdi:waypoint>
+        <omgdi:waypoint x="140.0" y="167.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
-        <omgdi:waypoint x="160.0" y="148.0"></omgdi:waypoint>
+        <omgdi:waypoint x="160.0" y="147.0"></omgdi:waypoint>
         <omgdi:waypoint x="160.0" y="100.0"></omgdi:waypoint>
         <omgdi:waypoint x="307.0" y="100.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
-        <omgdi:waypoint x="160.0" y="188.0"></omgdi:waypoint>
+        <omgdi:waypoint x="160.0" y="187.0"></omgdi:waypoint>
         <omgdi:waypoint x="160.0" y="230.0"></omgdi:waypoint>
         <omgdi:waypoint x="310.0" y="230.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
         <omgdi:waypoint x="415.0" y="230.0"></omgdi:waypoint>
-        <omgdi:waypoint x="547.0" y="230.0"></omgdi:waypoint>
+        <omgdi:waypoint x="546.0" y="230.0"></omgdi:waypoint>
         <omgdi:waypoint x="547.0" y="181.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
         <omgdi:waypoint x="418.0" y="100.0"></omgdi:waypoint>
-        <omgdi:waypoint x="547.0" y="100.0"></omgdi:waypoint>
+        <omgdi:waypoint x="546.0" y="100.0"></omgdi:waypoint>
         <omgdi:waypoint x="547.0" y="146.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
