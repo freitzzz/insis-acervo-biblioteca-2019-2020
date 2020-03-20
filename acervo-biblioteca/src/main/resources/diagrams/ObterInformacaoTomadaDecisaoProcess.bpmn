@@ -10,6 +10,7 @@
     </callActivity>
     <callActivity id="obterInformacaoTomadaDecisaoObterInformacaoObraFornecedoresCallActivity" name="Obter Informação da Obra nos Fornecedores" calledElement="obterInformacaoObraFornecedores">
       <extensionElements>
+        <activiti:in source="titulo" target="titulo"></activiti:in>
         <activiti:out source="fornecedores" target="fornecedores"></activiti:out>
       </extensionElements>
     </callActivity>
@@ -32,61 +33,61 @@
   <bpmndi:BPMNDiagram id="BPMNDiagram_obterInformacaoTomadaDecisaoProcess">
     <bpmndi:BPMNPlane bpmnElement="obterInformacaoTomadaDecisaoProcess" id="BPMNPlane_obterInformacaoTomadaDecisaoProcess">
       <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
-        <omgdc:Bounds height="35.0" width="35.0" x="220.0" y="320.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="42.0" y="200.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="parallelgateway1" id="BPMNShape_parallelgateway1">
-        <omgdc:Bounds height="40.0" width="40.0" x="350.0" y="317.0"></omgdc:Bounds>
+        <omgdc:Bounds height="40.0" width="40.0" x="172.0" y="197.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="obterInformacaoTomadaDecisaoObterObrasMesmosAtributosCallActivity" id="BPMNShape_obterInformacaoTomadaDecisaoObterObrasMesmosAtributosCallActivity">
-        <omgdc:Bounds height="71.0" width="161.0" x="480.0" y="190.0"></omgdc:Bounds>
+        <omgdc:Bounds height="71.0" width="161.0" x="302.0" y="70.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="obterInformacaoTomadaDecisaoObterInformacaoObraFornecedoresCallActivity" id="BPMNShape_obterInformacaoTomadaDecisaoObterInformacaoObraFornecedoresCallActivity">
-        <omgdc:Bounds height="61.0" width="161.0" x="480.0" y="307.0"></omgdc:Bounds>
+        <omgdc:Bounds height="61.0" width="161.0" x="302.0" y="187.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="obterInformacaoTomadaDecisaoObterInformacaoPropostasAceitesRecusadasCallActivity" id="BPMNShape_obterInformacaoTomadaDecisaoObterInformacaoPropostasAceitesRecusadasCallActivity">
-        <omgdc:Bounds height="71.0" width="161.0" x="480.0" y="410.0"></omgdc:Bounds>
+        <omgdc:Bounds height="71.0" width="161.0" x="302.0" y="290.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="parallelgateway2" id="BPMNShape_parallelgateway2">
-        <omgdc:Bounds height="40.0" width="40.0" x="740.0" y="317.0"></omgdc:Bounds>
+        <omgdc:Bounds height="40.0" width="40.0" x="562.0" y="197.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
-        <omgdc:Bounds height="35.0" width="35.0" x="870.0" y="320.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="692.0" y="200.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
-        <omgdi:waypoint x="255.0" y="337.0"></omgdi:waypoint>
-        <omgdi:waypoint x="350.0" y="337.0"></omgdi:waypoint>
+        <omgdi:waypoint x="77.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="172.0" y="217.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
-        <omgdi:waypoint x="370.0" y="317.0"></omgdi:waypoint>
-        <omgdi:waypoint x="370.0" y="225.0"></omgdi:waypoint>
-        <omgdi:waypoint x="480.0" y="225.0"></omgdi:waypoint>
+        <omgdi:waypoint x="192.0" y="197.0"></omgdi:waypoint>
+        <omgdi:waypoint x="192.0" y="105.0"></omgdi:waypoint>
+        <omgdi:waypoint x="302.0" y="105.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
-        <omgdi:waypoint x="390.0" y="337.0"></omgdi:waypoint>
-        <omgdi:waypoint x="480.0" y="337.0"></omgdi:waypoint>
+        <omgdi:waypoint x="212.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="302.0" y="217.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
-        <omgdi:waypoint x="370.0" y="357.0"></omgdi:waypoint>
-        <omgdi:waypoint x="370.0" y="445.0"></omgdi:waypoint>
-        <omgdi:waypoint x="480.0" y="445.0"></omgdi:waypoint>
+        <omgdi:waypoint x="192.0" y="237.0"></omgdi:waypoint>
+        <omgdi:waypoint x="192.0" y="325.0"></omgdi:waypoint>
+        <omgdi:waypoint x="302.0" y="325.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
-        <omgdi:waypoint x="641.0" y="225.0"></omgdi:waypoint>
-        <omgdi:waypoint x="760.0" y="225.0"></omgdi:waypoint>
-        <omgdi:waypoint x="760.0" y="317.0"></omgdi:waypoint>
+        <omgdi:waypoint x="463.0" y="105.0"></omgdi:waypoint>
+        <omgdi:waypoint x="581.0" y="105.0"></omgdi:waypoint>
+        <omgdi:waypoint x="582.0" y="197.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
-        <omgdi:waypoint x="641.0" y="337.0"></omgdi:waypoint>
-        <omgdi:waypoint x="740.0" y="337.0"></omgdi:waypoint>
+        <omgdi:waypoint x="463.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="562.0" y="217.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
-        <omgdi:waypoint x="641.0" y="445.0"></omgdi:waypoint>
-        <omgdi:waypoint x="760.0" y="445.0"></omgdi:waypoint>
-        <omgdi:waypoint x="760.0" y="357.0"></omgdi:waypoint>
+        <omgdi:waypoint x="463.0" y="325.0"></omgdi:waypoint>
+        <omgdi:waypoint x="581.0" y="325.0"></omgdi:waypoint>
+        <omgdi:waypoint x="582.0" y="237.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
-        <omgdi:waypoint x="780.0" y="337.0"></omgdi:waypoint>
-        <omgdi:waypoint x="870.0" y="337.0"></omgdi:waypoint>
+        <omgdi:waypoint x="602.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="692.0" y="217.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
