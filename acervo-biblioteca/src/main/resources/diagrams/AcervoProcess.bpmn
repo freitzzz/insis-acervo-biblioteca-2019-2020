@@ -16,13 +16,18 @@
       <extensionElements>
         <activiti:in source="globalPeritos" target="peritos"></activiti:in>
         <activiti:out source="peritosByBM" target="globalPeritosByBM"></activiti:out>
+        <activiti:out source="todosPeritos" target="globalTodosPeritos"></activiti:out>
       </extensionElements>
     </callActivity>
     <callActivity id="daParecerActivity" name="Dá parecer" calledElement="daParecerProcess">
       <extensionElements>
         <activiti:in source="globalTitulo" target="titulo"></activiti:in>
         <activiti:in source="globalAreaConhecimento" target="areaConhecimento"></activiti:in>
+        <activiti:in sourceExpression="${globalTodosPeritos.get(loopCounter)}" target="perito"></activiti:in>
       </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false">
+        <loopCardinality>${globalTodosPeritos.size()}</loopCardinality>
+      </multiInstanceLoopCharacteristics>
     </callActivity>
     <exclusiveGateway id="daParecerGateway" name="Gateway de dar parecer"></exclusiveGateway>
     <callActivity id="afereDiaponibilidadeActivity" name="Afere disponibilidade financeira" calledElement="aferirDisponibilidadeFinanceiraProcess">
