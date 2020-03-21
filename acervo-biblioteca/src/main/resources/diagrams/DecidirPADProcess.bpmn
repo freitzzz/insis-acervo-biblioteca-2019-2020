@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="decidirPADProcess" name="Process de Decidir PAD" isExecutable="true">
+    <startEvent id="decidirPADStartEvent" name="Decidir PAD Start Event"></startEvent>
+    <endEvent id="decidirPADEndEvent" name="Decidir PAD End Event"></endEvent>
+    <callActivity id="decidirPADEnviarNotificacaoProponenteAceiteCallActivity" name="Enviar Notificação ao Proponente acerca da Decisão (aceite)" calledElement="enviaNotificacaoUtilizadorProcess">
+      <extensionElements>
+        <activiti:in source="userEmail" target="userEmail"></activiti:in>
+        <activiti:in source="userPhoneNumber" target="userPhoneNumber"></activiti:in>
+        <activiti:in sourceExpression="Decisão PAD" target="subject"></activiti:in>
+        <activiti:in sourceExpression="O pedido de autorização de despesa (PAD) foi aceite" target="message"></activiti:in>
+      </extensionElements>
+    </callActivity>
+    <userTask id="decidirPADPreenchePADUserTask" name="Preenche Decisão PAD" activiti:candidateGroups="admin">
+      <extensionElements>
+        <activiti:formProperty id="PAD" name="Pedido de Autorização de Despesa" type="string" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="PADAprovado" name="Decisão do PAD" type="enum" required="true">
+          <activiti:value id="true" name="Aprova"></activiti:value>
+          <activiti:value id="false" name="Rejeita"></activiti:value>
+        </activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow1" sourceRef="decidirPADStartEvent" targetRef="decidirPADPreenchePADUserTask"></sequenceFlow>
+    <sequenceFlow id="flow2" sourceRef="decidirPADPreenchePADUserTask" targetRef="exclusivegateway1"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="decidirPADEnviarNotificacaoProponenteAceiteCallActivity" targetRef="decidirPADEndEvent"></sequenceFlow>
+    <callActivity id="decidirPADEnviarNotificacaoProponenteRecusadoCallActivity" name="Enviar Notificação ao Proponente acerca da Decisão (recusado)" calledElement="enviaNotificacaoUtilizadorProcess">
+      <extensionElements>
+        <activiti:in source="userEmail" target="userEmail"></activiti:in>
+        <activiti:in source="userPhoneNumber" target="userPhoneNumber"></activiti:in>
+        <activiti:in sourceExpression="Decisão PAD" target="subject"></activiti:in>
+        <activiti:in sourceExpression="O pedido de autorização de despesa (PAD) foi recusado" target="message"></activiti:in>
+      </extensionElements>
+    </callActivity>
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
+    <sequenceFlow id="flow4" sourceRef="exclusivegateway1" targetRef="decidirPADEnviarNotificacaoProponenteAceiteCallActivity">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${PADAprovado == 'true'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow5" sourceRef="exclusivegateway1" targetRef="decidirPADEnviarNotificacaoProponenteRecusadoCallActivity">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${PADAprovado == 'false'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow6" sourceRef="decidirPADEnviarNotificacaoProponenteRecusadoCallActivity" targetRef="decidirPADEndEvent"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_decidirPADProcess">
+    <bpmndi:BPMNPlane bpmnElement="decidirPADProcess" id="BPMNPlane_decidirPADProcess">
+      <bpmndi:BPMNShape bpmnElement="decidirPADStartEvent" id="BPMNShape_decidirPADStartEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="140.0" y="140.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="decidirPADEndEvent" id="BPMNShape_decidirPADEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="680.0" y="140.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="decidirPADEnviarNotificacaoProponenteAceiteCallActivity" id="BPMNShape_decidirPADEnviarNotificacaoProponenteAceiteCallActivity">
+        <omgdc:Bounds height="81.0" width="163.0" x="480.0" y="199.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="decidirPADPreenchePADUserTask" id="BPMNShape_decidirPADPreenchePADUserTask">
+        <omgdc:Bounds height="55.0" width="121.0" x="250.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="decidirPADEnviarNotificacaoProponenteRecusadoCallActivity" id="BPMNShape_decidirPADEnviarNotificacaoProponenteRecusadoCallActivity">
+        <omgdc:Bounds height="81.0" width="165.0" x="479.0" y="50.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40.0" width="40.0" x="410.0" y="137.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="175.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="250.0" y="157.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="371.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="410.0" y="157.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="643.0" y="239.0"></omgdi:waypoint>
+        <omgdi:waypoint x="697.0" y="239.0"></omgdi:waypoint>
+        <omgdi:waypoint x="697.0" y="175.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="430.0" y="177.0"></omgdi:waypoint>
+        <omgdi:waypoint x="430.0" y="240.0"></omgdi:waypoint>
+        <omgdi:waypoint x="480.0" y="239.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="430.0" y="137.0"></omgdi:waypoint>
+        <omgdi:waypoint x="430.0" y="89.0"></omgdi:waypoint>
+        <omgdi:waypoint x="479.0" y="90.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="644.0" y="90.0"></omgdi:waypoint>
+        <omgdi:waypoint x="697.0" y="89.0"></omgdi:waypoint>
+        <omgdi:waypoint x="697.0" y="140.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
