@@ -72,7 +72,13 @@
     <sequenceFlow id="flow8" sourceRef="decideAquisicaoGateway" targetRef="elaboraPADActivity">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalAquisicaoAprovada == 'true'}]]></conditionExpression>
     </sequenceFlow>
-    <callActivity id="decidePADActivity" name="Decide PAD"></callActivity>
+    <callActivity id="decidePADActivity" name="Decide PAD" calledElement="decidirPADProcess">
+      <extensionElements>
+        <activiti:in source="globalProponenteTelemovel" target="userPhoneNumber"></activiti:in>
+        <activiti:in source="globalProponenteEmail" target="userEmail"></activiti:in>
+        <activiti:in source="globalPAD" target="PAD"></activiti:in>
+      </extensionElements>
+    </callActivity>
     <exclusiveGateway id="decidePADGateway" name="Gateway de decidir PAD"></exclusiveGateway>
     <sequenceFlow id="flow9" sourceRef="elaboraPADActivity" targetRef="decidePADActivity"></sequenceFlow>
     <sequenceFlow id="flow10" sourceRef="decidePADActivity" targetRef="decidePADGateway"></sequenceFlow>
