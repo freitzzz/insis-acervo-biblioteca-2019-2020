@@ -14,7 +14,7 @@
         <activiti:out source="telefone" target="globalProponenteTelemovel"></activiti:out>
       </extensionElements>
     </callActivity>
-    <callActivity id="indicaPeritosActivity" name="Indica pelo menos 2 peritos" calledElement="indicarPeritosProcess">
+    <callActivity id="indicaPeritosActivity" name="Indica 2 peritos" calledElement="indicarPeritosProcess">
       <extensionElements>
         <activiti:in source="globalPeritos" target="peritos"></activiti:in>
         <activiti:out source="peritosByBM" target="globalPeritosByBM"></activiti:out>
