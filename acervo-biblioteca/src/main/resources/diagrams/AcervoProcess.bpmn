@@ -34,10 +34,11 @@
       </multiInstanceLoopCharacteristics>
     </callActivity>
     <exclusiveGateway id="daParecerGateway" name="Gateway de dar parecer"></exclusiveGateway>
-    <callActivity id="afereDiaponibilidadeActivity" name="Afere disponibilidade financeira" calledElement="aferirDisponibilidadeFinanceiraProcess">
+    <callActivity id="afereDisponibilidadeActivity" name="Afere disponibilidade financeira" calledElement="aferirDisponibilidadeFinanceiraProcess">
       <extensionElements>
         <activiti:in source="globalTitulo" target="titulo"></activiti:in>
         <activiti:out source="disponibilidadeFinanceira" target="globalDisponibilidadeFinanceira"></activiti:out>
+        <activiti:out source="fornecedorMaisBaratoTable" target="globalFornecedorMelhorPreco"></activiti:out>
       </extensionElements>
     </callActivity>
     <callActivity id="decideAquisicaoActivity" name="Decide aquisição" calledElement="decidirAquisicaoProcess">
