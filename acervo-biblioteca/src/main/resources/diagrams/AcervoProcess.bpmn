@@ -83,9 +83,13 @@
     <exclusiveGateway id="decidePADGateway" name="Gateway de decidir PAD"></exclusiveGateway>
     <sequenceFlow id="flow9" sourceRef="elaboraPADActivity" targetRef="decidePADActivity"></sequenceFlow>
     <sequenceFlow id="flow10" sourceRef="decidePADActivity" targetRef="decidePADGateway"></sequenceFlow>
-    <sequenceFlow id="flow11" sourceRef="decidePADGateway" targetRef="elaboraPADActivity"></sequenceFlow>
+    <sequenceFlow id="flow11" sourceRef="decidePADGateway" targetRef="elaboraPADActivity">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalPADAprovado == 'false'}]]></conditionExpression>
+    </sequenceFlow>
     <callActivity id="adquireObraActivity" name="Adquire obra"></callActivity>
-    <sequenceFlow id="flow12" sourceRef="decidePADGateway" targetRef="adquireObraActivity"></sequenceFlow>
+    <sequenceFlow id="flow12" sourceRef="decidePADGateway" targetRef="adquireObraActivity">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalPADAprovado == 'true'}]]></conditionExpression>
+    </sequenceFlow>
     <endEvent id="afereDisponibilidadeEndEvent" name="Fim Afere Disponibilidade"></endEvent>
     <endEvent id="daParecerEndEvent" name="Fim Dá Parecer"></endEvent>
     <sequenceFlow id="flow13" sourceRef="daParecerGateway" targetRef="daParecerEndEvent"></sequenceFlow>
@@ -97,7 +101,9 @@
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalAquisicaoAprovada == 'true'}]]></conditionExpression>
     </sequenceFlow>
     <endEvent id="decidePADEndEvent" name="Fim Decide PAD"></endEvent>
-    <sequenceFlow id="flow16" sourceRef="decidePADGateway" targetRef="decidePADEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow16" sourceRef="decidePADGateway" targetRef="decidePADEndEvent">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalPADAprovado == 'temp'}]]></conditionExpression>
+    </sequenceFlow>
     <endEvent id="adquireObraEndEvent" name="Fim Adquire Obra"></endEvent>
     <sequenceFlow id="flow17" sourceRef="adquireObraActivity" targetRef="adquireObraEndEvent"></sequenceFlow>
     <sequenceFlow id="flow18" sourceRef="startevent1" targetRef="propostaAquisicaoObraActivity"></sequenceFlow>
@@ -119,7 +125,7 @@
       <bpmndi:BPMNShape bpmnElement="daParecerGateway" id="BPMNShape_daParecerGateway">
         <omgdc:Bounds height="40.0" width="40.0" x="305.0" y="367.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="afereDiaponibilidadeActivity" id="BPMNShape_afereDiaponibilidadeActivity">
+      <bpmndi:BPMNShape bpmnElement="afereDisponibilidadeActivity" id="BPMNShape_afereDisponibilidadeActivity">
         <omgdc:Bounds height="58.0" width="231.0" x="210.0" y="480.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="decideAquisicaoActivity" id="BPMNShape_decideAquisicaoActivity">
