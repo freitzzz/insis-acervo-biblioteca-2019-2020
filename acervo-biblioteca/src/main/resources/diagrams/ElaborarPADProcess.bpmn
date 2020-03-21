@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="elaborarPADProcess" name="Processo de Elaborar PAD" isExecutable="true">
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <endEvent id="elaborarPADEndEvent" name="End"></endEvent>
+    <userTask id="elaborarPADStartEventPreenchePADUserTask" name="Preenche PAD" activiti:candidateGroups="bibliotecario_mor">
+      <extensionElements>
+        <activiti:formProperty id="titulo" name="Titulo" type="string" variable="titulo" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="autores" name="Autores" type="string" variable="autores" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="anoPublicacao" name="Ano de Publicação" type="long" variable="anoPublicacao" datePattern="yyyy" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="fornecedorMelhorPreco" name="Fornecedor com Melhor Preço" type="table" variable="fornecedorMelhorPreco" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="pad" name="Pedido de Autorização de Despesa" type="string" required="true"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="elaborarPADStartEventPreenchePADUserTask"></sequenceFlow>
+    <sequenceFlow id="flow2" sourceRef="elaborarPADStartEventPreenchePADUserTask" targetRef="elaborarPADEndEvent"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_elaborarPADProcess">
+    <bpmndi:BPMNPlane bpmnElement="elaborarPADProcess" id="BPMNPlane_elaborarPADProcess">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="100.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="elaborarPADEndEvent" id="BPMNShape_elaborarPADEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="450.0" y="130.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="elaborarPADStartEventPreenchePADUserTask" id="BPMNShape_elaborarPADStartEventPreenchePADUserTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="240.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="135.0" y="147.0"></omgdi:waypoint>
+        <omgdi:waypoint x="240.0" y="147.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="345.0" y="147.0"></omgdi:waypoint>
+        <omgdi:waypoint x="450.0" y="147.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
