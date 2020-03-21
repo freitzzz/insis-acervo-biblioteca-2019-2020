@@ -52,15 +52,22 @@
     <sequenceFlow id="flow1" sourceRef="propostaAquisicaoObraActivity" targetRef="indicaPeritosActivity"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="indicaPeritosActivity" targetRef="daParecerActivity"></sequenceFlow>
     <sequenceFlow id="flow3" sourceRef="daParecerActivity" targetRef="daParecerGateway"></sequenceFlow>
-    <sequenceFlow id="flow4" sourceRef="daParecerGateway" targetRef="afereDiaponibilidadeActivity"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="daParecerGateway" targetRef="afereDisponibilidadeActivity"></sequenceFlow>
     <exclusiveGateway id="afereDiaponibilidadeGateway" name="Gateway de aferir disponibilidade"></exclusiveGateway>
-    <sequenceFlow id="flow5" sourceRef="afereDiaponibilidadeActivity" targetRef="afereDiaponibilidadeGateway"></sequenceFlow>
+    <sequenceFlow id="flow5" sourceRef="afereDisponibilidadeActivity" targetRef="afereDiaponibilidadeGateway"></sequenceFlow>
     <sequenceFlow id="flow6" sourceRef="afereDiaponibilidadeGateway" targetRef="decideAquisicaoActivity">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalDisponibilidadeFinanceira == 'true'}]]></conditionExpression>
     </sequenceFlow>
     <exclusiveGateway id="decideAquisicaoGateway" name="Gateway de decidir aquisição"></exclusiveGateway>
     <sequenceFlow id="flow7" sourceRef="decideAquisicaoActivity" targetRef="decideAquisicaoGateway"></sequenceFlow>
-    <callActivity id="elaboraPADActivity" name="Elabora PAD"></callActivity>
+    <callActivity id="elaboraPADActivity" name="Elabora PAD" calledElement="elaborarPADProcess">
+      <extensionElements>
+        <activiti:in source="globalFornecedorMelhorPreco" target="fornecedorMelhorPreco"></activiti:in>
+        <activiti:in source="globalTitulo" target="titulo"></activiti:in>
+        <activiti:in source="globalAutores" target="autores"></activiti:in>
+        <activiti:in source="globalAnoPublicacao" target="anoPublicacao"></activiti:in>
+      </extensionElements>
+    </callActivity>
     <sequenceFlow id="flow8" sourceRef="decideAquisicaoGateway" targetRef="elaboraPADActivity">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalAquisicaoAprovada == 'true'}]]></conditionExpression>
     </sequenceFlow>
