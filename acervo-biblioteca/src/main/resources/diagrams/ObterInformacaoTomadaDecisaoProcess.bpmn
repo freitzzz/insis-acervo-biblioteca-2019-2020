@@ -28,7 +28,92 @@
     <sequenceFlow id="flow6" sourceRef="obterInformacaoTomadaDecisaoObterInformacaoObraFornecedoresCallActivity" targetRef="parallelgateway2"></sequenceFlow>
     <sequenceFlow id="flow7" sourceRef="obterInformacaoTomadaDecisaoObterInformacaoPropostasAceitesRecusadasCallActivity" targetRef="parallelgateway2"></sequenceFlow>
     <endEvent id="endevent1" name="End"></endEvent>
-    <sequenceFlow id="flow8" sourceRef="parallelgateway2" targetRef="endevent1"></sequenceFlow>
+    <sequenceFlow id="flow8" sourceRef="parallelgateway2" targetRef="obterInformacaoTomadaDecisaoAgregarInformacaoScriptTask"></sequenceFlow>
+    <scriptTask id="obterInformacaoTomadaDecisaoAgregarInformacaoScriptTask" name="Agregar Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
+
+println("Processo de Obter Informação para a Tomada de Decisão")
+
+def exemplaresPolosJson = new JsonSlurper().parseText(exemplaresPolos)
+
+def obraPorPoloTable = []
+
+// Por enquanto só Estado
+def obraPorPoloTableHeaders = ['Polo', 'Estado']
+
+def obraPorPoloTableRows = []
+
+for (int i=0; i &lt; exemplaresPolosJson.size(); i++) {
+	
+	def polo = exemplaresPolosJson[i]
+
+	def poloName = polo.name
+
+	def poloData = polo.books
+
+  for (int j = 0; j &lt; poloData.size(); j++) {
+
+    def poloRow = []
+
+	poloRow.add(poloName)
+
+	// Por enquanto só state 
+	poloRow.add(poloData.get(j).state)
+	
+    obraPorPoloTableRows.add(poloRow)
+  }
+
+}
+
+def obraPorPoloTableJson = new JsonBuilder([headers: obraPorPoloTableHeaders, rows: obraPorPoloTableRows]).toPrettyString()
+
+println("obraPorPoloTable")
+
+println(obraPorPoloTableJson)
+
+execution.setVariable('obraPorPoloTable', obraPorPoloTableJson)
+
+
+// TABELA FORNECEDORES
+
+def fornecedoresTable = []
+
+def fornecedoresTableHeaders = ['Fornecedor', 'Nº Exemplares Disponiveis para Compra', 'Preço']
+
+def fornecedoresTableRows = []
+
+for (int i=0; i &lt; fornecedores.size(); i++) {
+
+	def fornecedor = fornecedores.get(i)
+
+	def fornecedorRow = []
+
+	def fornecedorName = fornecedor.name
+
+	fornecedorRow.add(fornecedorName)
+
+	fornecedorRow.add(fornecedor.availableNumber)
+
+	fornecedorRow.add(fornecedor.price.toString().concat(fornecedor.currency.toString()))
+
+	fornecedoresTableRows.add(fornecedorRow)
+
+}
+
+fornecedoresTable.add(fornecedoresTableHeaders)
+
+fornecedoresTable.add(fornecedoresTableRows)
+
+def fornecedoresTableJson = new JsonBuilder([headers: fornecedoresTableHeaders, rows: fornecedoresTableRows]).toPrettyString()
+
+println("fornecedoresTable")
+
+println(fornecedoresTableJson)
+
+execution.setVariable('fornecedoresTable', fornecedoresTableJson)</script>
+    </scriptTask>
+    <sequenceFlow id="flow9" sourceRef="obterInformacaoTomadaDecisaoAgregarInformacaoScriptTask" targetRef="endevent1"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_obterInformacaoTomadaDecisaoProcess">
     <bpmndi:BPMNPlane bpmnElement="obterInformacaoTomadaDecisaoProcess" id="BPMNPlane_obterInformacaoTomadaDecisaoProcess">
@@ -51,7 +136,10 @@
         <omgdc:Bounds height="40.0" width="40.0" x="562.0" y="197.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
-        <omgdc:Bounds height="35.0" width="35.0" x="692.0" y="200.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="800.0" y="200.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterInformacaoTomadaDecisaoAgregarInformacaoScriptTask" id="BPMNShape_obterInformacaoTomadaDecisaoAgregarInformacaoScriptTask">
+        <omgdc:Bounds height="55.0" width="115.0" x="642.0" y="190.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
         <omgdi:waypoint x="77.0" y="217.0"></omgdi:waypoint>
@@ -87,7 +175,11 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
         <omgdi:waypoint x="602.0" y="217.0"></omgdi:waypoint>
-        <omgdi:waypoint x="692.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="642.0" y="217.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="757.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="800.0" y="217.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
