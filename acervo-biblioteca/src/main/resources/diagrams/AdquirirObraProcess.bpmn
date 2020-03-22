@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="adquirirObraProcess" name="Processo de Adquirir Obra" isExecutable="true">
+    <startEvent id="adquirirObraStartEvent" name="Adquirir Obra Start Event"></startEvent>
+    <endEvent id="adquirirObraEndEvent" name="Adquirir Obra End Event"></endEvent>
+    <manualTask id="adquirirObraLevantaObraManualTask" name="Levanta Obra"></manualTask>
+    <serviceTask id="adquirirObraAdquireObraServiceTask" name="Adquire Obra Service Task" activiti:class="insis.acervo.v1.AdquireObraV1"></serviceTask>
+    <userTask id="adquirirObraIniciaRecolhaObraUserTask" name="Inicia Recolha de Obra" activiti:candidateGroups="servico_administrativo">
+      <extensionElements>
+        <activiti:formProperty id="titulo" name="Titulo" type="string" variable="titulo" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="anoPublicacao" name="Ano Publicação" type="long" variable="anoPublicacao" datePattern="yyyy" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="autores" name="Autores" type="string" variable="autores" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="fornecedorMelhorPreco" name="Fornecedor" type="table" variable="fornecedorMelhorPreco" writable="false" required="true"></activiti:formProperty>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="flow4" sourceRef="adquirirObraStartEvent" targetRef="adquirirObraIniciaRecolhaObraUserTask"></sequenceFlow>
+    <sequenceFlow id="flow5" sourceRef="adquirirObraIniciaRecolhaObraUserTask" targetRef="parallelgateway1"></sequenceFlow>
+    <userTask id="adquirirObraConfirmaRecolhaObraUserTask" name="Confirma Recolha de Obra" activiti:assignee="${initiator}">
+      <documentation>Confirmação da Recolha</documentation>
+    </userTask>
+    <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
+    <sequenceFlow id="flow6" sourceRef="parallelgateway1" targetRef="adquirirObraAdquireObraServiceTask"></sequenceFlow>
+    <parallelGateway id="parallelgateway2" name="Parallel Gateway"></parallelGateway>
+    <callActivity id="adquirirObraProcessGetTaskAssigneeByProcessInstanceIdCallActivity" name="Get Task Assignee By Process Instance Id" calledElement="getTaskAssigneeByProcessInstanceId">
+      <extensionElements>
+        <activiti:in sourceExpression="${execution.getProcessInstanceId()}" target="processInstanceId"></activiti:in>
+        <activiti:out source="assignee" target="initiator"></activiti:out>
+      </extensionElements>
+    </callActivity>
+    <sequenceFlow id="flow7" sourceRef="parallelgateway1" targetRef="adquirirObraProcessGetTaskAssigneeByProcessInstanceIdCallActivity"></sequenceFlow>
+    <sequenceFlow id="flow8" sourceRef="adquirirObraProcessGetTaskAssigneeByProcessInstanceIdCallActivity" targetRef="parallelgateway2"></sequenceFlow>
+    <sequenceFlow id="flow9" sourceRef="parallelgateway2" targetRef="adquirirObraLevantaObraManualTask"></sequenceFlow>
+    <sequenceFlow id="flow11" sourceRef="adquirirObraAdquireObraServiceTask" targetRef="parallelgateway2"></sequenceFlow>
+    <sequenceFlow id="flow12" sourceRef="adquirirObraLevantaObraManualTask" targetRef="adquirirObraConfirmaRecolhaObraUserTask"></sequenceFlow>
+    <sequenceFlow id="flow13" sourceRef="adquirirObraConfirmaRecolhaObraUserTask" targetRef="adquirirObraEndEvent"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_adquirirObraProcess">
+    <bpmndi:BPMNPlane bpmnElement="adquirirObraProcess" id="BPMNPlane_adquirirObraProcess">
+      <bpmndi:BPMNShape bpmnElement="adquirirObraStartEvent" id="BPMNShape_adquirirObraStartEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="48.0" y="181.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="adquirirObraEndEvent" id="BPMNShape_adquirirObraEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="1008.0" y="181.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="adquirirObraLevantaObraManualTask" id="BPMNShape_adquirirObraLevantaObraManualTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="658.0" y="171.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="adquirirObraAdquireObraServiceTask" id="BPMNShape_adquirirObraAdquireObraServiceTask">
+        <omgdc:Bounds height="66.0" width="115.0" x="420.0" y="100.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="adquirirObraIniciaRecolhaObraUserTask" id="BPMNShape_adquirirObraIniciaRecolhaObraUserTask">
+        <omgdc:Bounds height="63.0" width="121.0" x="139.0" y="167.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="adquirirObraConfirmaRecolhaObraUserTask" id="BPMNShape_adquirirObraConfirmaRecolhaObraUserTask">
+        <omgdc:Bounds height="72.0" width="121.0" x="820.0" y="163.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="parallelgateway1" id="BPMNShape_parallelgateway1">
+        <omgdc:Bounds height="40.0" width="40.0" x="330.0" y="178.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="parallelgateway2" id="BPMNShape_parallelgateway2">
+        <omgdc:Bounds height="40.0" width="40.0" x="578.0" y="178.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="adquirirObraProcessGetTaskAssigneeByProcessInstanceIdCallActivity" id="BPMNShape_adquirirObraProcessGetTaskAssigneeByProcessInstanceIdCallActivity">
+        <omgdc:Bounds height="65.0" width="159.0" x="398.0" y="237.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="83.0" y="198.0"></omgdi:waypoint>
+        <omgdi:waypoint x="139.0" y="198.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="260.0" y="198.0"></omgdi:waypoint>
+        <omgdi:waypoint x="330.0" y="198.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+        <omgdi:waypoint x="350.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="350.0" y="135.0"></omgdi:waypoint>
+        <omgdi:waypoint x="420.0" y="133.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="350.0" y="218.0"></omgdi:waypoint>
+        <omgdi:waypoint x="350.0" y="269.0"></omgdi:waypoint>
+        <omgdi:waypoint x="398.0" y="269.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="557.0" y="269.0"></omgdi:waypoint>
+        <omgdi:waypoint x="598.0" y="270.0"></omgdi:waypoint>
+        <omgdi:waypoint x="598.0" y="218.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="618.0" y="198.0"></omgdi:waypoint>
+        <omgdi:waypoint x="658.0" y="198.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="535.0" y="133.0"></omgdi:waypoint>
+        <omgdi:waypoint x="598.0" y="133.0"></omgdi:waypoint>
+        <omgdi:waypoint x="598.0" y="178.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
+        <omgdi:waypoint x="763.0" y="198.0"></omgdi:waypoint>
+        <omgdi:waypoint x="820.0" y="199.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">
+        <omgdi:waypoint x="941.0" y="199.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1008.0" y="198.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
