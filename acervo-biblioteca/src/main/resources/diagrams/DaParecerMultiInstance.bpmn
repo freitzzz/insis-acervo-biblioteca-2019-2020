@@ -37,16 +37,20 @@ if(decisoesPeritos == null) {
 
 decisoesPeritos.add(decisao)
 
-execution.setVariable('decisoes', decisoesPeritos)</script>
+def aceites = decisoesPeritos.findAll { it == 'true' }.size()
+
+def recusadas = decisoesPeritos.findAll { it == 'false' }.size()
+
+execution.setVariable('decisoes', decisoesPeritos)
+
+execution.setVariable('aceites', aceites)
+
+execution.setVariable('recusadas', recusadas)</script>
     </scriptTask>
     <sequenceFlow id="flow6" sourceRef="daParecerMultiInstanceDaParecerCallActivity" targetRef="daParecerMultiInstanceGuardaDecisaoPeritoScriptTask"></sequenceFlow>
     <exclusiveGateway id="daParecerMultiInstanceVerificaSeTamanhoArrayDecisoesEIgualTamanhoArrayPeritos"></exclusiveGateway>
     <sequenceFlow id="flow9" sourceRef="daParecerMultiInstanceGuardaDecisaoPeritoScriptTask" targetRef="daParecerMultiInstanceVerificaSeTamanhoArrayDecisoesEIgualTamanhoArrayPeritos"></sequenceFlow>
     <sequenceFlow id="flow10" sourceRef="daParecerMultiInstanceVerificaSeTamanhoArrayDecisoesEIgualTamanhoArrayPeritos" targetRef="daParecerMultiInstanceThrowawayScripTask"></sequenceFlow>
-    <endEvent id="daParecerMultiInstanceEndEvent" name="Da Parecer Multi Instance End Event"></endEvent>
-    <sequenceFlow id="flow11" name="decisoes.size() == peritos.size()" sourceRef="daParecerMultiInstanceVerificaSeTamanhoArrayDecisoesEIgualTamanhoArrayPeritos" targetRef="daParecerMultiInstanceEndEvent">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${decisoes.size() == peritos.size()}]]></conditionExpression>
-    </sequenceFlow>
     <exclusiveGateway id="daParecerMultiInstanceVerificaLoopCounterSerMaiorQueTamanhoArrayPeritos" name="Verifica se a variavel loopCounter é maior que o tamanho do array peritos"></exclusiveGateway>
     <sequenceFlow id="flow12" sourceRef="daParecerMultiInstanceObtemIndiceArrayPeritosScriptTask" targetRef="daParecerMultiInstanceVerificaLoopCounterSerMaiorQueTamanhoArrayPeritos"></sequenceFlow>
     <sequenceFlow id="flow13" name="loopCounter &lt; peritos.size()" sourceRef="daParecerMultiInstanceVerificaLoopCounterSerMaiorQueTamanhoArrayPeritos" targetRef="parallelgateway1">
@@ -59,6 +63,10 @@ execution.setVariable('decisoes', decisoesPeritos)</script>
       <script>println("void script task")</script>
     </scriptTask>
     <sequenceFlow id="flow16" sourceRef="daParecerMultiInstanceVerificaLoopCounterSerMaiorQueTamanhoArrayPeritos" targetRef="daParecerMultiInstanceThrowawayScripTask"></sequenceFlow>
+    <endEvent id="daParecerMultiInstanceEndEvent" name="Da Parecer Multi Instance End Event"></endEvent>
+    <sequenceFlow id="flow17" name="decisoes.size() == peritos.size()" sourceRef="daParecerMultiInstanceVerificaSeTamanhoArrayDecisoesEIgualTamanhoArrayPeritos" targetRef="daParecerMultiInstanceEndEvent">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${decisoes.size() == peritos.size()}]]></conditionExpression>
+    </sequenceFlow>
     <textAnnotation id="textannotation1">
       <text>É possível que exista uma race condition na script task do guarda decisão (solução: em vez de guardar a variável decisão é guardada a variável $peritoDecisao</text>
     </textAnnotation>
@@ -83,9 +91,6 @@ execution.setVariable('decisoes', decisoesPeritos)</script>
       <bpmndi:BPMNShape bpmnElement="daParecerMultiInstanceVerificaSeTamanhoArrayDecisoesEIgualTamanhoArrayPeritos" id="BPMNShape_daParecerMultiInstanceVerificaSeTamanhoArrayDecisoesEIgualTamanhoArrayPeritos">
         <omgdc:Bounds height="40.0" width="40.0" x="512.0" y="250.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerMultiInstanceEndEvent" id="BPMNShape_daParecerMultiInstanceEndEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="650.0" y="253.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerMultiInstanceVerificaLoopCounterSerMaiorQueTamanhoArrayPeritos" id="BPMNShape_daParecerMultiInstanceVerificaLoopCounterSerMaiorQueTamanhoArrayPeritos">
         <omgdc:Bounds height="40.0" width="40.0" x="214.0" y="30.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
@@ -95,8 +100,11 @@ execution.setVariable('decisoes', decisoesPeritos)</script>
       <bpmndi:BPMNShape bpmnElement="daParecerMultiInstanceThrowawayScripTask" id="BPMNShape_daParecerMultiInstanceThrowawayScripTask">
         <omgdc:Bounds height="68.0" width="106.0" x="10.0" y="17.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerMultiInstanceEndEvent" id="BPMNShape_daParecerMultiInstanceEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="650.0" y="253.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="textannotation1" id="BPMNShape_textannotation1">
-        <omgdc:Bounds height="151.0" width="100.0" x="630.0" y="70.0"></omgdc:Bounds>
+        <omgdc:Bounds height="151.0" width="100.0" x="630.0" y="49.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="textannotation2" id="BPMNShape_textannotation2">
         <omgdc:Bounds height="84.0" width="161.0" x="30.0" y="287.0"></omgdc:Bounds>
@@ -117,13 +125,6 @@ execution.setVariable('decisoes', decisoesPeritos)</script>
         <omgdi:waypoint x="512.0" y="270.0"></omgdi:waypoint>
         <omgdi:waypoint x="62.0" y="270.0"></omgdi:waypoint>
         <omgdi:waypoint x="63.0" y="85.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
-        <omgdi:waypoint x="552.0" y="270.0"></omgdi:waypoint>
-        <omgdi:waypoint x="650.0" y="270.0"></omgdi:waypoint>
-        <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="39.0" width="100.0" x="559.0" y="240.0"></omgdc:Bounds>
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
         <omgdi:waypoint x="235.0" y="112.0"></omgdi:waypoint>
@@ -147,6 +148,13 @@ execution.setVariable('decisoes', decisoesPeritos)</script>
       <bpmndi:BPMNEdge bpmnElement="flow16" id="BPMNEdge_flow16">
         <omgdi:waypoint x="214.0" y="50.0"></omgdi:waypoint>
         <omgdi:waypoint x="116.0" y="51.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow17" id="BPMNEdge_flow17">
+        <omgdi:waypoint x="552.0" y="270.0"></omgdi:waypoint>
+        <omgdi:waypoint x="650.0" y="270.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="39.0" width="100.0" x="551.0" y="232.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
