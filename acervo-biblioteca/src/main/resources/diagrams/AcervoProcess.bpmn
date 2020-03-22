@@ -21,7 +21,7 @@
         <activiti:out source="todosPeritos" target="globalTodosPeritos"></activiti:out>
       </extensionElements>
     </callActivity>
-    <callActivity id="daParecerActivity" name="Dá parecer" calledElement="daParecerProcess">
+    <callActivity id="daParecerActivity" name="Dá parecer" calledElement="daParecerMultiInstanceProcess">
       <extensionElements>
         <activiti:in source="globalTitulo" target="titulo"></activiti:in>
         <activiti:in source="globalAreaConhecimento" target="areaConhecimento"></activiti:in>
