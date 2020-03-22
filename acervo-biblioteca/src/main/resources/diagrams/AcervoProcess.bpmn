@@ -86,7 +86,14 @@
     <sequenceFlow id="flow11" sourceRef="decidePADGateway" targetRef="elaboraPADActivity">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalPADAprovado == 'false'}]]></conditionExpression>
     </sequenceFlow>
-    <callActivity id="adquireObraActivity" name="Adquire obra"></callActivity>
+    <callActivity id="adquireObraActivity" name="Adquire obra" calledElement="adquirirObraProcess">
+    	<extensionElements>
+	        <activiti:in source="globalFornecedorMelhorPreco" target="fornecedorMelhorPreco"></activiti:in>
+	        <activiti:in source="globalTitulo" target="titulo"></activiti:in>
+	        <activiti:in source="globalAutores" target="autores"></activiti:in>
+	        <activiti:in source="globalAnoPublicacao" target="anoPublicacao"></activiti:in>  
+		</extensionElements>  
+    </callActivity>
     <sequenceFlow id="flow12" sourceRef="decidePADGateway" targetRef="adquireObraActivity">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalPADAprovado == 'true'}]]></conditionExpression>
     </sequenceFlow>
@@ -117,7 +124,7 @@
         <omgdc:Bounds height="64.0" width="181.0" x="110.0" y="9.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="indicaPeritosActivity" id="BPMNShape_indicaPeritosActivity">
-        <omgdc:Bounds height="55.0" width="181.0" x="110.0" y="192.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="141.0" x="130.0" y="192.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerActivity" id="BPMNShape_daParecerActivity">
         <omgdc:Bounds height="55.0" width="105.0" x="148.0" y="360.0"></omgdc:Bounds>
