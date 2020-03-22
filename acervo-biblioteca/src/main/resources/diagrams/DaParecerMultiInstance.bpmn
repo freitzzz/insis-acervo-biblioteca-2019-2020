@@ -55,12 +55,15 @@ execution.setVariable('decisoes', decisoesPeritos)</script>
     <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
     <sequenceFlow id="flow14" sourceRef="parallelgateway1" targetRef="daParecerMultiInstanceDaParecerCallActivity"></sequenceFlow>
     <sequenceFlow id="flow15" sourceRef="parallelgateway1" targetRef="daParecerMultiInstanceObtemIndiceArrayPeritosScriptTask"></sequenceFlow>
-    <scriptTask id="daParecerMultiInstanceThrowawayScripTask" name="So para manter execucao" scriptFormat="groovy" activiti:autoStoreVariables="false">
-      <script>println("sleep task")</script>
+    <scriptTask id="daParecerMultiInstanceThrowawayScripTask" name="Mantem Execução da Atividade" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>println("void script task")</script>
     </scriptTask>
     <sequenceFlow id="flow16" sourceRef="daParecerMultiInstanceVerificaLoopCounterSerMaiorQueTamanhoArrayPeritos" targetRef="daParecerMultiInstanceThrowawayScripTask"></sequenceFlow>
     <textAnnotation id="textannotation1">
-      <text>race condition</text>
+      <text>É possível que exista uma race condition na script task do guarda decisão (solução: em vez de guardar a variável decisão é guardada a variável $peritoDecisao</text>
+    </textAnnotation>
+    <textAnnotation id="textannotation2">
+      <text>Simula o construtor multi-instance de uma atividade de forma que seja possível o mapeamento das variáveis de output da atividade</text>
     </textAnnotation>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_daParecerMultiInstanceProcess">
@@ -93,7 +96,10 @@ execution.setVariable('decisoes', decisoesPeritos)</script>
         <omgdc:Bounds height="68.0" width="106.0" x="10.0" y="17.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="textannotation1" id="BPMNShape_textannotation1">
-        <omgdc:Bounds height="140.0" width="100.0" x="630.0" y="50.0"></omgdc:Bounds>
+        <omgdc:Bounds height="151.0" width="100.0" x="630.0" y="70.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="textannotation2" id="BPMNShape_textannotation2">
+        <omgdc:Bounds height="84.0" width="161.0" x="30.0" y="287.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
         <omgdi:waypoint x="135.0" y="157.0"></omgdi:waypoint>
@@ -116,7 +122,7 @@ execution.setVariable('decisoes', decisoesPeritos)</script>
         <omgdi:waypoint x="552.0" y="270.0"></omgdi:waypoint>
         <omgdi:waypoint x="650.0" y="270.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="39.0" width="100.0" x="551.0" y="240.0"></omgdc:Bounds>
+          <omgdc:Bounds height="39.0" width="100.0" x="559.0" y="240.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
