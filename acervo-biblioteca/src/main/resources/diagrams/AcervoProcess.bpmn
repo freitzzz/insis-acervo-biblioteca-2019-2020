@@ -28,7 +28,9 @@
         <activiti:in source="globalProponenteEmail" target="proponenteEmail"></activiti:in>
         <activiti:in source="globalProponenteTelemovel" target="proponentePhoneNumber"></activiti:in>
         <activiti:in source="globalTodosPeritos" target="peritos"></activiti:in>
-        <activiti:out source="decisoes" target="decisoes"></activiti:out>
+        <activiti:out source="decisoes" target="globalDecisoesPeritos"></activiti:out>
+        <activiti:out source="aceites" target="globalDecisoesAceitesPeritos"></activiti:out>
+        <activiti:out source="recusadas" target="globalDecisoesRecusadasPeritos"></activiti:out>
       </extensionElements>
     </callActivity>
     <exclusiveGateway id="daParecerGateway" name="Gateway de dar parecer"></exclusiveGateway>
