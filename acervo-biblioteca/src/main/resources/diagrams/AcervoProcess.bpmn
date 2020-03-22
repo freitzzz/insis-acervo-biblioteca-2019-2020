@@ -25,13 +25,11 @@
       <extensionElements>
         <activiti:in source="globalTitulo" target="titulo"></activiti:in>
         <activiti:in source="globalAreaConhecimento" target="areaConhecimento"></activiti:in>
-        <activiti:in sourceExpression="${globalTodosPeritos.get(loopCounter)}" target="perito"></activiti:in>
         <activiti:in source="globalProponenteEmail" target="proponenteEmail"></activiti:in>
         <activiti:in source="globalProponenteTelemovel" target="proponentePhoneNumber"></activiti:in>
+        <activiti:in source="globalTodosPeritos" target="peritos"></activiti:in>
+        <activiti:out source="decisoes" target="decisoes"></activiti:out>
       </extensionElements>
-      <multiInstanceLoopCharacteristics isSequential="false">
-        <loopCardinality>${globalTodosPeritos.size()}</loopCardinality>
-      </multiInstanceLoopCharacteristics>
     </callActivity>
     <exclusiveGateway id="daParecerGateway" name="Gateway de dar parecer"></exclusiveGateway>
     <callActivity id="afereDisponibilidadeActivity" name="Afere disponibilidade financeira" calledElement="aferirDisponibilidadeFinanceiraProcess">
@@ -87,12 +85,12 @@
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalPADAprovado == 'false'}]]></conditionExpression>
     </sequenceFlow>
     <callActivity id="adquireObraActivity" name="Adquire obra" calledElement="adquirirObraProcess">
-    	<extensionElements>
-	        <activiti:in source="globalFornecedorMelhorPreco" target="fornecedorMelhorPreco"></activiti:in>
-	        <activiti:in source="globalTitulo" target="titulo"></activiti:in>
-	        <activiti:in source="globalAutores" target="autores"></activiti:in>
-	        <activiti:in source="globalAnoPublicacao" target="anoPublicacao"></activiti:in>  
-		</extensionElements>  
+      <extensionElements>
+        <activiti:in source="globalFornecedorMelhorPreco" target="fornecedorMelhorPreco"></activiti:in>
+        <activiti:in source="globalTitulo" target="titulo"></activiti:in>
+        <activiti:in source="globalAutores" target="autores"></activiti:in>
+        <activiti:in source="globalAnoPublicacao" target="anoPublicacao"></activiti:in>
+      </extensionElements>
     </callActivity>
     <sequenceFlow id="flow12" sourceRef="decidePADGateway" targetRef="adquireObraActivity">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalPADAprovado == 'true'}]]></conditionExpression>
