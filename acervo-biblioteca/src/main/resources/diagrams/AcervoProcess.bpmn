@@ -52,7 +52,9 @@
     <sequenceFlow id="flow1" sourceRef="propostaAquisicaoObraActivity" targetRef="indicaPeritosActivity"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="indicaPeritosActivity" targetRef="daParecerActivity"></sequenceFlow>
     <sequenceFlow id="flow3" sourceRef="daParecerActivity" targetRef="daParecerGateway"></sequenceFlow>
-    <sequenceFlow id="flow4" sourceRef="daParecerGateway" targetRef="afereDisponibilidadeActivity"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="daParecerGateway" targetRef="afereDisponibilidadeActivity">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(globalDecisoesAceitesPeritos / globalTodosPeritos.size()) >= 0.5}]]></conditionExpression>
+    </sequenceFlow>
     <exclusiveGateway id="afereDiaponibilidadeGateway" name="Gateway de aferir disponibilidade"></exclusiveGateway>
     <sequenceFlow id="flow5" sourceRef="afereDisponibilidadeActivity" targetRef="afereDiaponibilidadeGateway"></sequenceFlow>
     <sequenceFlow id="flow6" sourceRef="afereDiaponibilidadeGateway" targetRef="decideAquisicaoActivity">
