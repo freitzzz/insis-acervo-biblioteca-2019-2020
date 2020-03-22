@@ -26,7 +26,7 @@
     </serviceTask>
     <sequenceFlow id="flow1" sourceRef="getTaskAssigneeByProcessInstanceIdStartEvent" targetRef="getTaskAssigneeByProcessInstanceIdRestTask"></sequenceFlow>
     <scriptTask id="getTaskAssigneeByProcessInstanceIdScriptTask" name="Declara Assignee como Local" scriptFormat="groovy" activiti:autoStoreVariables="false">
-      <script>def assignee = taskJson.get('data').get(0).get('assignee')
+      <script>def assignee = taskJson.get('data').get(0).get('assignee').asText()
 
 println("------------ Get Task ----------------")
 
