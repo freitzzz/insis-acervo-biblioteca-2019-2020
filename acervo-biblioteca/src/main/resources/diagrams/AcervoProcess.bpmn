@@ -40,6 +40,8 @@
     <callActivity id="afereDisponibilidadeActivity" name="Afere disponibilidade financeira" calledElement="aferirDisponibilidadeFinanceiraProcess">
       <extensionElements>
         <activiti:in source="globalTitulo" target="titulo"></activiti:in>
+        <activiti:in source="globalAutores" target="autores"></activiti:in>
+        <activiti:in source="globalAnoPublicacao" target="anoPublicacao"></activiti:in>
         <activiti:out source="disponibilidadeFinanceira" target="globalDisponibilidadeFinanceira"></activiti:out>
         <activiti:out source="fornecedorMaisBaratoTable" target="globalFornecedorMelhorPreco"></activiti:out>
       </extensionElements>
