@@ -5,6 +5,9 @@
     <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
     <callActivity id="obterInformacaoTomadaDecisaoObterObrasMesmosAtributosCallActivity" name="Obter Obras com os mesmos Atributos" calledElement="obterExemplaresPoloProcess">
       <extensionElements>
+        <activiti:in source="titulo" target="titulo"></activiti:in>
+        <activiti:in source="autores" target="autores"></activiti:in>
+        <activiti:in source="anoPublicacao" target="anoPublicacao"></activiti:in>
         <activiti:out source="exemplaresPolos" target="exemplaresPolos"></activiti:out>
       </extensionElements>
     </callActivity>
