@@ -4,8 +4,9 @@
     <startEvent id="indicarPeritosStartEvent" name="Indicar Peritos Start Event"></startEvent>
     <userTask id="indicarPeritosUserTask" name="Indicar pelo menos 2 peritos" activiti:candidateGroups="bibliotecario_mor">
       <extensionElements>
-        <activiti:formProperty id="peritosByBM" name="Peritos" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="peritos" name="Peritos indicados pelo Proponente" type="table" variable="peritosTableJson" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="peritosByBM" name="Peritos" type="string" required="true"></activiti:formProperty>
       </extensionElements>
     </userTask>
     <sequenceFlow id="flow1" sourceRef="indicarPeritosPreparaDadosFormScriptTask" targetRef="indicarPeritosUserTask"></sequenceFlow>
