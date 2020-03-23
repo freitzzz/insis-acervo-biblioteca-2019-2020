@@ -17,6 +17,7 @@
     <callActivity id="indicaPeritosActivity" name="Indica 2 peritos" calledElement="indicarPeritosProcess">
       <extensionElements>
         <activiti:in source="globalPeritos" target="peritos"></activiti:in>
+        <activiti:in source="globalAreaConhecimento" target="areaConhecimento"></activiti:in>
         <activiti:out source="peritosByBM" target="globalPeritosByBM"></activiti:out>
         <activiti:out source="todosPeritos" target="globalTodosPeritos"></activiti:out>
       </extensionElements>
