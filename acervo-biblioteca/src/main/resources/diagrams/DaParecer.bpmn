@@ -166,6 +166,9 @@ println(estadosObraPorPoloTableJson)</script>
     <sequenceFlow id="flow15" sourceRef="daParecerBuscaInformacaoObraFornecedoresCallActivity" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
     <callActivity id="daParecerbuscaExemplaresPoloProcessCallActivity" name="Busca Exemplares por Polo" calledElement="obterExemplaresPoloProcess">
       <extensionElements>
+        <activiti:in source="titulo" target="titulo"></activiti:in>
+        <activiti:in source="autores" target="autores"></activiti:in>
+        <activiti:in source="anoPublicacao" target="anoPublicacao"></activiti:in>
         <activiti:out source="exemplaresPolos" target="exemplaresPolos"></activiti:out>
       </extensionElements>
     </callActivity>
