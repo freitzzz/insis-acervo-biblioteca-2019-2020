@@ -3,12 +3,14 @@ package insis.acervo.listeners;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.DelegateTask;
+import org.activiti.engine.delegate.ExecutionListener;
 import org.activiti.engine.delegate.TaskListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class DaParecerMultiInstanceTaskListener implements TaskListener{
+public class DaParecerExecutionListener implements ExecutionListener {
 	
 	private static final String DECISAO_TO_JOIN_VARIABLE_NAME = "preencheParecerDecisao";
 	
@@ -23,11 +25,11 @@ public class DaParecerMultiInstanceTaskListener implements TaskListener{
 	 */
 	private static final long serialVersionUID = 4L;
 	
-	private static Log LOGGER = LogFactory.getLog(DaParecerMultiInstanceTaskListener.class);
+	private static Log LOGGER = LogFactory.getLog(DaParecerExecutionListener.class);
 	
 	@SuppressWarnings("unchecked")
-	public void notify(DelegateTask delegateTask) {
-		LOGGER.info("Da Parecer Multi Instance Listener starting");
+	public void notify(DelegateExecution execution) {
+		LOGGER.info("Da Parecer Execution Listener starting");
 		
 		List<Boolean> decisoes = new ArrayList<Boolean>();
 		
@@ -35,13 +37,13 @@ public class DaParecerMultiInstanceTaskListener implements TaskListener{
 		
 		int decisoesRecusadas = 0;
 		
-		if(delegateTask.hasVariable(DECISOES_LIST_VARIABLE_NAME)) {
+		if(execution.hasVariable(DECISOES_LIST_VARIABLE_NAME)) {
 			
-			decisoes = (List<Boolean>) delegateTask.getVariable(DECISOES_LIST_VARIABLE_NAME);
+			decisoes = (List<Boolean>) execution.getVariable(DECISOES_LIST_VARIABLE_NAME);
 			
 		}
 		
-		boolean decisaoPerito = delegateTask.getVariable(DECISAO_TO_JOIN_VARIABLE_NAME, Boolean.class);
+		boolean decisaoPerito = execution.getVariable(DECISAO_TO_JOIN_VARIABLE_NAME, Boolean.class);
 		
 		decisoes.add(decisaoPerito);
 		
@@ -55,15 +57,15 @@ public class DaParecerMultiInstanceTaskListener implements TaskListener{
 			
 		}
 		
-		delegateTask.setVariable(DECISOES_ACEITES_VARIABLE_NAME, decisoesAceites);
+		execution.setVariable(DECISOES_ACEITES_VARIABLE_NAME, decisoesAceites);
 		
-		delegateTask.setVariable(DECISOES_RECUSADAS_VARIABLE_NAME, decisoesRecusadas);
+		execution.setVariable(DECISOES_RECUSADAS_VARIABLE_NAME, decisoesRecusadas);
 		
-		delegateTask.setVariable(DECISOES_LIST_VARIABLE_NAME, decisoes);
+		execution.setVariable(DECISOES_LIST_VARIABLE_NAME, decisoes);
 		
 		
 		
-		LOGGER.info("Da Parecer Multi Instance Listener ending");
+		LOGGER.info("Da Parecer Execution Listener ending");
 	}
 
 }
