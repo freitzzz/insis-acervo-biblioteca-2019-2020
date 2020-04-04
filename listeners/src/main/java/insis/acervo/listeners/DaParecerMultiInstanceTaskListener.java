@@ -1,4 +1,4 @@
-package insis.acervo.tl;
+package insis.acervo.listeners;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.activiti.engine.delegate.TaskListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class DaParecerMultiInstanceListener implements TaskListener{
+public class DaParecerMultiInstanceTaskListener implements TaskListener{
 	
 	private static final String DECISAO_TO_JOIN_VARIABLE_NAME = "preencheParecerDecisao";
 	
@@ -23,7 +23,7 @@ public class DaParecerMultiInstanceListener implements TaskListener{
 	 */
 	private static final long serialVersionUID = 4L;
 	
-	private static Log LOGGER = LogFactory.getLog(DaParecerMultiInstanceListener.class);
+	private static Log LOGGER = LogFactory.getLog(DaParecerMultiInstanceTaskListener.class);
 	
 	@SuppressWarnings("unchecked")
 	public void notify(DelegateTask delegateTask) {
