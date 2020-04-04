@@ -208,6 +208,11 @@ function completeTask(data, id) {
           "name": data[i].name,
           "value": data[i].value,
       });
+  } else if (vData[j].type === "dropdown_multi") {
+      variables.push({
+        "name": data[i].name,
+        "value": data[i].value,
+      });
   } else if (vData[j].type === "error_header") {
       variables.push({
           "name": data[i].name,

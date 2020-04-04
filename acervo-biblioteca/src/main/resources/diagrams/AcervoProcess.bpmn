@@ -22,7 +22,7 @@
         <activiti:out source="todosPeritos" target="globalTodosPeritos"></activiti:out>
       </extensionElements>
     </callActivity>
-    <callActivity id="daParecerActivity" name="Dá parecer" calledElement="daParecerMultiInstanceProcess">
+    <callActivity id="daParecerActivity" name="Dá parecer" calledElement="daParecerProcess">
       <extensionElements>
         <activiti:in source="globalTitulo" target="titulo"></activiti:in>
         <activiti:in source="globalAutores" target="autores"></activiti:in>
@@ -30,11 +30,17 @@
         <activiti:in source="globalAreaConhecimento" target="areaConhecimento"></activiti:in>
         <activiti:in source="globalProponenteEmail" target="proponenteEmail"></activiti:in>
         <activiti:in source="globalProponenteTelemovel" target="proponentePhoneNumber"></activiti:in>
-        <activiti:in source="globalTodosPeritos" target="peritos"></activiti:in>
+        <activiti:in source="perito" target="perito"></activiti:in>
         <activiti:out source="decisoes" target="globalDecisoesPeritos"></activiti:out>
         <activiti:out source="aceites" target="globalDecisoesAceitesPeritos"></activiti:out>
         <activiti:out source="recusadas" target="globalDecisoesRecusadasPeritos"></activiti:out>
+        <activiti:executionListener event="complete" class="insis.acervo.DaParecerMultiInstanceListener">
+          <activiti:field name="preencheParecerPerito">
+            <activiti:expression><![CDATA[preencheParecerPerito]]></activiti:expression>
+          </activiti:field>
+        </activiti:executionListener>
       </extensionElements>
+      <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="globalTodosPeritos" activiti:elementVariable="perito"></multiInstanceLoopCharacteristics>
     </callActivity>
     <exclusiveGateway id="daParecerGateway" name="Gateway de dar parecer"></exclusiveGateway>
     <callActivity id="afereDisponibilidadeActivity" name="Afere disponibilidade financeira" calledElement="aferirDisponibilidadeFinanceiraProcess">
@@ -58,7 +64,7 @@
     </callActivity>
     <sequenceFlow id="flow1" sourceRef="propostaAquisicaoObraActivity" targetRef="indicaPeritosActivity"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="indicaPeritosActivity" targetRef="daParecerActivity"></sequenceFlow>
-    <sequenceFlow id="flow3" sourceRef="daParecerActivity" targetRef="daParecerGateway"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="daParecerActivity" targetRef="scripttask1"></sequenceFlow>
     <sequenceFlow id="flow4" sourceRef="daParecerGateway" targetRef="afereDisponibilidadeActivity">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${(globalDecisoesAceitesPeritos / globalTodosPeritos.size()) >= 0.5}]]></conditionExpression>
     </sequenceFlow>
@@ -123,6 +129,10 @@
     <endEvent id="adquireObraEndEvent" name="Fim Adquire Obra"></endEvent>
     <sequenceFlow id="flow17" sourceRef="adquireObraActivity" targetRef="adquireObraEndEvent"></sequenceFlow>
     <sequenceFlow id="flow18" sourceRef="startevent1" targetRef="propostaAquisicaoObraActivity"></sequenceFlow>
+    <scriptTask id="scripttask1" name="Script Task" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>println(execution.getVariables())</script>
+    </scriptTask>
+    <sequenceFlow id="flow19" sourceRef="scripttask1" targetRef="daParecerGateway"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_acervoProcess">
     <bpmndi:BPMNPlane bpmnElement="acervoProcess" id="BPMNPlane_acervoProcess">
@@ -180,6 +190,9 @@
       <bpmndi:BPMNShape bpmnElement="adquireObraEndEvent" id="BPMNShape_adquireObraEndEvent">
         <omgdc:Bounds height="35.0" width="35.0" x="1264.0" y="491.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="scripttask1" id="BPMNShape_scripttask1">
+        <omgdc:Bounds height="55.0" width="105.0" x="310.0" y="290.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
         <omgdi:waypoint x="200.0" y="73.0"></omgdi:waypoint>
         <omgdi:waypoint x="200.0" y="192.0"></omgdi:waypoint>
@@ -189,8 +202,8 @@
         <omgdi:waypoint x="200.0" y="360.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
-        <omgdi:waypoint x="253.0" y="387.0"></omgdi:waypoint>
-        <omgdi:waypoint x="305.0" y="387.0"></omgdi:waypoint>
+        <omgdi:waypoint x="200.0" y="360.0"></omgdi:waypoint>
+        <omgdi:waypoint x="362.0" y="345.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
         <omgdi:waypoint x="325.0" y="407.0"></omgdi:waypoint>
@@ -254,6 +267,10 @@
       <bpmndi:BPMNEdge bpmnElement="flow18" id="BPMNEdge_flow18">
         <omgdi:waypoint x="44.0" y="40.0"></omgdi:waypoint>
         <omgdi:waypoint x="110.0" y="41.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow19" id="BPMNEdge_flow19">
+        <omgdi:waypoint x="362.0" y="345.0"></omgdi:waypoint>
+        <omgdi:waypoint x="325.0" y="367.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

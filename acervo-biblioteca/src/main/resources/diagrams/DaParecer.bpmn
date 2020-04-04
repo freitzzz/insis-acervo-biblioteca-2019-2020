@@ -22,6 +22,9 @@
       <script>import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 
+println("-&gt;&gt;&gt;&gt;&gt;&gt;")
+println(execution.getVariables())
+
 println("** Processo de Dar Parecer **")
 println(fornecedores)
 

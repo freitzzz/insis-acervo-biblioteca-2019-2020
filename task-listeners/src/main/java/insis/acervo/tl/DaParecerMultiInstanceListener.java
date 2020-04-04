@@ -12,7 +12,7 @@ public class DaParecerMultiInstanceListener implements TaskListener{
 	
 	private static final String DECISAO_TO_JOIN_VARIABLE_NAME = "preencheParecerDecisao";
 	
-	private static final String DECISOES_LIST_VARIABLE_NAME = "globalDecisoesPeritos";
+	private static final String DECISOES_LIST_VARIABLE_NAME = "globalTodosPeritos";
 	
 	private static final String DECISOES_ACEITES_VARIABLE_NAME = "globalDecisoesAceitesPeritos";
 	
