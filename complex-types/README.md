@@ -3,8 +3,10 @@
 A maven project that provides a set of complex types to be used on WSO2 User Task forms.
 This set is composed by the following elements:
 
-- Dropdown
+- Single Selection Dropdown
+- Multiple Selection Dropdown
 - Table
+- Error Header
 
 
 ## Steps
@@ -18,7 +20,8 @@ This set is composed by the following elements:
     ...
     <property name="customFormTypes">
         <list>
-            <bean class="insis.acervo.DropdownFormType"/>
+            <bean class="insis.acervo.SingleSelectionDropdownFormType"/>
+            <bean class="insis.acervo.MultiSelectionDropdownFormType"/>
             <bean class="insis.acervo.TableFormType"/>
             <bean class="insis.acervo.ErrorHeaderFormType"/>
         </list>
@@ -36,7 +39,9 @@ function generateForm(data, disabled) {
         } else if (data[i].type == "table") {
             formContent += genTable(data[i], disabled);
         } else if (data[i].type == "dropdown") {
-            formContent += genDropdown(data[i], disabled);
+            formContent += genSingleSelectionDropdown(data[i], disabled);
+        } else if (data[i].type == "dropdown_multi") {
+            formContent += genMultiSelectionDropdown(data[i], disabled);
         } else if (data[i].type == "error_header") {
             formContent += genErrorHeader(data[i], disabled);
         }
@@ -105,46 +110,61 @@ function genTable(data, disabled) {
     return content;
 }
 
-function genDropdown(data, disabled) {
-  var content = "<tr>";
-  var values = JSON.parse(data.value)
-  content += "<td style='padding-right:15px; padding-top:10px;'>";
-  content += data.name + ": ";
-  content += "</td><td style='padding-top:10px'>";
-  if (disabled == true || data.writable == false) {
-      content += "<select name=\"" + Encode.forHtml(data.id) + "\" class=\"form-control\" disabled=\"true\">";
-      for (var i = 0; i < values.length; i++) {
-          var selected = '';
-          if (data.value == values[i].name) {
-              selected = 'selected';
-          }
-          content += "<option value=\"" + Encode.forHtml(values[i].id) + "\" " + selected + ">" + Encode.forHtml(values[i].name) + "</option>"
-      }
-  } else {
-      if (data.required == true) {
-          content += "<select name=\"" + Encode.forHtml(data.id) + "\" class=\"form-control\" required>";
-          for (var i = 0; i < values.length; i++) {
-              var selected = '';
-              if (data.value == values[i].name) {
-                  selected = 'selected';
-              }
-              content += "<option value=\"" + Encode.forHtml(values[i].id) + "\" " + selected + ">" + Encode.forHtml(values[i].name) + "</option>"
-          }
-      }
-      else {
-          content += "<select name=\"" + Encode.forHtml(data.id) + "\" class=\"form-control\">";
-          for (var i = 0; i < values.length; i++) {
-              var selected = '';
-              if (data.value == values[i].name) {
-                  selected = 'selected';
-              }
-              content += "<option value=\"" + Encode.forHtml(values[i].id) + "\" " + selected + ">" + Encode.forHtml(values[i].name) + "</option>"
-          }
-      }
-  }
-  content += "</select></td></tr>";
+function genSingleSelectionDropdown(data, disabled) {
+    var content = "<tr>";
+    var values = JSON.parse(data.value)
+    content += "<td style='padding-right:15px; padding-top:10px;'>";
+    content += data.name + ": ";
+    content += "</td><td style='padding-top:10px'>";
+    content += '<div class="dropdown bootstrap-select show-tick w-100">';
+    content += '<select data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100" tabindex="-98" data-live-search="true" ';
 
-  return content;
+    if (data.required == true) {
+        content += 'required>';
+    }
+
+    for (var i = 0; i < values.length; i++) {
+        content += "<option value=\"" + Encode.forHtml(values[i].id) + "\" " + ">" + Encode.forHtml(values[i].name) + "</option>"
+    }
+
+    content += '</select>';
+
+    content += '</div>';
+
+    content += '</td>';
+
+    content += '</tr>';
+
+    return content;
+}
+
+
+function genMultiSelectionDropdown(data, disabled) {
+    var content = "<tr>";
+    var values = JSON.parse(data.value)
+    content += "<td style='padding-right:15px; padding-top:10px;'>";
+    content += data.name + ": ";
+    content += "</td><td style='padding-top:10px'>";
+    content += '<div class="dropdown bootstrap-select show-tick w-100">';
+    content += '<select multiple="" data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100" tabindex="-98" multiple data-live-search="true" ';
+
+    if (data.required == true) {
+        content += 'required>';
+    }
+
+    for (var i = 0; i < values.length; i++) {
+        content += "<option value=\"" + Encode.forHtml(values[i].id) + "\" " + ">" + Encode.forHtml(values[i].name) + "</option>"
+    }
+
+    content += '</select>';
+
+    content += '</div>';
+
+    content += '</td>';
+
+    content += '</tr>';
+
+    return content;
 }
 
 function genErrorHeader(data, disabled) {
