@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.activiti.engine.delegate.DelegateExecution;
-import org.activiti.engine.delegate.DelegateTask;
 import org.activiti.engine.delegate.ExecutionListener;
 import org.activiti.engine.delegate.Expression;
-import org.activiti.engine.delegate.TaskListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
