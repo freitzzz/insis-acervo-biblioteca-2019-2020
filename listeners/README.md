@@ -5,6 +5,7 @@ This set is composed by the following elements:
 
 - SampleTaskListener
 - DaParecerExecutionListener
+- ObtainPeritosListener
 
 
 ## Steps
