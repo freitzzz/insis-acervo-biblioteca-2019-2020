@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
-  <process id="proporAquisicaoProcess" name="Processo de Propor Aquisição" isExecutable="true">
-    <startEvent id="proporAquisicaoStartEvent" name="Propor Aquisição Start Event" activiti:initiator="proponente"></startEvent>
+  <process id="proporAquisicaoProcess" name="Processo de Propor Aquisição" isExecutable="true" activiti:candidateStarterGroups="proponente">
+    <startEvent id="proporAquisicaoStartEvent" name="Propor Aquisição Start Event"></startEvent>
     <userTask id="proporAquisicaoFlowNormalUserTask" name="Propõe Aquisição de Obra (Flow Normal)" activiti:candidateGroups="proponente">
       <extensionElements>
         <activiti:formProperty id="errorHeader" name="Error Header" type="error_header" variable="errorHeader" writable="false"></activiti:formProperty>
@@ -13,6 +13,7 @@
         <activiti:formProperty id="peritos" name="Indique pelo menos dois peritos dos quais a obra vai ser avaliada (separados por ; )" type="string" required="true"></activiti:formProperty>
         <activiti:formProperty id="email" name="Email" type="string" required="true"></activiti:formProperty>
         <activiti:formProperty id="telefone" name="Número de Telefone" type="string" required="true"></activiti:formProperty>
+        <activiti:taskListener event="assignment" class="insis.acervo.listeners.ObtainPeritosListener"></activiti:taskListener>
       </extensionElements>
     </userTask>
     <parallelGateway id="proporAquisicaoBuscarInformacaoParallelGatewayStart" name="Buscar Informação Parallel Gateway Start"></parallelGateway>
