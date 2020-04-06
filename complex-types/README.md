@@ -111,17 +111,18 @@ function genTable(data, disabled) {
 }
 
 function genSingleSelectionDropdown(data, disabled) {
-    var content = "<tr>";
-    var values = JSON.parse(data.value)
-    content += "<td style='padding-right:15px; padding-top:10px;'>";
+    var content = "<div class='small-med'>";
+    content += "<div class='small-col' style='padding-right:15px; padding-top:10px;'>";
     content += data.name + ": ";
-    content += "</td><td style='padding-top:10px'>";
+    content += "</div><div class='small-col' style='padding-top:10px'>";
     content += '<div class="dropdown bootstrap-select show-tick w-100">';
-    content += '<select data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100" tabindex="-98" data-live-search="true" ';
+    content += '<select name=\"' + Encode.forHtml(data.id) + '\" data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100" tabindex="-98" data-live-search="true" ';
 
     if (data.required == true) {
         content += 'required>';
     }
+
+    var values = JSON.parse(data.value)
 
     for (var i = 0; i < values.length; i++) {
         content += "<option value=\"" + Encode.forHtml(values[i].id) + "\" " + ">" + Encode.forHtml(values[i].name) + "</option>"
@@ -131,26 +132,26 @@ function genSingleSelectionDropdown(data, disabled) {
 
     content += '</div>';
 
-    content += '</td>';
+    content += '</div>';
 
-    content += '</tr>';
+    content += '</div>';
 
     return content;
 }
 
-
 function genMultiSelectionDropdown(data, disabled) {
-    var content = "<tr>";
-    var values = JSON.parse(data.value)
-    content += "<td style='padding-right:15px; padding-top:10px;'>";
+    var content = "<div class='small-med'>";
+    content += "<div class='small-col' style='padding-right:15px; padding-top:10px;'>";
     content += data.name + ": ";
-    content += "</td><td style='padding-top:10px'>";
+    content += "</div><div class='small-col' style='padding-top:10px'>";
     content += '<div class="dropdown bootstrap-select show-tick w-100">';
-    content += '<select multiple="" data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100" tabindex="-98" multiple data-live-search="true" ';
+    content += '<select name=\"' + Encode.forHtml(data.id) + '\" multiple="" data-style="bg-white rounded-pill px-4 py-3 shadow-sm " class="selectpicker w-100" tabindex="-98" multiple data-live-search="true" ';
 
     if (data.required == true) {
         content += 'required>';
     }
+
+	var values = JSON.parse(data.value)
 
     for (var i = 0; i < values.length; i++) {
         content += "<option value=\"" + Encode.forHtml(values[i].id) + "\" " + ">" + Encode.forHtml(values[i].name) + "</option>"
@@ -160,9 +161,9 @@ function genMultiSelectionDropdown(data, disabled) {
 
     content += '</div>';
 
-    content += '</td>';
+    content += '</div>';
 
-    content += '</tr>';
+    content += '</div>';
 
     return content;
 }
