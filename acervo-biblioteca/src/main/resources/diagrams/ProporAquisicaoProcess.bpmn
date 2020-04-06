@@ -10,7 +10,7 @@
         <activiti:formProperty id="anoPublicacao" name="Ano de Publicação" type="long" datePattern="yyyy" required="true"></activiti:formProperty>
         <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="dropdown" variable="areasConhecimentoData" required="true"></activiti:formProperty>
         <activiti:formProperty id="polo" name="Polo" type="dropdown" variable="polosData" required="true"></activiti:formProperty>
-        <activiti:formProperty id="peritos" name="Indique pelo menos dois peritos dos quais a obra vai ser avaliada (separados por ; )" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="peritos" name="Selecione pelo menos dois peritos dos quais a obra vai ser avaliada" type="dropdown_multi" variable="peritosData" default="[]" required="true"></activiti:formProperty>
         <activiti:formProperty id="email" name="Email" type="string" required="true"></activiti:formProperty>
         <activiti:formProperty id="telefone" name="Número de Telefone" type="string" required="true"></activiti:formProperty>
         <activiti:taskListener event="assignment" class="insis.acervo.listeners.ObtainPeritosListener"></activiti:taskListener>
