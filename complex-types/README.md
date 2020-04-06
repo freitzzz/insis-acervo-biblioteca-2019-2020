@@ -191,35 +191,53 @@ function genErrorHeader(data, disabled) {
 
 ```
 function completeTask(data, id) {
-  document.getElementById("completeButton").style.display = 'none';
-  document.getElementById("loadingCompleteButton").hidden = false;
-  ...
-  } else if (vData[j].type === "enum") {
-      variables.push({
-          "name": data[i].name,
-          "value": data[i].value,
-      });
-  } else if (vData[j].type === "table") {
-      variables.push({
-          "name": data[i].name,
-          "value": data[i].value,
-      });
-  } else if (vData[j].type === "dropdown") {
-      variables.push({
-          "name": data[i].name,
-          "value": data[i].value,
-      });
-  } else if (vData[j].type === "dropdown_multi") {
-      variables.push({
+    let cleanDataArray = [];
+
+    for (let i = 0; i < data.length; i++) {
+        let parcel = data[i];
+        let hasAlreadyInsertParcel = cleanDataArray.findIndex((value) => value.name == parcel.name) != -1
+        if (!hasAlreadyInsertParcel) {
+            for (let j = i + 1; j < data.length; j++) {
+                let nextParcel = data[j];
+
+                if (parcel.name === nextParcel.name) {
+                    parcel.value = parcel.value.concat(',').concat(nextParcel.value);
+                }
+            }
+            cleanDataArray.push(parcel);
+        }
+    }
+
+    data = cleanDataArray;
+    document.getElementById("completeButton").style.display = 'none';
+    document.getElementById("loadingCompleteButton").hidden = false;
+    ...
+    } else if (vData[j].type === "enum") {
+        variables.push({
+            "name": data[i].name,
+            "value": data[i].value,
+        });
+    } else if (vData[j].type === "table") {
+        variables.push({
+            "name": data[i].name,
+            "value": data[i].value,
+        });
+    } else if (vData[j].type === "dropdown") {
+        variables.push({
+            "name": data[i].name,
+            "value": data[i].value,
+        });
+    } else if (vData[j].type === "dropdown_multi") {
+        variables.push({
         "name": data[i].name,
         "value": data[i].value,
-      });
-  } else if (vData[j].type === "error_header") {
-      variables.push({
-          "name": data[i].name,
-          "value": data[i].value,
-      });
-  }
-  ...
+        });
+    } else if (vData[j].type === "error_header") {
+        variables.push({
+            "name": data[i].name,
+            "value": data[i].value,
+        });
+    }
+    ...
 }
 ```
