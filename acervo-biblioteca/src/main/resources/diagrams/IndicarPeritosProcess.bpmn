@@ -14,15 +14,13 @@
     <scriptTask id="indicarPeritosPreparaDadosFormScriptTask" name="Prepara Dados Form" scriptFormat="groovy" activiti:autoStoreVariables="false">
       <script>import groovy.json.JsonBuilder
 
-def peritosSplit = peritos.split(";")
-
 def peritosHeaders = ["Nome"]
 
 def peritosRows = []
 
-for(int i = 0; i &lt; peritosSplit.length;i++) {
+for(int i = 0; i &lt; peritos.size();i++) {
 
-	peritosRows.add([peritosSplit[i]])
+	peritosRows.add([peritos[i]])
 
 }
 

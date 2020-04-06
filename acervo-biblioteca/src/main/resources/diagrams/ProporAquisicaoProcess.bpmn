@@ -104,7 +104,15 @@ Mapeia polo e area de conhecimento selecionados (guardar nome e não posição n
       <script>import groovy.json.JsonSlurper
 import groovy.json.JsonSlurper
 
+println("###### GLOBAIS ######")
 
+println(execution.getVariables())
+
+println("###### LOCAIS ######")
+
+println(execution.getVariablesLocal())
+
+println("######  ######")
 // valida peritos
 
 println(peritos)
@@ -158,9 +166,9 @@ for(int i = 0; i &lt; peritosSplit.size(); i++){
 
 	println(peritosSplit[i])
 
-	println(peritosData.get((peritosSplit[i] as Integer) - 1))
+	println(peritosData.get((peritosSplit[i] as Integer)))
 
-	def peritoSelected = new JsonSlurper().parseText(peritosData.get((peritosSplit[i] as Integer) - 1))
+	def peritoSelected = new JsonSlurper().parseText(peritosData.get((peritosSplit[i] as Integer)))
 
 	println("peritoSelected: " + peritoSelected)
 
@@ -286,14 +294,14 @@ execution.setVariable('peritos', peritosList)</script>
         <omgdi:waypoint x="1170.0" y="194.0"></omgdi:waypoint>
         <omgdi:waypoint x="1310.0" y="194.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="48.0" width="97.0" x="1179.0" y="209.0"></omgdc:Bounds>
+          <omgdc:Bounds height="13.0" width="97.0" x="1179.0" y="209.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="proporAquisicaoInformacaoNaoValidada" id="BPMNEdge_proporAquisicaoInformacaoNaoValidada">
         <omgdi:waypoint x="1098.0" y="356.0"></omgdi:waypoint>
         <omgdi:waypoint x="995.0" y="356.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="48.0" width="100.0" x="1109.0" y="412.0"></omgdc:Bounds>
+          <omgdc:Bounds height="39.0" width="100.0" x="1109.0" y="412.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">
