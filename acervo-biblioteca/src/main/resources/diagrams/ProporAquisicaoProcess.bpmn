@@ -102,7 +102,6 @@ execution.setVariable('areasConhecimentoData', areasConhecimentoValuesJsonString
       <documentation>Valida Informação inserida no form
 Mapeia polo e area de conhecimento selecionados (guardar nome e não posição no array)</documentation>
       <script>import groovy.json.JsonSlurper
-import groovy.json.JsonSlurper
 
 
 // valida peritos
@@ -146,7 +145,7 @@ def peritosList = [];
 
 for(int i = 0; i &lt; peritosSplit.size(); i++){
 
-	def peritoSelected = new JsonSlurper().parseText(peritosData.get((peritosSplit[i] as Integer) - 1))
+	def peritoSelected = new JsonSlurper().parseText(peritosData.find { new JsonSlurper().parseText(it).id == (peritosSplit[i] as Integer)} )
 
 	def peritoSelectedName = peritoSelected.get('name')
 
