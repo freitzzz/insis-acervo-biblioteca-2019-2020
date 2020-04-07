@@ -19,26 +19,31 @@ public class ObtainPeritosListener implements TaskListener {
 	private static final long serialVersionUID = 1L;
 
 	private static final String ASSIGNEE = "assignee";
+	private static final String PERITOS_VARIABLE_NAME = "peritos";
 	private static final String PERITOS_LIST_VARIABLE_NAME = "peritosData";
 
-	private static Log log = LogFactory.getLog(ObtainPeritosListener.class);
+	private static Log LOGGER = LogFactory.getLog(ObtainPeritosListener.class);
 
 	public Expression variableNameExpression;
 
 	public void notify(DelegateTask delegateTask) {
-		log.info("Looking for peritos...");
+		LOGGER.info("Looking for peritos...");
 
 		String assignee = delegateTask.getAssignee();
 		
 		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
 
+		@SuppressWarnings("unchecked")
+		// If this is not empty, then the task is to indicate peritos by some bibliotecario_mor
+		List<String> globalPeritos = (List<String>) delegateTask.getExecution().getVariable(PERITOS_VARIABLE_NAME);
+		
 		List<User> users = processEngine.getIdentityService().createUserQuery().orderByUserId().asc().list();
 
 		if (users != null && !users.isEmpty()) {
 			List<String> registeredUsers = new ArrayList<String>();
 
 			for (int i = 0; i < users.size(); i++) {
-				if (!StringUtils.equals(users.get(i).getId(), assignee)) {
+				if (!StringUtils.equals(users.get(i).getId(), assignee) && !isPeritoAlreadySelected(globalPeritos, users.get(i).getId())) {
 
 					JSONObject jo = new JSONObject();
 					jo.put("id", i);
@@ -50,14 +55,21 @@ public class ObtainPeritosListener implements TaskListener {
 			}
 
 			delegateTask.getExecution().setVariable(PERITOS_LIST_VARIABLE_NAME, registeredUsers);
-			log.info(String.format("%s: %s", PERITOS_LIST_VARIABLE_NAME,
+			LOGGER.info(String.format("%s: %s", PERITOS_LIST_VARIABLE_NAME,
 					delegateTask.getExecution().getVariable(PERITOS_LIST_VARIABLE_NAME)));
 
 		} else {
-			log.warn("There is no peritos");
+			LOGGER.warn("There is no peritos");
 		}
 
 		delegateTask.setVariable(ASSIGNEE, assignee);
+	}
+	
+	private boolean isPeritoAlreadySelected(List<String> peritos, String peritoName) {
+		if(peritos != null && !peritos.isEmpty()) {
+			return peritos.contains(peritoName);
+		}
+		return false;
 	}
 
 }
