@@ -32,7 +32,7 @@ def peritosTableJson = new JsonBuilder(peritosTable).toPrettyString()
 execution.setVariableLocal('peritosTableJson', peritosTableJson)</script>
     </scriptTask>
     <sequenceFlow id="flow3" sourceRef="indicarPeritosStartEvent" targetRef="indicarPeritosPreparaDadosFormScriptTask"></sequenceFlow>
-    <scriptTask id="indicarPeritosJuntaPeritosNumaVariavel" name="Junta Peritos Numa Variavel" scriptFormat="groovy" activiti:autoStoreVariables="false">
+    <scriptTask id="indicarPeritosJuntaPeritosNumaVariavelScriptTask" name="Junta Peritos Numa Variavel" scriptFormat="groovy" activiti:autoStoreVariables="false">
       <script>
 import groovy.json.JsonSlurper
 
@@ -42,7 +42,7 @@ def peritosBMSplit = peritosByBM.split(",")
 
 for(int i = 0; i &lt; peritosBMSplit.size(); i++){
 
-	def peritoSelected = new JsonSlurper().parseText(peritosData.get((peritosBMSplit[i] as Integer) - 1))
+    def peritoSelected = new JsonSlurper().parseText(peritosData.find { new JsonSlurper().parseText(it).id == (peritosBMSplit[i] as Integer)} )
 
 	def peritoSelectedName = peritoSelected.get('name')
 
@@ -54,8 +54,8 @@ println(todosPeritos)
 
 execution.setVariable('todosPeritos', todosPeritos)</script>
     </scriptTask>
-    <sequenceFlow id="flow4" sourceRef="indicarPeritosUserTask" targetRef="indicarPeritosJuntaPeritosNumaVariavel"></sequenceFlow>
-    <sequenceFlow id="flow5" sourceRef="indicarPeritosJuntaPeritosNumaVariavel" targetRef="indicarPeritosEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="indicarPeritosUserTask" targetRef="indicarPeritosJuntaPeritosNumaVariavelScriptTask"></sequenceFlow>
+    <sequenceFlow id="flow5" sourceRef="indicarPeritosJuntaPeritosNumaVariavelScriptTask" targetRef="indicarPeritosEndEvent"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_indicarPeritosProcess">
     <bpmndi:BPMNPlane bpmnElement="indicarPeritosProcess" id="BPMNPlane_indicarPeritosProcess">
@@ -71,7 +71,7 @@ execution.setVariable('todosPeritos', todosPeritos)</script>
       <bpmndi:BPMNShape bpmnElement="indicarPeritosPreparaDadosFormScriptTask" id="BPMNShape_indicarPeritosPreparaDadosFormScriptTask">
         <omgdc:Bounds height="61.0" width="121.0" x="250.0" y="187.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="indicarPeritosJuntaPeritosNumaVariavel" id="BPMNShape_indicarPeritosJuntaPeritosNumaVariavel">
+      <bpmndi:BPMNShape bpmnElement="indicarPeritosJuntaPeritosNumaVariavelScriptTask" id="BPMNShape_indicarPeritosJuntaPeritosNumaVariavelScriptTask">
         <omgdc:Bounds height="71.0" width="118.0" x="670.0" y="182.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
