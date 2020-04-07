@@ -6,7 +6,8 @@
       <extensionElements>
         <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="peritos" name="Peritos indicados pelo Proponente" type="table" variable="peritosTableJson" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="peritosByBM" name="Peritos" type="string" required="true"></activiti:formProperty>
+        <activiti:formProperty id="peritosByBM" name="Peritos" type="dropdown_multi" variable="peritosData" default="[]" required="true"></activiti:formProperty>
+        <activiti:taskListener event="assignment" class="insis.acervo.listeners.ObtainPeritosListener"></activiti:taskListener>
       </extensionElements>
     </userTask>
     <sequenceFlow id="flow1" sourceRef="indicarPeritosPreparaDadosFormScriptTask" targetRef="indicarPeritosUserTask"></sequenceFlow>
@@ -32,22 +33,20 @@ execution.setVariableLocal('peritosTableJson', peritosTableJson)</script>
     </scriptTask>
     <sequenceFlow id="flow3" sourceRef="indicarPeritosStartEvent" targetRef="indicarPeritosPreparaDadosFormScriptTask"></sequenceFlow>
     <scriptTask id="indicarPeritosJuntaPeritosNumaVariavel" name="Junta Peritos Numa Variavel" scriptFormat="groovy" activiti:autoStoreVariables="false">
-      <script>def todosPeritos = []
+      <script>
+import groovy.json.JsonSlurper
 
-def peritosSplit = peritos.split(";")
+def todosPeritos = peritos
 
-def peritosBMSplit = peritosByBM.split(";")
+def peritosBMSplit = peritosByBM.split(",")
 
-for(int i = 0; i &lt; peritosSplit.length; i++) {
+for(int i = 0; i &lt; peritosBMSplit.size(); i++){
 
-	todosPeritos.add(peritosSplit[i].replaceAll("\\s+", ""))
+	def peritoSelected = new JsonSlurper().parseText(peritosData.get((peritosBMSplit[i] as Integer) - 1))
 
-}
+	def peritoSelectedName = peritoSelected.get('name')
 
-for(int i = 0; i &lt; peritosBMSplit.length; i++) {
-
-	todosPeritos.add(peritosBMSplit[i].replaceAll("\\s+", ""))
-
+	todosPeritos.add(peritoSelectedName);
 }
 
 println("Todos Peritos")
@@ -67,13 +66,13 @@ execution.setVariable('todosPeritos', todosPeritos)</script>
         <omgdc:Bounds height="61.0" width="171.0" x="430.0" y="187.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="indicarPeritosEndEvent" id="BPMNShape_indicarPeritosEndEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="640.0" y="200.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="860.0" y="200.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="indicarPeritosPreparaDadosFormScriptTask" id="BPMNShape_indicarPeritosPreparaDadosFormScriptTask">
         <omgdc:Bounds height="61.0" width="121.0" x="250.0" y="187.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="indicarPeritosJuntaPeritosNumaVariavel" id="BPMNShape_indicarPeritosJuntaPeritosNumaVariavel">
-        <omgdc:Bounds height="71.0" width="118.0" x="457.0" y="300.0"></omgdc:Bounds>
+        <omgdc:Bounds height="71.0" width="118.0" x="670.0" y="182.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
         <omgdi:waypoint x="371.0" y="217.0"></omgdi:waypoint>
@@ -84,13 +83,13 @@ execution.setVariable('todosPeritos', todosPeritos)</script>
         <omgdi:waypoint x="250.0" y="217.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
-        <omgdi:waypoint x="515.0" y="248.0"></omgdi:waypoint>
-        <omgdi:waypoint x="516.0" y="300.0"></omgdi:waypoint>
+        <omgdi:waypoint x="601.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="670.0" y="217.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
-        <omgdi:waypoint x="575.0" y="335.0"></omgdi:waypoint>
-        <omgdi:waypoint x="657.0" y="335.0"></omgdi:waypoint>
-        <omgdi:waypoint x="657.0" y="235.0"></omgdi:waypoint>
+        <omgdi:waypoint x="788.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="821.0" y="217.0"></omgdi:waypoint>
+        <omgdi:waypoint x="860.0" y="217.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
