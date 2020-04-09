@@ -68,6 +68,7 @@ execution.setVariable('fornecedorMaisBaratoTable', fornecedorMaisBaratoTableJson
           <activiti:value id="true" name="Aceita"></activiti:value>
           <activiti:value id="false" name="Rejeita"></activiti:value>
         </activiti:formProperty>
+        <activiti:formProperty id="comentario" name="Comentário" type="string"></activiti:formProperty>
       </extensionElements>
     </userTask>
     <sequenceFlow id="flow4" sourceRef="aferirDisponibilidadeFinanceiraVerificarDisponibilidadeFinanceiraUserTask" targetRef="aferirDisponibilidadeFinanceiraEndEvent"></sequenceFlow>
