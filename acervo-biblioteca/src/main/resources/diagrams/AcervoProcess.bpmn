@@ -99,7 +99,7 @@
     <sequenceFlow id="flow9" sourceRef="elaboraPADActivity" targetRef="decidePADActivity"></sequenceFlow>
     <sequenceFlow id="flow10" sourceRef="decidePADActivity" targetRef="decidePADGateway"></sequenceFlow>
     <sequenceFlow id="flow11" sourceRef="decidePADGateway" targetRef="elaboraPADActivity">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalPADAprovado == 'false'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalPADAprovado == 'false' && globalLimitePADRecusados == 'false'}]]></conditionExpression>
     </sequenceFlow>
     <callActivity id="adquireObraActivity" name="Adquire obra" calledElement="adquirirObraProcess">
       <extensionElements>
