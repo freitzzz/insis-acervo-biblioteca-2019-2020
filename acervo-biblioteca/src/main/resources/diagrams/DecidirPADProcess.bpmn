@@ -29,7 +29,7 @@
         <activiti:in source="userEmail" target="userEmail"></activiti:in>
         <activiti:in source="userPhoneNumber" target="userPhoneNumber"></activiti:in>
         <activiti:in sourceExpression="Decisão PAD" target="subject"></activiti:in>
-        <activiti:in sourceExpression="O pedido de autorização de despesa (PAD) foi recusado" target="message"></activiti:in>
+        <activiti:in sourceExpression="&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&lt;title&gt;Decisão PAD&lt;/title&gt;&lt;/head&gt;&lt;body&gt;O pedido de autorização de despesa (PAD) foi &lt;b&gt;recusado&lt;/b&gt;&lt;br&gt;Comentário: ${comentario}&lt;br&gt;&lt;/body&gt;&lt;/html&gt;" target="message"></activiti:in>
       </extensionElements>
     </callActivity>
     <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
