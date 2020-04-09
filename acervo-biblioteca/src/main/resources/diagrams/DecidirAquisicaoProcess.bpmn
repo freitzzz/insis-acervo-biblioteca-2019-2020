@@ -16,6 +16,7 @@
       <extensionElements>
         <activiti:formProperty id="informacaoExemplaresPolo" name="Exemplares por Polo" type="table" variable="exemplaresPolos" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="fornecedores" name="Informação Fornecedores" type="table" variable="fornecedores" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="disponibilidadeFinanceiraComentario" name="Comentário da Disponibilidade Financeira" type="string" variable="disponibilidadeFinanceiraComentario" writable="false"></activiti:formProperty>
         <activiti:formProperty id="aquisicaoAprovada" name="Decisão da Aquisição" type="enum" required="true">
           <activiti:value id="true" name="Aceitar"></activiti:value>
           <activiti:value id="false" name="Recusar"></activiti:value>
