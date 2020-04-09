@@ -4,7 +4,7 @@ A maven project that provides a set of classes that implement listeners to be in
 This set is composed by the following elements:
 
 - SampleTaskListener
-- DaParecerExecutionListener
+- DaParecerTaskListener
 - ObtainPeritosListener
 - DecidePADExecutionListener
 
