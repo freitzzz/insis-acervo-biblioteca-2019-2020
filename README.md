@@ -1,7 +1,7 @@
 # Acervo Biblioteca #
 
 ## Diagrama de Casos de Uso
-![UseCaseDiagram](diagrams/UseCaseDiagram.png)
+![Use Case Diagram](diagrams/UseCaseDiagram.png)
 
 ## Diagrama de Processos de Negócio
-![UseCaseDiagram](diagrams/BusinessProcessDiagram.png)
+![Business Process Diagram](diagrams/BusinessProcessDiagram.png)
