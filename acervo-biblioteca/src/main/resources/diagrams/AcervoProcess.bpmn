@@ -50,6 +50,7 @@
         <activiti:in source="globalAnoPublicacao" target="anoPublicacao"></activiti:in>
         <activiti:out source="disponibilidadeFinanceira" target="globalDisponibilidadeFinanceira"></activiti:out>
         <activiti:out source="fornecedorMaisBaratoTable" target="globalFornecedorMelhorPreco"></activiti:out>
+        <activiti:out source="comentario" target="globalDisponibilidadeFinanceiraComentario"></activiti:out>
       </extensionElements>
     </callActivity>
     <callActivity id="decideAquisicaoActivity" name="Decide aquisição" calledElement="decidirAquisicaoProcess">
