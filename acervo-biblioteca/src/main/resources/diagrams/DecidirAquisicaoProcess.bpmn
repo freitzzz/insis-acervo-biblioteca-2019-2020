@@ -20,6 +20,7 @@
           <activiti:value id="true" name="Aceitar"></activiti:value>
           <activiti:value id="false" name="Recusar"></activiti:value>
         </activiti:formProperty>
+        <activiti:formProperty id="comentario" name="Comentário" type="string"></activiti:formProperty>
       </extensionElements>
     </userTask>
     <endEvent id="decidirAquisicaoEndEvent" name="Decidir Aquisição End Event"></endEvent>
