@@ -41,7 +41,14 @@
     <sequenceFlow id="flow8" sourceRef="exclusivegateway1" targetRef="decidirAquisicaoEnviarNotificacaoProponenteAceiteCallActivity">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${aquisicaoAprovada == 'true'}]]></conditionExpression>
     </sequenceFlow>
-    <callActivity id="decidirAquisicaoEnviarNotificacaoProponenteRecusadaCallActivity" name="Enviar Notificação ao Proponente acerca da Decisão (recusada)" calledElement="enviaNotificacaoUtilizadorProcess"></callActivity>
+    <callActivity id="decidirAquisicaoEnviarNotificacaoProponenteRecusadaCallActivity" name="Enviar Notificação ao Proponente acerca da Decisão (recusada)" calledElement="enviaNotificacaoUtilizadorProcess">
+     <extensionElements>
+        <activiti:in source="userEmail" target="userEmail"></activiti:in>
+        <activiti:in source="userPhoneNumber" target="userPhoneNumber"></activiti:in>
+        <activiti:in sourceExpression="Decisão da Aquisição" target="subject"></activiti:in>
+        <activiti:in sourceExpression="&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&lt;title&gt;Decisão da Aquisição&lt;/title&gt;&lt;/head&gt;&lt;body&gt;O sua proposta de aquisição de obra foi &lt;b&gt;recusada&lt;/b&gt;&lt;br&gt;Comentário: ${comentario}&lt;br&gt;&lt;/body&gt;&lt;/html&gt;" target="message"></activiti:in>
+      </extensionElements>
+    </callActivity>
     <sequenceFlow id="flow9" sourceRef="exclusivegateway1" targetRef="decidirAquisicaoEnviarNotificacaoProponenteRecusadaCallActivity">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${aquisicaoAprovada == 'false'}]]></conditionExpression>
     </sequenceFlow>
