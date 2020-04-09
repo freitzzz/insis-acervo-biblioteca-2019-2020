@@ -17,6 +17,12 @@
     <sequenceFlow id="flow5" sourceRef="adquirirObraIniciaRecolhaObraUserTask" targetRef="parallelgateway1"></sequenceFlow>
     <userTask id="adquirirObraConfirmaRecolhaObraUserTask" name="Confirma Recolha de Obra" activiti:assignee="${initiator}">
       <documentation>Confirmação da Recolha</documentation>
+      <extensionElements>
+        <activiti:formProperty id="aquisicao" name="Recolha" type="enum" required="true">
+          <activiti:value id="true" name="Concluída"></activiti:value>
+          <activiti:value id="false" name="Cancelada"></activiti:value>
+        </activiti:formProperty>
+      </extensionElements>
     </userTask>
     <parallelGateway id="parallelgateway1" name="Parallel Gateway"></parallelGateway>
     <sequenceFlow id="flow6" sourceRef="parallelgateway1" targetRef="adquirirObraAdquireObraServiceTask"></sequenceFlow>
