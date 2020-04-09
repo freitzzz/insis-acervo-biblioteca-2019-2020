@@ -1,22 +1,25 @@
 package insis.acervo.listeners;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.delegate.DelegateExecution;
+import org.activiti.engine.delegate.DelegateTask;
 import org.activiti.engine.delegate.ExecutionListener;
 import org.activiti.engine.delegate.Expression;
+import org.activiti.engine.delegate.TaskListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class DaParecerExecutionListener implements ExecutionListener {
+public class DaParecerTaskListener implements TaskListener {
 	
 	private static final String ACERVO_PROCESS_INSTANCE_ID = "acervoProcessInstanceId";
 	
 	private static final String DECISAO_TO_JOIN_VARIABLE_NAME = "preencheParecerDecisao";
 	
-	private static final String DECISOES_LIST_VARIABLE_NAME = "globalTodosPeritos";
+	private static final String DECISOES_LIST_VARIABLE_NAME = "globalDecisaoPeritos";
 	
 	private static final String DECISOES_ACEITES_VARIABLE_NAME = "globalDecisoesAceitesPeritos";
 	
@@ -29,10 +32,10 @@ public class DaParecerExecutionListener implements ExecutionListener {
 	 */
 	private static final long serialVersionUID = 4L;
 	
-	private static Log LOGGER = LogFactory.getLog(DaParecerExecutionListener.class);
+	private static Log LOGGER = LogFactory.getLog(DaParecerTaskListener.class);
 	
 	@SuppressWarnings("unchecked")
-	public void notify(DelegateExecution execution) {
+	public void notify(DelegateTask execution) {
 		LOGGER.info("Da Parecer Execution Listener starting");
 		
 		List<Boolean> decisoes = new ArrayList<Boolean>();
@@ -43,7 +46,7 @@ public class DaParecerExecutionListener implements ExecutionListener {
 		
 		LOGGER.info("Variables initialized");
 		
-		RuntimeService runtimeService = execution.getEngineServices().getRuntimeService();
+		RuntimeService runtimeService = execution.getExecution().getEngineServices().getRuntimeService();
 		
 		String processInstanceId = (String)execution.getVariable(ACERVO_PROCESS_INSTANCE_ID);
 		
@@ -53,15 +56,21 @@ public class DaParecerExecutionListener implements ExecutionListener {
 			
 			LOGGER.info(runtimeService.getVariables(processInstanceId));
 			
-			decisoes = (List<Boolean>) runtimeService.getVariable(processInstanceId, DECISOES_LIST_VARIABLE_NAME);
+			List<Object> decisoesBeforeCast = (List<Object>) runtimeService.getVariable(processInstanceId, DECISOES_LIST_VARIABLE_NAME);
+			
+			if(!decisoesBeforeCast.isEmpty()) {
+				for (Object object : decisoesBeforeCast) {
+					decisoes.add(Boolean.valueOf(object.toString()));
+				}
+			}
 			
 			LOGGER.info("Got decisoes");
 			
 		}
 		
-		boolean decisaoPerito = execution.getVariable(DECISAO_TO_JOIN_VARIABLE_NAME, Boolean.class);
+		boolean decisaoPerito = Boolean.valueOf((String)execution.getVariable(DECISAO_TO_JOIN_VARIABLE_NAME));
 		
-		LOGGER.info("Got decisao perito" + decisaoPerito);
+		LOGGER.info("Got decisao perito: " + decisaoPerito);
 		
 		decisoes.add(decisaoPerito);
 		
