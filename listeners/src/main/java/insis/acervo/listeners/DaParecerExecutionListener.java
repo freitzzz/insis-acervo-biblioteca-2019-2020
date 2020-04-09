@@ -3,6 +3,7 @@ package insis.acervo.listeners;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.activiti.engine.RuntimeService;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.ExecutionListener;
 import org.activiti.engine.delegate.Expression;
@@ -10,6 +11,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 public class DaParecerExecutionListener implements ExecutionListener {
+	
+	private static final String ACERVO_PROCESS_INSTANCE_ID = "acervoProcessInstanceId";
 	
 	private static final String DECISAO_TO_JOIN_VARIABLE_NAME = "preencheParecerDecisao";
 	
@@ -40,19 +43,17 @@ public class DaParecerExecutionListener implements ExecutionListener {
 		
 		LOGGER.info("Variables initialized");
 		
-		System.out.println(variableNameExpression2);
+		RuntimeService runtimeService = execution.getEngineServices().getRuntimeService();
 		
-		System.out.println(variableNameExpression2.getExpressionText());
+		String processInstanceId = (String)execution.getVariable(ACERVO_PROCESS_INSTANCE_ID);
 		
-		System.out.println(variableNameExpression2.getValue(execution));
-		
-		if(execution.hasVariable(DECISOES_LIST_VARIABLE_NAME)) {
+		if(runtimeService.hasVariable(processInstanceId, DECISOES_LIST_VARIABLE_NAME)) {
 			
 			LOGGER.info("Has Variable");
 			
-			LOGGER.info(execution.getVariables());
+			LOGGER.info(runtimeService.getVariables(processInstanceId));
 			
-			decisoes = (List<Boolean>) execution.getVariable(DECISOES_LIST_VARIABLE_NAME);
+			decisoes = (List<Boolean>) runtimeService.getVariable(processInstanceId, DECISOES_LIST_VARIABLE_NAME);
 			
 			LOGGER.info("Got decisoes");
 			
@@ -80,15 +81,15 @@ public class DaParecerExecutionListener implements ExecutionListener {
 		
 		LOGGER.info("Setting Variables");
 		
-		execution.setVariable(DECISOES_ACEITES_VARIABLE_NAME, decisoesAceites);
+		runtimeService.setVariable(processInstanceId, DECISOES_ACEITES_VARIABLE_NAME, decisoesAceites);
 		
 		LOGGER.info("Set: " + DECISOES_ACEITES_VARIABLE_NAME);
 		
-		execution.setVariable(DECISOES_RECUSADAS_VARIABLE_NAME, decisoesRecusadas);
+		runtimeService.setVariable(processInstanceId, DECISOES_RECUSADAS_VARIABLE_NAME, decisoesRecusadas);
 		
 		LOGGER.info("Set: " + DECISOES_RECUSADAS_VARIABLE_NAME);
 		
-		execution.setVariable(DECISOES_LIST_VARIABLE_NAME, decisoes);
+		runtimeService.setVariable(processInstanceId, DECISOES_LIST_VARIABLE_NAME, decisoes);
 		
 		LOGGER.info("Set: " + DECISOES_LIST_VARIABLE_NAME);
 		
