@@ -15,6 +15,7 @@
           <activiti:value id="true" name="Aceito a proposta"></activiti:value>
           <activiti:value id="false" name="Rejeito a proposta"></activiti:value>
         </activiti:formProperty>
+        <activiti:taskListener event="complete" class="insis.acervo.listeners.DaParecerTaskListener"></activiti:taskListener>
       </extensionElements>
     </userTask>
     <endEvent id="daParecerEndEvent" name="Da Parecer End Event"></endEvent>
