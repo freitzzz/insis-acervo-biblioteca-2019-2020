@@ -18,6 +18,7 @@
           <activiti:value id="true" name="Aprova"></activiti:value>
           <activiti:value id="false" name="Rejeita"></activiti:value>
         </activiti:formProperty>
+        <activiti:formProperty id="comentario" name="Comentário" type="string"></activiti:formProperty>
       </extensionElements>
     </userTask>
     <sequenceFlow id="flow1" sourceRef="decidirPADStartEvent" targetRef="decidirPADPreenchePADUserTask"></sequenceFlow>
