@@ -93,6 +93,7 @@
         <activiti:in source="globalProponenteEmail" target="userEmail"></activiti:in>
         <activiti:in source="globalPAD" target="PAD"></activiti:in>
         <activiti:out source="PADAprovado" target="globalPADAprovado"></activiti:out>
+        <activiti:executionListener event="end" class="insis.acervo.listeners.DecidePADExecutionListener"></activiti:executionListener>
       </extensionElements>
     </callActivity>
     <exclusiveGateway id="decidePADGateway" name="Gateway de decidir PAD"></exclusiveGateway>
