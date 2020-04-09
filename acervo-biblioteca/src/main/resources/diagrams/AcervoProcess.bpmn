@@ -124,7 +124,7 @@
     </sequenceFlow>
     <endEvent id="decidePADEndEvent" name="Fim Decide PAD"></endEvent>
     <sequenceFlow id="flow16" sourceRef="decidePADGateway" targetRef="decidePADEndEvent">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalPADAprovado == 'temp'}]]></conditionExpression>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${globalLimitePADRecusados == 'true'}]]></conditionExpression>
     </sequenceFlow>
     <endEvent id="adquireObraEndEvent" name="Fim Adquire Obra"></endEvent>
     <sequenceFlow id="flow17" sourceRef="adquireObraActivity" targetRef="adquireObraEndEvent"></sequenceFlow>
