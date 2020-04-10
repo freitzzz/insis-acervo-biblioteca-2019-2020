@@ -194,7 +194,7 @@ println(estadosObraPorPoloTableJson)</script>
           <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
           <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
           <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
-          <activiti:in sourceExpression="Um perito aceitou a sua proposta de aquisição de obra" target="message"></activiti:in>
+          <activiti:in sourceExpression="&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&lt;title&gt;Notificação Proposta de Aquisição&lt;/title&gt;&lt;/head&gt;&lt;body&gt;O perito ${perito} &lt;b&gt;aceitou&lt;/b&gt; a sua proposta de aquisição de obra&lt;br&gt;Comentário: ${comentario}&lt;br&gt;&lt;/body&gt;&lt;/html&gt;" target="message"></activiti:in>
           <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
         </extensionElements>
       </callActivity>
@@ -315,16 +315,16 @@ println(estadosObraPorPoloTableJson)</script>
         <omgdi:waypoint x="1081.0" y="262.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow14" id="BPMNEdge_flow14">
-        <omgdi:waypoint x="541.0" y="263.0"></omgdi:waypoint>
-        <omgdi:waypoint x="558.0" y="263.0"></omgdi:waypoint>
+        <omgdi:waypoint x="521.0" y="283.0"></omgdi:waypoint>
+        <omgdi:waypoint x="521.0" y="328.0"></omgdi:waypoint>
         <omgdi:waypoint x="558.0" y="328.0"></omgdi:waypoint>
         <omgdi:waypoint x="608.0" y="329.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">
         <omgdi:waypoint x="739.0" y="329.0"></omgdi:waypoint>
         <omgdi:waypoint x="779.0" y="328.0"></omgdi:waypoint>
-        <omgdi:waypoint x="779.0" y="263.0"></omgdi:waypoint>
-        <omgdi:waypoint x="811.0" y="263.0"></omgdi:waypoint>
+        <omgdi:waypoint x="830.0" y="328.0"></omgdi:waypoint>
+        <omgdi:waypoint x="831.0" y="283.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow16" id="BPMNEdge_flow16">
         <omgdi:waypoint x="521.0" y="243.0"></omgdi:waypoint>
