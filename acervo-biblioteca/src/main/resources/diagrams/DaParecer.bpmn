@@ -230,7 +230,7 @@ println(estadosObraPorPoloTableJson)</script>
         <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
         <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
         <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
-        <activiti:in sourceExpression="Um perito não deu o seu parecer deste modo a sua resposta será considerada negativa, isto é, não aceita a proposta de aquisição da obra." target="message"></activiti:in>
+        <activiti:in sourceExpression="&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&lt;title&gt;Notificação Proposta de Aquisição&lt;/title&gt;&lt;/head&gt;&lt;body&gt;O perito ${perito} não deu o seu parecer deste modo a sua resposta será considerada negativa, isto é, &lt;b&gt;recusa&lt;/b&gt; a sua proposta de aquisição da obra.&lt;br&gt;&lt;/body&gt;&lt;/html&gt;" target="message"></activiti:in>
         <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
       </extensionElements>
     </callActivity>
@@ -276,7 +276,7 @@ println(estadosObraPorPoloTableJson)</script>
         <omgdc:Bounds height="40.0" width="40.0" x="1118.0" y="345.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerSubprocessEnviaNotificacaoProponenteAceitePorPeritoCallActivity" id="BPMNShape_daParecerSubprocessEnviaNotificacaoProponenteAceitePorPeritoCallActivity">
-        <omgdc:Bounds height="91.0" width="140.0" x="961.0" y="505.0"></omgdc:Bounds>
+        <omgdc:Bounds height="93.0" width="140.0" x="961.0" y="505.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="exclusivegateway2" id="BPMNShape_exclusivegateway2">
         <omgdc:Bounds height="40.0" width="40.0" x="1118.0" y="435.0"></omgdc:Bounds>
