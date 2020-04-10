@@ -5,6 +5,8 @@ This set is composed by the following elements:
 
 - AdquireObra (V1)
 
+- ObtainEnvironmentVariables
+
 
 ## Steps
 
