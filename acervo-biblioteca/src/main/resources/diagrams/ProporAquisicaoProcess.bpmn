@@ -2,7 +2,7 @@
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="proporAquisicaoProcess" name="Processo de Propor Aquisição" isExecutable="true" activiti:candidateStarterGroups="proponente">
     <startEvent id="proporAquisicaoStartEvent" name="Propor Aquisição Start Event"></startEvent>
-    <userTask id="proporAquisicaoFlowNormalUserTask" name="Propõe Aquisição de Obra (Flow Normal)" activiti:candidateGroups="proponente">
+    <userTask id="proporAquisicaoUserTask" name="Propõe Aquisição de Obra" activiti:candidateGroups="proponente">
       <extensionElements>
         <activiti:formProperty id="errorHeader" name="Error Header" type="error_header" variable="errorHeader" writable="false"></activiti:formProperty>
         <activiti:formProperty id="titulo" name="Titulo" type="string" required="true"></activiti:formProperty>
@@ -14,6 +14,7 @@
         <activiti:formProperty id="email" name="Email" type="string" required="true"></activiti:formProperty>
         <activiti:formProperty id="telefone" name="Número de Telefone" type="string" required="true"></activiti:formProperty>
         <activiti:taskListener event="assignment" class="insis.acervo.listeners.ObtainPeritosListener"></activiti:taskListener>
+        <activiti:taskListener event="complete" class="insis.acervo.listeners.ValidateSelectedPeritosOnPropostaAquisicaoTaskListener"></activiti:taskListener>
       </extensionElements>
     </userTask>
     <parallelGateway id="proporAquisicaoBuscarInformacaoParallelGatewayStart" name="Buscar Informação Parallel Gateway Start"></parallelGateway>
@@ -97,8 +98,8 @@ execution.setVariable('areasConhecimentoData', areasConhecimentoValuesJsonString
 </script>
     </scriptTask>
     <sequenceFlow id="flow10" sourceRef="proporAquisicaoBuscarInformacaoParallelGatewayEnd" targetRef="proporAquisicaoBuscarInformacaoAgrupaInformacaoScriptTask"></sequenceFlow>
-    <sequenceFlow id="flow11" sourceRef="proporAquisicaoBuscarInformacaoAgrupaInformacaoScriptTask" targetRef="proporAquisicaoFlowNormalUserTask"></sequenceFlow>
-    <scriptTask id="proporAquisicaoValidaInformacaoPropostaScriptTask" name="Valida Informação Proposta" scriptFormat="groovy" activiti:autoStoreVariables="false">
+    <sequenceFlow id="flow11" sourceRef="proporAquisicaoBuscarInformacaoAgrupaInformacaoScriptTask" targetRef="proporAquisicaoUserTask"></sequenceFlow>
+    <scriptTask id="proporAquisicaoAgrupaInformacaoAposPropostaRealizadaScriptTask" name="Agrupa Informação Após Proposta Realizada" scriptFormat="groovy" activiti:autoStoreVariables="false">
       <documentation>Valida Informação inserida no form
 Mapeia polo e area de conhecimento selecionados (guardar nome e não posição no array)</documentation>
       <script>import groovy.json.JsonSlurper
@@ -107,26 +108,6 @@ Mapeia polo e area de conhecimento selecionados (guardar nome e não posição n
 // valida peritos
 
 def peritosSplit = peritos.split(",")
-
-def areDefinedPeritosValid = peritosSplit.length &gt;= 2
-
-def processInstanceId = execution.getProcessInstanceId()
-
-execution.setVariableLocal('processInstanceId', processInstanceId)
-
-def errorMessage = ""
-
-if(!areDefinedPeritosValid) {
-
-	errorMessage = "Informação dos peritos inválida. Por favor insira o nome de pelo menos dois peritos separados por ;"
-
-}
-
-execution.setVariableLocal('informacaoValida', areDefinedPeritosValid)
-
-execution.setVariableLocal('errorHeader', errorMessage)
-
-
 // Mapear peritos, polo e area de conhecimento
 
 def areaConhecimentoSelected = areasConhecimento.get((areaConhecimento as Integer) - 1)
@@ -154,42 +135,16 @@ for(int i = 0; i &lt; peritosSplit.size(); i++){
 
 execution.setVariable('peritos', peritosList)</script>
     </scriptTask>
-    <sequenceFlow id="flow12" sourceRef="proporAquisicaoFlowNormalUserTask" targetRef="proporAquisicaoValidaInformacaoPropostaScriptTask"></sequenceFlow>
-    <exclusiveGateway id="proporAquisicaoValidaInformacaoPropostaExclusiveGateway" name="Valida Informacao Gateway"></exclusiveGateway>
-    <sequenceFlow id="flow14" sourceRef="proporAquisicaoValidaInformacaoPropostaScriptTask" targetRef="proporAquisicaoValidaInformacaoPropostaExclusiveGateway"></sequenceFlow>
-    <sequenceFlow id="proporAquisicaoInformacaoValidada" name="Informação Validada" sourceRef="proporAquisicaoValidaInformacaoPropostaExclusiveGateway" targetRef="proporAquisicaoBuscarInformacaoEndEvent">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${informacaoValida == 'true'}]]></conditionExpression>
-    </sequenceFlow>
-    <sequenceFlow id="proporAquisicaoInformacaoNaoValidada" name="Informação não validada" sourceRef="callactivity1" targetRef="proporAquisicaoFlowErrorUserTask"></sequenceFlow>
-    <userTask id="proporAquisicaoFlowErrorUserTask" name="Propõe Aquisição de Obra (Flow Erro)" activiti:assignee="${assignee}">
-      <extensionElements>
-        <activiti:formProperty id="errorHeader" name="Error Header" type="error_header" variable="errorHeader" writable="false"></activiti:formProperty>
-        <activiti:formProperty id="titulo" name="Titulo" type="string" required="true"></activiti:formProperty>
-        <activiti:formProperty id="autores" name="Autores" type="string" required="true"></activiti:formProperty>
-        <activiti:formProperty id="anoPublicacao" name="Ano de Publicação" type="long" datePattern="yyyy" required="true"></activiti:formProperty>
-        <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="dropdown" variable="areasConhecimentoData" required="true"></activiti:formProperty>
-        <activiti:formProperty id="polo" name="Polo" type="dropdown" variable="polosData" required="true"></activiti:formProperty>
-        <activiti:formProperty id="peritos" name="Selecione pelo menos dois peritos dos quais a obra vai ser avaliada" type="dropdown_multi" variable="peritosData" default="[]" required="true"></activiti:formProperty>
-        <activiti:formProperty id="telefone" name="Número de Telefone" type="string" required="true"></activiti:formProperty>
-        <activiti:formProperty id="email" name="Email" type="string" required="true"></activiti:formProperty>
-      </extensionElements>
-    </userTask>
-    <sequenceFlow id="flow15" sourceRef="proporAquisicaoFlowErrorUserTask" targetRef="proporAquisicaoValidaInformacaoPropostaScriptTask"></sequenceFlow>
-    <callActivity id="callactivity1" name="Call activity" calledElement="getTaskAssigneeByProcessInstanceId">
-      <extensionElements>
-        <activiti:in source="processInstanceId" target="processInstanceId"></activiti:in>
-        <activiti:out source="assignee" target="assignee"></activiti:out>
-      </extensionElements>
-    </callActivity>
-    <sequenceFlow id="flow16" sourceRef="proporAquisicaoValidaInformacaoPropostaExclusiveGateway" targetRef="callactivity1"></sequenceFlow>
+    <sequenceFlow id="flow12" sourceRef="proporAquisicaoUserTask" targetRef="proporAquisicaoAgrupaInformacaoAposPropostaRealizadaScriptTask"></sequenceFlow>
+    <sequenceFlow id="flow13" sourceRef="proporAquisicaoAgrupaInformacaoAposPropostaRealizadaScriptTask" targetRef="proporAquisicaoBuscarInformacaoEndEvent"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_proporAquisicaoProcess">
     <bpmndi:BPMNPlane bpmnElement="proporAquisicaoProcess" id="BPMNPlane_proporAquisicaoProcess">
       <bpmndi:BPMNShape bpmnElement="proporAquisicaoStartEvent" id="BPMNShape_proporAquisicaoStartEvent">
         <omgdc:Bounds height="35.0" width="35.0" x="130.0" y="177.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="proporAquisicaoFlowNormalUserTask" id="BPMNShape_proporAquisicaoFlowNormalUserTask">
-        <omgdc:Bounds height="75.0" width="135.0" x="793.0" y="157.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="proporAquisicaoUserTask" id="BPMNShape_proporAquisicaoUserTask">
+        <omgdc:Bounds height="75.0" width="135.0" x="850.0" y="157.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="proporAquisicaoBuscarInformacaoParallelGatewayStart" id="BPMNShape_proporAquisicaoBuscarInformacaoParallelGatewayStart">
         <omgdc:Bounds height="40.0" width="40.0" x="230.0" y="174.0"></omgdc:Bounds>
@@ -207,19 +162,10 @@ execution.setVariable('peritos', peritosList)</script>
         <omgdc:Bounds height="35.0" width="35.0" x="1310.0" y="177.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="proporAquisicaoBuscarInformacaoAgrupaInformacaoScriptTask" id="BPMNShape_proporAquisicaoBuscarInformacaoAgrupaInformacaoScriptTask">
-        <omgdc:Bounds height="65.0" width="105.0" x="641.0" y="162.0"></omgdc:Bounds>
+        <omgdc:Bounds height="65.0" width="105.0" x="680.0" y="162.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="proporAquisicaoValidaInformacaoPropostaScriptTask" id="BPMNShape_proporAquisicaoValidaInformacaoPropostaScriptTask">
-        <omgdc:Bounds height="61.0" width="130.0" x="974.0" y="164.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="proporAquisicaoValidaInformacaoPropostaExclusiveGateway" id="BPMNShape_proporAquisicaoValidaInformacaoPropostaExclusiveGateway">
-        <omgdc:Bounds height="40.0" width="40.0" x="1130.0" y="174.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="proporAquisicaoFlowErrorUserTask" id="BPMNShape_proporAquisicaoFlowErrorUserTask">
-        <omgdc:Bounds height="75.0" width="135.0" x="860.0" y="319.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="callactivity1" id="BPMNShape_callactivity1">
-        <omgdc:Bounds height="55.0" width="105.0" x="1098.0" y="329.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="proporAquisicaoAgrupaInformacaoAposPropostaRealizadaScriptTask" id="BPMNShape_proporAquisicaoAgrupaInformacaoAposPropostaRealizadaScriptTask">
+        <omgdc:Bounds height="61.0" width="130.0" x="1070.0" y="164.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
         <omgdi:waypoint x="250.0" y="174.0"></omgdi:waypoint>
@@ -247,41 +193,19 @@ execution.setVariable('peritos', peritosList)</script>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
         <omgdi:waypoint x="580.0" y="194.0"></omgdi:waypoint>
-        <omgdi:waypoint x="641.0" y="194.0"></omgdi:waypoint>
+        <omgdi:waypoint x="680.0" y="194.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
-        <omgdi:waypoint x="746.0" y="194.0"></omgdi:waypoint>
-        <omgdi:waypoint x="793.0" y="194.0"></omgdi:waypoint>
+        <omgdi:waypoint x="785.0" y="194.0"></omgdi:waypoint>
+        <omgdi:waypoint x="850.0" y="194.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
-        <omgdi:waypoint x="928.0" y="194.0"></omgdi:waypoint>
-        <omgdi:waypoint x="974.0" y="194.0"></omgdi:waypoint>
+        <omgdi:waypoint x="985.0" y="194.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1070.0" y="194.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow14" id="BPMNEdge_flow14">
-        <omgdi:waypoint x="1104.0" y="194.0"></omgdi:waypoint>
-        <omgdi:waypoint x="1130.0" y="194.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="proporAquisicaoInformacaoValidada" id="BPMNEdge_proporAquisicaoInformacaoValidada">
-        <omgdi:waypoint x="1170.0" y="194.0"></omgdi:waypoint>
+      <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">
+        <omgdi:waypoint x="1200.0" y="194.0"></omgdi:waypoint>
         <omgdi:waypoint x="1310.0" y="194.0"></omgdi:waypoint>
-        <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="48.0" width="97.0" x="1179.0" y="209.0"></omgdc:Bounds>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="proporAquisicaoInformacaoNaoValidada" id="BPMNEdge_proporAquisicaoInformacaoNaoValidada">
-        <omgdi:waypoint x="1098.0" y="356.0"></omgdi:waypoint>
-        <omgdi:waypoint x="995.0" y="356.0"></omgdi:waypoint>
-        <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="48.0" width="100.0" x="1109.0" y="412.0"></omgdc:Bounds>
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">
-        <omgdi:waypoint x="927.0" y="319.0"></omgdi:waypoint>
-        <omgdi:waypoint x="1039.0" y="225.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow16" id="BPMNEdge_flow16">
-        <omgdi:waypoint x="1150.0" y="214.0"></omgdi:waypoint>
-        <omgdi:waypoint x="1150.0" y="329.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

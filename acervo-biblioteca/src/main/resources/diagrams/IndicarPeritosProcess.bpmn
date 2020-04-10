@@ -2,12 +2,13 @@
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="indicarPeritosProcess" name="Processo de Indicar pelo menos 2 Peritos" isExecutable="true">
     <startEvent id="indicarPeritosStartEvent" name="Indicar Peritos Start Event"></startEvent>
-    <userTask id="indicarPeritosUserTask" name="Indicar pelo menos 2 peritos" activiti:candidateGroups="bibliotecario_mor">
+    <userTask id="indicarPeritosUserTask" name="Indica 2 peritos" activiti:candidateGroups="bibliotecario_mor">
       <extensionElements>
         <activiti:formProperty id="areaConhecimento" name="Área de Conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="peritos" name="Peritos indicados pelo Proponente" type="table" variable="peritosTableJson" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="peritosByBM" name="Peritos" type="dropdown_multi" variable="peritosData" default="[]" required="true"></activiti:formProperty>
         <activiti:taskListener event="assignment" class="insis.acervo.listeners.ObtainPeritosListener"></activiti:taskListener>
+        <activiti:taskListener event="complete" class="insis.acervo.listeners.ValidateSelectedPeritosOnIndicaPeritosTaskListener"></activiti:taskListener>
       </extensionElements>
     </userTask>
     <sequenceFlow id="flow1" sourceRef="indicarPeritosPreparaDadosFormScriptTask" targetRef="indicarPeritosUserTask"></sequenceFlow>
