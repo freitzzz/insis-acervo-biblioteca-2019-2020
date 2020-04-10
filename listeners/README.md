@@ -7,6 +7,8 @@ This set is composed by the following elements:
 - DaParecerTaskListener
 - ObtainPeritosListener
 - DecidePADExecutionListener
+- ValidateSelectedPeritosOnPropostaAquisicaoTaskListener
+- ValidateSelectedPeritosOnIndicaPeritosTaskListener
 
 
 ## Steps
