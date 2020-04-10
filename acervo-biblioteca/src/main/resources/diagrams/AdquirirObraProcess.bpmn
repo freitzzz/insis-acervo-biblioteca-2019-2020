@@ -10,6 +10,7 @@
         <activiti:formProperty id="titulo" name="Titulo" type="string" variable="titulo" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="anoPublicacao" name="Ano Publicação" type="long" variable="anoPublicacao" datePattern="yyyy" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="autores" name="Autores" type="string" variable="autores" writable="false" required="true"></activiti:formProperty>
+        <activiti:formProperty id="polo" name="Polo" type="string" variable="polo"></activiti:formProperty>
         <activiti:formProperty id="fornecedorMelhorPreco" name="Fornecedor" type="table" variable="fornecedorMelhorPreco" writable="false" required="true"></activiti:formProperty>
       </extensionElements>
     </userTask>
