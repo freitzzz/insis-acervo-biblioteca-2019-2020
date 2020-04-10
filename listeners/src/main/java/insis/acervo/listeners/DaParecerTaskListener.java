@@ -1,13 +1,10 @@
 package insis.acervo.listeners;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.activiti.engine.RuntimeService;
-import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.DelegateTask;
-import org.activiti.engine.delegate.ExecutionListener;
 import org.activiti.engine.delegate.Expression;
 import org.activiti.engine.delegate.TaskListener;
 import org.apache.commons.logging.Log;
