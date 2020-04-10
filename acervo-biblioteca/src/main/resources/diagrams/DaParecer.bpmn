@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="daParecerProcess" name="Processo de Dar Parecer" isExecutable="true">
-    <startEvent id="daParecerStartEvent" name="Da Parecer Start Event"></startEvent>
-    <parallelGateway id="daParecerObterInformacaoParallelGatewayStart" name="Obter Informação Start"></parallelGateway>
-    <sequenceFlow id="flow1" sourceRef="daParecerStartEvent" targetRef="daParecerObterInformacaoParallelGatewayStart"></sequenceFlow>
-    <parallelGateway id="daParecerObterInformacaoParallelGatewayEnd" name="Obter Informação End"></parallelGateway>
-    <userTask id="daParecerPreencheParecerUserTask" name="Preenche Parecer" activiti:assignee="${perito}">
-      <extensionElements>
-        <activiti:formProperty id="areaConhecimento" name="Área de conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="fornecedoresInfo" name="Informação Fornecedores" type="table" variable="fornecedoresTable" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="estadosObraPorPolo" name="Estado da Obra por Polos" type="table" variable="estadosObraPorPoloTable" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="informacoesExemplaresPolo" name="Exemplares por Polo" type="table" variable="exemplaresPoloTable" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="preencheParecerDecisao" name="Preencha o seu parecer" type="enum" required="true">
-          <activiti:value id="true" name="Aceito a proposta"></activiti:value>
-          <activiti:value id="false" name="Rejeito a proposta"></activiti:value>
-        </activiti:formProperty>
-        <activiti:taskListener event="complete" class="insis.acervo.listeners.DaParecerTaskListener"></activiti:taskListener>
-      </extensionElements>
-    </userTask>
-    <endEvent id="daParecerEndEvent" name="Da Parecer End Event"></endEvent>
-    <scriptTask id="daParecerAgregaInformacaoScriptTask" name="Agrega Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
-      <script>import groovy.json.JsonBuilder
+    <subProcess id="daParecerSubprocessProcess" name="Sub Processo de Dar Parecer">
+      <startEvent id="daParecerSubprocessStartEvent" name="Da Parecer Start Event"></startEvent>
+      <parallelGateway id="daParecerSubprocessObterInformacaoParallelGatewayStart" name="Obter Informação Start"></parallelGateway>
+      <sequenceFlow id="flow1" sourceRef="daParecerSubprocessStartEvent" targetRef="daParecerSubprocessObterInformacaoParallelGatewayStart"></sequenceFlow>
+      <parallelGateway id="daParecerSubprocessObterInformacaoParallelGatewayEnd" name="Obter Informação End"></parallelGateway>
+      <userTask id="daParecerSubprocessPreencheParecerUserTask" name="Preenche Parecer" activiti:assignee="${perito}">
+        <extensionElements>
+          <activiti:formProperty id="areaConhecimento" name="Área de conhecimento" type="string" variable="areaConhecimento" writable="false" required="true"></activiti:formProperty>
+          <activiti:formProperty id="fornecedoresInfo" name="Informação Fornecedores" type="table" variable="fornecedoresTable" writable="false" required="true"></activiti:formProperty>
+          <activiti:formProperty id="estadosObraPorPolo" name="Estado da Obra por Polos" type="table" variable="estadosObraPorPoloTable" writable="false" required="true"></activiti:formProperty>
+          <activiti:formProperty id="informacoesExemplaresPolo" name="Exemplares por Polo" type="table" variable="exemplaresPoloTable" writable="false" required="true"></activiti:formProperty>
+          <activiti:formProperty id="preencheParecerDecisao" name="Preencha o seu parecer" type="enum" required="true">
+            <activiti:value id="true" name="Aceito a proposta"></activiti:value>
+            <activiti:value id="false" name="Rejeito a proposta"></activiti:value>
+          </activiti:formProperty>
+          <activiti:taskListener event="complete" class="insis.acervo.listeners.DaParecerTaskListener"></activiti:taskListener>
+        </extensionElements>
+      </userTask>
+      <endEvent id="daParecerSubprocessEndEvent" name="Da Parecer End Event"></endEvent>
+      <scriptTask id="daParecerSubprocessAgregaInformacaoScriptTask" name="Agrega Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
+        <script>import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 
 println("-&gt;&gt;&gt;&gt;&gt;&gt;")
@@ -155,180 +156,245 @@ execution.setVariable('estadosObraPorPoloTable', estadosObraPorPoloTableJson)
 println("estadosObraPorPoloTable")
 
 println(estadosObraPorPoloTableJson)</script>
-    </scriptTask>
-    <sequenceFlow id="flow12" sourceRef="daParecerObterInformacaoParallelGatewayEnd" targetRef="daParecerAgregaInformacaoScriptTask"></sequenceFlow>
-    <sequenceFlow id="flow13" sourceRef="daParecerAgregaInformacaoScriptTask" targetRef="daParecerPreencheParecerUserTask"></sequenceFlow>
-    <callActivity id="daParecerBuscaInformacaoObraFornecedoresCallActivity" name="Busca Informação Obra Fornecedores" calledElement="obterInformacaoObraFornecedores">
-      <extensionElements>
-        <activiti:in source="titulo" target="titulo"></activiti:in>
-        <activiti:in source="autores" target="autores"></activiti:in>
-        <activiti:in source="anoPublicacao" target="anoPublicacao"></activiti:in>
-        <activiti:out source="fornecedores" target="fornecedores"></activiti:out>
-      </extensionElements>
-    </callActivity>
-    <sequenceFlow id="flow14" sourceRef="daParecerObterInformacaoParallelGatewayStart" targetRef="daParecerBuscaInformacaoObraFornecedoresCallActivity"></sequenceFlow>
-    <sequenceFlow id="flow15" sourceRef="daParecerBuscaInformacaoObraFornecedoresCallActivity" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
-    <callActivity id="daParecerbuscaExemplaresPoloProcessCallActivity" name="Busca Exemplares por Polo" calledElement="obterExemplaresPoloProcess">
-      <extensionElements>
-        <activiti:in source="titulo" target="titulo"></activiti:in>
-        <activiti:in source="autores" target="autores"></activiti:in>
-        <activiti:in source="anoPublicacao" target="anoPublicacao"></activiti:in>
-        <activiti:out source="exemplaresPolos" target="exemplaresPolos"></activiti:out>
-      </extensionElements>
-    </callActivity>
-    <sequenceFlow id="flow16" sourceRef="daParecerObterInformacaoParallelGatewayStart" targetRef="daParecerbuscaExemplaresPoloProcessCallActivity"></sequenceFlow>
-    <sequenceFlow id="flow17" sourceRef="daParecerbuscaExemplaresPoloProcessCallActivity" targetRef="daParecerObterInformacaoParallelGatewayEnd"></sequenceFlow>
-    <boundaryEvent id="daParecerExpiracaoDadosBoundaryTimer" name="Expiração dos Dados Boundary Timer" attachedToRef="daParecerPreencheParecerUserTask" cancelActivity="true">
+      </scriptTask>
+      <sequenceFlow id="flow12" sourceRef="daParecerSubprocessObterInformacaoParallelGatewayEnd" targetRef="daParecerSubprocessAgregaInformacaoScriptTask"></sequenceFlow>
+      <sequenceFlow id="flow13" sourceRef="daParecerSubprocessAgregaInformacaoScriptTask" targetRef="daParecerSubprocessPreencheParecerUserTask"></sequenceFlow>
+      <callActivity id="daParecerSubprocessBuscaInformacaoObraFornecedoresCallActivity" name="Busca Informação Obra Fornecedores" calledElement="obterInformacaoObraFornecedores">
+        <extensionElements>
+          <activiti:in source="titulo" target="titulo"></activiti:in>
+          <activiti:in source="autores" target="autores"></activiti:in>
+          <activiti:in source="anoPublicacao" target="anoPublicacao"></activiti:in>
+          <activiti:out source="fornecedores" target="fornecedores"></activiti:out>
+        </extensionElements>
+      </callActivity>
+      <sequenceFlow id="flow14" sourceRef="daParecerSubprocessObterInformacaoParallelGatewayStart" targetRef="daParecerSubprocessBuscaInformacaoObraFornecedoresCallActivity"></sequenceFlow>
+      <sequenceFlow id="flow15" sourceRef="daParecerSubprocessBuscaInformacaoObraFornecedoresCallActivity" targetRef="daParecerSubprocessObterInformacaoParallelGatewayEnd"></sequenceFlow>
+      <callActivity id="daParecerSubprocessbuscaExemplaresPoloProcessCallActivity" name="Busca Exemplares por Polo" calledElement="obterExemplaresPoloProcess">
+        <extensionElements>
+          <activiti:in source="titulo" target="titulo"></activiti:in>
+          <activiti:in source="autores" target="autores"></activiti:in>
+          <activiti:in source="anoPublicacao" target="anoPublicacao"></activiti:in>
+          <activiti:out source="exemplaresPolos" target="exemplaresPolos"></activiti:out>
+        </extensionElements>
+      </callActivity>
+      <sequenceFlow id="flow16" sourceRef="daParecerSubprocessObterInformacaoParallelGatewayStart" targetRef="daParecerSubprocessbuscaExemplaresPoloProcessCallActivity"></sequenceFlow>
+      <sequenceFlow id="flow17" sourceRef="daParecerSubprocessbuscaExemplaresPoloProcessCallActivity" targetRef="daParecerSubprocessObterInformacaoParallelGatewayEnd"></sequenceFlow>
+      <boundaryEvent id="daParecerSubprocessExpiracaoDadosBoundaryTimer" name="Expiração dos Dados Boundary Timer" attachedToRef="daParecerSubprocessPreencheParecerUserTask" cancelActivity="true">
+        <timerEventDefinition>
+          <timeDuration>${expiracaoDados}</timeDuration>
+        </timerEventDefinition>
+      </boundaryEvent>
+      <sequenceFlow id="flow19" sourceRef="daParecerSubprocessExpiracaoDadosBoundaryTimer" targetRef="daParecerSubprocessStartEvent"></sequenceFlow>
+      <sequenceFlow id="flow20" sourceRef="daParecerSubprocessTarefasDepoisDePreencheParecerParallelGateway" targetRef="daParecerSubprocessEndEvent"></sequenceFlow>
+      <parallelGateway id="daParecerSubprocessTarefasDepoisDePreencheParecerParallelGateway" name="Tarefas depois de preenche parecer"></parallelGateway>
+      <sequenceFlow id="flow21" sourceRef="daParecerSubprocessPreencheParecerUserTask" targetRef="daParecerSubprocessTarefasDepoisDePreencheParecerParallelGateway"></sequenceFlow>
+      <callActivity id="daParecerSubprocessEnviaNotificacaoProponenteAceitePorPeritoCallActivity" name="Envia Notificação Proponente (Proposta Aceite Por Perito)" calledElement="enviaNotificacaoUtilizadorProcess">
+        <extensionElements>
+          <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
+          <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
+          <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
+          <activiti:in sourceExpression="Um perito aceitou a sua proposta de aquisição de obra" target="message"></activiti:in>
+          <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
+        </extensionElements>
+      </callActivity>
+      <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
+      <sequenceFlow id="flow24" sourceRef="daParecerSubprocessTarefasDepoisDePreencheParecerParallelGateway" targetRef="exclusivegateway2"></sequenceFlow>
+      <sequenceFlow id="flow25" sourceRef="exclusivegateway2" targetRef="daParecerSubprocessEnviaNotificacaoProponenteAceitePorPeritoCallActivity">
+        <conditionExpression xsi:type="tFormalExpression"><![CDATA[${preencheParecerDecisao == 'true'}]]></conditionExpression>
+      </sequenceFlow>
+      <callActivity id="daParecerSubprocessEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity" name="Envia Notificação Proponente (Proposta Rejeitada Por Perito)" calledElement="enviaNotificacaoUtilizadorProcess">
+        <extensionElements>
+          <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
+          <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
+          <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
+          <activiti:in sourceExpression="Um perito rejeitou a sua proposta de aquisição de obra" target="message"></activiti:in>
+          <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
+        </extensionElements>
+      </callActivity>
+      <sequenceFlow id="flow26" sourceRef="exclusivegateway2" targetRef="daParecerSubprocessEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity"></sequenceFlow>
+      <endEvent id="daParecerSubprocessNotificationEndEvent" name="Da Parecer NotificationEndEvent"></endEvent>
+      <sequenceFlow id="flow29" sourceRef="daParecerSubprocessEnviaNotificacaoProponenteAceitePorPeritoCallActivity" targetRef="daParecerSubprocessNotificationEndEvent"></sequenceFlow>
+      <sequenceFlow id="flow30" sourceRef="daParecerSubprocessEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity" targetRef="daParecerSubprocessNotificationEndEvent"></sequenceFlow>
+    </subProcess>
+    <startEvent id="daParecerStartEvent" name="Start Event"></startEvent>
+    <endEvent id="daParecerEndEvent" name="End Event"></endEvent>
+    <sequenceFlow id="flow34" sourceRef="daParecerSubprocessProcess" targetRef="daParecerEndEvent"></sequenceFlow>
+    <boundaryEvent id="boundarytimer1" name="Timer" attachedToRef="daParecerSubprocessProcess" cancelActivity="true">
       <timerEventDefinition>
-        <timeDuration>PT60S</timeDuration>
+        <timeDuration>${maxParecer}</timeDuration>
       </timerEventDefinition>
     </boundaryEvent>
-    <sequenceFlow id="flow19" sourceRef="daParecerExpiracaoDadosBoundaryTimer" targetRef="daParecerStartEvent"></sequenceFlow>
-    <sequenceFlow id="flow20" sourceRef="daParecerTarefasDepoisDePreencheParecerParallelGateway" targetRef="daParecerEndEvent"></sequenceFlow>
-    <parallelGateway id="daParecerTarefasDepoisDePreencheParecerParallelGateway" name="Tarefas depois de preenche parecer"></parallelGateway>
-    <sequenceFlow id="flow21" sourceRef="daParecerPreencheParecerUserTask" targetRef="daParecerTarefasDepoisDePreencheParecerParallelGateway"></sequenceFlow>
-    <callActivity id="daParecerEnviaNotificacaoProponenteAceitePorPeritoCallActivity" name="Envia Notificação Proponente (Proposta Aceite Por Perito)" calledElement="enviaNotificacaoUtilizadorProcess">
+    <callActivity id="daParecerEnviaNotificacaoProponenteCallActivity" name="Envia Notificação Proponente " calledElement="enviaNotificacaoUtilizadorProcess">
       <extensionElements>
         <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
         <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
         <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
-        <activiti:in sourceExpression="Um perito aceitou a sua proposta de aquisição de obra" target="message"></activiti:in>
+        <activiti:in sourceExpression="Um perito não deu o seu parecer deste modo a sua resposta será considerada negativa, isto é, não aceita a proposta de aquisição da obra." target="message"></activiti:in>
         <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
       </extensionElements>
     </callActivity>
-    <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
-    <sequenceFlow id="flow24" sourceRef="daParecerTarefasDepoisDePreencheParecerParallelGateway" targetRef="exclusivegateway2"></sequenceFlow>
-    <sequenceFlow id="flow25" sourceRef="exclusivegateway2" targetRef="daParecerEnviaNotificacaoProponenteAceitePorPeritoCallActivity">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${preencheParecerDecisao == 'true'}]]></conditionExpression>
-    </sequenceFlow>
-    <callActivity id="daParecerEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity" name="Envia Notificação Proponente (Proposta Rejeitada Por Perito)" calledElement="enviaNotificacaoUtilizadorProcess">
-      <extensionElements>
-        <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
-        <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
-        <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
-        <activiti:in sourceExpression="Um perito rejeitou a sua proposta de aquisição de obra" target="message"></activiti:in>
-        <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
-      </extensionElements>
-    </callActivity>
-    <sequenceFlow id="flow26" sourceRef="exclusivegateway2" targetRef="daParecerEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity"></sequenceFlow>
-    <endEvent id="daParecerNotificationEndEvent" name="Da Parecer NotificationEndEvent"></endEvent>
-    <sequenceFlow id="flow29" sourceRef="daParecerEnviaNotificacaoProponenteAceitePorPeritoCallActivity" targetRef="daParecerNotificationEndEvent"></sequenceFlow>
-    <sequenceFlow id="flow30" sourceRef="daParecerEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity" targetRef="daParecerNotificationEndEvent"></sequenceFlow>
+    <sequenceFlow id="flow36" sourceRef="boundarytimer1" targetRef="daParecerEnviaNotificacaoProponenteCallActivity"></sequenceFlow>
+    <sequenceFlow id="flow37" sourceRef="daParecerEnviaNotificacaoProponenteCallActivity" targetRef="daParecerEndEvent"></sequenceFlow>
+    <serviceTask id="daParecerObterVariaveisAmbienteServiceTask" name="Obter Variáveis de Ambiente" activiti:class="insis.acervo.utils.ObtainEnvironmentVariables"></serviceTask>
+    <sequenceFlow id="flow38" sourceRef="daParecerStartEvent" targetRef="daParecerObterVariaveisAmbienteServiceTask"></sequenceFlow>
+    <sequenceFlow id="flow39" sourceRef="daParecerObterVariaveisAmbienteServiceTask" targetRef="daParecerSubprocessProcess"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_daParecerProcess">
     <bpmndi:BPMNPlane bpmnElement="daParecerProcess" id="BPMNPlane_daParecerProcess">
-      <bpmndi:BPMNShape bpmnElement="daParecerStartEvent" id="BPMNShape_daParecerStartEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="140.0" y="140.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessProcess" id="BPMNShape_daParecerSubprocessProcess">
+        <omgdc:Bounds height="641.0" width="1100.0" x="311.0" y="40.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerObterInformacaoParallelGatewayStart" id="BPMNShape_daParecerObterInformacaoParallelGatewayStart">
-        <omgdc:Bounds height="40.0" width="40.0" x="240.0" y="138.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessStartEvent" id="BPMNShape_daParecerSubprocessStartEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="401.0" y="245.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerObterInformacaoParallelGatewayEnd" id="BPMNShape_daParecerObterInformacaoParallelGatewayEnd">
-        <omgdc:Bounds height="40.0" width="40.0" x="550.0" y="138.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessObterInformacaoParallelGatewayStart" id="BPMNShape_daParecerSubprocessObterInformacaoParallelGatewayStart">
+        <omgdc:Bounds height="40.0" width="40.0" x="501.0" y="243.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerPreencheParecerUserTask" id="BPMNShape_daParecerPreencheParecerUserTask">
-        <omgdc:Bounds height="55.0" width="115.0" x="820.0" y="130.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessObterInformacaoParallelGatewayEnd" id="BPMNShape_daParecerSubprocessObterInformacaoParallelGatewayEnd">
+        <omgdc:Bounds height="40.0" width="40.0" x="811.0" y="243.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerExpiracaoDadosBoundaryTimer" id="BPMNShape_daParecerExpiracaoDadosBoundaryTimer">
-        <omgdc:Bounds height="30.0" width="30.0" x="860.0" y="120.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessPreencheParecerUserTask" id="BPMNShape_daParecerSubprocessPreencheParecerUserTask">
+        <omgdc:Bounds height="55.0" width="115.0" x="1081.0" y="235.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerEndEvent" id="BPMNShape_daParecerEndEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="970.0" y="141.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessExpiracaoDadosBoundaryTimer" id="BPMNShape_daParecerSubprocessExpiracaoDadosBoundaryTimer">
+        <omgdc:Bounds height="30.0" width="30.0" x="1121.0" y="225.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerAgregaInformacaoScriptTask" id="BPMNShape_daParecerAgregaInformacaoScriptTask">
-        <omgdc:Bounds height="55.0" width="125.0" x="641.0" y="130.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessEndEvent" id="BPMNShape_daParecerSubprocessEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="1231.0" y="246.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerBuscaInformacaoObraFornecedoresCallActivity" id="BPMNShape_daParecerBuscaInformacaoObraFornecedoresCallActivity">
-        <omgdc:Bounds height="81.0" width="131.0" x="347.0" y="184.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessAgregaInformacaoScriptTask" id="BPMNShape_daParecerSubprocessAgregaInformacaoScriptTask">
+        <omgdc:Bounds height="55.0" width="125.0" x="902.0" y="235.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerbuscaExemplaresPoloProcessCallActivity" id="BPMNShape_daParecerbuscaExemplaresPoloProcessCallActivity">
-        <omgdc:Bounds height="61.0" width="145.0" x="340.0" y="65.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessBuscaInformacaoObraFornecedoresCallActivity" id="BPMNShape_daParecerSubprocessBuscaInformacaoObraFornecedoresCallActivity">
+        <omgdc:Bounds height="81.0" width="131.0" x="608.0" y="289.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerTarefasDepoisDePreencheParecerParallelGateway" id="BPMNShape_daParecerTarefasDepoisDePreencheParecerParallelGateway">
-        <omgdc:Bounds height="40.0" width="40.0" x="857.0" y="240.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessbuscaExemplaresPoloProcessCallActivity" id="BPMNShape_daParecerSubprocessbuscaExemplaresPoloProcessCallActivity">
+        <omgdc:Bounds height="61.0" width="145.0" x="601.0" y="170.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerEnviaNotificacaoProponenteAceitePorPeritoCallActivity" id="BPMNShape_daParecerEnviaNotificacaoProponenteAceitePorPeritoCallActivity">
-        <omgdc:Bounds height="81.0" width="140.0" x="700.0" y="400.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessTarefasDepoisDePreencheParecerParallelGateway" id="BPMNShape_daParecerSubprocessTarefasDepoisDePreencheParecerParallelGateway">
+        <omgdc:Bounds height="40.0" width="40.0" x="1118.0" y="345.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessEnviaNotificacaoProponenteAceitePorPeritoCallActivity" id="BPMNShape_daParecerSubprocessEnviaNotificacaoProponenteAceitePorPeritoCallActivity">
+        <omgdc:Bounds height="91.0" width="140.0" x="961.0" y="505.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="exclusivegateway2" id="BPMNShape_exclusivegateway2">
-        <omgdc:Bounds height="40.0" width="40.0" x="857.0" y="330.0"></omgdc:Bounds>
+        <omgdc:Bounds height="40.0" width="40.0" x="1118.0" y="435.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity" id="BPMNShape_daParecerEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity">
-        <omgdc:Bounds height="76.0" width="146.0" x="910.0" y="405.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity" id="BPMNShape_daParecerSubprocessEnviaNotificacaoProponenteRejeitadoPorPeritoCallActivity">
+        <omgdc:Bounds height="88.0" width="146.0" x="1171.0" y="510.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="daParecerNotificationEndEvent" id="BPMNShape_daParecerNotificationEndEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="857.0" y="530.0"></omgdc:Bounds>
+      <bpmndi:BPMNShape bpmnElement="daParecerSubprocessNotificationEndEvent" id="BPMNShape_daParecerSubprocessNotificationEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="1118.0" y="635.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="boundarytimer1" id="BPMNShape_boundarytimer1">
+        <omgdc:Bounds height="30.0" width="30.0" x="1398.0" y="426.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerStartEvent" id="BPMNShape_daParecerStartEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="1.0" y="323.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerEndEvent" id="BPMNShape_daParecerEndEvent">
+        <omgdc:Bounds height="35.0" width="35.0" x="1519.0" y="323.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerEnviaNotificacaoProponenteCallActivity" id="BPMNShape_daParecerEnviaNotificacaoProponenteCallActivity">
+        <omgdc:Bounds height="69.0" width="131.0" x="1471.0" y="406.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="daParecerObterVariaveisAmbienteServiceTask" id="BPMNShape_daParecerObterVariaveisAmbienteServiceTask">
+        <omgdc:Bounds height="64.0" width="133.0" x="102.0" y="309.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
-        <omgdi:waypoint x="175.0" y="157.0"></omgdi:waypoint>
-        <omgdi:waypoint x="240.0" y="158.0"></omgdi:waypoint>
+        <omgdi:waypoint x="436.0" y="262.0"></omgdi:waypoint>
+        <omgdi:waypoint x="501.0" y="263.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
-        <omgdi:waypoint x="590.0" y="158.0"></omgdi:waypoint>
-        <omgdi:waypoint x="641.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="851.0" y="263.0"></omgdi:waypoint>
+        <omgdi:waypoint x="902.0" y="262.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">
-        <omgdi:waypoint x="766.0" y="157.0"></omgdi:waypoint>
-        <omgdi:waypoint x="820.0" y="157.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1027.0" y="262.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1081.0" y="262.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow14" id="BPMNEdge_flow14">
-        <omgdi:waypoint x="260.0" y="178.0"></omgdi:waypoint>
-        <omgdi:waypoint x="260.0" y="224.0"></omgdi:waypoint>
-        <omgdi:waypoint x="347.0" y="224.0"></omgdi:waypoint>
+        <omgdi:waypoint x="541.0" y="263.0"></omgdi:waypoint>
+        <omgdi:waypoint x="558.0" y="263.0"></omgdi:waypoint>
+        <omgdi:waypoint x="558.0" y="328.0"></omgdi:waypoint>
+        <omgdi:waypoint x="608.0" y="329.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">
-        <omgdi:waypoint x="478.0" y="224.0"></omgdi:waypoint>
-        <omgdi:waypoint x="570.0" y="224.0"></omgdi:waypoint>
-        <omgdi:waypoint x="570.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="739.0" y="329.0"></omgdi:waypoint>
+        <omgdi:waypoint x="779.0" y="328.0"></omgdi:waypoint>
+        <omgdi:waypoint x="779.0" y="263.0"></omgdi:waypoint>
+        <omgdi:waypoint x="811.0" y="263.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow16" id="BPMNEdge_flow16">
-        <omgdi:waypoint x="260.0" y="138.0"></omgdi:waypoint>
-        <omgdi:waypoint x="259.0" y="95.0"></omgdi:waypoint>
-        <omgdi:waypoint x="340.0" y="95.0"></omgdi:waypoint>
+        <omgdi:waypoint x="521.0" y="243.0"></omgdi:waypoint>
+        <omgdi:waypoint x="520.0" y="200.0"></omgdi:waypoint>
+        <omgdi:waypoint x="601.0" y="200.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow17" id="BPMNEdge_flow17">
-        <omgdi:waypoint x="485.0" y="95.0"></omgdi:waypoint>
-        <omgdi:waypoint x="570.0" y="95.0"></omgdi:waypoint>
-        <omgdi:waypoint x="570.0" y="138.0"></omgdi:waypoint>
+        <omgdi:waypoint x="746.0" y="200.0"></omgdi:waypoint>
+        <omgdi:waypoint x="831.0" y="200.0"></omgdi:waypoint>
+        <omgdi:waypoint x="831.0" y="243.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow19" id="BPMNEdge_flow19">
-        <omgdi:waypoint x="875.0" y="120.0"></omgdi:waypoint>
-        <omgdi:waypoint x="874.0" y="10.0"></omgdi:waypoint>
-        <omgdi:waypoint x="157.0" y="10.0"></omgdi:waypoint>
-        <omgdi:waypoint x="157.0" y="140.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1136.0" y="225.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1135.0" y="115.0"></omgdi:waypoint>
+        <omgdi:waypoint x="418.0" y="115.0"></omgdi:waypoint>
+        <omgdi:waypoint x="418.0" y="245.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow20" id="BPMNEdge_flow20">
-        <omgdi:waypoint x="897.0" y="260.0"></omgdi:waypoint>
-        <omgdi:waypoint x="987.0" y="259.0"></omgdi:waypoint>
-        <omgdi:waypoint x="987.0" y="176.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1158.0" y="365.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1248.0" y="364.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1248.0" y="281.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow21" id="BPMNEdge_flow21">
-        <omgdi:waypoint x="877.0" y="185.0"></omgdi:waypoint>
-        <omgdi:waypoint x="877.0" y="240.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1138.0" y="290.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1138.0" y="345.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow24" id="BPMNEdge_flow24">
-        <omgdi:waypoint x="877.0" y="280.0"></omgdi:waypoint>
-        <omgdi:waypoint x="877.0" y="330.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1138.0" y="385.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1138.0" y="435.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow25" id="BPMNEdge_flow25">
-        <omgdi:waypoint x="857.0" y="350.0"></omgdi:waypoint>
-        <omgdi:waypoint x="770.0" y="350.0"></omgdi:waypoint>
-        <omgdi:waypoint x="770.0" y="400.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1118.0" y="455.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1031.0" y="455.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1031.0" y="505.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow26" id="BPMNEdge_flow26">
-        <omgdi:waypoint x="897.0" y="350.0"></omgdi:waypoint>
-        <omgdi:waypoint x="983.0" y="349.0"></omgdi:waypoint>
-        <omgdi:waypoint x="983.0" y="405.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1158.0" y="455.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1244.0" y="454.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1244.0" y="510.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow29" id="BPMNEdge_flow29">
-        <omgdi:waypoint x="770.0" y="481.0"></omgdi:waypoint>
-        <omgdi:waypoint x="770.0" y="547.0"></omgdi:waypoint>
-        <omgdi:waypoint x="857.0" y="547.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1031.0" y="596.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1031.0" y="652.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1118.0" y="652.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow30" id="BPMNEdge_flow30">
-        <omgdi:waypoint x="983.0" y="481.0"></omgdi:waypoint>
-        <omgdi:waypoint x="982.0" y="547.0"></omgdi:waypoint>
-        <omgdi:waypoint x="892.0" y="547.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1244.0" y="598.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1243.0" y="652.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1153.0" y="652.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow34" id="BPMNEdge_flow34">
+        <omgdi:waypoint x="1411.0" y="360.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1411.0" y="340.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1519.0" y="340.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow36" id="BPMNEdge_flow36">
+        <omgdi:waypoint x="1428.0" y="441.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1471.0" y="440.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow37" id="BPMNEdge_flow37">
+        <omgdi:waypoint x="1536.0" y="406.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1536.0" y="358.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow38" id="BPMNEdge_flow38">
+        <omgdi:waypoint x="36.0" y="340.0"></omgdi:waypoint>
+        <omgdi:waypoint x="102.0" y="341.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow39" id="BPMNEdge_flow39">
+        <omgdi:waypoint x="235.0" y="341.0"></omgdi:waypoint>
+        <omgdi:waypoint x="310.0" y="341.0"></omgdi:waypoint>
+        <omgdi:waypoint x="311.0" y="360.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
