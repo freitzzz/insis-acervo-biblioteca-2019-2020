@@ -105,6 +105,7 @@
         <activiti:in source="globalTitulo" target="titulo"></activiti:in>
         <activiti:in source="globalAutores" target="autores"></activiti:in>
         <activiti:in source="globalAnoPublicacao" target="anoPublicacao"></activiti:in>
+        <activiti:in source="globalPolo" target="polo"></activiti:in>
       </extensionElements>
     </callActivity>
     <sequenceFlow id="flow12" sourceRef="decidePADGateway" targetRef="adquireObraActivity">
