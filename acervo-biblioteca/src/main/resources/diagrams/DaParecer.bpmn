@@ -208,7 +208,7 @@ println(estadosObraPorPoloTableJson)</script>
           <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
           <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
           <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
-          <activiti:in sourceExpression="Um perito rejeitou a sua proposta de aquisição de obra" target="message"></activiti:in>
+          <activiti:in sourceExpression="&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&lt;title&gt;Notificação Proposta de Aquisição&lt;/title&gt;&lt;/head&gt;&lt;body&gt;O perito ${perito} &lt;b&gt;recusou&lt;/b&gt; a sua proposta de aquisição de obra&lt;br&gt;Comentário: ${comentario}&lt;br&gt;&lt;/body&gt;&lt;/html&gt;" target="message"></activiti:in>
           <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
         </extensionElements>
       </callActivity>
@@ -288,7 +288,7 @@ println(estadosObraPorPoloTableJson)</script>
         <omgdc:Bounds height="35.0" width="35.0" x="1118.0" y="635.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="boundarytimer1" id="BPMNShape_boundarytimer1">
-        <omgdc:Bounds height="30.0" width="30.0" x="1398.0" y="426.0"></omgdc:Bounds>
+        <omgdc:Bounds height="30.0" width="30.0" x="1398.0" y="430.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="daParecerStartEvent" id="BPMNShape_daParecerStartEvent">
         <omgdc:Bounds height="35.0" width="35.0" x="1.0" y="323.0"></omgdc:Bounds>
@@ -366,7 +366,7 @@ println(estadosObraPorPoloTableJson)</script>
         <omgdi:waypoint x="1244.0" y="510.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow29" id="BPMNEdge_flow29">
-        <omgdi:waypoint x="1031.0" y="596.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1031.0" y="598.0"></omgdi:waypoint>
         <omgdi:waypoint x="1031.0" y="652.0"></omgdi:waypoint>
         <omgdi:waypoint x="1118.0" y="652.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
@@ -381,7 +381,8 @@ println(estadosObraPorPoloTableJson)</script>
         <omgdi:waypoint x="1519.0" y="340.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow36" id="BPMNEdge_flow36">
-        <omgdi:waypoint x="1428.0" y="441.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1428.0" y="445.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1427.0" y="441.0"></omgdi:waypoint>
         <omgdi:waypoint x="1471.0" y="440.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow37" id="BPMNEdge_flow37">
