@@ -4,7 +4,7 @@
     <startEvent id="adquirirObraStartEvent" name="Adquirir Obra Start Event"></startEvent>
     <endEvent id="adquirirObraEndEvent" name="Adquirir Obra End Event"></endEvent>
     <manualTask id="adquirirObraLevantaObraManualTask" name="Levanta Obra"></manualTask>
-    <serviceTask id="adquirirObraAdquireObraServiceTask" name="Adquire Obra Service Task" activiti:class="insis.acervo.v1.AdquireObraV1"></serviceTask>
+    <serviceTask id="adquirirObraAdquireObraServiceTask" name="Adquire Obra Service Task" activiti:class="insis.acervo.v1.AdquireObra"></serviceTask>
     <userTask id="adquirirObraIniciaRecolhaObraUserTask" name="Inicia Recolha de Obra" activiti:candidateGroups="servico_administrativo">
       <extensionElements>
         <activiti:formProperty id="titulo" name="Titulo" type="string" variable="titulo" writable="false" required="true"></activiti:formProperty>
