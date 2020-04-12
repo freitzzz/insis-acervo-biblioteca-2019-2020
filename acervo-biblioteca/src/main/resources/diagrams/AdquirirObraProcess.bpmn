@@ -4,13 +4,13 @@
     <startEvent id="adquirirObraStartEvent" name="Adquirir Obra Start Event"></startEvent>
     <endEvent id="adquirirObraEndEvent" name="Adquirir Obra End Event"></endEvent>
     <manualTask id="adquirirObraLevantaObraManualTask" name="Levanta Obra"></manualTask>
-    <serviceTask id="adquirirObraAdquireObraServiceTask" name="Adquire Obra Service Task" activiti:class="insis.acervo.v1.AdquireObra"></serviceTask>
+    <serviceTask id="adquirirObraAdquireObraServiceTask" name="Adquire Obra Service Task" activiti:class="insis.acervo.v1.AdquireObraV1"></serviceTask>
     <userTask id="adquirirObraIniciaRecolhaObraUserTask" name="Inicia Recolha de Obra" activiti:candidateGroups="servico_administrativo">
       <extensionElements>
         <activiti:formProperty id="titulo" name="Titulo" type="string" variable="titulo" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="anoPublicacao" name="Ano Publicação" type="long" variable="anoPublicacao" datePattern="yyyy" writable="false" required="true"></activiti:formProperty>
         <activiti:formProperty id="autores" name="Autores" type="string" variable="autores" writable="false" required="true"></activiti:formProperty>
-        <activiti:formProperty id="polo" name="Polo" type="string" variable="polo"></activiti:formProperty>
+        <activiti:formProperty id="polo" name="Polo" type="string" variable="polo" writable="false"></activiti:formProperty>
         <activiti:formProperty id="fornecedorMelhorPreco" name="Fornecedor" type="table" variable="fornecedorMelhorPreco" writable="false" required="true"></activiti:formProperty>
       </extensionElements>
     </userTask>
