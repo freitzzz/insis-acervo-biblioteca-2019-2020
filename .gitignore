@@ -2,3 +2,4 @@
 */target
 acervo-biblioteca/deployment/*
 */.bpmn
+.tmp/*
