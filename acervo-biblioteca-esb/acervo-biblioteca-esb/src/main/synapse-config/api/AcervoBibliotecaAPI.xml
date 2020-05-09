@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/acervobiblioteca" name="AcervoBibliotecaAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/polos">
+        <inSequence>
+            <log description="Log Request" level="custom">
+                <property name="message" value="Get Polos"/>
+            </log>
+            <payloadFactory description="Polos" media-type="json">
+                <format>[&#xd;
+    {&#xd;
+        "name":"$1",&#xd;
+        "apiUrl":"$2"&#xd;
+    },&#xd;
+    {&#xd;
+        "name":"$3",&#xd;
+        "apiUrl":"$4"&#xd;
+    },&#xd;
+    {&#xd;
+        "name":"$5",&#xd;
+        "apiUrl":"$6"&#xd;
+    }&#xd;
+]</format>
+                <args>
+                    <arg value="Polo1"/>
+                    <arg value="/polo1"/>
+                    <arg value="Polo2"/>
+                    <arg value="/polo2"/>
+                    <arg value="Polo3"/>
+                    <arg value="/polo3"/>
+                </args>
+            </payloadFactory>
+            <respond description="Respond"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <payloadFactory description="Payload Error" media-type="json">
+                <format>{&#xd;
+"error":$1&#xd;
+}</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+                </args>
+            </payloadFactory>
+            <respond description="Respond Error"/>
+        </faultSequence>
+    </resource>
+</api>

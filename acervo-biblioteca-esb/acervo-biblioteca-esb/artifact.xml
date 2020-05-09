@@ -1,1 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts/>
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="AcervoBibliotecaAPI" groupId="com.example.acervo-biblioteca-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/AcervoBibliotecaAPI.xml</file>
+    </artifact>
+</artifacts>
