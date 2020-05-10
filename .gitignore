@@ -2,4 +2,13 @@
 */target
 acervo-biblioteca/deployment/*
 */.bpmn
+/complex_type*/*
+DaParecer2.bpmn
 .tmp/*
+*/*/*.meta/*
+*/*/*.settings/*
+
+service-tasks/src/main/java/insis/acervo/v1/AdquireObra.java
+service-tasks/src/main/java/insis/acervo/v1/ObtainPeritoUsers.java
+service-tasks/src/main/java/insis/acervo/v1/ObtainRegisteredUsers.java
+ExemplosPipelines/*
