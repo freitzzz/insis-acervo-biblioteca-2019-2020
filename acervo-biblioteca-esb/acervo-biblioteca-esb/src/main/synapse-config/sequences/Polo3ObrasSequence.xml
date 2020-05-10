@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Polo3ObrasSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Log Sequence" level="custom">
+        <property name="message" value="Polo3ObrasSequence"/>
+    </log>
+    <payloadFactory description="Payload Soap" media-type="xml">
+        <format>
+            <soapenv:Envelope xmlns:ns="$2" xmlns:soapenv="$1">
+                <soapenv:Header/>
+                <soapenv:Body>
+                    <ns:GetObrasRequest>$3</ns:GetObrasRequest>
+                </soapenv:Body>
+            </soapenv:Envelope>
+        </format>
+        <args>
+            <arg value="http://schemas.xmlsoap.org/soap/envelope/"/>
+            <arg value="http://demo0516930.mockable.io/service/1"/>
+            <arg value=" "/>
+        </args>
+    </payloadFactory>
+    <header description="Soap Header" name="Action" scope="default" value="GetObras"/>
+    <call>
+        <endpoint key="Polo3EP"/>
+    </call>
+</sequence>
