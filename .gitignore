@@ -8,6 +8,8 @@ DaParecer2.bpmn
 */*/*.meta/*
 */*/*.settings/*
 
+*/**/target/
+
 service-tasks/src/main/java/insis/acervo/v1/AdquireObra.java
 service-tasks/src/main/java/insis/acervo/v1/ObtainPeritoUsers.java
 service-tasks/src/main/java/insis/acervo/v1/ObtainRegisteredUsers.java
