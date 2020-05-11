@@ -2,32 +2,26 @@
 <api context="/acervobiblioteca" name="AcervoBibliotecaAPI" xmlns="http://ws.apache.org/ns/synapse">
     <resource methods="GET" uri-template="/polos">
         <inSequence>
-            <log description="Log Request" level="custom">
+            <log description="Incoming Request LOG" level="custom">
                 <property name="message" value="Get Polos"/>
             </log>
-            <property description="URL Fix" name="REST_URL_POSTFIX" scope="axis2" type="STRING" value=""/>
-            <payloadFactory description="Polos" media-type="json">
+            <property description="Set Request URL " name="REST_URL_POSTFIX" scope="axis2" type="STRING" value=""/>
+            <payloadFactory description="Build Response Body" media-type="json">
                 <format>[&#xd;
     {&#xd;
-        "name":"$1",&#xd;
-        "apiUrl":"$2"&#xd;
+        "name":"$1"&#xd;
     },&#xd;
     {&#xd;
-        "name":"$3",&#xd;
-        "apiUrl":"$4"&#xd;
+        "name":"$2"&#xd;
     },&#xd;
     {&#xd;
-        "name":"$5",&#xd;
-        "apiUrl":"$6"&#xd;
+        "name":"$3"&#xd;
     }&#xd;
 ]</format>
                 <args>
                     <arg value="Polo1"/>
-                    <arg value="/polo1"/>
                     <arg value="Polo2"/>
-                    <arg value="/polo2"/>
                     <arg value="Polo3"/>
-                    <arg value="/polo3"/>
                 </args>
             </payloadFactory>
             <respond description="Respond"/>
