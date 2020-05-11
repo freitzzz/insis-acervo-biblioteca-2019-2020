@@ -1,0 +1,14 @@
+map_S_Envelope_S_root = function(){ 
+var outputroot={};
+
+var count_i_AdC_eaba3d08_7a21_46e9_adf7_3e9c0d75c6a5 = 0;
+outputroot =  {};
+
+for(i_AdC_eaba3d08_7a21_46e9_adf7_3e9c0d75c6a5 in inputsoapenv_Envelope.soapenv_Body.AreasConhecimento.AdC){
+outputroot.AdC = inputsoapenv_Envelope.soapenv_Body.AreasConhecimento.AdC[i_AdC_eaba3d08_7a21_46e9_adf7_3e9c0d75c6a5];
+
+count_i_AdC_eaba3d08_7a21_46e9_adf7_3e9c0d75c6a5++;
+}
+return outputroot;
+};
+

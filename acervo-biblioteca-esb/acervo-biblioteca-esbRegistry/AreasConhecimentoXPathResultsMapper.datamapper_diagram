@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_owO3kJPNEeqQrKExdaOsCQ" type="DataMapper" name="AreasConhecimentoXPathResultsMapper.datamapper_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_ozGlYJPNEeqQrKExdaOsCQ" type="2002" fontName="Segoe UI">
+    <children xmi:type="notation:Shape" xmi:id="_kXlfgJPREeqQrKExdaOsCQ" type="3002" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_kXlfgpPREeqQrKExdaOsCQ" type="5002"/>
+      <children xmi:type="notation:Shape" xmi:id="_kXmtoJPREeqQrKExdaOsCQ" type="3003" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_kXmtopPREeqQrKExdaOsCQ" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_kXnUsJPREeqQrKExdaOsCQ" type="3003" fontName="Segoe UI">
+          <children xmi:type="notation:DecorationNode" xmi:id="_kXnUspPREeqQrKExdaOsCQ" type="5001"/>
+          <children xmi:type="notation:Shape" xmi:id="_kXoi0JPREeqQrKExdaOsCQ" type="3003" fontName="Segoe UI">
+            <children xmi:type="notation:DecorationNode" xmi:id="_kXoi0pPREeqQrKExdaOsCQ" type="5001"/>
+            <children xmi:type="notation:Shape" xmi:id="_kXpJ4JPREeqQrKExdaOsCQ" type="3020" fontName="Segoe UI">
+              <element xmi:type="datamapper:InNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@node.0/@node.0/@node.0/@inNode"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXpJ4ZPREeqQrKExdaOsCQ" x="-1" y="1"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_kXpJ4pPREeqQrKExdaOsCQ" type="3019" fontName="Segoe UI">
+              <element xmi:type="datamapper:OutNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@node.0/@node.0/@node.0/@outNode"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXpJ45PREeqQrKExdaOsCQ"/>
+            </children>
+            <element xmi:type="datamapper:TreeNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@node.0/@node.0/@node.0"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXoi0ZPREeqQrKExdaOsCQ"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_kXoi05PREeqQrKExdaOsCQ" type="3020" fontName="Segoe UI">
+            <element xmi:type="datamapper:InNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@node.0/@node.0/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXoi1JPREeqQrKExdaOsCQ" x="-1" y="-11"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_kXoi1ZPREeqQrKExdaOsCQ" type="3019" fontName="Segoe UI">
+            <element xmi:type="datamapper:OutNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@node.0/@node.0/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXoi1pPREeqQrKExdaOsCQ"/>
+          </children>
+          <element xmi:type="datamapper:TreeNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@node.0/@node.0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXnUsZPREeqQrKExdaOsCQ"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_kXnUs5PREeqQrKExdaOsCQ" type="3020" fontName="Segoe UI">
+          <element xmi:type="datamapper:InNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXnUtJPREeqQrKExdaOsCQ" x="-1" y="-11"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_kXnUtZPREeqQrKExdaOsCQ" type="3019" fontName="Segoe UI">
+          <element xmi:type="datamapper:OutNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXnUtpPREeqQrKExdaOsCQ"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXmtoZPREeqQrKExdaOsCQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_kXmto5PREeqQrKExdaOsCQ" type="3020" fontName="Segoe UI">
+        <element xmi:type="datamapper:InNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXmtpJPREeqQrKExdaOsCQ" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_kXmtpZPREeqQrKExdaOsCQ" type="3019" fontName="Segoe UI">
+        <element xmi:type="datamapper:OutNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXmtppPREeqQrKExdaOsCQ"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kXlfgZPREeqQrKExdaOsCQ"/>
+    </children>
+    <element xmi:type="datamapper:Input" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ozGlYZPNEeqQrKExdaOsCQ" x="90" y="200" width="250" height="160"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_ozHMcJPNEeqQrKExdaOsCQ" type="2003" fontName="Segoe UI">
+    <children xmi:type="notation:Shape" xmi:id="_-SxPIJPREeqQrKExdaOsCQ" type="3011" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_-SxPIpPREeqQrKExdaOsCQ" type="5003"/>
+      <children xmi:type="notation:Shape" xmi:id="_-SydQJPREeqQrKExdaOsCQ" type="3003" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_-SydQpPREeqQrKExdaOsCQ" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_-SzrYJPREeqQrKExdaOsCQ" type="3020" fontName="Segoe UI">
+          <element xmi:type="datamapper:InNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@output/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-SzrYZPREeqQrKExdaOsCQ" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_-SzrYpPREeqQrKExdaOsCQ" type="3019" fontName="Segoe UI">
+          <element xmi:type="datamapper:OutNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@output/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-SzrY5PREeqQrKExdaOsCQ"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@output/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-SydQZPREeqQrKExdaOsCQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-SydQ5PREeqQrKExdaOsCQ" type="3020" fontName="Segoe UI">
+        <element xmi:type="datamapper:InNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@output/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-SydRJPREeqQrKExdaOsCQ" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_-SydRZPREeqQrKExdaOsCQ" type="3019" fontName="Segoe UI">
+        <element xmi:type="datamapper:OutNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@output/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-SydRpPREeqQrKExdaOsCQ"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="AreasConhecimentoXPathResultsMapper.datamapper#//@output/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-SxPIZPREeqQrKExdaOsCQ"/>
+    </children>
+    <element xmi:type="datamapper:Output" href="AreasConhecimentoXPathResultsMapper.datamapper#//@output"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ozHMcZPNEeqQrKExdaOsCQ" x="310" width="250" height="160"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_owO3kZPNEeqQrKExdaOsCQ"/>
+  <element xmi:type="datamapper:DataMapperRoot" href="AreasConhecimentoXPathResultsMapper.datamapper#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_-rKhAJPREeqQrKExdaOsCQ" type="4001" source="_kXpJ4pPREeqQrKExdaOsCQ" target="_-SzrYJPREeqQrKExdaOsCQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_-rKhAZPREeqQrKExdaOsCQ" fontName="Segoe UI"/>
+    <element xmi:type="datamapper:DataMapperLink" href="AreasConhecimentoXPathResultsMapper.datamapper#//@input/@treeNode.0/@node.0/@node.0/@node.0/@outNode/@outgoingLink.1"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-rKhApPREeqQrKExdaOsCQ" points="[-2, 0, -262, 40]$[258, -40, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-rLvIJPREeqQrKExdaOsCQ" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-rLvIZPREeqQrKExdaOsCQ" id="CENTER"/>
+  </edges>
+</notation:Diagram>
