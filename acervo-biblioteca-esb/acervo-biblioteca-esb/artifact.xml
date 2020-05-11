@@ -5,4 +5,10 @@
     <artifact name="AcervoBibliotecaAPI" groupId="com.example.acervo-biblioteca-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/api/AcervoBibliotecaAPI.xml</file>
     </artifact>
+    <artifact name="Polo3EP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/Polo3EP.xml</file>
+    </artifact>
+    <artifact name="Polo3ObrasSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Polo3ObrasSequence.xml</file>
+    </artifact>
 </artifacts>
