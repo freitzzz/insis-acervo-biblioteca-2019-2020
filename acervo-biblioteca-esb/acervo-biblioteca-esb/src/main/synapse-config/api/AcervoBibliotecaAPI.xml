@@ -57,12 +57,27 @@
                 <property name="message" value="Get Areas Conhecimento"/>
             </log>
             <property description="URL Fix" name="REST_URL_POSTFIX" scope="axis2" type="STRING" value=""/>
-            <call description="Get Areas Conhecimento Polo1">
-                <endpoint key="Polo1AreasConhecimentoEP"/>
-            </call>
-            <respond description="Respond"/>
+            <clone>
+                <target sequence="Polo1AreasConhecimentoSequence"/>
+                <target sequence="Polo3AreasConhecimentoSequence"/>
+            </clone>
         </inSequence>
         <outSequence>
+            <aggregate>
+                <completeCondition>
+                    <messageCount max="-1" min="-1"/>
+                </completeCondition>
+                <onComplete expression="$body/*[1]">
+                    <payloadFactory description="Remove repeated AreasConhecimento" media-type="xml">
+                        <format>
+                            <root xmlns="">$1</root>
+                        </format>
+                        <args>
+                            <arg evaluator="xml" expression="//*[local-name()='AreasConhecimento'][not(text()=preceding-sibling::*[local-name()='AreasConhecimento']/text())]"/>
+                        </args>
+                    </payloadFactory>
+                </onComplete>
+            </aggregate>
             <respond description="Respond"/>
         </outSequence>
         <faultSequence>
@@ -82,18 +97,5 @@
             </payloadFactory>
             <respond description="Respond Error"/>
         </faultSequence>
-    </resource>
-    <resource methods="GET" uri-template="/temp">
-        <inSequence>
-            <log description="Log Request" level="custom">
-                <property name="message" value="TEMP"/>
-            </log>
-            <sequence key="Polo3ObrasSequence"/>
-            <sequence key="Polo3AreasConhecimentoSequence"/>
-        </inSequence>
-        <outSequence>
-            <respond/>
-        </outSequence>
-        <faultSequence/>
     </resource>
 </api>
