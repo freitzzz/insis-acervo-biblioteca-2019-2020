@@ -3,30 +3,7 @@
     <log description="Log Sequence" level="custom">
         <property name="message" value="Polo3AreasConhecimentoSequence"/>
     </log>
-    <log level="custom">
-        <property name="message" value="Antes payload"/>
-    </log>
-    <payloadFactory media-type="xml">
-        <format>
-            <AreasConhecimento xmlns="">$1</AreasConhecimento>
-        </format>
-        <args>
-            <arg evaluator="xml" expression="//*[local-name()='AdC']" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"/>
-        </args>
-    </payloadFactory>
-    <log level="full"/>
-    <log level="custom">
-        <property name="message" value="Depois payload"/>
-    </log>
-    <datamapper config="gov:datamapper/AreasConhecimentoXPathResultsMapper.dmc" inputSchema="gov:datamapper/AreasConhecimentoXPathResultsMapper_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/AreasConhecimentoXPathResultsMapper_outputSchema.json" outputType="XML" xsltStyleSheet="gov:datamapper/AreasConhecimentoXPathResultsMapper_xsltStyleSheet.xml"/>
-    <foreach expression="//*[local-name()='AdC']">
-        <sequence>
-            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
-        </sequence>
-    </foreach>
-    <log level="custom">
-        <property name="message" value="Depois mapper"/>
-    </log>
-    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <sequence key="Polo3ObrasSequence"/>
+    <datamapper config="gov:datamapper/AreasConhecimentoXPathResultsMapper.dmc" description="Map AdC to AreasConhecimento" inputSchema="gov:datamapper/AreasConhecimentoXPathResultsMapper_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/AreasConhecimentoXPathResultsMapper_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/AreasConhecimentoXPathResultsMapper_xsltStyleSheet.xml"/>
     <loopback description="Loop Back"/>
 </sequence>
