@@ -9,6 +9,7 @@ This set is composed by the following elements:
 - DecidePADExecutionListener
 - ValidateSelectedPeritosOnPropostaAquisicaoTaskListener
 - ValidateSelectedPeritosOnIndicaPeritosTaskListener
+- LoadConfigurationFileExecutionListener
 
 
 ## Steps
