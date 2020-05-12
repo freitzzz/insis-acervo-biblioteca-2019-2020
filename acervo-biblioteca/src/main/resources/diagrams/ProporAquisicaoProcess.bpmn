@@ -21,7 +21,7 @@
     <serviceTask id="proporAquisicaoObterPolosRESTTask" name="Obter Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:string>http://www.mocky.io/v2/5e6cdc3b2e000072000eea6e</activiti:string>
+          <activiti:expression>${acervoBibliotecaAPIBaseUrl}/polos</activiti:expression>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
