@@ -78,6 +78,12 @@
                     </payloadFactory>
                 </onComplete>
             </aggregate>
+            <payloadFactory description="Get only array" media-type="json">
+                <format>$1</format>
+                <args>
+                    <arg evaluator="json" expression="$.AreasConhecimento"/>
+                </args>
+            </payloadFactory>
             <respond description="Respond"/>
         </outSequence>
         <faultSequence>
