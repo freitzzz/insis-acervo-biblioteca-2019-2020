@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="ResourceNotFoundSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Measures Log" level="custom">
+        <property name="message" value="Resource not found! Replying with Not Found (404)"/>
+    </log>
+    <property description="Set HTTP Status Code as 404" name="HTTP_SC" scope="axis2" type="STRING" value="404"/>
+</sequence>
