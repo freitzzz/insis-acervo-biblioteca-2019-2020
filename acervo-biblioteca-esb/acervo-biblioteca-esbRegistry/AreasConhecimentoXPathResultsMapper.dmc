@@ -1,14 +1,16 @@
 map_S_Envelope_S_root = function(){ 
 var outputroot={};
 
-var count_i_AdC_eaba3d08_7a21_46e9_adf7_3e9c0d75c6a5 = 0;
+var count_i_Obra_2e0a66c4_6c8f_49c1_b542_d18f981fbf6f = 0;
 outputroot =  {};
+outputroot.AreasConhecimento =  [];
 
-for(i_AdC_eaba3d08_7a21_46e9_adf7_3e9c0d75c6a5 in inputsoapenv_Envelope.soapenv_Body.AreasConhecimento.AdC){
-outputroot.AdC = inputsoapenv_Envelope.soapenv_Body.AreasConhecimento.AdC[i_AdC_eaba3d08_7a21_46e9_adf7_3e9c0d75c6a5];
+for(i_Obra_2e0a66c4_6c8f_49c1_b542_d18f981fbf6f in inputsoap_Envelope.soap_Body.Obra){
+outputroot.AreasConhecimento[count_i_Obra_2e0a66c4_6c8f_49c1_b542_d18f981fbf6f] = inputsoap_Envelope.soap_Body.Obra[i_Obra_2e0a66c4_6c8f_49c1_b542_d18f981fbf6f].AdC;
 
-count_i_AdC_eaba3d08_7a21_46e9_adf7_3e9c0d75c6a5++;
+count_i_Obra_2e0a66c4_6c8f_49c1_b542_d18f981fbf6f++;
 }
 return outputroot;
 };
+
 
