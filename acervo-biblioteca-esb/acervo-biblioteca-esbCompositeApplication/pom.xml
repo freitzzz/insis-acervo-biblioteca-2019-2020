@@ -107,10 +107,14 @@
       <type>xml</type>
     </dependency>
     <dependency>
-      <groupId>com.example.acervo-biblioteca-esb.endpoint</groupId>
-      <artifactId>GetPolo1ObrasEP</artifactId>
       <groupId>com.example.acervo-biblioteca-esb.resource</groupId>
       <artifactId>AreasConhecimentoPolo1_xsltStyleSheet</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.endpoint</groupId>
+      <artifactId>GetPolo1ObrasEP</artifactId>
       <version>1.0.0</version>
       <type>zip</type>
     </dependency>

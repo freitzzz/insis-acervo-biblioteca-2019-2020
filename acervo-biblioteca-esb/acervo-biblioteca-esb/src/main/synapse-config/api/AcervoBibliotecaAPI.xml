@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <api context="/acervobiblioteca" name="AcervoBibliotecaAPI" xmlns="http://ws.apache.org/ns/synapse">
     <resource methods="GET" uri-template="/polos">
         <inSequence>
             <log description="Log Request" level="custom">
-                <property name="message" value="Get Polos" />
+                <property name="message" value="Get Polos"/>
             </log>
-            <property description="URL Fix" name="REST_URL_POSTFIX" scope="axis2" type="STRING" value="" />
+            <property description="URL Fix" name="REST_URL_POSTFIX" scope="axis2" type="STRING" value=""/>
             <payloadFactory description="Polos" media-type="json">
                 <format>
 					[&#xd;
@@ -24,17 +24,17 @@
 					]
 				</format>
                 <args>
-                    <arg value="Polo1" />
-                    <arg value="/polo1" />
-                    <arg value="Polo2" />
-                    <arg value="/polo2" />
-                    <arg value="Polo3" />
-                    <arg value="/polo3" />
+                    <arg value="Polo1"/>
+                    <arg value="/polo1"/>
+                    <arg value="Polo2"/>
+                    <arg value="/polo2"/>
+                    <arg value="Polo3"/>
+                    <arg value="/polo3"/>
                 </args>
             </payloadFactory>
-            <respond description="Respond" />
+            <respond description="Respond"/>
         </inSequence>
-        <outSequence />
+        <outSequence/>
         <faultSequence>
             <payloadFactory description="Payload Error" media-type="json">
                 <format>
@@ -46,30 +46,30 @@
 					}
 				</format>
                 <args>
-                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE" />
-                    <arg evaluator="xml" expression="$ctx:ERROR_CODE" />
-                    <arg evaluator="xml" expression="$ctx:ERROR_DETAIL" />
-                    <arg evaluator="xml" expression="$ctx:ERROR_EXCEPTION" />
+                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_CODE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_DETAIL"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_EXCEPTION"/>
                 </args>
             </payloadFactory>
-            <respond description="Respond Error" />
+            <respond description="Respond Error"/>
         </faultSequence>
     </resource>
     <resource methods="GET" uri-template="/areasconhecimento">
         <inSequence>
             <log description="Log Request" level="custom">
-                <property name="message" value="Get Areas Conhecimento" />
+                <property name="message" value="Get Areas Conhecimento"/>
             </log>
-            <property description="URL Fix" name="REST_URL_POSTFIX" scope="axis2" type="STRING" value="" />
+            <property description="URL Fix" name="REST_URL_POSTFIX" scope="axis2" type="STRING" value=""/>
             <clone>
-                <target sequence="Polo1AreasConhecimentoSequence" />
-                <target sequence="Polo3AreasConhecimentoSequence" />
+                <target sequence="Polo1AreasConhecimentoSequence"/>
+                <target sequence="Polo3AreasConhecimentoSequence"/>
             </clone>
         </inSequence>
         <outSequence>
             <aggregate>
                 <completeCondition>
-                    <messageCount max="-1" min="-1" />
+                    <messageCount max="-1" min="-1"/>
                 </completeCondition>
                 <onComplete expression="$body/*[1]">
                     <payloadFactory description="Remove repeated AreasConhecimento" media-type="xml">
@@ -77,7 +77,7 @@
                             <root xmlns="">$1</root>
                         </format>
                         <args>
-                            <arg evaluator="xml" expression="//*[local-name()='AreasConhecimento'][not(text()=preceding-sibling::*[local-name()='AreasConhecimento']/text())]" />
+                            <arg evaluator="xml" expression="//*[local-name()='AreasConhecimento'][not(text()=preceding-sibling::*[local-name()='AreasConhecimento']/text())]"/>
                         </args>
                     </payloadFactory>
                 </onComplete>
@@ -85,10 +85,10 @@
             <payloadFactory description="Get only array" media-type="json">
                 <format>$1</format>
                 <args>
-                    <arg evaluator="json" expression="$.AreasConhecimento" />
+                    <arg evaluator="json" expression="$.AreasConhecimento"/>
                 </args>
             </payloadFactory>
-            <respond description="Respond" />
+            <respond description="Respond"/>
         </outSequence>
         <faultSequence>
             <payloadFactory description="Payload Error" media-type="json">
@@ -101,48 +101,48 @@
 					}
 				</format>
                 <args>
-                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE" />
-                    <arg evaluator="xml" expression="$ctx:ERROR_CODE" />
-                    <arg evaluator="xml" expression="$ctx:ERROR_DETAIL" />
-                    <arg evaluator="xml" expression="$ctx:ERROR_EXCEPTION" />
+                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_CODE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_DETAIL"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_EXCEPTION"/>
                 </args>
             </payloadFactory>
-            <respond description="Respond Error" />
+            <respond description="Respond Error"/>
         </faultSequence>
     </resource>
     <resource methods="GET" uri-template="/temp">
         <inSequence>
             <log description="Log Request" level="custom">
-                <property name="message" value="TEMP" />
+                <property name="message" value="TEMP"/>
             </log>
-            <sequence key="Polo3ObrasSequence" />
-            <sequence key="Polo3AreasConhecimentoSequence" />
+            <sequence key="Polo3ObrasSequence"/>
+            <sequence key="Polo3AreasConhecimentoSequence"/>
         </inSequence>
         <outSequence>
-            <respond />
+            <respond/>
         </outSequence>
-        <faultSequence />
+        <faultSequence/>
     </resource>
     <resource methods="GET" uri-template="/polos/{polo}/obras">
         <inSequence>
             <log description="Incoming Request Log" level="custom">
-                <property name="message" value="Get Polo Obras" />
-                <property expression="get-property('uri.var.polo')" name="polo resource identifier" />
+                <property name="message" value="Get Polo Obras"/>
+                <property expression="get-property('uri.var.polo')" name="polo resource identifier"/>
             </log>
             <switch description="Case-Insensitive Switch Matcher for Polos" source="get-property('uri.var.polo')">
                 <case regex="([p|P][o|O][l|L][o|O]1)">
-                    <sequence key="GetPolo1ObrasSequence" />
+                    <sequence key="GetPolo1ObrasSequence"/>
                 </case>
-                <case regex="([p|P][o|O][l|L][o|O]2)" />
-                <case regex="([p|P][o|O][l|L][o|O]3)" />
+                <case regex="([p|P][o|O][l|L][o|O]2)"/>
+                <case regex="([p|P][o|O][l|L][o|O]3)"/>
                 <default>
-                    <sequence description="Sequence that handles response properties when a resource is not found" key="ResourceNotFoundSequence" />
-                    <respond />
+                    <sequence description="Sequence that handles response properties when a resource is not found" key="ResourceNotFoundSequence"/>
+                    <respond/>
                 </default>
             </switch>
-            <respond />
+            <respond/>
         </inSequence>
-        <outSequence />
+        <outSequence/>
         <faultSequence>
             <payloadFactory description="Payload Error" media-type="json">
                 <format>
@@ -154,13 +154,13 @@
 					}
 				</format>
                 <args>
-                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE" />
-                    <arg evaluator="xml" expression="$ctx:ERROR_CODE" />
-                    <arg evaluator="xml" expression="$ctx:ERROR_DETAIL" />
-                    <arg evaluator="xml" expression="$ctx:ERROR_EXCEPTION" />
+                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_CODE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_DETAIL"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_EXCEPTION"/>
                 </args>
             </payloadFactory>
-            <respond description="Respond Error" />
+            <respond description="Respond Error"/>
         </faultSequence>
     </resource>
 </api>
