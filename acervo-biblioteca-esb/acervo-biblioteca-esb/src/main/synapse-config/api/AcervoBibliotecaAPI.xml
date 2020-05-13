@@ -67,28 +67,29 @@
             </clone>
         </inSequence>
         <outSequence>
+            <property name="enclosing_element" scope="default">
+                <result xmlns=""/>
+            </property>
             <aggregate>
                 <completeCondition>
                     <messageCount max="-1" min="-1"/>
                 </completeCondition>
-                <onComplete expression="$body/*[1]">
-                    <payloadFactory description="Remove repeated AreasConhecimento" media-type="xml">
-                        <format>
-                            <root xmlns="">$1</root>
-                        </format>
+                <onComplete enclosingElementProperty="enclosing_element" expression="//*[local-name() = 'AreasConhecimento']">
+                    <payloadFactory description="Remove repeated AreasConhecimento" media-type="json">
+                        <format>$1</format>
                         <args>
                             <arg evaluator="xml" expression="//*[local-name()='AreasConhecimento'][not(text()=preceding-sibling::*[local-name()='AreasConhecimento']/text())]"/>
                         </args>
                     </payloadFactory>
+                    <payloadFactory description="Get only array" media-type="json">
+                        <format>$1</format>
+                        <args>
+                            <arg evaluator="json" expression="$.AreasConhecimento"/>
+                        </args>
+                    </payloadFactory>
+                    <send/>
                 </onComplete>
             </aggregate>
-            <payloadFactory description="Get only array" media-type="json">
-                <format>$1</format>
-                <args>
-                    <arg evaluator="json" expression="$.AreasConhecimento"/>
-                </args>
-            </payloadFactory>
-            <respond description="Respond"/>
         </outSequence>
         <faultSequence>
             <payloadFactory description="Payload Error" media-type="json">
