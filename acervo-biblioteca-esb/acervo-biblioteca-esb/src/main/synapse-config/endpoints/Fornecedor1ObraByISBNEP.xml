@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="Fornecedor1ObraByISBNEP" xmlns="http://ws.apache.org/ns/synapse">
+    <http method="get" uri-template="https://5ea2ec00b9f5ca00166c33fc.mockapi.io/pubs/{uri.var.isbn}">
+        <suspendOnFailure>
+            <initialDuration>-1</initialDuration>
+            <progressionFactor>1.0</progressionFactor>
+        </suspendOnFailure>
+        <markForSuspension>
+            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+        </markForSuspension>
+    </http>
+</endpoint>

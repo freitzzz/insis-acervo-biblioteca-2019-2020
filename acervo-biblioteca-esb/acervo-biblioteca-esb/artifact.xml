@@ -27,9 +27,13 @@
     <artifact name="Polo1AreasConhecimentoSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/Polo1AreasConhecimentoSequence.xml</file>
     </artifact>
-</artifacts>    <artifact name="Fornecedor2ObrasEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+    <artifact name="Fornecedor2ObrasEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/Fornecedor2ObrasEP.xml</file>
+    </artifact>
+    <artifact name="Fornecedor2ObraByTitulo" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/Fornecedor2ObraByTitulo.xml</file>
     </artifact>
     <artifact name="Fornecedor1ObraByISBNEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/Fornecedor1ObraByISBNEP.xml</file>
     </artifact>
+</artifacts>
