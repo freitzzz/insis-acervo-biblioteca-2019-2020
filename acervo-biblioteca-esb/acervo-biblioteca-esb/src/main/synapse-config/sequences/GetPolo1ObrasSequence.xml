@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="GetPolo1ObrasSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Start Retrieve Obras Polo 1 Log Obras" level="custom">
+        <property name="message" value="Starting to retrieve Polo1 obras..."/>
+    </log>
+    <call description="Retrieve Polo1 Obras">
+        <endpoint key="GetPolo1ObrasEP"/>
+    </call>
+    <log description="End Retrieve Obras Polo 1 Log" level="custom">
+        <property name="message" value="Finished retrieving Polo1 obras"/>
+    </log>
+    <log description="Log Retrieved Obras Polo 1" level="full"/>
+    <log description="Start Retrieve Obras Polo 3 Log" level="custom">
+        <property name="message" value="Starting to retrieve Polo3 obras..."/>
+    </log>
+    <call>
+        <endpoint key="Polo3EP"/>
+    </call>
+    <log description="End Retrieve Obras Polo 3 Log" level="custom">
+        <property name="message" value="Finished retrieving Polo3 obras"/>
+    </log>
+    <log description="Log Retrieved Obras Polo 3" level="full"/>
+</sequence>
