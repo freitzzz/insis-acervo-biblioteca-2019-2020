@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_gEu6QJSBEeqQrKExdaOsCQ" type="DataMapper" name="AreasConhecimentoPolo1.datamapper_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_gL1AwJSBEeqQrKExdaOsCQ" type="2002" fontName="Segoe UI">
+    <children xmi:type="notation:Shape" xmi:id="_ueDJMJSBEeqQrKExdaOsCQ" type="3002" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_ueDJMpSBEeqQrKExdaOsCQ" type="5002"/>
+      <children xmi:type="notation:Shape" xmi:id="_ueEXUJSBEeqQrKExdaOsCQ" type="3003" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_ueEXUpSBEeqQrKExdaOsCQ" type="5001"/>
+        <element xmi:type="datamapper:TreeNode" href="AreasConhecimentoPolo1.datamapper#//@input/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ueEXUZSBEeqQrKExdaOsCQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_ueEXU5SBEeqQrKExdaOsCQ" type="3003" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_ueEXVZSBEeqQrKExdaOsCQ" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_ueGzkJSBEeqQrKExdaOsCQ" type="3020" fontName="Segoe UI">
+          <element xmi:type="datamapper:InNode" href="AreasConhecimentoPolo1.datamapper#//@input/@treeNode.0/@node.1/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ueGzkZSBEeqQrKExdaOsCQ" x="-1" y="1"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_ueHaoJSBEeqQrKExdaOsCQ" type="3019" fontName="Segoe UI">
+          <element xmi:type="datamapper:OutNode" href="AreasConhecimentoPolo1.datamapper#//@input/@treeNode.0/@node.1/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ueHaoZSBEeqQrKExdaOsCQ"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="AreasConhecimentoPolo1.datamapper#//@input/@treeNode.0/@node.1"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ueEXVJSBEeqQrKExdaOsCQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_ueEXVpSBEeqQrKExdaOsCQ" type="3020" fontName="Segoe UI">
+        <element xmi:type="datamapper:InNode" href="AreasConhecimentoPolo1.datamapper#//@input/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ueEXV5SBEeqQrKExdaOsCQ" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_ueEXWJSBEeqQrKExdaOsCQ" type="3019" fontName="Segoe UI">
+        <element xmi:type="datamapper:OutNode" href="AreasConhecimentoPolo1.datamapper#//@input/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ueEXWZSBEeqQrKExdaOsCQ"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="AreasConhecimentoPolo1.datamapper#//@input/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ueDJMZSBEeqQrKExdaOsCQ"/>
+    </children>
+    <element xmi:type="datamapper:Input" href="AreasConhecimentoPolo1.datamapper#//@input"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gL1AwZSBEeqQrKExdaOsCQ" width="250" height="160"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_gL1AwpSBEeqQrKExdaOsCQ" type="2003" fontName="Segoe UI">
+    <children xmi:type="notation:Shape" xmi:id="_w44M4JSBEeqQrKExdaOsCQ" type="3011" fontName="Segoe UI">
+      <children xmi:type="notation:DecorationNode" xmi:id="_w44z8JSBEeqQrKExdaOsCQ" type="5003"/>
+      <children xmi:type="notation:Shape" xmi:id="_w46pIJSBEeqQrKExdaOsCQ" type="3003" fontName="Segoe UI">
+        <children xmi:type="notation:DecorationNode" xmi:id="_w46pIpSBEeqQrKExdaOsCQ" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_w47QMJSBEeqQrKExdaOsCQ" type="3020" fontName="Segoe UI">
+          <element xmi:type="datamapper:InNode" href="AreasConhecimentoPolo1.datamapper#//@output/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_w47QMZSBEeqQrKExdaOsCQ" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_w47QMpSBEeqQrKExdaOsCQ" type="3019" fontName="Segoe UI">
+          <element xmi:type="datamapper:OutNode" href="AreasConhecimentoPolo1.datamapper#//@output/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_w47QM5SBEeqQrKExdaOsCQ"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="AreasConhecimentoPolo1.datamapper#//@output/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_w46pIZSBEeqQrKExdaOsCQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_w46pI5SBEeqQrKExdaOsCQ" type="3020" fontName="Segoe UI">
+        <element xmi:type="datamapper:InNode" href="AreasConhecimentoPolo1.datamapper#//@output/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_w46pJJSBEeqQrKExdaOsCQ" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_w46pJZSBEeqQrKExdaOsCQ" type="3019" fontName="Segoe UI">
+        <element xmi:type="datamapper:OutNode" href="AreasConhecimentoPolo1.datamapper#//@output/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_w46pJpSBEeqQrKExdaOsCQ"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="AreasConhecimentoPolo1.datamapper#//@output/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_w44M4ZSBEeqQrKExdaOsCQ"/>
+    </children>
+    <element xmi:type="datamapper:Output" href="AreasConhecimentoPolo1.datamapper#//@output"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_gL1Aw5SBEeqQrKExdaOsCQ" x="310" width="250" height="160"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_gEu6QZSBEeqQrKExdaOsCQ"/>
+  <element xmi:type="datamapper:DataMapperRoot" href="AreasConhecimentoPolo1.datamapper#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_xkcSYJSBEeqQrKExdaOsCQ" type="4001" source="_ueHaoJSBEeqQrKExdaOsCQ" target="_w47QMJSBEeqQrKExdaOsCQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_xkcSYZSBEeqQrKExdaOsCQ" fontName="Segoe UI"/>
+    <element xmi:type="datamapper:DataMapperLink" href="AreasConhecimentoPolo1.datamapper#//@input/@treeNode.0/@node.1/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_xkcSYpSBEeqQrKExdaOsCQ" points="[-2, 0, -252, 20]$[248, -20, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xkeuoJSBEeqQrKExdaOsCQ" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xkeuoZSBEeqQrKExdaOsCQ" id="CENTER"/>
+  </edges>
+</notation:Diagram>

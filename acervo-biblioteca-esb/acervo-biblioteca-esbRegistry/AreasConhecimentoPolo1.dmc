@@ -1,0 +1,16 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+var count_i_inputroot_c915d8b8_a299_4fde_949b_c8946faaafa3 = 0;
+outputroot =  {};
+outputroot.AreasConhecimento =  [];
+
+for(i_inputroot_c915d8b8_a299_4fde_949b_c8946faaafa3 in inputroot){
+outputroot.AreasConhecimento[count_i_inputroot_c915d8b8_a299_4fde_949b_c8946faaafa3] = inputroot[i_inputroot_c915d8b8_a299_4fde_949b_c8946faaafa3].Desc;
+
+count_i_inputroot_c915d8b8_a299_4fde_949b_c8946faaafa3++;
+}
+return outputroot;
+};
+
+

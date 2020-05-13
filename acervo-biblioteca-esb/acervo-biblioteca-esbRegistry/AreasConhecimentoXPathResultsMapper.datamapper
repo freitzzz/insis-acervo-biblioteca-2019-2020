@@ -1,54 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <datamapper:DataMapperRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
   <input>
-    <treeNode name="soapenv:Envelope" schemaDataType="OBJECT" level="1">
-      <node name="soapenv:Body" schemaDataType="OBJECT" level="2">
-        <node name="AreasConhecimento" schemaDataType="OBJECT" level="3">
-          <node name="AdC" level="4">
-            <properties key="type" value="array"/>
-            <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/AreasConhecimento/AdC"/>
-            <properties key="items_id" value="http://wso2jsonschema.org/soapenv:Body/AreasConhecimento/AdC/0"/>
-            <properties key="items_type" value="string"/>
+    <treeNode name="soap:Envelope" schemaDataType="OBJECT" level="1">
+      <node name="@soap:encodingStyle" schemaDataType="STRING" level="2">
+        <properties key="namespaces" value="{prefix=soap, url=http://www.w3.org/2001/12/soap-envelope}"/>
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/soap:encodingStyle"/>
+        <properties key="nullable" value="false"/>
+        <outNode/>
+        <inNode/>
+      </node>
+      <node name="soap:Body" schemaDataType="OBJECT" level="2">
+        <node name="Obra" level="3">
+          <node name="id" schemaDataType="NUMBER" level="4">
+            <properties key="type" value="number"/>
+            <properties key="id" value="http://wso2jsonschema.org/soap:Body/Obra/0/id"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <node name="autores" schemaDataType="STRING" level="4">
+            <properties key="type" value="string"/>
+            <properties key="id" value="http://wso2jsonschema.org/soap:Body/Obra/0/autores"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <node name="ISBN" schemaDataType="STRING" level="4">
+            <properties key="type" value="string"/>
+            <properties key="id" value="http://wso2jsonschema.org/soap:Body/Obra/0/ISBN"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <node name="titulo" schemaDataType="STRING" level="4">
+            <properties key="type" value="string"/>
+            <properties key="id" value="http://wso2jsonschema.org/soap:Body/Obra/0/titulo"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <node name="preco" schemaDataType="NUMBER" level="4">
+            <properties key="type" value="number"/>
+            <properties key="id" value="http://wso2jsonschema.org/soap:Body/Obra/0/preco"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <node name="status" schemaDataType="NUMBER" level="4">
+            <properties key="type" value="number"/>
+            <properties key="id" value="http://wso2jsonschema.org/soap:Body/Obra/0/status"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <node name="tipo" schemaDataType="STRING" level="4">
+            <properties key="type" value="string"/>
+            <properties key="id" value="http://wso2jsonschema.org/soap:Body/Obra/0/tipo"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <node name="AdC" schemaDataType="STRING" level="4">
+            <properties key="type" value="string"/>
+            <properties key="id" value="http://wso2jsonschema.org/soap:Body/Obra/0/AdC"/>
             <properties key="nullable" value="false"/>
             <outNode>
+              <outgoingLink/>
+              <outgoingLink/>
               <outgoingLink/>
               <outgoingLink inNode="//@output/@treeNode.0/@node.0/@inNode"/>
             </outNode>
             <inNode/>
           </node>
-          <properties key="type" value="object"/>
-          <properties key="id" value="http://wso2jsonschema.org/soapenv:Body/AreasConhecimento"/>
+          <node name="ano" schemaDataType="NUMBER" level="4">
+            <properties key="type" value="number"/>
+            <properties key="id" value="http://wso2jsonschema.org/soap:Body/Obra/0/ano"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode/>
+          </node>
+          <properties key="type" value="array"/>
+          <properties key="id" value="http://wso2jsonschema.org/soap:Body/Obra"/>
+          <properties key="items_id" value="http://wso2jsonschema.org/soap:Body/Obra/0"/>
+          <properties key="items_type" value="object"/>
           <properties key="nullable" value="false"/>
-          <properties key="properties_id" value="{AdC={id=http://wso2jsonschema.org/soapenv:Body/AreasConhecimento/AdC, type=array, items=[{id=http://wso2jsonschema.org/soapenv:Body/AreasConhecimento/AdC/0, type=string}]}}"/>
+          <properties key="properties_id" value="{id={id=http://wso2jsonschema.org/soap:Body/Obra/0/id, type=number}, autores={id=http://wso2jsonschema.org/soap:Body/Obra/0/autores, type=string}, ISBN={id=http://wso2jsonschema.org/soap:Body/Obra/0/ISBN, type=string}, titulo={id=http://wso2jsonschema.org/soap:Body/Obra/0/titulo, type=string}, preco={id=http://wso2jsonschema.org/soap:Body/Obra/0/preco, type=number}, status={id=http://wso2jsonschema.org/soap:Body/Obra/0/status, type=number}, tipo={id=http://wso2jsonschema.org/soap:Body/Obra/0/tipo, type=string}, AdC={id=http://wso2jsonschema.org/soap:Body/Obra/0/AdC, type=string}, ano={id=http://wso2jsonschema.org/soap:Body/Obra/0/ano, type=number}}"/>
           <outNode/>
           <inNode/>
         </node>
-        <properties key="namespaces" value="{prefix=soapenv, url=http://schemas.xmlsoap.org/soap/envelope/}"/>
+        <properties key="namespaces" value="{prefix=soap, url=http://www.w3.org/2001/12/soap-envelope}"/>
         <properties key="type" value="object"/>
-        <properties key="id" value="http://wso2jsonschema.org/soapenv:Body"/>
+        <properties key="id" value="http://wso2jsonschema.org/soap:Body"/>
         <properties key="nullable" value="false"/>
-        <properties key="properties_id" value="{AreasConhecimento={id=http://wso2jsonschema.org/soapenv:Body/AreasConhecimento, type=object, properties={AdC={id=http://wso2jsonschema.org/soapenv:Body/AreasConhecimento/AdC, type=array, items=[{id=http://wso2jsonschema.org/soapenv:Body/AreasConhecimento/AdC/0, type=string}]}}}}"/>
+        <properties key="properties_id" value="{Obra={id=http://wso2jsonschema.org/soap:Body/Obra, type=array, items=[{id=http://wso2jsonschema.org/soap:Body/Obra/0, type=object, properties={id={id=http://wso2jsonschema.org/soap:Body/Obra/0/id, type=number}, autores={id=http://wso2jsonschema.org/soap:Body/Obra/0/autores, type=string}, ISBN={id=http://wso2jsonschema.org/soap:Body/Obra/0/ISBN, type=string}, titulo={id=http://wso2jsonschema.org/soap:Body/Obra/0/titulo, type=string}, preco={id=http://wso2jsonschema.org/soap:Body/Obra/0/preco, type=number}, status={id=http://wso2jsonschema.org/soap:Body/Obra/0/status, type=number}, tipo={id=http://wso2jsonschema.org/soap:Body/Obra/0/tipo, type=string}, AdC={id=http://wso2jsonschema.org/soap:Body/Obra/0/AdC, type=string}, ano={id=http://wso2jsonschema.org/soap:Body/Obra/0/ano, type=number}}}]}}"/>
         <outNode/>
         <inNode/>
       </node>
-      <properties key="namespaces" value="{prefix=soapenv, url=http://schemas.xmlsoap.org/soap/envelope/}"/>
-      <properties key="namespaces" value="{prefix=soapenv, url=http://schemas.xmlsoap.org/soap/envelope/}"/>
+      <properties key="namespaces" value="{prefix=soap, url=http://www.w3.org/2001/12/soap-envelope},{prefix=m, url=http://www.example.org/stock}"/>
+      <properties key="namespaces" value="{prefix=soap, url=http://www.w3.org/2001/12/soap-envelope}"/>
       <properties key="type" value="object"/>
       <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
       <properties key="id" value="http://wso2jsonschema.org"/>
       <properties key="nullable" value="false"/>
+      <properties key="attribute_id" value="{attribute_id=[http://wso2jsonschema.org/soap:encodingStyle]}"/>
+      <properties key="attribute_type" value="{attribute_type=[string]}"/>
       <outNode/>
       <inNode/>
     </treeNode>
   </input>
   <output>
     <treeNode name="root" schemaDataType="OBJECT" level="1">
-      <node name="AdC" schemaDataType="STRING" level="2">
-        <properties key="type" value="string"/>
-        <properties key="id" value="http://wso2jsonschema.org/AdC"/>
+      <node name="AreasConhecimento" level="2">
+        <properties key="type" value="array"/>
+        <properties key="id" value="http://wso2jsonschema.org/AreasConhecimento"/>
+        <properties key="items_id" value="http://wso2jsonschema.org/AreasConhecimento/0"/>
+        <properties key="items_type" value="string"/>
         <properties key="nullable" value="false"/>
         <outNode/>
-        <inNode incomingLink="//@input/@treeNode.0/@node.0/@node.0/@node.0/@outNode/@outgoingLink.1"/>
+        <inNode incomingLink="//@input/@treeNode.0/@node.1/@node.0/@node.7/@outNode/@outgoingLink.3"/>
       </node>
       <properties key="type" value="object"/>
       <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>

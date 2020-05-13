@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Polo1AreasConhecimentoSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Log Sequence" level="custom">
+        <property name="message" value="Polo1AreasConhecimentoSequence"/>
+    </log>
+    <call description="Get Areas Conhecimento Polo1">
+        <endpoint key="Polo1AreasConhecimentoEP"/>
+    </call>
+    <datamapper config="gov:datamapper/AreasConhecimentoPolo1.dmc" description="Map Desc to AreasConhecimento" inputSchema="gov:datamapper/AreasConhecimentoPolo1_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/AreasConhecimentoPolo1_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/AreasConhecimentoPolo1_xsltStyleSheet.xml"/>
+    <loopback description="Loop Back"/>
+</sequence>
