@@ -9,10 +9,13 @@
   <name>acervo-biblioteca-esbCompositeApplication</name>
   <description>acervo-biblioteca-esbCompositeApplication</description>
   <properties>
+    <com.example.acervo-biblioteca-esb.sequence_._Polo1ObrasSequence>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.sequence_._Polo1ObrasSequence>
+    <com.example.acervo-biblioteca-esb.sequence_._Polo2ObrasSequence>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.sequence_._Polo2ObrasSequence>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1_inputSchema>
     <com.example.acervo-biblioteca-esb.api_._AcervoBibliotecaAPI>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.api_._AcervoBibliotecaAPI>
     <com.example.acervo-biblioteca-esb.endpoint_._GetPolo1ObrasEP>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.endpoint_._GetPolo1ObrasEP>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_outputSchema>
+    <com.example.acervo-biblioteca-esb.endpoint_._Polo2ObrasEP>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.endpoint_._Polo2ObrasEP>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1_xsltStyleSheet>
     <com.example.acervo-biblioteca-esb.sequences_._Polo3AreasConhecimentoSequence>capp/ApplicationServer</com.example.acervo-biblioteca-esb.sequences_._Polo3AreasConhecimentoSequence>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper>
@@ -131,6 +134,24 @@
       <artifactId>AreasConhecimentoXPathResultsMapper_xsltStyleSheet</artifactId>
       <version>1.0.0</version>
       <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.sequence</groupId>
+      <artifactId>Polo2ObrasSequence</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.sequence</groupId>
+      <artifactId>Polo1ObrasSequence</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.endpoint</groupId>
+      <artifactId>Polo2ObrasEP</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
     </dependency>
   </dependencies>
   <repositories>
