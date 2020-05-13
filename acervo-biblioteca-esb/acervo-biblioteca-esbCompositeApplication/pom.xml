@@ -89,12 +89,6 @@
       <type>zip</type>
     </dependency>
     <dependency>
-      <groupId>com.example.acervo-biblioteca-esb.api</groupId>
-      <artifactId>AcervoBibliotecaAPI</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
-    <dependency>
       <groupId>com.example.acervo-biblioteca-esb.sequence</groupId>
       <artifactId>ResourceNotFoundSequence</artifactId>
       <version>1.0.0</version>
