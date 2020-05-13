@@ -23,6 +23,22 @@
         <target>
             <sequence>
                 <sequence key="Polo3ObrasSequence"/>
+                <payloadFactory description="Remove Soap Tags" media-type="xml">
+                    <format>
+                        <Obras xmlns="">$1</Obras>
+                    </format>
+                    <args>
+                        <arg evaluator="xml" expression="//Obra"/>
+                    </args>
+                </payloadFactory>
+                <payloadFactory description="Distinct(ISBN)" media-type="xml">
+                    <format>
+                        <Obras xmlns="">$1</Obras>
+                    </format>
+                    <args>
+                        <arg evaluator="xml" expression="/*/Obra/ISBN[not(. = ../following-sibling::Obra/ISBN)]/parent::Obra"/>
+                    </args>
+                </payloadFactory>
                 <property description="Store Polo 3 Obras" expression="$body" name="obrasPolo3" scope="default" type="STRING"/>
             </sequence>
         </target>
