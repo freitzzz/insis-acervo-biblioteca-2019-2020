@@ -30,3 +30,6 @@
 </artifacts>    <artifact name="Fornecedor2ObrasEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/Fornecedor2ObrasEP.xml</file>
     </artifact>
+    <artifact name="Fornecedor1ObraByISBNEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/Fornecedor1ObraByISBNEP.xml</file>
+    </artifact>
