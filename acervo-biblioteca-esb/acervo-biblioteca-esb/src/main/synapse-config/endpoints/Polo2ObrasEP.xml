@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <endpoint name="Polo2ObrasEP" xmlns="http://ws.apache.org/ns/synapse">
-    <address uri="local:///services/Polo2Obras/">
+    <http method="get" uri-template="http://localhost:8280/services/Polo2Obras/exemplares">
         <suspendOnFailure>
             <initialDuration>-1</initialDuration>
             <progressionFactor>1.0</progressionFactor>
@@ -8,5 +8,5 @@
         <markForSuspension>
             <retriesBeforeSuspension>0</retriesBeforeSuspension>
         </markForSuspension>
-    </address>
+    </http>
 </endpoint>
