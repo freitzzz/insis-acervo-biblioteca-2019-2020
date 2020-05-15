@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datamapper:DataMapperRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper">
+  <input>
+    <treeNode name="root" level="1">
+      <node name="id" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/id"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.1/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="ID_autores" level="2">
+        <properties key="type" value="array"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/ID_autores"/>
+        <properties key="items_id" value="http://wso2jsonschema.org/0/ID_autores/0"/>
+        <properties key="items_type" value="number"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.1/@node.0/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="ISBN" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/ISBN"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.2/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="Title" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/Title"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.3/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="Preço1" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/Preço1"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.5/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="# exemplares" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/# exemplares"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.9/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="tipoID" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/tipoID"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.8/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="EstadosID" level="2">
+        <properties key="type" value="array"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/EstadosID"/>
+        <properties key="items_id" value="http://wso2jsonschema.org/0/EstadosID/0"/>
+        <properties key="items_type" value="number"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.5/@node.0/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="ID_AdC" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/ID_AdC"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.6/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <node name="Ano de Publicação" schemaDataType="STRING" level="2">
+        <properties key="type" value="string"/>
+        <properties key="id" value="http://wso2jsonschema.org/0/Ano de Publicação"/>
+        <properties key="nullable" value="false"/>
+        <outNode>
+          <outgoingLink inNode="//@output/@treeNode.0/@node.0/@node.7/@inNode"/>
+        </outNode>
+        <inNode/>
+      </node>
+      <properties key="type" value="array"/>
+      <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
+      <properties key="id" value="http://wso2jsonschema.org"/>
+      <properties key="items_id" value="http://wso2jsonschema.org/0"/>
+      <properties key="items_type" value="object"/>
+      <properties key="nullable" value="false"/>
+      <outNode/>
+      <inNode/>
+    </treeNode>
+  </input>
+  <output>
+    <treeNode name="Obras" schemaDataType="OBJECT" level="1">
+      <node name="Obra" schemaDataType="OBJECT" level="2">
+        <node name="id" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/Obra/id"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <node name="autores" schemaDataType="OBJECT" level="3">
+          <node name="autor" schemaDataType="NUMBER" level="4">
+            <properties key="type" value="number"/>
+            <properties key="id" value="http://wso2jsonschema.org/Obra/autores/autor"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode incomingLink="//@input/@treeNode.0/@node.1/@outNode/@outgoingLink.0"/>
+          </node>
+          <properties key="type" value="object"/>
+          <properties key="id" value="http://wso2jsonschema.org/Obra/autores"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode incomingLink="//@input/@treeNode.0/@node.0/@outNode/@outgoingLink.0"/>
+        </node>
+        <node name="ISBN" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/Obra/ISBN"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode incomingLink="//@input/@treeNode.0/@node.2/@outNode/@outgoingLink.0"/>
+        </node>
+        <node name="titulo" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/Obra/titulo"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode incomingLink="//@input/@treeNode.0/@node.3/@outNode/@outgoingLink.0"/>
+        </node>
+        <node name="preco" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/Obra/preco"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode/>
+        </node>
+        <node name="estados" schemaDataType="OBJECT" level="3">
+          <node name="estado" schemaDataType="NUMBER" level="4">
+            <properties key="type" value="number"/>
+            <properties key="id" value="http://wso2jsonschema.org/Obra/estados/estado"/>
+            <properties key="nullable" value="false"/>
+            <outNode/>
+            <inNode incomingLink="//@input/@treeNode.0/@node.7/@outNode/@outgoingLink.0"/>
+          </node>
+          <properties key="type" value="object"/>
+          <properties key="id" value="http://wso2jsonschema.org/Obra/estados"/>
+          <properties key="nullable" value="false"/>
+          <properties key="properties_id" value="{autor={id=http://wso2jsonschema.org/Obra/autores/autor, type=number}}"/>
+          <properties key="properties_id" value="{estado={id=http://wso2jsonschema.org/Obra/estados/estado, type=number}}"/>
+          <outNode/>
+          <inNode incomingLink="//@input/@treeNode.0/@node.4/@outNode/@outgoingLink.0"/>
+        </node>
+        <node name="AdC" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/Obra/AdC"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode incomingLink="//@input/@treeNode.0/@node.8/@outNode/@outgoingLink.0"/>
+        </node>
+        <node name="ano" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/Obra/ano"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode incomingLink="//@input/@treeNode.0/@node.9/@outNode/@outgoingLink.0"/>
+        </node>
+        <node name="tipo" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/Obra/tipo"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode incomingLink="//@input/@treeNode.0/@node.6/@outNode/@outgoingLink.0"/>
+        </node>
+        <node name="count" schemaDataType="STRING" level="3">
+          <properties key="type" value="string"/>
+          <properties key="id" value="http://wso2jsonschema.org/Obra/count"/>
+          <properties key="nullable" value="false"/>
+          <outNode/>
+          <inNode incomingLink="//@input/@treeNode.0/@node.5/@outNode/@outgoingLink.0"/>
+        </node>
+        <properties key="type" value="object"/>
+        <properties key="id" value="http://wso2jsonschema.org/Obra"/>
+        <properties key="nullable" value="false"/>
+        <properties key="properties_id" value="{id={id=http://wso2jsonschema.org/Obra/id, type=string}, autores={id=http://wso2jsonschema.org/Obra/autores, type=object, properties={autor={id=http://wso2jsonschema.org/Obra/autores/autor, type=number}}}, ISBN={id=http://wso2jsonschema.org/Obra/ISBN, type=string}, titulo={id=http://wso2jsonschema.org/Obra/titulo, type=string}, preco={id=http://wso2jsonschema.org/Obra/preco, type=string}, estados={id=http://wso2jsonschema.org/Obra/estados, type=object, properties={estado={id=http://wso2jsonschema.org/Obra/estados/estado, type=number}}}, AdC={id=http://wso2jsonschema.org/Obra/AdC, type=string}, ano={id=http://wso2jsonschema.org/Obra/ano, type=string}, tipo={id=http://wso2jsonschema.org/Obra/tipo, type=string}, count={id=http://wso2jsonschema.org/Obra/count, type=string}}"/>
+        <outNode/>
+        <inNode/>
+      </node>
+      <properties key="type" value="object"/>
+      <properties key="$schema" value="http://wso2.org/json-schema/wso2-data-mapper-v5.0.0/schema#"/>
+      <properties key="id" value="http://wso2jsonschema.org"/>
+      <properties key="nullable" value="false"/>
+      <outNode/>
+      <inNode/>
+    </treeNode>
+  </output>
+</datamapper:DataMapperRoot>

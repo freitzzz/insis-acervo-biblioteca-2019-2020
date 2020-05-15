@@ -51,9 +51,7 @@
         <properties key="type" value="string"/>
         <properties key="id" value="http://wso2jsonschema.org/0/# exemplares"/>
         <properties key="nullable" value="false"/>
-        <outNode>
-          <outgoingLink inNode="//@output/@treeNode.0/@node.4/@inNode"/>
-        </outNode>
+        <outNode/>
         <inNode/>
       </node>
       <node name="tipoID" schemaDataType="STRING" level="2">
@@ -76,9 +74,7 @@
         <properties key="type" value="string"/>
         <properties key="id" value="http://wso2jsonschema.org/0/ID_AdC"/>
         <properties key="nullable" value="false"/>
-        <outNode>
-          <outgoingLink inNode="//@output/@treeNode.0/@node.5/@inNode"/>
-        </outNode>
+        <outNode/>
         <inNode/>
       </node>
       <node name="Ano de Publicação" schemaDataType="STRING" level="2">
@@ -135,14 +131,14 @@
         <properties key="id" value="http://wso2jsonschema.org/0/count"/>
         <properties key="nullable" value="false"/>
         <outNode/>
-        <inNode incomingLink="//@input/@treeNode.0/@node.5/@outNode/@outgoingLink.0"/>
+        <inNode/>
       </node>
       <node name="areaconhecimento" schemaDataType="STRING" level="2">
         <properties key="type" value="string"/>
         <properties key="id" value="http://wso2jsonschema.org/0/areaconhecimento"/>
         <properties key="nullable" value="false"/>
         <outNode/>
-        <inNode incomingLink="//@input/@treeNode.0/@node.8/@outNode/@outgoingLink.0"/>
+        <inNode/>
       </node>
       <node name="publishedyear" schemaDataType="NUMBER" level="2">
         <properties key="type" value="number"/>

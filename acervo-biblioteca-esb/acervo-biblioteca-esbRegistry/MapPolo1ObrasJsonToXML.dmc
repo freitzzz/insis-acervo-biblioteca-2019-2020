@@ -1,0 +1,54 @@
+map_S_root_S_Obras = function(){ 
+var outputObras={};
+
+var count_i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa = 0;
+var count_i_ID_autores_62f2b5e6_88ff_47d9_872f_a1a4ba1ed6d1_i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa = 0;
+var count_i_EstadosID_6213ff20_ee6a_4c83_a8aa_67c7d0b37567_i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa = 0;
+outputObras =  {};
+outputObras.Obra =  {};
+outputObras.Obra.autores =  {};
+outputObras.Obra.estados =  {};
+
+for(i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa in inputroot){
+var count_i_ID_autores_62f2b5e6_88ff_47d9_872f_a1a4ba1ed6d1 = 0;
+var count_i_EstadosID_6213ff20_ee6a_4c83_a8aa_67c7d0b37567 = 0;
+outputObras.Obra.autores._ELEMVAL = inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa].id;
+outputObras.Obra.ISBN = inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa].ISBN;
+outputObras.Obra.titulo = inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa].Title;
+outputObras.Obra.estados._ELEMVAL = inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa]['Preço1'];
+outputObras.Obra.AdC = inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa].ID_AdC;
+outputObras.Obra.ano = inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa]['Ano de Publicação'];
+outputObras.Obra.tipo = inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa].tipoID;
+outputObras.Obra.count = inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa]['# exemplares'];
+
+for(i_ID_autores_62f2b5e6_88ff_47d9_872f_a1a4ba1ed6d1 in inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa].ID_autores){
+outputObras.Obra.autores.autor = inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa].ID_autores[i_ID_autores_62f2b5e6_88ff_47d9_872f_a1a4ba1ed6d1];
+
+count_i_ID_autores_62f2b5e6_88ff_47d9_872f_a1a4ba1ed6d1++;
+count_i_ID_autores_62f2b5e6_88ff_47d9_872f_a1a4ba1ed6d1_i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa++;
+}
+
+for(i_EstadosID_6213ff20_ee6a_4c83_a8aa_67c7d0b37567 in inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa].EstadosID){
+outputObras.Obra.estados.estado = inputroot[i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa].EstadosID[i_EstadosID_6213ff20_ee6a_4c83_a8aa_67c7d0b37567];
+
+count_i_EstadosID_6213ff20_ee6a_4c83_a8aa_67c7d0b37567++;
+count_i_EstadosID_6213ff20_ee6a_4c83_a8aa_67c7d0b37567_i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa++;
+}
+
+count_i_inputroot_76967c3d_a793_45f2_bc6f_f65c750adbfa++;
+}
+return outputObras;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+

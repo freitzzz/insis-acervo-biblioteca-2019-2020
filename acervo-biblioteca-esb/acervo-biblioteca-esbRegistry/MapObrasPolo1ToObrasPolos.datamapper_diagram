@@ -261,20 +261,6 @@
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eE0T8JbREeqolNYPhMNFkg" id="CENTER"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eE0T8ZbREeqolNYPhMNFkg" id="CENTER"/>
   </edges>
-  <edges xmi:type="notation:Connector" xmi:id="_efhS8JbREeqolNYPhMNFkg" type="4001" source="_ZG3zQpbREeqolNYPhMNFkg" target="_ZxPl8JbREeqolNYPhMNFkg">
-    <styles xmi:type="notation:FontStyle" xmi:id="_efhS8ZbREeqolNYPhMNFkg" fontName="Ubuntu"/>
-    <element xmi:type="datamapper:DataMapperLink" href="MapObrasPolo1ToObrasPolos.datamapper#//@input/@treeNode.0/@node.5/@outNode/@outgoingLink.0"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_efhS8pbREeqolNYPhMNFkg" points="[-2, 0, -252, 25]$[248, -25, -2, 0]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_efihEJbREeqolNYPhMNFkg" id="CENTER"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_efihEZbREeqolNYPhMNFkg" id="CENTER"/>
-  </edges>
-  <edges xmi:type="notation:Connector" xmi:id="_fPvO8JbREeqolNYPhMNFkg" type="4001" source="_ZHCLUJbREeqolNYPhMNFkg" target="_ZxTQUJbREeqolNYPhMNFkg">
-    <styles xmi:type="notation:FontStyle" xmi:id="_fPvO8ZbREeqolNYPhMNFkg" fontName="Ubuntu"/>
-    <element xmi:type="datamapper:DataMapperLink" href="MapObrasPolo1ToObrasPolos.datamapper#//@input/@treeNode.0/@node.8/@outNode/@outgoingLink.0"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_fPvO8pbREeqolNYPhMNFkg" points="[-2, 0, -252, 60]$[248, -60, -2, 0]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fPv2AJbREeqolNYPhMNFkg" id="CENTER"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fPwdEJbREeqolNYPhMNFkg" id="CENTER"/>
-  </edges>
   <edges xmi:type="notation:Connector" xmi:id="_gzI7YJbREeqolNYPhMNFkg" type="4001" source="_ZHFOopbREeqolNYPhMNFkg" target="_ZxWToJbREeqolNYPhMNFkg">
     <styles xmi:type="notation:FontStyle" xmi:id="_gzI7YZbREeqolNYPhMNFkg" fontName="Ubuntu"/>
     <element xmi:type="datamapper:DataMapperLink" href="MapObrasPolo1ToObrasPolos.datamapper#//@input/@treeNode.0/@node.9/@outNode/@outgoingLink.0"/>
