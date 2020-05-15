@@ -35,4 +35,7 @@
     <artifact name="Polo2ObrasEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/Polo2ObrasEP.xml</file>
     </artifact>
+    <artifact name="Polo1AreasConhecimentoRawSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Polo1AreasConhecimentoRawSequence.xml</file>
+    </artifact>
 </artifacts>

@@ -55,4 +55,60 @@
             <mediaType>text/plain</mediaType>
         </item>
     </artifact>
+    <artifact name="MapPolo1ObrasJsonToXML" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapPolo1ObrasJsonToXML.dmc</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="MapPolo1ObrasJsonToXML_inputSchema" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapPolo1ObrasJsonToXML_inputSchema.json</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="MapPolo1ObrasJsonToXML_outputSchema" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapPolo1ObrasJsonToXML_outputSchema.json</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="MapPolo1ObrasJsonToXML_xsltStyleSheet" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapPolo1ObrasJsonToXML_xsltStyleSheet.xml</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="MapObrasPolo1ToObrasPolos" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapObrasPolo1ToObrasPolos.dmc</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="MapObrasPolo1ToObrasPolos_inputSchema" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapObrasPolo1ToObrasPolos_inputSchema.json</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="MapObrasPolo1ToObrasPolos_outputSchema" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapObrasPolo1ToObrasPolos_outputSchema.json</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="MapObrasPolo1ToObrasPolos_xsltStyleSheet" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapObrasPolo1ToObrasPolos_xsltStyleSheet.xml</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
 </artifacts>

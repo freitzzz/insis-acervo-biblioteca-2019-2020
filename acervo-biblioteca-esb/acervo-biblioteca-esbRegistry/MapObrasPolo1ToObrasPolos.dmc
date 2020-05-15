@@ -1,0 +1,28 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+var count_i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2 = 0;
+outputroot =  [];
+
+for(i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2 in inputroot){
+outputroot[count_i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2] =  {};
+outputroot[count_i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2].id = Number(inputroot[i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2].id);
+outputroot[count_i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2].isbn = inputroot[i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2].ISBN;
+outputroot[count_i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2].title = inputroot[i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2].Title;
+outputroot[count_i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2].price = Number(inputroot[i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2]['Preço1']);
+outputroot[count_i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2].count = Number(inputroot[i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2]['# exemplares']);
+outputroot[count_i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2].areaconhecimento = inputroot[i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2].ID_AdC;
+outputroot[count_i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2].publishedyear = Number(inputroot[i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2]['Ano de Publicação']);
+
+count_i_inputroot_b397fa36_a622_4306_8cde_62916c7e7ec2++;
+}
+return outputroot;
+};
+
+
+
+
+
+
+
+
