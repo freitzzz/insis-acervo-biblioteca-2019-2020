@@ -1,0 +1,3272 @@
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://www.w3.org/2001/12/soap-envelope" soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+  <soap:Body xmlns:m="http://www.example.org/stock">
+    <Obra>
+      <id>2</id>
+      <autores>Tú Gaétane</autores>
+      <ISBN>110146386-4</ISBN>
+      <titulo>aliquet massa id lobortis convallis tortor</titulo>
+      <preco>32.4</preco>
+      <status>10</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>1908</ano>
+    </Obra>
+    <Obra>
+      <id>3</id>
+      <autores>Léandre Ginelle Yú Coltart</autores>
+      <ISBN>045926625-X</ISBN>
+      <titulo>elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis</titulo>
+      <preco>86.1</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1866</ano>
+    </Obra>
+    <Obra>
+      <id>5</id>
+      <autores>Zoé Domeniga Styrbjörn Smallpeice</autores>
+      <ISBN>971100966-8</ISBN>
+      <titulo>eleifend quam a odio in hac habitasse</titulo>
+      <preco>93.6</preco>
+      <status>2</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1825</ano>
+    </Obra>
+    <Obra>
+      <id>6</id>
+      <autores>Floria Iwanowicz</autores>
+      <ISBN>094441965-8</ISBN>
+      <titulo>sapien a</titulo>
+      <preco>5.3</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1899</ano>
+    </Obra>
+    <Obra>
+      <id>7</id>
+      <autores>Léone Eléa</autores>
+      <ISBN>435297529-X</ISBN>
+      <titulo>eleifend quam a odio in</titulo>
+      <preco>46.1</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1866</ano>
+    </Obra>
+    <Obra>
+      <id>8</id>
+      <autores>Dù Millie Nélie Simondson</autores>
+      <ISBN>096265723-9</ISBN>
+      <titulo>orci nullam molestie</titulo>
+      <preco>48.6</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>política</AdC>
+      <ano>1944</ano>
+    </Obra>
+    <Obra>
+      <id>9</id>
+      <autores>Noémie Maëlann</autores>
+      <ISBN>857227282-8</ISBN>
+      <titulo>in porttitor pede justo eu massa donec dapibus</titulo>
+      <preco>61.7</preco>
+      <status>2</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1912</ano>
+    </Obra>
+    <Obra>
+      <id>10</id>
+      <autores>Personnalisée Régine</autores>
+      <ISBN>052743608-9</ISBN>
+      <titulo>quam pede lobortis ligula sit amet eleifend pede libero quis</titulo>
+      <preco>74.1</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1806</ano>
+    </Obra>
+    <Obra>
+      <id>11</id>
+      <autores>Kévina Méng</autores>
+      <ISBN>290130791-4</ISBN>
+      <titulo>at ipsum ac tellus semper</titulo>
+      <preco>42.2</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1863</ano>
+    </Obra>
+    <Obra>
+      <id>14</id>
+      <autores>Eléonore Mårten</autores>
+      <ISBN>858610556-2</ISBN>
+      <titulo>ipsum integer a nibh in</titulo>
+      <preco>5.9</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1876</ano>
+    </Obra>
+    <Obra>
+      <id>16</id>
+      <autores>Tú Pélagie</autores>
+      <ISBN>550809294-3</ISBN>
+      <titulo>dolor quis odio consequat</titulo>
+      <preco>33.9</preco>
+      <status>3</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1816</ano>
+    </Obra>
+    <Obra>
+      <id>17</id>
+      <autores>Léane Méryl</autores>
+      <ISBN>191283787-0</ISBN>
+      <titulo>duis mattis egestas metus aenean fermentum donec ut mauris</titulo>
+      <preco>4.9</preco>
+      <status>8</status>
+      <tipo>capa mole</tipo>
+      <AdC>literatura</AdC>
+      <ano>1879</ano>
+    </Obra>
+    <Obra>
+      <id>18</id>
+      <autores>Yè Valérie</autores>
+      <ISBN>008073310-7</ISBN>
+      <titulo>proin leo odio porttitor id consequat</titulo>
+      <preco>25.4</preco>
+      <status>8</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1946</ano>
+    </Obra>
+    <Obra>
+      <id>19</id>
+      <autores>Markus Langtry</autores>
+      <ISBN>304968188-8</ISBN>
+      <titulo>sit amet eros suspendisse</titulo>
+      <preco>68.3</preco>
+      <status>3</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1959</ano>
+    </Obra>
+    <Obra>
+      <id>20</id>
+      <autores>Laurène Håkan</autores>
+      <ISBN>058998126-9</ISBN>
+      <titulo>pellentesque quisque porta volutpat erat quisque erat eros viverra</titulo>
+      <preco>59</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1926</ano>
+    </Obra>
+    <Obra>
+      <id>21</id>
+      <autores>Ráo Estée</autores>
+      <ISBN>943791625-X</ISBN>
+      <titulo>semper est quam pharetra magna ac</titulo>
+      <preco>23.3</preco>
+      <status>7</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1850</ano>
+    </Obra>
+    <Obra>
+      <id>22</id>
+      <autores>Anaïs Illustrée</autores>
+      <ISBN>110962426-3</ISBN>
+      <titulo>nec dui luctus rutrum nulla tellus in sagittis dui vel nisl</titulo>
+      <preco>96.2</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1985</ano>
+    </Obra>
+    <Obra>
+      <id>24</id>
+      <autores>Réjane Cy Séverine Mumberson</autores>
+      <ISBN>608431024-9</ISBN>
+      <titulo>dapibus duis at velit eu est congue elementum in hac habitasse</titulo>
+      <preco>51.7</preco>
+      <status>3</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1911</ano>
+    </Obra>
+    <Obra>
+      <id>25</id>
+      <autores>Dà Lèi</autores>
+      <ISBN>060557228-3</ISBN>
+      <titulo>pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor</titulo>
+      <preco>80.3</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1853</ano>
+    </Obra>
+    <Obra>
+      <id>27</id>
+      <autores>Méryl Maëline</autores>
+      <ISBN>890716479-7</ISBN>
+      <titulo>justo lacinia eget</titulo>
+      <preco>75.9</preco>
+      <status>8</status>
+      <tipo>capa dura</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1924</ano>
+    </Obra>
+    <Obra>
+      <id>28</id>
+      <autores>Annotée Daffie Loïca Chrestien</autores>
+      <ISBN>013109087-9</ISBN>
+      <titulo>erat volutpat in congue etiam justo etiam pretium iaculis justo in hac</titulo>
+      <preco>4.1</preco>
+      <status>8</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1901</ano>
+    </Obra>
+    <Obra>
+      <id>29</id>
+      <autores>Örjan Amalie Maëline Challoner</autores>
+      <ISBN>889474423-X</ISBN>
+      <titulo>congue vivamus</titulo>
+      <preco>9.3</preco>
+      <status>4</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>2007</ano>
+    </Obra>
+    <Obra>
+      <id>30</id>
+      <autores>Kuí Amalita Dà Perkins</autores>
+      <ISBN>236782396-0</ISBN>
+      <titulo>sollicitudin vitae consectetuer eget rutrum at lorem</titulo>
+      <preco>27.2</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1876</ano>
+    </Obra>
+    <Obra>
+      <id>31</id>
+      <autores>Maïlys Eloïse</autores>
+      <ISBN>632773857-5</ISBN>
+      <titulo>pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non</titulo>
+      <preco>36.2</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>política</AdC>
+      <ano>1989</ano>
+    </Obra>
+    <Obra>
+      <id>33</id>
+      <autores>Léandre Jordain Loïca Prosek</autores>
+      <ISBN>355877163-X</ISBN>
+      <titulo>sociis natoque penatibus et magnis dis parturient</titulo>
+      <preco>1.2</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>literatura</AdC>
+      <ano>1833</ano>
+    </Obra>
+    <Obra>
+      <id>35</id>
+      <autores>Néhémie Kuí</autores>
+      <ISBN>426010177-3</ISBN>
+      <titulo>metus sapien</titulo>
+      <preco>85.7</preco>
+      <status>3</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>1812</ano>
+    </Obra>
+    <Obra>
+      <id>36</id>
+      <autores>Françoise Séréna</autores>
+      <ISBN>749967056-2</ISBN>
+      <titulo>consequat ut nulla sed</titulo>
+      <preco>72.1</preco>
+      <status>8</status>
+      <tipo>capa dura</tipo>
+      <AdC>literatura</AdC>
+      <ano>1877</ano>
+    </Obra>
+    <Obra>
+      <id>37</id>
+      <autores>Adèle Dorothy Clémentine Holborn</autores>
+      <ISBN>854378110-8</ISBN>
+      <titulo>pede ac diam cras pellentesque volutpat</titulo>
+      <preco>32</preco>
+      <status>7</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1956</ano>
+    </Obra>
+    <Obra>
+      <id>38</id>
+      <autores>Sélène Norris Estève Addison</autores>
+      <ISBN>362788701-8</ISBN>
+      <titulo>sed magna at nunc commodo placerat praesent blandit</titulo>
+      <preco>72.7</preco>
+      <status>2</status>
+      <tipo>capa dura</tipo>
+      <AdC>literatura</AdC>
+      <ano>1822</ano>
+    </Obra>
+    <Obra>
+      <id>39</id>
+      <autores>Maéna Åsa</autores>
+      <ISBN>850012249-8</ISBN>
+      <titulo>posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor</titulo>
+      <preco>39.6</preco>
+      <status>5</status>
+      <tipo>digital</tipo>
+      <AdC>política</AdC>
+      <ano>2012</ano>
+    </Obra>
+    <Obra>
+      <id>40</id>
+      <autores>Intéressant Lorène ","Kimberlee Shillington</autores>
+      <ISBN>713917191-2</ISBN>
+      <titulo>turpis elementum ligula vehicula consequat</titulo>
+      <preco>61.3</preco>
+      <status>7</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1829</ano>
+    </Obra>
+    <Obra>
+      <id>42</id>
+      <autores>Justinn Scales</autores>
+      <ISBN>370634877-2</ISBN>
+      <titulo>sapien ut nunc</titulo>
+      <preco>59.5</preco>
+      <status>7</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>2002</ano>
+    </Obra>
+    <Obra>
+      <id>43</id>
+      <autores>Méline Séréna</autores>
+      <ISBN>595447814-7</ISBN>
+      <titulo>amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque</titulo>
+      <preco>78.7</preco>
+      <status>2</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1909</ano>
+    </Obra>
+    <Obra>
+      <id>46</id>
+      <autores>Eléa Amélie</autores>
+      <ISBN>722753889-3</ISBN>
+      <titulo>orci vehicula condimentum curabitur in libero ut massa volutpat</titulo>
+      <preco>23.2</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1981</ano>
+    </Obra>
+    <Obra>
+      <id>50</id>
+      <autores>Mélanie Marie-thérèse</autores>
+      <ISBN>082864128-5</ISBN>
+      <titulo>turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum</titulo>
+      <preco>58.3</preco>
+      <status>3</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1991</ano>
+    </Obra>
+    <Obra>
+      <id>51</id>
+      <autores>Estève Maï</autores>
+      <ISBN>979155692-X</ISBN>
+      <titulo>pede ac</titulo>
+      <preco>55.1</preco>
+      <status>8</status>
+      <tipo>capa dura</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1828</ano>
+    </Obra>
+    <Obra>
+      <id>53</id>
+      <autores>Ethelda Wearing","Cécile Maïté</autores>
+      <ISBN>230899838-5</ISBN>
+      <titulo>sapien varius ut blandit non interdum in</titulo>
+      <preco>94.2</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1868</ano>
+    </Obra>
+    <Obra>
+      <id>54</id>
+      <autores>Marie-thérèse Chickie Magdalène Josephi</autores>
+      <ISBN>110381608-X</ISBN>
+      <titulo>quam sapien varius ut blandit non interdum in ante vestibulum ante</titulo>
+      <preco>63.5</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1917</ano>
+    </Obra>
+    <Obra>
+      <id>55</id>
+      <autores>Illustrée Maéna</autores>
+      <ISBN>320394405-7</ISBN>
+      <titulo>tortor id nulla ultrices aliquet maecenas leo odio</titulo>
+      <preco>78.4</preco>
+      <status>2</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1800</ano>
+    </Obra>
+    <Obra>
+      <id>57</id>
+      <autores>Miléna Sélène</autores>
+      <ISBN>112746635-6</ISBN>
+      <titulo>lobortis vel dapibus at diam nam tristique tortor</titulo>
+      <preco>72.6</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1967</ano>
+    </Obra>
+    <Obra>
+      <id>58</id>
+      <autores>Ruì Naéva</autores>
+      <ISBN>619059649-5</ISBN>
+      <titulo>et ultrices posuere cubilia curae nulla dapibus dolor vel</titulo>
+      <preco>20.6</preco>
+      <status>1</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>2011</ano>
+    </Obra>
+    <Obra>
+      <id>59</id>
+      <autores>Angélique Aí</autores>
+      <ISBN>783716645-0</ISBN>
+      <titulo>tincidunt ante vel ipsum praesent blandit lacinia erat</titulo>
+      <preco>4.6</preco>
+      <status>3</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1948</ano>
+    </Obra>
+    <Obra>
+      <id>60</id>
+      <autores>Leanna Shovel</autores>
+      <ISBN>722166450-1</ISBN>
+      <titulo>integer aliquet</titulo>
+      <preco>41.8</preco>
+      <status>7</status>
+      <tipo>capa dura</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>2012</ano>
+    </Obra>
+    <Obra>
+      <id>62</id>
+      <autores>Gaëlle Cécilia</autores>
+      <ISBN>263212420-4</ISBN>
+      <titulo>mi sit</titulo>
+      <preco>26.5</preco>
+      <status>6</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1947</ano>
+    </Obra>
+    <Obra>
+      <id>63</id>
+      <autores>Kuí Teriann Zoé Erni</autores>
+      <ISBN>756288337-8</ISBN>
+      <titulo>nisl aenean lectus pellentesque eget nunc donec quis orci</titulo>
+      <preco>95.8</preco>
+      <status>8</status>
+      <tipo>capa mole</tipo>
+      <AdC>literatura</AdC>
+      <ano>1853</ano>
+    </Obra>
+    <Obra>
+      <id>64</id>
+      <autores>Léonore Thérèse</autores>
+      <ISBN>786052979-3</ISBN>
+      <titulo>pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est</titulo>
+      <preco>74.7</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1838</ano>
+    </Obra>
+    <Obra>
+      <id>65</id>
+      <autores>Marie-ève Marlène</autores>
+      <ISBN>536323688-5</ISBN>
+      <titulo>donec diam neque vestibulum eget vulputate ut ultrices vel</titulo>
+      <preco>76.7</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1954</ano>
+    </Obra>
+    <Obra>
+      <id>66</id>
+      <autores>Bérangère Andréa</autores>
+      <ISBN>382390239-3</ISBN>
+      <titulo>praesent blandit nam nulla integer pede</titulo>
+      <preco>37.8</preco>
+      <status>7</status>
+      <tipo>capa mole</tipo>
+      <AdC>literatura</AdC>
+      <ano>1924</ano>
+    </Obra>
+    <Obra>
+      <id>67</id>
+      <autores>Märta Georgiana Léane Shovlar</autores>
+      <ISBN>493701089-1</ISBN>
+      <titulo>condimentum neque sapien</titulo>
+      <preco>41.2</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1918</ano>
+    </Obra>
+    <Obra>
+      <id>68</id>
+      <autores>Kallisté Léonore</autores>
+      <ISBN>512208000-3</ISBN>
+      <titulo>odio condimentum id luctus nec molestie sed</titulo>
+      <preco>93.7</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>literatura</AdC>
+      <ano>2000</ano>
+    </Obra>
+    <Obra>
+      <id>69</id>
+      <autores>Gérald Yénora</autores>
+      <ISBN>380125637-5</ISBN>
+      <titulo>lectus pellentesque at nulla suspendisse potenti cras in purus eu</titulo>
+      <preco>90.2</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>1855</ano>
+    </Obra>
+    <Obra>
+      <id>70</id>
+      <autores>Adélaïde Cécile</autores>
+      <ISBN>369115891-9</ISBN>
+      <titulo>rhoncus aliquet pulvinar sed nisl nunc</titulo>
+      <preco>80.6</preco>
+      <status>6</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1848</ano>
+    </Obra>
+    <Obra>
+      <id>71</id>
+      <autores>Réservés Carola Cinéma Eccersley</autores>
+      <ISBN>629551142-2</ISBN>
+      <titulo>nonummy maecenas tincidunt lacus at velit vivamus</titulo>
+      <preco>25.3</preco>
+      <status>10</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1806</ano>
+    </Obra>
+    <Obra>
+      <id>72</id>
+      <autores>Béatrice Tú</autores>
+      <ISBN>911126426-8</ISBN>
+      <titulo>natoque penatibus et magnis</titulo>
+      <preco>97.5</preco>
+      <status>1</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>1895</ano>
+    </Obra>
+    <Obra>
+      <id>73</id>
+      <autores>Marie-noël Loïca</autores>
+      <ISBN>235666485-8</ISBN>
+      <titulo>sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at</titulo>
+      <preco>25.3</preco>
+      <status>10</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1973</ano>
+    </Obra>
+    <Obra>
+      <id>74</id>
+      <autores>Maëline Göran</autores>
+      <ISBN>763819413-6</ISBN>
+      <titulo>quisque ut erat curabitur gravida nisi at nibh in hac habitasse</titulo>
+      <preco>40.8</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1816</ano>
+    </Obra>
+    <Obra>
+      <id>75</id>
+      <autores>Marylène Félicie</autores>
+      <ISBN>926446747-5</ISBN>
+      <titulo>ultricies eu nibh quisque id</titulo>
+      <preco>20.4</preco>
+      <status>3</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>2010</ano>
+    </Obra>
+    <Obra>
+      <id>76</id>
+      <autores>Kallisté Andréa</autores>
+      <ISBN>934427971-3</ISBN>
+      <titulo>iaculis justo in hac habitasse platea dictumst etiam</titulo>
+      <preco>50.6</preco>
+      <status>10</status>
+      <tipo>digital</tipo>
+      <AdC>política</AdC>
+      <ano>1985</ano>
+    </Obra>
+    <Obra>
+      <id>77</id>
+      <autores>Renée Ophélie</autores>
+      <ISBN>529988307-2</ISBN>
+      <titulo>vel accumsan tellus nisi eu orci mauris</titulo>
+      <preco>14.6</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1991</ano>
+    </Obra>
+    <Obra>
+      <id>79</id>
+      <autores>Mélinda Görel</autores>
+      <ISBN>459238631-0</ISBN>
+      <titulo>orci luctus et</titulo>
+      <preco>91.3</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>1883</ano>
+    </Obra>
+    <Obra>
+      <id>80</id>
+      <autores>Néhémie Adèle</autores>
+      <ISBN>089728422-4</ISBN>
+      <titulo>convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris</titulo>
+      <preco>29.4</preco>
+      <status>4</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1943</ano>
+    </Obra>
+    <Obra>
+      <id>81</id>
+      <autores>Léonore Véronique</autores>
+      <ISBN>932238513-8</ISBN>
+      <titulo>quam turpis adipiscing</titulo>
+      <preco>35.7</preco>
+      <status>10</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1908</ano>
+    </Obra>
+    <Obra>
+      <id>82</id>
+      <autores>Clélia Laurélie</autores>
+      <ISBN>202239396-1</ISBN>
+      <titulo>lacinia aenean sit amet justo morbi ut odio</titulo>
+      <preco>99.3</preco>
+      <status>8</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1892</ano>
+    </Obra>
+    <Obra>
+      <id>83</id>
+      <autores>Eliès Johanna Marylène Yakushkin</autores>
+      <ISBN>612200785-4</ISBN>
+      <titulo>maecenas leo odio condimentum id</titulo>
+      <preco>89.6</preco>
+      <status>6</status>
+      <tipo>digital</tipo>
+      <AdC>política</AdC>
+      <ano>1935</ano>
+    </Obra>
+    <Obra>
+      <id>84</id>
+      <autores>Zhì Clarance Adélaïde Sherrocks</autores>
+      <ISBN>391863978-9</ISBN>
+      <titulo>eu massa donec</titulo>
+      <preco>85.2</preco>
+      <status>4</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>2001</ano>
+    </Obra>
+    <Obra>
+      <id>85</id>
+      <autores>Patten Tanslie</autores>
+      <ISBN>455735222-7</ISBN>
+      <titulo>rutrum rutrum neque aenean auctor gravida sem praesent id massa</titulo>
+      <preco>24.7</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1910</ano>
+    </Obra>
+    <Obra>
+      <id>86</id>
+      <autores>Maéna Intéressant</autores>
+      <ISBN>047878774-X</ISBN>
+      <titulo>suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis</titulo>
+      <preco>37.8</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1979</ano>
+    </Obra>
+    <Obra>
+      <id>87</id>
+      <autores>Océanne Aí</autores>
+      <ISBN>172849789-2</ISBN>
+      <titulo>sit amet lobortis sapien sapien non mi integer</titulo>
+      <preco>40.6</preco>
+      <status>7</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1928</ano>
+    </Obra>
+    <Obra>
+      <id>88</id>
+      <autores>Orsa Keppie</autores>
+      <ISBN>133001373-5</ISBN>
+      <titulo>posuere cubilia curae nulla dapibus dolor vel est</titulo>
+      <preco>67.7</preco>
+      <status>7</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>1910</ano>
+    </Obra>
+    <Obra>
+      <id>89</id>
+      <autores>Bérangère Athéna</autores>
+      <ISBN>645684476-2</ISBN>
+      <titulo>id sapien in sapien iaculis congue vivamus metus arcu</titulo>
+      <preco>78.3</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1871</ano>
+    </Obra>
+    <Obra>
+      <id>90</id>
+      <autores>Liè Edmée</autores>
+      <ISBN>882476074-0</ISBN>
+      <titulo>augue a suscipit nulla elit ac nulla</titulo>
+      <preco>75.1</preco>
+      <status>3</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>2005</ano>
+    </Obra>
+    <Obra>
+      <id>91</id>
+      <autores>Mélissandre Adélie</autores>
+      <ISBN>553412400-8</ISBN>
+      <titulo>non mi integer ac neque duis bibendum morbi non quam</titulo>
+      <preco>28</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1952</ano>
+    </Obra>
+    <Obra>
+      <id>92</id>
+      <autores>Mélanie Björn</autores>
+      <ISBN>658239801-6</ISBN>
+      <titulo>in faucibus orci luctus et ultrices posuere</titulo>
+      <preco>43.5</preco>
+      <status>8</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1887</ano>
+    </Obra>
+    <Obra>
+      <id>93</id>
+      <autores>Pénélope Aimée</autores>
+      <ISBN>727896504-7</ISBN>
+      <titulo>lacinia sapien quis libero nullam sit</titulo>
+      <preco>9.9</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>literatura</AdC>
+      <ano>1892</ano>
+    </Obra>
+    <Obra>
+      <id>94</id>
+      <autores>Méghane Magdalène</autores>
+      <ISBN>213092226-0</ISBN>
+      <titulo>arcu libero</titulo>
+      <preco>54.1</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1816</ano>
+    </Obra>
+    <Obra>
+      <id>95</id>
+      <autores>Ruò Lucrèce</autores>
+      <ISBN>918758533-2</ISBN>
+      <titulo>magna vestibulum aliquet ultrices erat</titulo>
+      <preco>62.5</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1882</ano>
+    </Obra>
+    <Obra>
+      <id>99</id>
+      <autores>Anaël Pete Tán Aymeric</autores>
+      <ISBN>063559954-6</ISBN>
+      <titulo>commodo vulputate justo in blandit ultrices enim lorem</titulo>
+      <preco>50.9</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1991</ano>
+    </Obra>
+    <Obra>
+      <id>100</id>
+      <autores>Séréna Pélagie</autores>
+      <ISBN>204612893-1</ISBN>
+      <titulo>tincidunt eget</titulo>
+      <preco>35.1</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>literatura</AdC>
+      <ano>1833</ano>
+    </Obra>
+    <Obra>
+      <id>101</id>
+      <autores>Gaëlle Petunia Gwenaëlle Hows</autores>
+      <ISBN>194151605-X</ISBN>
+      <titulo>imperdiet sapien urna pretium nisl ut volutpat</titulo>
+      <preco>68.1</preco>
+      <status>2</status>
+      <tipo>capa dura</tipo>
+      <AdC>literatura</AdC>
+      <ano>1830</ano>
+    </Obra>
+    <Obra>
+      <id>102</id>
+      <autores>Pélagie Peri Frédérique Shillabeer</autores>
+      <ISBN>127628286-9</ISBN>
+      <titulo>ac lobortis vel dapibus at diam nam tristique</titulo>
+      <preco>97.1</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1897</ano>
+    </Obra>
+    <Obra>
+      <id>103</id>
+      <autores>Béatrice Hélèna</autores>
+      <ISBN>895302910-4</ISBN>
+      <titulo>fermentum donec ut mauris eget massa tempor convallis nulla</titulo>
+      <preco>16.4</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1865</ano>
+    </Obra>
+    <Obra>
+      <id>104</id>
+      <autores>Laurélie Loïca</autores>
+      <ISBN>284317711-1</ISBN>
+      <titulo>nisi at nibh in</titulo>
+      <preco>48</preco>
+      <status>8</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1801</ano>
+    </Obra>
+    <Obra>
+      <id>105</id>
+      <autores>Géraldine Dido Rébecca Winnard</autores>
+      <ISBN>593387686-0</ISBN>
+      <titulo>ac nulla sed vel enim sit amet nunc</titulo>
+      <preco>28</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1946</ano>
+    </Obra>
+    <Obra>
+      <id>106</id>
+      <autores>Andréanne Theodosia Zoé Thick</autores>
+      <ISBN>527758332-7</ISBN>
+      <titulo>parturient montes</titulo>
+      <preco>78.2</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1818</ano>
+    </Obra>
+    <Obra>
+      <id>107</id>
+      <autores>Kelli Cockerham</autores>
+      <ISBN>798834244-4</ISBN>
+      <titulo>pretium quis lectus suspendisse</titulo>
+      <preco>89.3</preco>
+      <status>4</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>1989</ano>
+    </Obra>
+    <Obra>
+      <id>108</id>
+      <autores>Léana Vinita Maïwenn Ropartz</autores>
+      <ISBN>943989116-5</ISBN>
+      <titulo>sagittis sapien cum</titulo>
+      <preco>6.6</preco>
+      <status>10</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1961</ano>
+    </Obra>
+    <Obra>
+      <id>109</id>
+      <autores>Nuó Göran</autores>
+      <ISBN>358353989-3</ISBN>
+      <titulo>luctus ultricies eu nibh quisque id justo</titulo>
+      <preco>16.1</preco>
+      <status>3</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1861</ano>
+    </Obra>
+    <Obra>
+      <id>110</id>
+      <autores>Angèle Brook Märta Greaser</autores>
+      <ISBN>288377136-7</ISBN>
+      <titulo>diam id ornare imperdiet sapien urna</titulo>
+      <preco>58.2</preco>
+      <status>1</status>
+      <tipo>capa dura</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>2006</ano>
+    </Obra>
+    <Obra>
+      <id>111</id>
+      <autores>Loïca Séréna</autores>
+      <ISBN>291844118-X</ISBN>
+      <titulo>ut dolor morbi</titulo>
+      <preco>86.3</preco>
+      <status>8</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>2017</ano>
+    </Obra>
+    <Obra>
+      <id>112</id>
+      <autores>Bécassine Marie-thérèse</autores>
+      <ISBN>717422408-3</ISBN>
+      <titulo>imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed augue</titulo>
+      <preco>23.3</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1870</ano>
+    </Obra>
+    <Obra>
+      <id>113</id>
+      <autores>Nadège Gabi Marie-ève Littlechild</autores>
+      <ISBN>940403848-2</ISBN>
+      <titulo>praesent id massa id nisl venenatis lacinia</titulo>
+      <preco>77</preco>
+      <status>8</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1883</ano>
+    </Obra>
+    <Obra>
+      <id>114</id>
+      <autores>Faîtes Mylène</autores>
+      <ISBN>811645613-X</ISBN>
+      <titulo>aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed</titulo>
+      <preco>48.9</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>literatura</AdC>
+      <ano>1842</ano>
+    </Obra>
+    <Obra>
+      <id>115</id>
+      <autores>Styrbjörn Michèle</autores>
+      <ISBN>913728209-3</ISBN>
+      <titulo>urna pretium nisl ut volutpat sapien arcu sed augue</titulo>
+      <preco>87.9</preco>
+      <status>6</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>2019</ano>
+    </Obra>
+    <Obra>
+      <id>117</id>
+      <autores>Annotés Kù</autores>
+      <ISBN>328415931-2</ISBN>
+      <titulo>mi sit amet lobortis sapien sapien non mi integer ac</titulo>
+      <preco>76.6</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1903</ano>
+    </Obra>
+    <Obra>
+      <id>118</id>
+      <autores>Yè Gisèle</autores>
+      <ISBN>101231864-8</ISBN>
+      <titulo>vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient</titulo>
+      <preco>71.5</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1856</ano>
+    </Obra>
+    <Obra>
+      <id>119</id>
+      <autores>Clélia Annotés</autores>
+      <ISBN>956416895-3</ISBN>
+      <titulo>lacinia erat vestibulum sed magna at nunc commodo placerat</titulo>
+      <preco>89.4</preco>
+      <status>10</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1915</ano>
+    </Obra>
+    <Obra>
+      <id>122</id>
+      <autores>Görel Eugénie</autores>
+      <ISBN>147221737-3</ISBN>
+      <titulo>placerat ante nulla justo aliquam quis turpis eget elit sodales</titulo>
+      <preco>9.4</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1888</ano>
+    </Obra>
+    <Obra>
+      <id>123</id>
+      <autores>Yú Joséphine</autores>
+      <ISBN>608616683-8</ISBN>
+      <titulo>sapien arcu sed augue</titulo>
+      <preco>99.3</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1934</ano>
+    </Obra>
+    <Obra>
+      <id>124</id>
+      <autores>Kuí Michèle</autores>
+      <ISBN>497078504-X</ISBN>
+      <titulo>dignissim vestibulum vestibulum ante ipsum primis in</titulo>
+      <preco>85</preco>
+      <status>10</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1953</ano>
+    </Obra>
+    <Obra>
+      <id>125</id>
+      <autores>Marie-josée Mén</autores>
+      <ISBN>382718312-X</ISBN>
+      <titulo>ante ipsum primis in faucibus</titulo>
+      <preco>59.4</preco>
+      <status>6</status>
+      <tipo>capa dura</tipo>
+      <AdC>literatura</AdC>
+      <ano>1909</ano>
+    </Obra>
+    <Obra>
+      <id>126</id>
+      <autores>Clémence Vérane</autores>
+      <ISBN>156828590-6</ISBN>
+      <titulo>lorem id ligula</titulo>
+      <preco>89.1</preco>
+      <status>10</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1985</ano>
+    </Obra>
+    <Obra>
+      <id>128</id>
+      <autores>Chloé Pennie Örjan Foulsham</autores>
+      <ISBN>063865539-0</ISBN>
+      <titulo>vitae mattis nibh ligula nec sem duis aliquam convallis nunc proin at</titulo>
+      <preco>95.1</preco>
+      <status>8</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1885</ano>
+    </Obra>
+    <Obra>
+      <id>129</id>
+      <autores>Maï Gaïa</autores>
+      <ISBN>917088560-5</ISBN>
+      <titulo>condimentum id luctus nec molestie sed justo</titulo>
+      <preco>97.8</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1870</ano>
+    </Obra>
+    <Obra>
+      <id>131</id>
+      <autores>Uò Gösta</autores>
+      <ISBN>106697230-3</ISBN>
+      <titulo>lorem ipsum dolor sit amet</titulo>
+      <preco>48.2</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1960</ano>
+    </Obra>
+    <Obra>
+      <id>132</id>
+      <autores>Léonore Marco Cléa Braben</autores>
+      <ISBN>276659591-0</ISBN>
+      <titulo>rutrum nulla tellus in sagittis dui vel nisl duis</titulo>
+      <preco>69.1</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>política</AdC>
+      <ano>1934</ano>
+    </Obra>
+    <Obra>
+      <id>133</id>
+      <autores>Léandre Bérengère</autores>
+      <ISBN>463262128-5</ISBN>
+      <titulo>purus phasellus in felis donec semper sapien a libero nam dui proin</titulo>
+      <preco>77.3</preco>
+      <status>7</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1826</ano>
+    </Obra>
+    <Obra>
+      <id>134</id>
+      <autores>Andréanne Ilse Maëlle Dalman</autores>
+      <ISBN>186246389-1</ISBN>
+      <titulo>est lacinia nisi venenatis tristique fusce congue diam</titulo>
+      <preco>5.3</preco>
+      <status>4</status>
+      <tipo>capa dura</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1997</ano>
+    </Obra>
+    <Obra>
+      <id>135</id>
+      <autores>Inès Vérane</autores>
+      <ISBN>208753240-0</ISBN>
+      <titulo>pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in</titulo>
+      <preco>60.4</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1937</ano>
+    </Obra>
+    <Obra>
+      <id>136</id>
+      <autores>Judicaël Lèi</autores>
+      <ISBN>253185268-9</ISBN>
+      <titulo>in ante vestibulum ante ipsum primis in</titulo>
+      <preco>85</preco>
+      <status>1</status>
+      <tipo>capa mole</tipo>
+      <AdC>literatura</AdC>
+      <ano>1908</ano>
+    </Obra>
+    <Obra>
+      <id>137</id>
+      <autores>Nadège Hélène</autores>
+      <ISBN>006130640-1</ISBN>
+      <titulo>vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id</titulo>
+      <preco>15.5</preco>
+      <status>3</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1994</ano>
+    </Obra>
+    <Obra>
+      <id>138</id>
+      <autores>Sélène Réservés ","Benedicto Crowd</autores>
+      <ISBN>609591592-9</ISBN>
+      <titulo>non velit donec diam</titulo>
+      <preco>56.2</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1893</ano>
+    </Obra>
+    <Obra>
+      <id>140</id>
+      <autores>Aggi Fiddeman</autores>
+      <ISBN>716293683-0</ISBN>
+      <titulo>nulla dapibus dolor vel</titulo>
+      <preco>1.5</preco>
+      <status>2</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1926</ano>
+    </Obra>
+    <Obra>
+      <id>141</id>
+      <autores>Annotée Mahélie</autores>
+      <ISBN>369451021-4</ISBN>
+      <titulo>est lacinia nisi venenatis tristique fusce congue diam id ornare imperdiet sapien</titulo>
+      <preco>23.6</preco>
+      <status>4</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1973</ano>
+    </Obra>
+    <Obra>
+      <id>142</id>
+      <autores>Bénédicte Doris Céline Kemp</autores>
+      <ISBN>451267766-6</ISBN>
+      <titulo>elementum in</titulo>
+      <preco>52.3</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1886</ano>
+    </Obra>
+    <Obra>
+      <id>144</id>
+      <autores>Naëlle Jeanette Marie-noël Flavelle</autores>
+      <ISBN>349353741-7</ISBN>
+      <titulo>ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero</titulo>
+      <preco>54.7</preco>
+      <status>3</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1950</ano>
+    </Obra>
+    <Obra>
+      <id>145</id>
+      <autores>Aloïs Lynn Joséphine De Morena</autores>
+      <ISBN>654931046-6</ISBN>
+      <titulo>amet eleifend pede libero</titulo>
+      <preco>55.8</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1890</ano>
+    </Obra>
+    <Obra>
+      <id>146</id>
+      <autores>Rébecca Magdalène</autores>
+      <ISBN>419605940-6</ISBN>
+      <titulo>auctor sed tristique in tempus sit amet sem fusce</titulo>
+      <preco>32.8</preco>
+      <status>10</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1968</ano>
+    </Obra>
+    <Obra>
+      <id>147</id>
+      <autores>Béatrice Marie-ève</autores>
+      <ISBN>400368469-9</ISBN>
+      <titulo>pretium nisl ut volutpat sapien</titulo>
+      <preco>17.5</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1867</ano>
+    </Obra>
+    <Obra>
+      <id>148</id>
+      <autores>Cécilia Nadège</autores>
+      <ISBN>742284936-3</ISBN>
+      <titulo>nonummy integer non velit donec diam neque vestibulum eget vulputate ut</titulo>
+      <preco>67.9</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>literatura</AdC>
+      <ano>1966</ano>
+    </Obra>
+    <Obra>
+      <id>149</id>
+      <autores>Nicki Abbets</autores>
+      <ISBN>645651434-7</ISBN>
+      <titulo>lacinia nisi</titulo>
+      <preco>20.3</preco>
+      <status>3</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1979</ano>
+    </Obra>
+    <Obra>
+      <id>150</id>
+      <autores>Hanni Levington</autores>
+      <ISBN>069704038-0</ISBN>
+      <titulo>elementum nullam varius nulla facilisi</titulo>
+      <preco>46.9</preco>
+      <status>3</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1802</ano>
+    </Obra>
+    <Obra>
+      <id>151</id>
+      <autores>Pénélope Ophélie</autores>
+      <ISBN>891739568-6</ISBN>
+      <titulo>at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis</titulo>
+      <preco>84.1</preco>
+      <status>7</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1908</ano>
+    </Obra>
+    <Obra>
+      <id>152</id>
+      <autores>Edmée Sandie Laïla Kingsland</autores>
+      <ISBN>179587013-3</ISBN>
+      <titulo>pulvinar lobortis</titulo>
+      <preco>27.6</preco>
+      <status>2</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>2007</ano>
+    </Obra>
+    <Obra>
+      <id>153</id>
+      <autores>Renée Stanly André Hark</autores>
+      <ISBN>098001881-1</ISBN>
+      <titulo>sit amet eros suspendisse accumsan tortor</titulo>
+      <preco>79</preco>
+      <status>3</status>
+      <tipo>capa dura</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1884</ano>
+    </Obra>
+    <Obra>
+      <id>154</id>
+      <autores>Bérangère Alizée</autores>
+      <ISBN>813655764-0</ISBN>
+      <titulo>nulla tellus in sagittis dui vel nisl duis ac nibh</titulo>
+      <preco>22.3</preco>
+      <status>8</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1871</ano>
+    </Obra>
+    <Obra>
+      <id>155</id>
+      <autores>Mélanie Léandre</autores>
+      <ISBN>230150118-3</ISBN>
+      <titulo>sem mauris laoreet</titulo>
+      <preco>11.4</preco>
+      <status>4</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1814</ano>
+    </Obra>
+    <Obra>
+      <id>156</id>
+      <autores>Styrbjörn Bari Thérèsa Ellett</autores>
+      <ISBN>836578702-4</ISBN>
+      <titulo>donec ut dolor morbi vel lectus in</titulo>
+      <preco>70.8</preco>
+      <status>4</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1889</ano>
+    </Obra>
+    <Obra>
+      <id>157</id>
+      <autores>Réjane Réjane</autores>
+      <ISBN>543753659-3</ISBN>
+      <titulo>sed sagittis nam congue</titulo>
+      <preco>45.7</preco>
+      <status>8</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1915</ano>
+    </Obra>
+    <Obra>
+      <id>159</id>
+      <autores>Valérie Nealson Adélie Willimot</autores>
+      <ISBN>251779466-9</ISBN>
+      <titulo>justo aliquam quis turpis eget elit sodales scelerisque mauris sit</titulo>
+      <preco>70.7</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1935</ano>
+    </Obra>
+    <Obra>
+      <id>160</id>
+      <autores>Mégane Joséphine</autores>
+      <ISBN>950846639-1</ISBN>
+      <titulo>nec nisi volutpat eleifend donec ut dolor</titulo>
+      <preco>85.7</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1919</ano>
+    </Obra>
+    <Obra>
+      <id>161</id>
+      <autores>Personnalisée Celina Östen Penvarne</autores>
+      <ISBN>405290432-X</ISBN>
+      <titulo>duis ac nibh fusce lacus purus aliquet at feugiat non</titulo>
+      <preco>76.7</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1876</ano>
+    </Obra>
+    <Obra>
+      <id>162</id>
+      <autores>Estée Loïca</autores>
+      <ISBN>938188852-3</ISBN>
+      <titulo>et magnis</titulo>
+      <preco>12.6</preco>
+      <status>2</status>
+      <tipo>capa dura</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1954</ano>
+    </Obra>
+    <Obra>
+      <id>163</id>
+      <autores>Åsa Maïly</autores>
+      <ISBN>095765963-6</ISBN>
+      <titulo>risus semper porta volutpat quam pede lobortis ligula sit amet eleifend pede</titulo>
+      <preco>12.9</preco>
+      <status>4</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1936</ano>
+    </Obra>
+    <Obra>
+      <id>164</id>
+      <autores>Marie-ève Kerrin Rachèle Monckman</autores>
+      <ISBN>263942036-4</ISBN>
+      <titulo>ultrices phasellus id sapien</titulo>
+      <preco>75.2</preco>
+      <status>3</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1969</ano>
+    </Obra>
+    <Obra>
+      <id>165</id>
+      <autores>Vérane Marie-josée</autores>
+      <ISBN>365608312-6</ISBN>
+      <titulo>nunc proin at turpis a pede posuere nonummy</titulo>
+      <preco>63</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1977</ano>
+    </Obra>
+    <Obra>
+      <id>167</id>
+      <autores>Inès Adélaïde</autores>
+      <ISBN>791842752-1</ISBN>
+      <titulo>diam erat fermentum justo nec condimentum neque</titulo>
+      <preco>1.4</preco>
+      <status>7</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1930</ano>
+    </Obra>
+    <Obra>
+      <id>168</id>
+      <autores>Publicité Léane</autores>
+      <ISBN>723376358-5</ISBN>
+      <titulo>id turpis integer aliquet massa id lobortis convallis tortor risus dapibus</titulo>
+      <preco>35.1</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1812</ano>
+    </Obra>
+    <Obra>
+      <id>169</id>
+      <autores>Anaëlle Kelsey Eléonore Manach</autores>
+      <ISBN>106377666-X</ISBN>
+      <titulo>vestibulum sit amet</titulo>
+      <preco>40.5</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>2004</ano>
+    </Obra>
+    <Obra>
+      <id>170</id>
+      <autores>Vasili Crighton</autores>
+      <ISBN>582031079-9</ISBN>
+      <titulo>pede venenatis non sodales</titulo>
+      <preco>40.3</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1835</ano>
+    </Obra>
+    <Obra>
+      <id>171</id>
+      <autores>Célia Cécile ","Blondelle Cheesley</autores>
+      <ISBN>901744262-X</ISBN>
+      <titulo>libero rutrum ac lobortis vel dapibus at diam nam tristique tortor eu</titulo>
+      <preco>25.6</preco>
+      <status>8</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>2013</ano>
+    </Obra>
+    <Obra>
+      <id>172</id>
+      <autores>Célia Maïly</autores>
+      <ISBN>267989185-6</ISBN>
+      <titulo>est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante</titulo>
+      <preco>71.3</preco>
+      <status>10</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>2016</ano>
+    </Obra>
+    <Obra>
+      <id>173</id>
+      <autores>Åsa Gaïa</autores>
+      <ISBN>691460361-8</ISBN>
+      <titulo>morbi ut odio cras mi pede malesuada in</titulo>
+      <preco>59.3</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1806</ano>
+    </Obra>
+    <Obra>
+      <id>174</id>
+      <autores>Nélie Mahélie</autores>
+      <ISBN>034625373-X</ISBN>
+      <titulo>morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate</titulo>
+      <preco>63.7</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1935</ano>
+    </Obra>
+    <Obra>
+      <id>175</id>
+      <autores>Océanne Aí</autores>
+      <ISBN>225003942-9</ISBN>
+      <titulo>pellentesque ultrices phasellus id</titulo>
+      <preco>40.4</preco>
+      <status>7</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1836</ano>
+    </Obra>
+    <Obra>
+      <id>176</id>
+      <autores>Edmée Mélina</autores>
+      <ISBN>470152586-3</ISBN>
+      <titulo>in felis donec semper sapien a libero nam dui</titulo>
+      <preco>7.5</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1895</ano>
+    </Obra>
+    <Obra>
+      <id>177</id>
+      <autores>Eléa Bérangère</autores>
+      <ISBN>497804230-5</ISBN>
+      <titulo>ipsum dolor sit amet consectetuer adipiscing elit proin risus</titulo>
+      <preco>89.6</preco>
+      <status>1</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1879</ano>
+    </Obra>
+    <Obra>
+      <id>178</id>
+      <autores>Naëlle Gaétane</autores>
+      <ISBN>437883432-4</ISBN>
+      <titulo>luctus ultricies eu</titulo>
+      <preco>89.2</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1893</ano>
+    </Obra>
+    <Obra>
+      <id>180</id>
+      <autores>Geneviève Ansell Joséphine Evett</autores>
+      <ISBN>884072587-3</ISBN>
+      <titulo>semper est quam pharetra magna ac consequat metus sapien ut</titulo>
+      <preco>52.4</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1954</ano>
+    </Obra>
+    <Obra>
+      <id>181</id>
+      <autores>Gaëlle Sélène</autores>
+      <ISBN>723124588-9</ISBN>
+      <titulo>eleifend pede libero quis orci nullam</titulo>
+      <preco>61.3</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1886</ano>
+    </Obra>
+    <Obra>
+      <id>182</id>
+      <autores>Laurène Léonie</autores>
+      <ISBN>342607792-2</ISBN>
+      <titulo>pretium nisl ut volutpat sapien arcu sed</titulo>
+      <preco>67.8</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1804</ano>
+    </Obra>
+    <Obra>
+      <id>183</id>
+      <autores>Tadd Roscher</autores>
+      <ISBN>785056419-7</ISBN>
+      <titulo>pulvinar lobortis est phasellus sit</titulo>
+      <preco>80.5</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1920</ano>
+    </Obra>
+    <Obra>
+      <id>184</id>
+      <autores>Andréa Intéressant</autores>
+      <ISBN>454670257-4</ISBN>
+      <titulo>augue a suscipit nulla</titulo>
+      <preco>70</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1880</ano>
+    </Obra>
+    <Obra>
+      <id>185</id>
+      <autores>Françoise Sinclare Lén Dracksford</autores>
+      <ISBN>391224461-8</ISBN>
+      <titulo>dictumst etiam faucibus cursus urna ut tellus</titulo>
+      <preco>7.4</preco>
+      <status>10</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1969</ano>
+    </Obra>
+    <Obra>
+      <id>186</id>
+      <autores>Naëlle Marie-ève</autores>
+      <ISBN>865953242-2</ISBN>
+      <titulo>at turpis donec posuere metus</titulo>
+      <preco>10.8</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1984</ano>
+    </Obra>
+    <Obra>
+      <id>187</id>
+      <autores>Marie-françoise Stéphanie</autores>
+      <ISBN>743809185-6</ISBN>
+      <titulo>non mattis</titulo>
+      <preco>2</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1880</ano>
+    </Obra>
+    <Obra>
+      <id>188</id>
+      <autores>Régine Björn ","Maëly Eloïse</autores>
+      <ISBN>624859516-X</ISBN>
+      <titulo>accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend</titulo>
+      <preco>94.1</preco>
+      <status>4</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>2011</ano>
+    </Obra>
+    <Obra>
+      <id>189</id>
+      <autores>Glendon Cockling</autores>
+      <ISBN>752735939-0</ISBN>
+      <titulo>maecenas tincidunt lacus at velit</titulo>
+      <preco>50.4</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1947</ano>
+    </Obra>
+    <Obra>
+      <id>190</id>
+      <autores>Cloé Leland Táng Jacquest</autores>
+      <ISBN>674187063-6</ISBN>
+      <titulo>dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien</titulo>
+      <preco>84.6</preco>
+      <status>5</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1983</ano>
+    </Obra>
+    <Obra>
+      <id>192</id>
+      <autores>Nadège Renée</autores>
+      <ISBN>839540659-2</ISBN>
+      <titulo>cubilia curae mauris viverra diam</titulo>
+      <preco>28.7</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>política</AdC>
+      <ano>1920</ano>
+    </Obra>
+    <Obra>
+      <id>193</id>
+      <autores>Gaëlle Desirée</autores>
+      <ISBN>031032417-3</ISBN>
+      <titulo>justo nec condimentum neque sapien placerat ante nulla justo aliquam quis</titulo>
+      <preco>88.4</preco>
+      <status>3</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1922</ano>
+    </Obra>
+    <Obra>
+      <id>194</id>
+      <autores>Athéna Táng</autores>
+      <ISBN>800359905-9</ISBN>
+      <titulo>convallis duis consequat dui nec</titulo>
+      <preco>58.1</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1971</ano>
+    </Obra>
+    <Obra>
+      <id>195</id>
+      <autores>Crééz Simplifiés</autores>
+      <ISBN>584619535-0</ISBN>
+      <titulo>mauris eget massa tempor convallis nulla neque libero convallis</titulo>
+      <preco>49.6</preco>
+      <status>8</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1893</ano>
+    </Obra>
+    <Obra>
+      <id>198</id>
+      <autores>Cloé Jarrett Véronique Darcey</autores>
+      <ISBN>495182860-X</ISBN>
+      <titulo>ante ipsum</titulo>
+      <preco>72.6</preco>
+      <status>2</status>
+      <tipo>capa mole</tipo>
+      <AdC>literatura</AdC>
+      <ano>1833</ano>
+    </Obra>
+    <Obra>
+      <id>199</id>
+      <autores>Intéressant Finley Jú Bruggeman</autores>
+      <ISBN>218281321-7</ISBN>
+      <titulo>vestibulum ante ipsum primis in faucibus orci luctus et</titulo>
+      <preco>70.5</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1918</ano>
+    </Obra>
+    <Obra>
+      <id>303</id>
+      <autores>Wá Pò</autores>
+      <ISBN>402772143-8</ISBN>
+      <titulo>eget eleifend luctus ultricies eu nibh quisque id</titulo>
+      <preco>86.3</preco>
+      <status>10</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1845</ano>
+    </Obra>
+    <Obra>
+      <id>304</id>
+      <autores>Táng Saul Gérald Jacmard</autores>
+      <ISBN>559273959-1</ISBN>
+      <titulo>nibh ligula nec</titulo>
+      <preco>84.4</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>política</AdC>
+      <ano>1986</ano>
+    </Obra>
+    <Obra>
+      <id>305</id>
+      <autores>Zoé Personnalisée</autores>
+      <ISBN>533279711-7</ISBN>
+      <titulo>sapien cursus</titulo>
+      <preco>31.4</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1997</ano>
+    </Obra>
+    <Obra>
+      <id>307</id>
+      <autores>Lyséa Måns ","Måns Yénora</autores>
+      <ISBN>417550468-0</ISBN>
+      <titulo>urna pretium nisl ut volutpat sapien arcu sed augue aliquam</titulo>
+      <preco>77.8</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1840</ano>
+    </Obra>
+    <Obra>
+      <id>308</id>
+      <autores>Ignazio Drohun","Åsa Mélina</autores>
+      <ISBN>223862379-5</ISBN>
+      <titulo>nisi volutpat eleifend</titulo>
+      <preco>84.9</preco>
+      <status>4</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1884</ano>
+    </Obra>
+    <Obra>
+      <id>309</id>
+      <autores>Sòng Bérénice</autores>
+      <ISBN>581752221-7</ISBN>
+      <titulo>vel accumsan tellus</titulo>
+      <preco>93.3</preco>
+      <status>4</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1843</ano>
+    </Obra>
+    <Obra>
+      <id>310</id>
+      <autores>Marie-thérèse Séréna</autores>
+      <ISBN>394918489-9</ISBN>
+      <titulo>venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede</titulo>
+      <preco>72.8</preco>
+      <status>4</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1969</ano>
+    </Obra>
+    <Obra>
+      <id>312</id>
+      <autores>Åsa Vénus</autores>
+      <ISBN>478655624-6</ISBN>
+      <titulo>integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor</titulo>
+      <preco>78.1</preco>
+      <status>7</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1808</ano>
+    </Obra>
+    <Obra>
+      <id>313</id>
+      <autores>Réjane Josh Stévina Mucklo</autores>
+      <ISBN>095043268-7</ISBN>
+      <titulo>integer aliquet massa id lobortis convallis tortor risus dapibus augue</titulo>
+      <preco>75.2</preco>
+      <status>8</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1893</ano>
+    </Obra>
+    <Obra>
+      <id>315</id>
+      <autores>Annotée Adelbert Mélina Buddles</autores>
+      <ISBN>050245375-3</ISBN>
+      <titulo>venenatis turpis enim blandit mi in porttitor pede justo eu</titulo>
+      <preco>92.6</preco>
+      <status>6</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1955</ano>
+    </Obra>
+    <Obra>
+      <id>317</id>
+      <autores>Inès Inès</autores>
+      <ISBN>310865129-3</ISBN>
+      <titulo>eget massa tempor convallis nulla</titulo>
+      <preco>77.2</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1814</ano>
+    </Obra>
+    <Obra>
+      <id>319</id>
+      <autores>Ráo Dorothée</autores>
+      <ISBN>671539792-9</ISBN>
+      <titulo>odio curabitur convallis duis consequat dui nec nisi volutpat</titulo>
+      <preco>91.8</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1950</ano>
+    </Obra>
+    <Obra>
+      <id>321</id>
+      <autores>Loïc Maëlla</autores>
+      <ISBN>075115508-X</ISBN>
+      <titulo>ultrices posuere cubilia curae donec pharetra magna vestibulum</titulo>
+      <preco>87.5</preco>
+      <status>3</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1978</ano>
+    </Obra>
+    <Obra>
+      <id>323</id>
+      <autores>Françoise Anaëlle</autores>
+      <ISBN>828895793-5</ISBN>
+      <titulo>at nunc commodo placerat praesent</titulo>
+      <preco>66.9</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1815</ano>
+    </Obra>
+    <Obra>
+      <id>324</id>
+      <autores>Geneviève Rustin Mégane Limpenny</autores>
+      <ISBN>271521132-5</ISBN>
+      <titulo>orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae</titulo>
+      <preco>28</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1905</ano>
+    </Obra>
+    <Obra>
+      <id>326</id>
+      <autores>Maïlys Adele Lèi Stanger</autores>
+      <ISBN>878413078-4</ISBN>
+      <titulo>elit proin risus praesent lectus vestibulum quam sapien varius</titulo>
+      <preco>60.9</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1903</ano>
+    </Obra>
+    <Obra>
+      <id>328</id>
+      <autores>Amélie Maï</autores>
+      <ISBN>414864543-0</ISBN>
+      <titulo>nec euismod scelerisque quam turpis adipiscing</titulo>
+      <preco>41.3</preco>
+      <status>7</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1912</ano>
+    </Obra>
+    <Obra>
+      <id>329</id>
+      <autores>Réservés Léa</autores>
+      <ISBN>211298191-9</ISBN>
+      <titulo>eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
+      <preco>53.5</preco>
+      <status>3</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1918</ano>
+    </Obra>
+    <Obra>
+      <id>331</id>
+      <autores>Lèi Yè ","Giulio Nisbet</autores>
+      <ISBN>451283293-9</ISBN>
+      <titulo>consectetuer adipiscing elit proin interdum mauris</titulo>
+      <preco>57.3</preco>
+      <status>5</status>
+      <tipo>digital</tipo>
+      <AdC>política</AdC>
+      <ano>1821</ano>
+    </Obra>
+    <Obra>
+      <id>333</id>
+      <autores>Amélie Maëlle ","Abelard McCluskey</autores>
+      <ISBN>577981259-4</ISBN>
+      <titulo>mi sit amet lobortis sapien sapien non mi integer</titulo>
+      <preco>1.6</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1819</ano>
+    </Obra>
+    <Obra>
+      <id>334</id>
+      <autores>Marylène Ruì</autores>
+      <ISBN>689186424-0</ISBN>
+      <titulo>rutrum at lorem integer tincidunt ante vel</titulo>
+      <preco>60.5</preco>
+      <status>4</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1954</ano>
+    </Obra>
+    <Obra>
+      <id>336</id>
+      <autores>Blinny Brownsmith</autores>
+      <ISBN>179952452-3</ISBN>
+      <titulo>ac diam cras</titulo>
+      <preco>89.4</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1890</ano>
+    </Obra>
+    <Obra>
+      <id>337</id>
+      <autores>Miléna Wá</autores>
+      <ISBN>577826726-6</ISBN>
+      <titulo>odio cras mi pede malesuada in imperdiet et commodo vulputate justo</titulo>
+      <preco>89.9</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1905</ano>
+    </Obra>
+    <Obra>
+      <id>338</id>
+      <autores>Maéna Danièle</autores>
+      <ISBN>740265525-3</ISBN>
+      <titulo>adipiscing elit proin</titulo>
+      <preco>63.6</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1962</ano>
+    </Obra>
+    <Obra>
+      <id>339</id>
+      <autores>Aí Esbjörn</autores>
+      <ISBN>339978223-3</ISBN>
+      <titulo>volutpat convallis morbi odio odio elementum eu interdum eu tincidunt in</titulo>
+      <preco>68.4</preco>
+      <status>3</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1946</ano>
+    </Obra>
+    <Obra>
+      <id>341</id>
+      <autores>Amélie Loren Angèle Gatherer</autores>
+      <ISBN>535150113-9</ISBN>
+      <titulo>cubilia curae donec pharetra magna vestibulum aliquet ultrices erat</titulo>
+      <preco>13</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1814</ano>
+    </Obra>
+    <Obra>
+      <id>343</id>
+      <autores>Dà Ki Clémence Brett</autores>
+      <ISBN>079694778-3</ISBN>
+      <titulo>rutrum nulla nunc purus phasellus in felis donec semper sapien a libero</titulo>
+      <preco>33.6</preco>
+      <status>8</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1830</ano>
+    </Obra>
+    <Obra>
+      <id>344</id>
+      <autores>Theressa Kent</autores>
+      <ISBN>462567545-6</ISBN>
+      <titulo>cras pellentesque volutpat</titulo>
+      <preco>19.9</preco>
+      <status>7</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>2000</ano>
+    </Obra>
+    <Obra>
+      <id>345</id>
+      <autores>Clémence Clémence ","Gaëlle Maéna</autores>
+      <ISBN>764346566-5</ISBN>
+      <titulo>in congue etiam justo etiam pretium iaculis justo in hac habitasse platea</titulo>
+      <preco>85.5</preco>
+      <status>6</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1847</ano>
+    </Obra>
+    <Obra>
+      <id>346</id>
+      <autores>Edmée Chan Séverine Hagland</autores>
+      <ISBN>999924052-6</ISBN>
+      <titulo>congue risus semper porta</titulo>
+      <preco>2.9</preco>
+      <status>7</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1986</ano>
+    </Obra>
+    <Obra>
+      <id>347</id>
+      <autores>Naëlle Eléonore</autores>
+      <ISBN>883543914-0</ISBN>
+      <titulo>tellus in sagittis</titulo>
+      <preco>31.7</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1975</ano>
+    </Obra>
+    <Obra>
+      <id>349</id>
+      <autores>Loïc Clémentine</autores>
+      <ISBN>513681087-4</ISBN>
+      <titulo>nisl aenean lectus</titulo>
+      <preco>83.2</preco>
+      <status>3</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1946</ano>
+    </Obra>
+    <Obra>
+      <id>350</id>
+      <autores>Méline Margie Béatrice Hebard","Nikita Walczynski</autores>
+      <ISBN>246359247-8</ISBN>
+      <titulo>amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien</titulo>
+      <preco>62.5</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1971</ano>
+    </Obra>
+    <Obra>
+      <id>351</id>
+      <autores>Régine Léane ","Abelard McCluskey</autores>
+      <ISBN>541420579-5</ISBN>
+      <titulo>sit amet diam in magna bibendum</titulo>
+      <preco>48.1</preco>
+      <status>10</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1891</ano>
+    </Obra>
+    <Obra>
+      <id>352</id>
+      <autores>Sòng Méthode</autores>
+      <ISBN>717281758-3</ISBN>
+      <titulo>nec sem duis aliquam convallis</titulo>
+      <preco>19.8</preco>
+      <status>2</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1825</ano>
+    </Obra>
+    <Obra>
+      <id>354</id>
+      <autores>Médiamass Patricio Audréanne McPhelim","Måns Yénora</autores>
+      <ISBN>383082828-4</ISBN>
+      <titulo>aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt</titulo>
+      <preco>2.9</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1937</ano>
+    </Obra>
+    <Obra>
+      <id>355</id>
+      <autores>Nuó Samantha Séverine Drepp","Åsa Mélina</autores>
+      <ISBN>112721776-3</ISBN>
+      <titulo>consequat metus sapien ut nunc vestibulum ante ipsum primis</titulo>
+      <preco>31.8</preco>
+      <status>7</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1851</ano>
+    </Obra>
+    <Obra>
+      <id>356</id>
+      <autores>Thérèse Ginnie Célia Martinet</autores>
+      <ISBN>043920331-7</ISBN>
+      <titulo>at dolor quis odio consequat varius integer ac leo pellentesque ultrices mattis</titulo>
+      <preco>12.2</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>2014</ano>
+    </Obra>
+    <Obra>
+      <id>358</id>
+      <autores>Ruì Anaëlle</autores>
+      <ISBN>636196646-1</ISBN>
+      <titulo>penatibus et</titulo>
+      <preco>25.7</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1865</ano>
+    </Obra>
+    <Obra>
+      <id>359</id>
+      <autores>Ruì Miléna</autores>
+      <ISBN>576086012-7</ISBN>
+      <titulo>dui proin leo odio porttitor id consequat</titulo>
+      <preco>76.9</preco>
+      <status>6</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1881</ano>
+    </Obra>
+    <Obra>
+      <id>361</id>
+      <autores>Annotée Celestyn Méryl Malenfant</autores>
+      <ISBN>492806830-0</ISBN>
+      <titulo>lacinia nisi venenatis tristique fusce congue diam id ornare</titulo>
+      <preco>31.6</preco>
+      <status>3</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1972</ano>
+    </Obra>
+    <Obra>
+      <id>362</id>
+      <autores>Maïté Jennee Léonie Natwick</autores>
+      <ISBN>756661349-9</ISBN>
+      <titulo>neque aenean auctor gravida sem praesent id massa</titulo>
+      <preco>47.7</preco>
+      <status>8</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1927</ano>
+    </Obra>
+    <Obra>
+      <id>363</id>
+      <autores>Maëlys Adélie</autores>
+      <ISBN>252420111-2</ISBN>
+      <titulo>eget eleifend luctus ultricies eu nibh quisque</titulo>
+      <preco>17.3</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1873</ano>
+    </Obra>
+    <Obra>
+      <id>364</id>
+      <autores>Céline Tú</autores>
+      <ISBN>092956564-9</ISBN>
+      <titulo>quis justo maecenas rhoncus aliquam lacus morbi</titulo>
+      <preco>1.5</preco>
+      <status>10</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1821</ano>
+    </Obra>
+    <Obra>
+      <id>365</id>
+      <autores>Réservés Licha Maëly Davis</autores>
+      <ISBN>783367138-X</ISBN>
+      <titulo>amet diam in magna bibendum imperdiet</titulo>
+      <preco>2.6</preco>
+      <status>7</status>
+      <tipo>capa dura</tipo>
+      <AdC>literatura</AdC>
+      <ano>1823</ano>
+    </Obra>
+    <Obra>
+      <id>368</id>
+      <autores>Réjane Fiona Maëlyss Rousby</autores>
+      <ISBN>711353437-6</ISBN>
+      <titulo>eros elementum pellentesque</titulo>
+      <preco>67.7</preco>
+      <status>5</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>2013</ano>
+    </Obra>
+    <Obra>
+      <id>369</id>
+      <autores>Gwenaëlle Yáo</autores>
+      <ISBN>377207481-2</ISBN>
+      <titulo>nonummy integer non</titulo>
+      <preco>64.2</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1833</ano>
+    </Obra>
+    <Obra>
+      <id>370</id>
+      <autores>Nélie Pò ","Elmira June</autores>
+      <ISBN>941346674-2</ISBN>
+      <titulo>nisl venenatis lacinia aenean sit amet</titulo>
+      <preco>54.6</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1800</ano>
+    </Obra>
+    <Obra>
+      <id>371</id>
+      <autores>Andréa Uò</autores>
+      <ISBN>347340279-6</ISBN>
+      <titulo>cras pellentesque volutpat dui maecenas tristique est</titulo>
+      <preco>4.8</preco>
+      <status>4</status>
+      <tipo>digital</tipo>
+      <AdC>política</AdC>
+      <ano>1834</ano>
+    </Obra>
+    <Obra>
+      <id>373</id>
+      <autores>Adèle Mélys ","Irvine Mcettrick</autores>
+      <ISBN>748681688-1</ISBN>
+      <titulo>turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue vel</titulo>
+      <preco>54.3</preco>
+      <status>8</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1926</ano>
+    </Obra>
+    <Obra>
+      <id>374</id>
+      <autores>Tán Georges Sélène Fazakerley","Adélie DentonNélie</autores>
+      <ISBN>354103849-7</ISBN>
+      <titulo>sit amet eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
+      <preco>92.1</preco>
+      <status>2</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1829</ano>
+    </Obra>
+    <Obra>
+      <id>376</id>
+      <autores>Léonie Marie-françoise ","Giulio Nisbet</autores>
+      <ISBN>122105446-5</ISBN>
+      <titulo>id nisl venenatis</titulo>
+      <preco>7.6</preco>
+      <status>4</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1910</ano>
+    </Obra>
+    <Obra>
+      <id>377</id>
+      <autores>Pò Estée</autores>
+      <ISBN>254538947-1</ISBN>
+      <titulo>risus semper porta volutpat quam pede lobortis ligula</titulo>
+      <preco>34.5</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1863</ano>
+    </Obra>
+    <Obra>
+      <id>379</id>
+      <autores>Tú Amandie Loïc Dyball</autores>
+      <ISBN>596654532-4</ISBN>
+      <titulo>maecenas tristique est et tempus semper est quam pharetra magna ac consequat</titulo>
+      <preco>91.8</preco>
+      <status>2</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1949</ano>
+    </Obra>
+    <Obra>
+      <id>380</id>
+      <autores>Loïs Jo-ann Méline Saville</autores>
+      <ISBN>544871708-X</ISBN>
+      <titulo>mauris vulputate elementum nullam varius nulla facilisi cras non</titulo>
+      <preco>81.8</preco>
+      <status>6</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1898</ano>
+    </Obra>
+    <Obra>
+      <id>382</id>
+      <autores>Mélys Agnès</autores>
+      <ISBN>272328753-X</ISBN>
+      <titulo>duis mattis egestas metus aenean fermentum donec ut mauris eget</titulo>
+      <preco>40.1</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1929</ano>
+    </Obra>
+    <Obra>
+      <id>384</id>
+      <autores>Maëline Callie Thérèsa Yorke</autores>
+      <ISBN>020031659-1</ISBN>
+      <titulo>libero nam dui proin</titulo>
+      <preco>91.9</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1921</ano>
+    </Obra>
+    <Obra>
+      <id>387</id>
+      <autores>Méng Artemas Pål Norris</autores>
+      <ISBN>601359338-8</ISBN>
+      <titulo>quis augue luctus tincidunt nulla mollis molestie lorem quisque ut</titulo>
+      <preco>92.1</preco>
+      <status>6</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1940</ano>
+    </Obra>
+    <Obra>
+      <id>388</id>
+      <autores>Bérengère Babara Maëlle Tarbett","Zaneta Manzell</autores>
+      <ISBN>601537653-8</ISBN>
+      <titulo>volutpat eleifend donec ut dolor morbi vel lectus in</titulo>
+      <preco>32.2</preco>
+      <status>6</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1848</ano>
+    </Obra>
+    <Obra>
+      <id>390</id>
+      <autores>Yóu Maëlann</autores>
+      <ISBN>810542281-6</ISBN>
+      <titulo>mauris viverra diam vitae quam suspendisse</titulo>
+      <preco>46.5</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1809</ano>
+    </Obra>
+    <Obra>
+      <id>392</id>
+      <autores>Monika Di Biagio","Dafnée Filippi</autores>
+      <ISBN>748546041-2</ISBN>
+      <titulo>mollis molestie lorem quisque ut erat curabitur gravida nisi at nibh</titulo>
+      <preco>10.1</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1985</ano>
+    </Obra>
+    <Obra>
+      <id>395</id>
+      <autores>Pò Petey Irène Sivil","Aí Kaman</autores>
+      <ISBN>920287804-8</ISBN>
+      <titulo>nisl duis bibendum felis</titulo>
+      <preco>17</preco>
+      <status>8</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1841</ano>
+    </Obra>
+    <Obra>
+      <id>396</id>
+      <autores>Magdalène Séverine</autores>
+      <ISBN>765957431-0</ISBN>
+      <titulo>donec pharetra magna vestibulum aliquet</titulo>
+      <preco>43.2</preco>
+      <status>7</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1970</ano>
+    </Obra>
+    <Obra>
+      <id>397</id>
+      <autores>Naéva Léonie ","Léandre Nélie</autores>
+      <ISBN>487622272-X</ISBN>
+      <titulo>sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum</titulo>
+      <preco>47.7</preco>
+      <status>7</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1957</ano>
+    </Obra>
+    <Obra>
+      <id>398</id>
+      <autores>Séréna Valérie</autores>
+      <ISBN>188202790-6</ISBN>
+      <titulo>neque aenean auctor gravida sem praesent id massa id nisl venenatis</titulo>
+      <preco>51.4</preco>
+      <status>3</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>2009</ano>
+    </Obra>
+    <Obra>
+      <id>399</id>
+      <autores>Kallisté Alexandros Åsa Kitchingman</autores>
+      <ISBN>863599369-1</ISBN>
+      <titulo>vel lectus in quam fringilla</titulo>
+      <preco>39.3</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>literatura</AdC>
+      <ano>1958</ano>
+    </Obra>
+    <Obra>
+      <id>400</id>
+      <autores>Mélanie Tán ","Agnès Gaëlle</autores>
+      <ISBN>530219704-9</ISBN>
+      <titulo>mollis molestie</titulo>
+      <preco>27.5</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1868</ano>
+    </Obra>
+    <Obra>
+      <id>4</id>
+      <autores>Lauréna Mélodie</autores>
+      <ISBN>278348671-7</ISBN>
+      <titulo>volutpat eleifend donec ut</titulo>
+      <preco>106.4</preco>
+      <status>4</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1871</ano>
+    </Obra>
+    <Obra>
+      <id>13</id>
+      <autores>Kévina Lóng</autores>
+      <ISBN>363043403-7</ISBN>
+      <titulo>magna vulputate luctus</titulo>
+      <preco>40.99</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1901</ano>
+    </Obra>
+    <Obra>
+      <id>23</id>
+      <autores>Méryl Mélissandre</autores>
+      <ISBN>541811937-0</ISBN>
+      <titulo>eleifend quam a odio in hac habitasse platea</titulo>
+      <preco>90.8</preco>
+      <status>10</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>2001</ano>
+    </Obra>
+    <Obra>
+      <id>44</id>
+      <autores>Marie-josée Aguste Yáo Van Arsdall</autores>
+      <ISBN>888316137-8</ISBN>
+      <titulo>malesuada in</titulo>
+      <preco>100.41</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1957</ano>
+    </Obra>
+    <Obra>
+      <id>48</id>
+      <autores>Béatrice Naéva</autores>
+      <ISBN>265855766-3</ISBN>
+      <titulo>et ultrices posuere cubilia curae mauris viverra diam vitae quam</titulo>
+      <preco>92.59</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1920</ano>
+    </Obra>
+    <Obra>
+      <id>49</id>
+      <autores>Cléa Annotée</autores>
+      <ISBN>547583153-X</ISBN>
+      <titulo>nam ultrices libero non mattis pulvinar nulla</titulo>
+      <preco>88.76</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1966</ano>
+    </Obra>
+    <Obra>
+      <id>61</id>
+      <autores>Aurélie Maëline</autores>
+      <ISBN>626678706-7</ISBN>
+      <titulo>lectus suspendisse potenti</titulo>
+      <preco>95.67</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1818</ano>
+    </Obra>
+    <Obra>
+      <id>197</id>
+      <autores>Åke Sylvester Gwenaëlle Rhodes</autores>
+      <ISBN>331023325-1</ISBN>
+      <titulo>ac nulla sed vel enim sit amet nunc viverra dapibus</titulo>
+      <preco>78.56</preco>
+      <status>4</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1821</ano>
+    </Obra>
+    <Obra>
+      <id>301</id>
+      <autores>Maéna Mélissandre ","Irvine Mcettrick</autores>
+      <ISBN>338427870-4</ISBN>
+      <titulo>venenatis tristique fusce congue diam id ornare imperdiet sapien</titulo>
+      <preco>81.39</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1951</ano>
+    </Obra>
+    <Obra>
+      <id>302</id>
+      <autores>Lyséa Nichols Marie-noël Furlong</autores>
+      <ISBN>917421991-X</ISBN>
+      <titulo>ante ipsum primis in faucibus orci luctus et ultrices posuere</titulo>
+      <preco>106.27</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1971</ano>
+    </Obra>
+    <Obra>
+      <id>314</id>
+      <autores>Göran Maïlis</autores>
+      <ISBN>824765983-2</ISBN>
+      <titulo>pede lobortis ligula sit</titulo>
+      <preco>97.47</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1802</ano>
+    </Obra>
+    <Obra>
+      <id>316</id>
+      <autores>Personnalisée Juliann Mélanie Buer</autores>
+      <ISBN>312548023-X</ISBN>
+      <titulo>donec posuere metus vitae ipsum aliquam non mauris morbi</titulo>
+      <preco>75.84</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1939</ano>
+    </Obra>
+    <Obra>
+      <id>332</id>
+      <autores>Vénus Annotés ","Nikita Walczynski</autores>
+      <ISBN>173328421-4</ISBN>
+      <titulo>luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur</titulo>
+      <preco>20.35</preco>
+      <status>10</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1939</ano>
+    </Obra>
+    <Obra>
+      <id>353</id>
+      <autores>Adèle Bénédicte</autores>
+      <ISBN>767391893-5</ISBN>
+      <titulo>maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum</titulo>
+      <preco>41.27</preco>
+      <status>4</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1918</ano>
+    </Obra>
+    <Obra>
+      <id>378</id>
+      <autores>Michèle Bérangère</autores>
+      <ISBN>652842842-5</ISBN>
+      <titulo>elit proin interdum mauris non ligula pellentesque ultrices phasellus</titulo>
+      <preco>62.02</preco>
+      <status>1</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1823</ano>
+    </Obra>
+    <Obra>
+      <id>383</id>
+      <autores>Lèi Alizée</autores>
+      <ISBN>663516044-2</ISBN>
+      <titulo>euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem</titulo>
+      <preco>58.69</preco>
+      <status>6</status>
+      <tipo>capa dura</tipo>
+      <AdC>literatura</AdC>
+      <ano>1809</ano>
+    </Obra>
+    <Obra>
+      <id>389</id>
+      <autores>Mélinda Adélaïde ","Vasili Martinon</autores>
+      <ISBN>654048650-2</ISBN>
+      <titulo>dui proin leo odio porttitor id consequat in consequat ut nulla sed</titulo>
+      <preco>67.38</preco>
+      <status>10</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1881</ano>
+    </Obra>
+    <Obra>
+      <id>393</id>
+      <autores>Félicie Fifi Börje Peace","Estée Savery</autores>
+      <ISBN>058950614-5</ISBN>
+      <titulo>rhoncus sed vestibulum sit</titulo>
+      <preco>48.11</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1929</ano>
+    </Obra>
+    <Obra>
+      <id>4</id>
+      <autores>Lauréna Mélodie</autores>
+      <ISBN>278348671-7</ISBN>
+      <titulo>volutpat eleifend donec ut</titulo>
+      <preco>90.04</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>1871</ano>
+    </Obra>
+    <Obra>
+      <id>13</id>
+      <autores>Kévina Lóng</autores>
+      <ISBN>363043403-7</ISBN>
+      <titulo>magna vulputate luctus</titulo>
+      <preco>13.22</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>literatura</AdC>
+      <ano>1901</ano>
+    </Obra>
+    <Obra>
+      <id>23</id>
+      <autores>Méryl Mélissandre</autores>
+      <ISBN>541811937-0</ISBN>
+      <titulo>eleifend quam a odio in hac habitasse platea</titulo>
+      <preco>123.05</preco>
+      <status>4</status>
+      <tipo>capa dura</tipo>
+      <AdC>história</AdC>
+      <ano>2001</ano>
+    </Obra>
+    <Obra>
+      <id>44</id>
+      <autores>Marie-josée Aguste Yáo Van Arsdall</autores>
+      <ISBN>888316137-8</ISBN>
+      <titulo>malesuada in</titulo>
+      <preco>51.54</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1957</ano>
+    </Obra>
+    <Obra>
+      <id>48</id>
+      <autores>Béatrice Naéva</autores>
+      <ISBN>265855766-3</ISBN>
+      <titulo>et ultrices posuere cubilia curae mauris viverra diam vitae quam</titulo>
+      <preco>26.64</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>literatura</AdC>
+      <ano>1920</ano>
+    </Obra>
+    <Obra>
+      <id>49</id>
+      <autores>Cléa Annotée</autores>
+      <ISBN>547583153-X</ISBN>
+      <titulo>nam ultrices libero non mattis pulvinar nulla</titulo>
+      <preco>114.41</preco>
+      <status>3</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1966</ano>
+    </Obra>
+    <Obra>
+      <id>61</id>
+      <autores>Aurélie Maëline</autores>
+      <ISBN>626678706-7</ISBN>
+      <titulo>lectus suspendisse potenti</titulo>
+      <preco>103.57</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1818</ano>
+    </Obra>
+    <Obra>
+      <id>197</id>
+      <autores>Åke Sylvester Gwenaëlle Rhodes</autores>
+      <ISBN>331023325-1</ISBN>
+      <titulo>ac nulla sed vel enim sit amet nunc viverra dapibus</titulo>
+      <preco>62.76</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1821</ano>
+    </Obra>
+    <Obra>
+      <id>301</id>
+      <autores>Maéna Mélissandre ","Irvine Mcettrick</autores>
+      <ISBN>338427870-4</ISBN>
+      <titulo>venenatis tristique fusce congue diam id ornare imperdiet sapien</titulo>
+      <preco>1.35</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1951</ano>
+    </Obra>
+    <Obra>
+      <id>302</id>
+      <autores>Lyséa Nichols Marie-noël Furlong</autores>
+      <ISBN>917421991-X</ISBN>
+      <titulo>ante ipsum primis in faucibus orci luctus et ultrices posuere</titulo>
+      <preco>29.87</preco>
+      <status>7</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1971</ano>
+    </Obra>
+    <Obra>
+      <id>314</id>
+      <autores>Göran Maïlis</autores>
+      <ISBN>824765983-2</ISBN>
+      <titulo>pede lobortis ligula sit</titulo>
+      <preco>90.04</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1802</ano>
+    </Obra>
+    <Obra>
+      <id>316</id>
+      <autores>Personnalisée Juliann Mélanie Buer</autores>
+      <ISBN>312548023-X</ISBN>
+      <titulo>donec posuere metus vitae ipsum aliquam non mauris morbi</titulo>
+      <preco>13.22</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1939</ano>
+    </Obra>
+    <Obra>
+      <id>332</id>
+      <autores>Vénus Annotés ","Nikita Walczynski</autores>
+      <ISBN>173328421-4</ISBN>
+      <titulo>luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur</titulo>
+      <preco>123.05</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1939</ano>
+    </Obra>
+    <Obra>
+      <id>353</id>
+      <autores>Adèle Bénédicte</autores>
+      <ISBN>767391893-5</ISBN>
+      <titulo>maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum</titulo>
+      <preco>51.54</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1918</ano>
+    </Obra>
+    <Obra>
+      <id>378</id>
+      <autores>Michèle Bérangère</autores>
+      <ISBN>652842842-5</ISBN>
+      <titulo>elit proin interdum mauris non ligula pellentesque ultrices phasellus</titulo>
+      <preco>26.64</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1823</ano>
+    </Obra>
+    <Obra>
+      <id>383</id>
+      <autores>Lèi Alizée</autores>
+      <ISBN>663516044-2</ISBN>
+      <titulo>euismod scelerisque quam turpis adipiscing lorem vitae mattis nibh ligula nec sem</titulo>
+      <preco>114.41</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>literatura</AdC>
+      <ano>1809</ano>
+    </Obra>
+    <Obra>
+      <id>389</id>
+      <autores>Mélinda Adélaïde ","Vasili Martinon</autores>
+      <ISBN>654048650-2</ISBN>
+      <titulo>dui proin leo odio porttitor id consequat in consequat ut nulla sed</titulo>
+      <preco>103.57</preco>
+      <status>3</status>
+      <tipo>digital</tipo>
+      <AdC>história</AdC>
+      <ano>1881</ano>
+    </Obra>
+    <Obra>
+      <id>393</id>
+      <autores>Félicie Fifi Börje Peace","Estée Savery</autores>
+      <ISBN>058950614-5</ISBN>
+      <titulo>rhoncus sed vestibulum sit</titulo>
+      <preco>62.76</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>história</AdC>
+      <ano>1929</ano>
+    </Obra>
+    <Obra>
+      <id>196</id>
+      <autores>Aimée Dorice Léonie Coatts</autores>
+      <ISBN>026456483-9</ISBN>
+      <titulo>ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae</titulo>
+      <preco>1.15</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>2019</ano>
+    </Obra>
+    <Obra>
+      <id>200</id>
+      <autores>Skelly Onslow</autores>
+      <ISBN>823828513-5</ISBN>
+      <titulo>nulla integer pede justo lacinia eget tincidunt eget tempus vel</titulo>
+      <preco>26.82</preco>
+      <status>5</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>1802</ano>
+    </Obra>
+    <Obra>
+      <id>330</id>
+      <autores>Lauréna Christy Yáo Maypole","Mickey Denton</autores>
+      <ISBN>085384718-5</ISBN>
+      <titulo>eu magna vulputate luctus cum sociis natoque penatibus et magnis dis</titulo>
+      <preco>72.5</preco>
+      <status>9</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1841</ano>
+    </Obra>
+    <Obra>
+      <id>335</id>
+      <autores>Séverine Régine</autores>
+      <ISBN>188910994-0</ISBN>
+      <titulo>dui nec nisi volutpat eleifend donec ut dolor morbi vel</titulo>
+      <preco>12.77</preco>
+      <status>1</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1991</ano>
+    </Obra>
+    <Obra>
+      <id>357</id>
+      <autores>Célia Séréna</autores>
+      <ISBN>062496114-1</ISBN>
+      <titulo>semper sapien a libero</titulo>
+      <preco>108</preco>
+      <status>9</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1990</ano>
+    </Obra>
+    <Obra>
+      <id>366</id>
+      <autores>Maïlys Médiamass</autores>
+      <ISBN>112425027-1</ISBN>
+      <titulo>quam sollicitudin vitae consectetuer eget rutrum at lorem integer</titulo>
+      <preco>59.31</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>política</AdC>
+      <ano>1974</ano>
+    </Obra>
+    <Obra>
+      <id>367</id>
+      <autores>Mà Intéressant</autores>
+      <ISBN>609099726-9</ISBN>
+      <titulo>faucibus accumsan odio curabitur convallis duis consequat dui nec</titulo>
+      <preco>25.25</preco>
+      <status>2</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1835</ano>
+    </Obra>
+    <Obra>
+      <id>386</id>
+      <autores>Kù Hélène</autores>
+      <ISBN>468687821-7</ISBN>
+      <titulo>porta volutpat quam pede lobortis ligula sit amet eleifend pede</titulo>
+      <preco>99.93</preco>
+      <status>7</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1908</ano>
+    </Obra>
+    <Obra>
+      <id>391</id>
+      <autores>Maëlla Anaïs</autores>
+      <ISBN>122867628-3</ISBN>
+      <titulo>arcu libero rutrum ac lobortis vel dapibus at diam nam tristique</titulo>
+      <preco>113.9</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>2008</ano>
+    </Obra>
+    <Obra>
+      <id>394</id>
+      <autores>Sharleen Drinkhill","Lauréna Fotherby</autores>
+      <ISBN>544063542-4</ISBN>
+      <titulo>massa tempor</titulo>
+      <preco>57.98</preco>
+      <status>10</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1866</ano>
+    </Obra>
+    <Obra>
+      <id>196</id>
+      <autores>Aimée Dorice Léonie Coatts</autores>
+      <ISBN>026456483-9</ISBN>
+      <titulo>ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae</titulo>
+      <preco>1.15</preco>
+      <status>4</status>
+      <tipo>capa dura</tipo>
+      <AdC>ensaio</AdC>
+      <ano>2019</ano>
+    </Obra>
+    <Obra>
+      <id>200</id>
+      <autores>Skelly Onslow</autores>
+      <ISBN>823828513-5</ISBN>
+      <titulo>nulla integer pede justo lacinia eget tincidunt eget tempus vel</titulo>
+      <preco>26.82</preco>
+      <status>4</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>1802</ano>
+    </Obra>
+    <Obra>
+      <id>330</id>
+      <autores>Lauréna Christy Yáo Maypole","Mickey Denton</autores>
+      <ISBN>085384718-5</ISBN>
+      <titulo>eu magna vulputate luctus cum sociis natoque penatibus et magnis dis</titulo>
+      <preco>72.5</preco>
+      <status>5</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1841</ano>
+    </Obra>
+    <Obra>
+      <id>335</id>
+      <autores>Séverine Régine</autores>
+      <ISBN>188910994-0</ISBN>
+      <titulo>dui nec nisi volutpat eleifend donec ut dolor morbi vel</titulo>
+      <preco>12.77</preco>
+      <status>1</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1991</ano>
+    </Obra>
+    <Obra>
+      <id>357</id>
+      <autores>Célia Séréna</autores>
+      <ISBN>062496114-1</ISBN>
+      <titulo>semper sapien a libero</titulo>
+      <preco>108</preco>
+      <status>4</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1990</ano>
+    </Obra>
+    <Obra>
+      <id>366</id>
+      <autores>Maïlys Médiamass</autores>
+      <ISBN>112425027-1</ISBN>
+      <titulo>quam sollicitudin vitae consectetuer eget rutrum at lorem integer</titulo>
+      <preco>59.31</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1974</ano>
+    </Obra>
+    <Obra>
+      <id>367</id>
+      <autores>Mà Intéressant</autores>
+      <ISBN>609099726-9</ISBN>
+      <titulo>faucibus accumsan odio curabitur convallis duis consequat dui nec</titulo>
+      <preco>25.25</preco>
+      <status>6</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1835</ano>
+    </Obra>
+    <Obra>
+      <id>386</id>
+      <autores>Kù Hélène</autores>
+      <ISBN>468687821-7</ISBN>
+      <titulo>porta volutpat quam pede lobortis ligula sit amet eleifend pede</titulo>
+      <preco>99.93</preco>
+      <status>4</status>
+      <tipo>capa mole</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1908</ano>
+    </Obra>
+    <Obra>
+      <id>391</id>
+      <autores>Maëlla Anaïs</autores>
+      <ISBN>122867628-3</ISBN>
+      <titulo>arcu libero rutrum ac lobortis vel dapibus at diam nam tristique</titulo>
+      <preco>113.9</preco>
+      <status>10</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>2008</ano>
+    </Obra>
+    <Obra>
+      <id>394</id>
+      <autores>Sharleen Drinkhill","Lauréna Fotherby</autores>
+      <ISBN>544063542-4</ISBN>
+      <titulo>massa tempor</titulo>
+      <preco>57.98</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1866</ano>
+    </Obra>
+    <Obra>
+      <id>196</id>
+      <autores>Aimée Dorice Léonie Coatts</autores>
+      <ISBN>026456483-9</ISBN>
+      <titulo>ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae</titulo>
+      <preco>1.15</preco>
+      <status>8</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>2019</ano>
+    </Obra>
+    <Obra>
+      <id>200</id>
+      <autores>Skelly Onslow</autores>
+      <ISBN>823828513-5</ISBN>
+      <titulo>nulla integer pede justo lacinia eget tincidunt eget tempus vel</titulo>
+      <preco>26.82</preco>
+      <status>5</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1802</ano>
+    </Obra>
+    <Obra>
+      <id>330</id>
+      <autores>Lauréna Christy Yáo Maypole","Mickey Denton</autores>
+      <ISBN>085384718-5</ISBN>
+      <titulo>eu magna vulputate luctus cum sociis natoque penatibus et magnis dis</titulo>
+      <preco>72.5</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>ficção</AdC>
+      <ano>1841</ano>
+    </Obra>
+    <Obra>
+      <id>335</id>
+      <autores>Séverine Régine</autores>
+      <ISBN>188910994-0</ISBN>
+      <titulo>dui nec nisi volutpat eleifend donec ut dolor morbi vel</titulo>
+      <preco>12.77</preco>
+      <status>1</status>
+      <tipo>capa dura</tipo>
+      <AdC>ficção</AdC>
+      <ano>1991</ano>
+    </Obra>
+    <Obra>
+      <id>357</id>
+      <autores>Célia Séréna</autores>
+      <ISBN>062496114-1</ISBN>
+      <titulo>semper sapien a libero</titulo>
+      <preco>108</preco>
+      <status>9</status>
+      <tipo>capa mole</tipo>
+      <AdC>ensaio</AdC>
+      <ano>1990</ano>
+    </Obra>
+    <Obra>
+      <id>366</id>
+      <autores>Maïlys Médiamass</autores>
+      <ISBN>112425027-1</ISBN>
+      <titulo>quam sollicitudin vitae consectetuer eget rutrum at lorem integer</titulo>
+      <preco>59.31</preco>
+      <status>2</status>
+      <tipo>capa mole</tipo>
+      <AdC>política</AdC>
+      <ano>1974</ano>
+    </Obra>
+    <Obra>
+      <id>367</id>
+      <autores>Mà Intéressant</autores>
+      <ISBN>609099726-9</ISBN>
+      <titulo>faucibus accumsan odio curabitur convallis duis consequat dui nec</titulo>
+      <preco>25.25</preco>
+      <status>2</status>
+      <tipo>digital</tipo>
+      <AdC>ficção</AdC>
+      <ano>1835</ano>
+    </Obra>
+    <Obra>
+      <id>386</id>
+      <autores>Kù Hélène</autores>
+      <ISBN>468687821-7</ISBN>
+      <titulo>porta volutpat quam pede lobortis ligula sit amet eleifend pede</titulo>
+      <preco>99.93</preco>
+      <status>7</status>
+      <tipo>digital</tipo>
+      <AdC>ciência-tecnologia</AdC>
+      <ano>1908</ano>
+    </Obra>
+    <Obra>
+      <id>391</id>
+      <autores>Maëlla Anaïs</autores>
+      <ISBN>122867628-3</ISBN>
+      <titulo>arcu libero rutrum ac lobortis vel dapibus at diam nam tristique</titulo>
+      <preco>113.9</preco>
+      <status>1</status>
+      <tipo>digital</tipo>
+      <AdC>ensaio</AdC>
+      <ano>2008</ano>
+    </Obra>
+    <Obra>
+      <id>394</id>
+      <autores>Sharleen Drinkhill","Lauréna Fotherby</autores>
+      <ISBN>544063542-4</ISBN>
+      <titulo>massa tempor</titulo>
+      <preco>57.98</preco>
+      <status>10</status>
+      <tipo>capa dura</tipo>
+      <AdC>política</AdC>
+      <ano>1866</ano>
+    </Obra>
+  </soap:Body>
+</soap:Envelope>

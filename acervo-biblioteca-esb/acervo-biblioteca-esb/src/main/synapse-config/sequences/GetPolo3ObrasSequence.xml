@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="GetPolo3ObrasSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Start Get Polo3 Obras Sequence" level="custom">
+        <property name="message" value="Start getting Polo3 obras sequence"/>
+    </log>
+    <sequence key="Polo3ObrasSequence"/>
+    <datamapper config="gov:datamapper/MapPolo3ObrasToObrasPolo.dmc" description="MapPolo3ObrasToObrasPolo" inputSchema="gov:datamapper/MapPolo3ObrasToObrasPolo_inputSchema.json" inputType="XML" outputSchema="gov:datamapper/MapPolo3ObrasToObrasPolo_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/MapPolo3ObrasToObrasPolo_xsltStyleSheet.xml"/>
+    <log description="Finish Get Polo3 Obras Sequence" level="custom">
+        <property name="message" value="Finished get polo3 obras..."/>
+    </log>
+</sequence>

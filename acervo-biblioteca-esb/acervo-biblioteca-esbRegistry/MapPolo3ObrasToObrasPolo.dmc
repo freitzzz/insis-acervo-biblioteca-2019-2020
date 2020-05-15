@@ -1,0 +1,24 @@
+map_S_Envelope_S_root = function(){ 
+var outputroot={};
+
+var count_i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9 = 0;
+outputroot =  [];
+
+for(i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9 in inputsoap_Envelope.soap_Body.Obra){
+outputroot[count_i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9] =  {};
+outputroot[count_i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9].id = inputsoap_Envelope.soap_Body.Obra[i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9].id;
+outputroot[count_i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9].isbn = inputsoap_Envelope.soap_Body.Obra[i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9].ISBN;
+outputroot[count_i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9].title = inputsoap_Envelope.soap_Body.Obra[i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9].titulo;
+outputroot[count_i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9].price = inputsoap_Envelope.soap_Body.Obra[i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9].preco;
+outputroot[count_i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9].publishedyear = inputsoap_Envelope.soap_Body.Obra[i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9].ano;
+
+count_i_Obra_5ea58580_d93f_4f4f_9908_288cfd7964a9++;
+}
+return outputroot;
+};
+
+
+
+
+
+
