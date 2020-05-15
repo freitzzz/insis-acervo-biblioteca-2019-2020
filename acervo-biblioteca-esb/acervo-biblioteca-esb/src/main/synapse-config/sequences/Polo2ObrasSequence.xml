@@ -3,26 +3,19 @@
     <log description="Start Retrieve Obras Polo 2 Log" level="custom">
         <property name="message" value="Starting to retrieve Polo2 obras..."/>
     </log>
-    <payloadFactory description="Payload Soap" media-type="xml">
-        <format>
-            <soap:Envelope xmlns:dat="http://ws.wso2.org/dataservice" xmlns:soap="http://www.w3.org/2003/05/soap-envelope">
-                <soap:Header/>
-                <soap:Body>
-                    <dat:GetObrasWithAllPropertiesOp/>
-                </soap:Body>
-            </soap:Envelope>
-        </format>
-        <args>
-            <arg value="http://ws.wso2.org/dataservice"/>
-            <arg value="http://www.w3.org/2003/05/soap-envelope"/>
-        </args>
-    </payloadFactory>
     <header description="Soap Header" name="Action" scope="default" value="GetObrasWithAllPropertiesOp"/>
     <call>
         <endpoint key="Polo2ObrasEP"/>
     </call>
+    <payloadFactory description="Remove Soap Headers" media-type="xml">
+        <format>
+            <Obras xmlns="">$1</Obras>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="//*[name() = 'Obra']"/>
+        </args>
+    </payloadFactory>
     <log description="End Retrieve Obras Polo 2 Log" level="custom">
         <property name="message" value="Finished retrieving Polo2 obras"/>
     </log>
-    <log description="Log Retrieved Obras Polo 2" level="full"/>
 </sequence>

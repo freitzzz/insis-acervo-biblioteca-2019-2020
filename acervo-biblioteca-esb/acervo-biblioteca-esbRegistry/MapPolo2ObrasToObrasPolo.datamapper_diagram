@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_VzqTEJbyEeqEec0gOP9oeg" type="DataMapper" name="MapPolo2ObrasToObrasPolo.datamapper_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_WKW70JbyEeqEec0gOP9oeg" type="2002" fontName="Ubuntu">
+    <children xmi:type="notation:Shape" xmi:id="_XD_SgJbyEeqEec0gOP9oeg" type="3002" fontName="Ubuntu">
+      <children xmi:type="notation:DecorationNode" xmi:id="_XD_5kJbyEeqEec0gOP9oeg" type="5002"/>
+      <children xmi:type="notation:Shape" xmi:id="_XEC84JbyEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_XEC84pbyEeqEec0gOP9oeg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_XEGnQJbyEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_XEGnQpbyEeqEec0gOP9oeg" type="5001"/>
+          <children xmi:type="notation:Shape" xmi:id="_XENU8JbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.0/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XENU8ZbyEeqEec0gOP9oeg" x="-1" y="1"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_XEN8AJbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.0/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEN8AZbyEeqEec0gOP9oeg"/>
+          </children>
+          <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.0"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEGnQZbyEeqEec0gOP9oeg"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_XEGnQ5byEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_XEJDgJbyEeqEec0gOP9oeg" type="5001"/>
+          <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.1"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEGnRJbyEeqEec0gOP9oeg"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_XEJDgZbyEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_XEJDg5byEeqEec0gOP9oeg" type="5001"/>
+          <children xmi:type="notation:Shape" xmi:id="_XEZiMJbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.2/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEZiMZbyEeqEec0gOP9oeg" x="-1" y="1"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_XEaJQJbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.2/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEaJQZbyEeqEec0gOP9oeg"/>
+          </children>
+          <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.2"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEJDgpbyEeqEec0gOP9oeg"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_XEJqkJbyEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_XEJqkpbyEeqEec0gOP9oeg" type="5001"/>
+          <children xmi:type="notation:Shape" xmi:id="_XEfBwJbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.3/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEfBwZbyEeqEec0gOP9oeg" x="-1" y="1"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_XEfBwpbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.3/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEfBw5byEeqEec0gOP9oeg"/>
+          </children>
+          <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.3"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEJqkZbyEeqEec0gOP9oeg"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_XEJqk5byEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_XEJqlZbyEeqEec0gOP9oeg" type="5001"/>
+          <children xmi:type="notation:Shape" xmi:id="_XEj6QJbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.4/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEj6QZbyEeqEec0gOP9oeg" x="-1" y="1"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_XEkhUJbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.4/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEkhUZbyEeqEec0gOP9oeg"/>
+          </children>
+          <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.4"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEJqlJbyEeqEec0gOP9oeg"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_XEJqlpbyEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_XEKRoJbyEeqEec0gOP9oeg" type="5001"/>
+          <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.5"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEJql5byEeqEec0gOP9oeg"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_XEKRoZbyEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_XEKRo5byEeqEec0gOP9oeg" type="5001"/>
+          <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.6"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEKRopbyEeqEec0gOP9oeg"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_XEKRpJbyEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+          <children xmi:type="notation:DecorationNode" xmi:id="_XEKRppbyEeqEec0gOP9oeg" type="5001"/>
+          <children xmi:type="notation:Shape" xmi:id="_XE0Y8JbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+            <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.7/@inNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XE0Y8ZbyEeqEec0gOP9oeg" x="-1" y="1"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_XE0Y8pbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+            <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.7/@outNode"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XE0Y85byEeqEec0gOP9oeg"/>
+          </children>
+          <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.7"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEKRpZbyEeqEec0gOP9oeg"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_XEKRp5byEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEKRqJbyEeqEec0gOP9oeg" x="-1" y="-11"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_XEK4sJbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEK4sZbyEeqEec0gOP9oeg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEC84ZbyEeqEec0gOP9oeg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_XEDj8JbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+        <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEDj8ZbyEeqEec0gOP9oeg" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_XEDj8pbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+        <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XEDj85byEeqEec0gOP9oeg"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XD_SgZbyEeqEec0gOP9oeg"/>
+    </children>
+    <element xmi:type="datamapper:Input" href="MapPolo2ObrasToObrasPolo.datamapper#//@input"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WKW70ZbyEeqEec0gOP9oeg" width="250" height="160"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_WKYJ8JbyEeqEec0gOP9oeg" type="2003" fontName="Ubuntu">
+    <children xmi:type="notation:Shape" xmi:id="_YeYM4JbyEeqEec0gOP9oeg" type="3011" fontName="Ubuntu">
+      <children xmi:type="notation:DecorationNode" xmi:id="_YeYz8JbyEeqEec0gOP9oeg" type="5003"/>
+      <children xmi:type="notation:Shape" xmi:id="_Yeb3QJbyEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Yeb3QpbyEeqEec0gOP9oeg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_Yee6kJbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yee6kZbyEeqEec0gOP9oeg" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_Yee6kpbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yee6k5byEeqEec0gOP9oeg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yeb3QZbyEeqEec0gOP9oeg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_Yeb3Q5byEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Yeb3RZbyEeqEec0gOP9oeg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_YejzEJbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.1/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YejzEZbyEeqEec0gOP9oeg" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_YejzEpbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.1/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YejzE5byEeqEec0gOP9oeg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.1"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yeb3RJbyEeqEec0gOP9oeg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_YeceUJbyEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_YeceUpbyEeqEec0gOP9oeg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_YeoEgJbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.2/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YeoEgZbyEeqEec0gOP9oeg" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_YeoEgpbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.2/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YeoEg5byEeqEec0gOP9oeg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.2"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YeceUZbyEeqEec0gOP9oeg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_YeceU5byEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_YeceVZbyEeqEec0gOP9oeg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_Yeru4JbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.3/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Yeru4ZbyEeqEec0gOP9oeg" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_YesV8JbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.3/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YesV8ZbyEeqEec0gOP9oeg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.3"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YeceVJbyEeqEec0gOP9oeg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_YeceVpbyEeqEec0gOP9oeg" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_YeceWJbyEeqEec0gOP9oeg" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_YeyckJbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.4/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YeyckZbyEeqEec0gOP9oeg" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_YezDoJbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.4/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YezDoZbyEeqEec0gOP9oeg"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@node.4"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YeceV5byEeqEec0gOP9oeg"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_YeceWZbyEeqEec0gOP9oeg" type="3020" fontName="Ubuntu">
+        <element xmi:type="datamapper:InNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YeceWpbyEeqEec0gOP9oeg" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_YedFYJbyEeqEec0gOP9oeg" type="3019" fontName="Ubuntu">
+        <element xmi:type="datamapper:OutNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YedFYZbyEeqEec0gOP9oeg"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="MapPolo2ObrasToObrasPolo.datamapper#//@output/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YeYM4ZbyEeqEec0gOP9oeg"/>
+    </children>
+    <element xmi:type="datamapper:Output" href="MapPolo2ObrasToObrasPolo.datamapper#//@output"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WKYJ8ZbyEeqEec0gOP9oeg" x="310" width="250" height="160"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_VzqTEZbyEeqEec0gOP9oeg"/>
+  <element xmi:type="datamapper:DataMapperRoot" href="MapPolo2ObrasToObrasPolo.datamapper#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_aP7qEJbyEeqEec0gOP9oeg" type="4001" source="_XEN8AJbyEeqEec0gOP9oeg" target="_Yee6kJbyEeqEec0gOP9oeg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_aP7qEZbyEeqEec0gOP9oeg" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.0/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_aP7qEpbyEeqEec0gOP9oeg" points="[-2, 0, -252, 24]$[248, -24, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_aQEM8JbyEeqEec0gOP9oeg" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_aQEM8ZbyEeqEec0gOP9oeg" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_dl0AwJbyEeqEec0gOP9oeg" type="4001" source="_XEaJQJbyEeqEec0gOP9oeg" target="_YejzEJbyEeqEec0gOP9oeg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_dl0AwZbyEeqEec0gOP9oeg" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.2/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_dl0AwpbyEeqEec0gOP9oeg" points="[-2, 0, -252, 42]$[248, -42, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dl118JbyEeqEec0gOP9oeg" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_dl118ZbyEeqEec0gOP9oeg" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_d29bIJbyEeqEec0gOP9oeg" type="4001" source="_XEfBwpbyEeqEec0gOP9oeg" target="_YeoEgJbyEeqEec0gOP9oeg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_d29bIZbyEeqEec0gOP9oeg" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.3/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_d29bIpbyEeqEec0gOP9oeg" points="[-2, 0, -252, 44]$[248, -44, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_d2_QUJbyEeqEec0gOP9oeg" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_d2_QUZbyEeqEec0gOP9oeg" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_eUaMIJbyEeqEec0gOP9oeg" type="4001" source="_XEkhUJbyEeqEec0gOP9oeg" target="_Yeru4JbyEeqEec0gOP9oeg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_eUaMIZbyEeqEec0gOP9oeg" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.4/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eUaMIpbyEeqEec0gOP9oeg" points="[-2, 0, -252, 46]$[248, -46, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eUcBUJbyEeqEec0gOP9oeg" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eUcBUZbyEeqEec0gOP9oeg" id="CENTER"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_fKnbYJbyEeqEec0gOP9oeg" type="4001" source="_XE0Y8pbyEeqEec0gOP9oeg" target="_YeyckJbyEeqEec0gOP9oeg">
+    <styles xmi:type="notation:FontStyle" xmi:id="_fKnbYZbyEeqEec0gOP9oeg" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="MapPolo2ObrasToObrasPolo.datamapper#//@input/@treeNode.0/@node.0/@node.7/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_fKnbYpbyEeqEec0gOP9oeg" points="[-2, 0, -252, 79]$[248, -79, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fKopgJbyEeqEec0gOP9oeg" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_fKopgZbyEeqEec0gOP9oeg" id="CENTER"/>
+  </edges>
+</notation:Diagram>

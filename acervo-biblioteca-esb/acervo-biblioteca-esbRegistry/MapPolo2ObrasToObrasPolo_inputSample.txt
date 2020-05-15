@@ -1,0 +1,3054 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<Obras>
+  <Obra>
+    <id>1</id>
+    <autor1>Adélaïde , Inès </autor1>
+    <ISBN>791842752-1</ISBN>
+    <titulo>diam erat fermentum justo nec condimentum neque</titulo>
+    <preco>1.7</preco>
+    <estado>retirado</estado>
+    <AdC>1</AdC>
+    <ano>1930</ano>
+  </Obra>
+  <Obra>
+    <id>2</id>
+    <autor1>Léane , Publicité </autor1>
+    <ISBN>723376358-5</ISBN>
+    <titulo>id turpis integer aliquet massa id lobortis convallis tortor risus dapibus</titulo>
+    <preco>45.06</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1812</ano>
+  </Obra>
+  <Obra>
+    <id>3</id>
+    <autor1>Eléonore Manach, Anaëlle Kelsey</autor1>
+    <ISBN>106377666-X</ISBN>
+    <titulo>vestibulum sit amet</titulo>
+    <preco>41.67</preco>
+    <estado>retirado</estado>
+    <AdC>2</AdC>
+    <ano>2004</ano>
+  </Obra>
+  <Obra>
+    <id>4</id>
+    <autor1> Crighton,  Vasili</autor1>
+    <ISBN>582031079-9</ISBN>
+    <titulo>pede venenatis non sodales</titulo>
+    <preco>51.59</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1835</ano>
+  </Obra>
+  <Obra>
+    <id>5</id>
+    <autor1>Cécile , Célia </autor1>
+    <ISBN>901744262-X</ISBN>
+    <titulo>libero rutrum ac lobortis vel dapibus at diam nam tristique tortor eu</titulo>
+    <preco>33.17</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>2013</ano>
+  </Obra>
+  <Obra>
+    <id>6</id>
+    <autor1>Maïly , Célia </autor1>
+    <ISBN>267989185-6</ISBN>
+    <titulo>est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante</titulo>
+    <preco>92.61</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>2016</ano>
+  </Obra>
+  <Obra>
+    <id>7</id>
+    <autor1>Gaïa , Åsa </autor1>
+    <ISBN>691460361-8</ISBN>
+    <titulo>morbi ut odio cras mi pede malesuada in</titulo>
+    <preco>65.98</preco>
+    <estado>novo</estado>
+    <AdC>6</AdC>
+    <ano>1806</ano>
+  </Obra>
+  <Obra>
+    <id>8</id>
+    <autor1>Mahélie , Nélie </autor1>
+    <ISBN>034625373-X</ISBN>
+    <titulo>morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate</titulo>
+    <preco>67.84</preco>
+    <estado>bom</estado>
+    <AdC>4</AdC>
+    <ano>1935</ano>
+  </Obra>
+  <Obra>
+    <id>9</id>
+    <autor1>Aí , Océanne </autor1>
+    <ISBN>225003942-9</ISBN>
+    <titulo>pellentesque ultrices phasellus id</titulo>
+    <preco>45.77</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>1836</ano>
+  </Obra>
+  <Obra>
+    <id>10</id>
+    <autor1>Mélina , Edmée </autor1>
+    <ISBN>470152586-3</ISBN>
+    <titulo>in felis donec semper sapien a libero nam dui</titulo>
+    <preco>9.44</preco>
+    <estado>excelente</estado>
+    <AdC>5</AdC>
+    <ano>1895</ano>
+  </Obra>
+  <Obra>
+    <id>11</id>
+    <autor1>Bérangère , Eléa </autor1>
+    <ISBN>497804230-5</ISBN>
+    <titulo>ipsum dolor sit amet consectetuer adipiscing elit proin risus</titulo>
+    <preco>108.82</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1879</ano>
+  </Obra>
+  <Obra>
+    <id>12</id>
+    <autor1>Gaétane , Naëlle </autor1>
+    <ISBN>437883432-4</ISBN>
+    <titulo>luctus ultricies eu</titulo>
+    <preco>102.11</preco>
+    <estado>novo</estado>
+    <AdC>5</AdC>
+    <ano>1893</ano>
+  </Obra>
+  <Obra>
+    <id>13</id>
+    <autor1>Joséphine Evett, Geneviève Ansell</autor1>
+    <ISBN>884072587-3</ISBN>
+    <titulo>semper est quam pharetra magna ac consequat metus sapien ut</titulo>
+    <preco>56.64</preco>
+    <estado>retirado</estado>
+    <AdC>4</AdC>
+    <ano>1954</ano>
+  </Obra>
+  <Obra>
+    <id>14</id>
+    <autor1>Sélène , Gaëlle </autor1>
+    <ISBN>723124588-9</ISBN>
+    <titulo>eleifend pede libero quis orci nullam</titulo>
+    <preco>72.39</preco>
+    <estado>retirado</estado>
+    <AdC>4</AdC>
+    <ano>1886</ano>
+  </Obra>
+  <Obra>
+    <id>15</id>
+    <autor1>Léonie , Laurène </autor1>
+    <ISBN>342607792-2</ISBN>
+    <titulo>pretium nisl ut volutpat sapien arcu sed</titulo>
+    <preco>78.8</preco>
+    <estado>aceitável</estado>
+    <AdC>3</AdC>
+    <ano>1804</ano>
+  </Obra>
+  <Obra>
+    <id>16</id>
+    <autor1> Roscher,  Tadd</autor1>
+    <ISBN>785056419-7</ISBN>
+    <titulo>pulvinar lobortis est phasellus sit</titulo>
+    <preco>91.04</preco>
+    <estado>retirado</estado>
+    <AdC>2</AdC>
+    <ano>1920</ano>
+  </Obra>
+  <Obra>
+    <id>17</id>
+    <autor1>Intéressant , Andréa </autor1>
+    <ISBN>454670257-4</ISBN>
+    <titulo>augue a suscipit nulla</titulo>
+    <preco>83.16</preco>
+    <estado>bom</estado>
+    <AdC>5</AdC>
+    <ano>1880</ano>
+  </Obra>
+  <Obra>
+    <id>18</id>
+    <autor1>Lén Dracksford, Françoise Sinclare</autor1>
+    <ISBN>391224461-8</ISBN>
+    <titulo>dictumst etiam faucibus cursus urna ut tellus</titulo>
+    <preco>7.48</preco>
+    <estado>retirado</estado>
+    <AdC>6</AdC>
+    <ano>1969</ano>
+  </Obra>
+  <Obra>
+    <id>19</id>
+    <autor1>Marie-ève , Naëlle </autor1>
+    <ISBN>865953242-2</ISBN>
+    <titulo>at turpis donec posuere metus</titulo>
+    <preco>12.73</preco>
+    <estado>novo</estado>
+    <AdC>1</AdC>
+    <ano>1984</ano>
+  </Obra>
+  <Obra>
+    <id>20</id>
+    <autor1>Stéphanie , Marie-françoise </autor1>
+    <ISBN>743809185-6</ISBN>
+    <titulo>non mattis</titulo>
+    <preco>2.43</preco>
+    <estado>retirado</estado>
+    <AdC>1</AdC>
+    <ano>1880</ano>
+  </Obra>
+  <Obra>
+    <id>21</id>
+    <autor1>Björn , Régine </autor1>
+    <ISBN>624859516-X</ISBN>
+    <titulo>accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend</titulo>
+    <preco>94.42</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>2011</ano>
+  </Obra>
+  <Obra>
+    <id>22</id>
+    <autor1> Cockling,  Glendon</autor1>
+    <ISBN>752735939-0</ISBN>
+    <titulo>maecenas tincidunt lacus at velit</titulo>
+    <preco>50.91</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1947</ano>
+  </Obra>
+  <Obra>
+    <id>23</id>
+    <autor1>Táng Jacquest, Cloé Leland</autor1>
+    <ISBN>674187063-6</ISBN>
+    <titulo>dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien</titulo>
+    <preco>95.1</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1983</ano>
+  </Obra>
+  <Obra>
+    <id>24</id>
+    <autor1>Renée , Nadège </autor1>
+    <ISBN>839540659-2</ISBN>
+    <titulo>cubilia curae mauris viverra diam</titulo>
+    <preco>33.31</preco>
+    <estado>retirado</estado>
+    <AdC>3</AdC>
+    <ano>1920</ano>
+  </Obra>
+  <Obra>
+    <id>25</id>
+    <autor1>Desirée , Gaëlle </autor1>
+    <ISBN>031032417-3</ISBN>
+    <titulo>justo nec condimentum neque sapien placerat ante nulla justo aliquam quis</titulo>
+    <preco>108.17</preco>
+    <estado>aceitável</estado>
+    <AdC>2</AdC>
+    <ano>1922</ano>
+  </Obra>
+  <Obra>
+    <id>26</id>
+    <autor1>Táng , Athéna </autor1>
+    <ISBN>800359905-9</ISBN>
+    <titulo>convallis duis consequat dui nec</titulo>
+    <preco>71.66</preco>
+    <estado>retirado</estado>
+    <AdC>1</AdC>
+    <ano>1971</ano>
+  </Obra>
+  <Obra>
+    <id>27</id>
+    <autor1>Simplifiés , Crééz </autor1>
+    <ISBN>584619535-0</ISBN>
+    <titulo>mauris eget massa tempor convallis nulla neque libero convallis</titulo>
+    <preco>50.04</preco>
+    <estado>retirado</estado>
+    <AdC>2</AdC>
+    <ano>1893</ano>
+  </Obra>
+  <Obra>
+    <id>28</id>
+    <autor1>Léonie Coatts, Aimée Dorice</autor1>
+    <ISBN>026456483-9</ISBN>
+    <titulo>ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae</titulo>
+    <preco>1.35</preco>
+    <estado>retirado</estado>
+    <AdC>2</AdC>
+    <ano>2019</ano>
+  </Obra>
+  <Obra>
+    <id>29</id>
+    <autor1>Gwenaëlle Rhodes, Åke Sylvester</autor1>
+    <ISBN>331023325-1</ISBN>
+    <titulo>ac nulla sed vel enim sit amet nunc viverra dapibus</titulo>
+    <preco>62.02</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>1821</ano>
+  </Obra>
+  <Obra>
+    <id>30</id>
+    <autor1>Véronique Darcey, Cloé Jarrett</autor1>
+    <ISBN>495182860-X</ISBN>
+    <titulo>ante ipsum</titulo>
+    <preco>85.0</preco>
+    <estado>novo</estado>
+    <AdC>6</AdC>
+    <ano>1833</ano>
+  </Obra>
+  <Obra>
+    <id>31</id>
+    <autor1>Jú Bruggeman, Intéressant Finley</autor1>
+    <ISBN>218281321-7</ISBN>
+    <titulo>vestibulum ante ipsum primis in faucibus orci luctus et</titulo>
+    <preco>82.16</preco>
+    <estado>retirado</estado>
+    <AdC>2</AdC>
+    <ano>1918</ano>
+  </Obra>
+  <Obra>
+    <id>32</id>
+    <autor1> Onslow,  Skelly</autor1>
+    <ISBN>823828513-5</ISBN>
+    <titulo>nulla integer pede justo lacinia eget tincidunt eget tempus vel</titulo>
+    <preco>29.87</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>1802</ano>
+  </Obra>
+  <Obra>
+    <id>33</id>
+    <autor1>Kévina , Örjan </autor1>
+    <ISBN>978283110-7</ISBN>
+    <titulo>velit donec diam neque vestibulum eget</titulo>
+    <preco>14.56</preco>
+    <estado>novo</estado>
+    <AdC>3</AdC>
+    <ano>2003</ano>
+  </Obra>
+  <Obra>
+    <id>34</id>
+    <autor1>Östen Cranage, Pélagie Brent</autor1>
+    <ISBN>546701661-X</ISBN>
+    <titulo>viverra eget congue eget semper</titulo>
+    <preco>4.29</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1831</ano>
+  </Obra>
+  <Obra>
+    <id>35</id>
+    <autor1>Eloïse , Marie-hélène </autor1>
+    <ISBN>459183558-8</ISBN>
+    <titulo>quis odio consequat varius integer ac leo pellentesque ultrices</titulo>
+    <preco>87.66</preco>
+    <estado>excelente</estado>
+    <AdC>5</AdC>
+    <ano>1825</ano>
+  </Obra>
+  <Obra>
+    <id>36</id>
+    <autor1>Camélia Kybert, Léane Rabi</autor1>
+    <ISBN>683441592-0</ISBN>
+    <titulo>aliquet ultrices erat tortor sollicitudin</titulo>
+    <preco>119.84</preco>
+    <estado>excelente</estado>
+    <AdC>4</AdC>
+    <ano>1910</ano>
+  </Obra>
+  <Obra>
+    <id>37</id>
+    <autor1>Véronique Haysar, Lucrèce Ahmad</autor1>
+    <ISBN>681745536-7</ISBN>
+    <titulo>hac habitasse platea dictumst maecenas ut massa quis augue luctus</titulo>
+    <preco>94.22</preco>
+    <estado>retirado</estado>
+    <AdC>2</AdC>
+    <ano>1962</ano>
+  </Obra>
+  <Obra>
+    <id>38</id>
+    <autor1>Edmée Mereweather, Lèi Holden</autor1>
+    <ISBN>663852145-4</ISBN>
+    <titulo>ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris</titulo>
+    <preco>41.37</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>1938</ano>
+  </Obra>
+  <Obra>
+    <id>39</id>
+    <autor1>Pélagie Strutton, Inès Jasmina</autor1>
+    <ISBN>491270222-6</ISBN>
+    <titulo>turpis nec euismod scelerisque quam turpis adipiscing lorem vitae mattis</titulo>
+    <preco>20.35</preco>
+    <estado>aceitável</estado>
+    <AdC>3</AdC>
+    <ano>1886</ano>
+  </Obra>
+  <Obra>
+    <id>40</id>
+    <autor1>Maéna , Gaétane </autor1>
+    <ISBN>698381507-6</ISBN>
+    <titulo>rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas</titulo>
+    <preco>90.83</preco>
+    <estado>mau</estado>
+    <AdC>5</AdC>
+    <ano>1949</ano>
+  </Obra>
+  <Obra>
+    <id>41</id>
+    <autor1>Kallisté de Castelain, Yè Livvyy</autor1>
+    <ISBN>824041753-1</ISBN>
+    <titulo>neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo</titulo>
+    <preco>55.24</preco>
+    <estado>aceitável</estado>
+    <AdC>1</AdC>
+    <ano>1851</ano>
+  </Obra>
+  <Obra>
+    <id>42</id>
+    <autor1>Chloé , Maëlla </autor1>
+    <ISBN>076608637-2</ISBN>
+    <titulo>aliquet ultrices</titulo>
+    <preco>52.93</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>1832</ano>
+  </Obra>
+  <Obra>
+    <id>43</id>
+    <autor1>Réservés , Marie-noël </autor1>
+    <ISBN>549468315-X</ISBN>
+    <titulo>ante ipsum primis in faucibus orci luctus et ultrices</titulo>
+    <preco>37.79</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>1862</ano>
+  </Obra>
+  <Obra>
+    <id>44</id>
+    <autor1>Maï , Frédérique </autor1>
+    <ISBN>910918561-5</ISBN>
+    <titulo>molestie hendrerit at</titulo>
+    <preco>84.59</preco>
+    <estado>aceitável</estado>
+    <AdC>3</AdC>
+    <ano>1931</ano>
+  </Obra>
+  <Obra>
+    <id>45</id>
+    <autor1>Maïwenn , Cléa </autor1>
+    <ISBN>858765292-3</ISBN>
+    <titulo>orci luctus et ultrices posuere cubilia</titulo>
+    <preco>37.69</preco>
+    <estado>novo</estado>
+    <AdC>3</AdC>
+    <ano>1962</ano>
+  </Obra>
+  <Obra>
+    <id>46</id>
+    <autor1>Léa , Léane </autor1>
+    <ISBN>694154302-7</ISBN>
+    <titulo>curae mauris viverra</titulo>
+    <preco>72.46</preco>
+    <estado>retirado</estado>
+    <AdC>4</AdC>
+    <ano>1914</ano>
+  </Obra>
+  <Obra>
+    <id>47</id>
+    <autor1>Régine , Marie-josée </autor1>
+    <ISBN>615335959-0</ISBN>
+    <titulo>pede venenatis non sodales sed</titulo>
+    <preco>74.98</preco>
+    <estado>mau</estado>
+    <AdC>4</AdC>
+    <ano>1982</ano>
+  </Obra>
+  <Obra>
+    <id>48</id>
+    <autor1>Michèle , Léa </autor1>
+    <ISBN>180070492-5</ISBN>
+    <titulo>justo eu massa donec dapibus duis</titulo>
+    <preco>81.36</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1975</ano>
+  </Obra>
+  <Obra>
+    <id>49</id>
+    <autor1>Yénora Thistleton, Cécile Giraldo</autor1>
+    <ISBN>001637510-6</ISBN>
+    <titulo>mauris eget</titulo>
+    <preco>39.69</preco>
+    <estado>retirado</estado>
+    <AdC>6</AdC>
+    <ano>1979</ano>
+  </Obra>
+  <Obra>
+    <id>50</id>
+    <autor1>Lóng , Marie-thérèse </autor1>
+    <ISBN>021340514-8</ISBN>
+    <titulo>fusce lacus purus aliquet at feugiat non pretium quis lectus</titulo>
+    <preco>63.63</preco>
+    <estado>excelente</estado>
+    <AdC>5</AdC>
+    <ano>1809</ano>
+  </Obra>
+  <Obra>
+    <id>51</id>
+    <autor1>Léane , Stéphanie </autor1>
+    <ISBN>417162952-7</ISBN>
+    <titulo>vel dapibus at diam nam</titulo>
+    <preco>68.7</preco>
+    <estado>retirado</estado>
+    <AdC>1</AdC>
+    <ano>1869</ano>
+  </Obra>
+  <Obra>
+    <id>52</id>
+    <autor1>Eliès Limeburner, Aloïs Clarissa</autor1>
+    <ISBN>827735036-8</ISBN>
+    <titulo>varius integer ac leo pellentesque</titulo>
+    <preco>17.55</preco>
+    <estado>aceitável</estado>
+    <AdC>2</AdC>
+    <ano>1927</ano>
+  </Obra>
+  <Obra>
+    <id>53</id>
+    <autor1>Lén , Zhì </autor1>
+    <ISBN>210090651-8</ISBN>
+    <titulo>ipsum praesent blandit lacinia erat vestibulum sed magna at</titulo>
+    <preco>6.74</preco>
+    <estado>mau</estado>
+    <AdC>4</AdC>
+    <ano>1822</ano>
+  </Obra>
+  <Obra>
+    <id>54</id>
+    <autor1>Alizée , Mélinda </autor1>
+    <ISBN>502677866-6</ISBN>
+    <titulo>ut odio cras mi pede malesuada in imperdiet et</titulo>
+    <preco>4.77</preco>
+    <estado>retirado</estado>
+    <AdC>1</AdC>
+    <ano>1943</ano>
+  </Obra>
+  <Obra>
+    <id>55</id>
+    <autor1>Desirée Revan, Görel Marillin</autor1>
+    <ISBN>226503116-X</ISBN>
+    <titulo>justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet</titulo>
+    <preco>15.95</preco>
+    <estado>retirado</estado>
+    <AdC>5</AdC>
+    <ano>1970</ano>
+  </Obra>
+  <Obra>
+    <id>56</id>
+    <autor1>Solène Neilus, Marylène Lisa</autor1>
+    <ISBN>057348641-7</ISBN>
+    <titulo>pede ac diam cras pellentesque volutpat dui</titulo>
+    <preco>117.75</preco>
+    <estado>retirado</estado>
+    <AdC>3</AdC>
+    <ano>1850</ano>
+  </Obra>
+  <Obra>
+    <id>57</id>
+    <autor1>Alizée Capron, Annotée Thorin</autor1>
+    <ISBN>865224613-0</ISBN>
+    <titulo>nullam porttitor lacus</titulo>
+    <preco>89.98</preco>
+    <estado>bom</estado>
+    <AdC>6</AdC>
+    <ano>1881</ano>
+  </Obra>
+  <Obra>
+    <id>58</id>
+    <autor1>Crééz , Maïté </autor1>
+    <ISBN>786853109-6</ISBN>
+    <titulo>eget elit sodales scelerisque mauris sit amet eros suspendisse</titulo>
+    <preco>119.74</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1894</ano>
+  </Obra>
+  <Obra>
+    <id>59</id>
+    <autor1>Méthode , Mélys </autor1>
+    <ISBN>282568629-8</ISBN>
+    <titulo>ultrices enim lorem ipsum</titulo>
+    <preco>44.01</preco>
+    <estado>retirado</estado>
+    <AdC>6</AdC>
+    <ano>1932</ano>
+  </Obra>
+  <Obra>
+    <id>60</id>
+    <autor1>Dà Desantis, Yénora Sumner</autor1>
+    <ISBN>226195707-6</ISBN>
+    <titulo>aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis</titulo>
+    <preco>36.68</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1971</ano>
+  </Obra>
+  <Obra>
+    <id>61</id>
+    <autor1>Laurélie , Erwéi </autor1>
+    <ISBN>522742682-1</ISBN>
+    <titulo>morbi odio odio elementum eu interdum eu tincidunt in leo maecenas</titulo>
+    <preco>105.14</preco>
+    <estado>excelente</estado>
+    <AdC>5</AdC>
+    <ano>1890</ano>
+  </Obra>
+  <Obra>
+    <id>62</id>
+    <autor1>Erwéi , Cunégonde </autor1>
+    <ISBN>146570001-3</ISBN>
+    <titulo>eu sapien cursus</titulo>
+    <preco>17.76</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>1930</ano>
+  </Obra>
+  <Obra>
+    <id>63</id>
+    <autor1>Estée Copson, Ráo Em</autor1>
+    <ISBN>128914821-X</ISBN>
+    <titulo>potenti cras in purus</titulo>
+    <preco>120.6</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1812</ano>
+  </Obra>
+  <Obra>
+    <id>64</id>
+    <autor1>Torbjörn , Céline </autor1>
+    <ISBN>870048148-3</ISBN>
+    <titulo>proin interdum mauris non ligula pellentesque ultrices</titulo>
+    <preco>33.42</preco>
+    <estado>mau</estado>
+    <AdC>4</AdC>
+    <ano>1829</ano>
+  </Obra>
+  <Obra>
+    <id>65</id>
+    <autor1>Marie-josée , Cléopatre </autor1>
+    <ISBN>354427181-8</ISBN>
+    <titulo>donec quis orci eget orci</titulo>
+    <preco>98.75</preco>
+    <estado>mau</estado>
+    <AdC>5</AdC>
+    <ano>1971</ano>
+  </Obra>
+  <Obra>
+    <id>66</id>
+    <autor1>Bénédicte Jermyn, Aurélie Em</autor1>
+    <ISBN>543643650-1</ISBN>
+    <titulo>sociis natoque penatibus et magnis dis</titulo>
+    <preco>15.59</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1829</ano>
+  </Obra>
+  <Obra>
+    <id>67</id>
+    <autor1>Göran , Publicité </autor1>
+    <ISBN>215772370-6</ISBN>
+    <titulo>fermentum donec ut mauris eget massa tempor convallis nulla neque libero</titulo>
+    <preco>7.44</preco>
+    <estado>excelente</estado>
+    <AdC>6</AdC>
+    <ano>1917</ano>
+  </Obra>
+  <Obra>
+    <id>68</id>
+    <autor1>Pò , Léone </autor1>
+    <ISBN>869757778-0</ISBN>
+    <titulo>imperdiet et</titulo>
+    <preco>26.1</preco>
+    <estado>retirado</estado>
+    <AdC>2</AdC>
+    <ano>1814</ano>
+  </Obra>
+  <Obra>
+    <id>69</id>
+    <autor1> Sein,  Whitman</autor1>
+    <ISBN>336180601-1</ISBN>
+    <titulo>id justo</titulo>
+    <preco>43.65</preco>
+    <estado>excelente</estado>
+    <AdC>2</AdC>
+    <ano>1992</ano>
+  </Obra>
+  <Obra>
+    <id>70</id>
+    <autor1>Anaëlle Hearle, Håkan Stephani</autor1>
+    <ISBN>762222050-7</ISBN>
+    <titulo>curabitur convallis duis consequat dui nec nisi volutpat eleifend</titulo>
+    <preco>23.48</preco>
+    <estado>excelente</estado>
+    <AdC>4</AdC>
+    <ano>2011</ano>
+  </Obra>
+  <Obra>
+    <id>71</id>
+    <autor1>Béatrice , Östen </autor1>
+    <ISBN>585000839-X</ISBN>
+    <titulo>odio condimentum id luctus</titulo>
+    <preco>79.06</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1886</ano>
+  </Obra>
+  <Obra>
+    <id>72</id>
+    <autor1>Mélia Hearnes, Illustrée Edgardo</autor1>
+    <ISBN>583529493-X</ISBN>
+    <titulo>dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam</titulo>
+    <preco>11.1</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1997</ano>
+  </Obra>
+  <Obra>
+    <id>73</id>
+    <autor1>Lorène , Börje </autor1>
+    <ISBN>113525232-7</ISBN>
+    <titulo>suspendisse potenti cras</titulo>
+    <preco>3.69</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>1865</ano>
+  </Obra>
+  <Obra>
+    <id>74</id>
+    <autor1>Mà Presnail, Maëlann Normie</autor1>
+    <ISBN>983312559-X</ISBN>
+    <titulo>primis in faucibus orci luctus et ultrices posuere cubilia curae</titulo>
+    <preco>34.98</preco>
+    <estado>excelente</estado>
+    <AdC>2</AdC>
+    <ano>1885</ano>
+  </Obra>
+  <Obra>
+    <id>75</id>
+    <autor1>Eléonore Rohan, Åke Linnet</autor1>
+    <ISBN>772404270-5</ISBN>
+    <titulo>proin leo odio porttitor id consequat in consequat</titulo>
+    <preco>40.63</preco>
+    <estado>mau</estado>
+    <AdC>2</AdC>
+    <ano>1949</ano>
+  </Obra>
+  <Obra>
+    <id>76</id>
+    <autor1>Desirée Cases, Mélys Nicolais</autor1>
+    <ISBN>133252081-2</ISBN>
+    <titulo>cras pellentesque volutpat dui maecenas tristique est et tempus</titulo>
+    <preco>32.14</preco>
+    <estado>mau</estado>
+    <AdC>2</AdC>
+    <ano>1830</ano>
+  </Obra>
+  <Obra>
+    <id>77</id>
+    <autor1>Noémie , Zoé </autor1>
+    <ISBN>572394001-5</ISBN>
+    <titulo>magna at nunc commodo placerat praesent blandit nam nulla integer pede</titulo>
+    <preco>70.85</preco>
+    <estado>aceitável</estado>
+    <AdC>2</AdC>
+    <ano>1953</ano>
+  </Obra>
+  <Obra>
+    <id>78</id>
+    <autor1>Dù , Mélissandre </autor1>
+    <ISBN>570085787-1</ISBN>
+    <titulo>felis ut at dolor quis odio consequat</titulo>
+    <preco>35.3</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>1905</ano>
+  </Obra>
+  <Obra>
+    <id>79</id>
+    <autor1>Östen Reith, Médiamass Rex</autor1>
+    <ISBN>058568963-6</ISBN>
+    <titulo>turpis adipiscing lorem vitae mattis</titulo>
+    <preco>56.53</preco>
+    <estado>bom</estado>
+    <AdC>2</AdC>
+    <ano>1980</ano>
+  </Obra>
+  <Obra>
+    <id>80</id>
+    <autor1> Corteis,  Page</autor1>
+    <ISBN>215941779-3</ISBN>
+    <titulo>sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at</titulo>
+    <preco>99.22</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1835</ano>
+  </Obra>
+  <Obra>
+    <id>81</id>
+    <autor1>Dù , Laurène </autor1>
+    <ISBN>331283763-4</ISBN>
+    <titulo>sapien iaculis</titulo>
+    <preco>91.73</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1960</ano>
+  </Obra>
+  <Obra>
+    <id>82</id>
+    <autor1>Athéna , Solène </autor1>
+    <ISBN>675825140-3</ISBN>
+    <titulo>ac diam cras pellentesque volutpat dui maecenas tristique est</titulo>
+    <preco>80.1</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>2010</ano>
+  </Obra>
+  <Obra>
+    <id>83</id>
+    <autor1>Angélique , Yè </autor1>
+    <ISBN>251210083-9</ISBN>
+    <titulo>tincidunt lacus at velit</titulo>
+    <preco>70.98</preco>
+    <estado>aceitável</estado>
+    <AdC>2</AdC>
+    <ano>1817</ano>
+  </Obra>
+  <Obra>
+    <id>84</id>
+    <autor1>Lucrèce , Crééz </autor1>
+    <ISBN>487888865-2</ISBN>
+    <titulo>est quam pharetra</titulo>
+    <preco>82.64</preco>
+    <estado>retirado</estado>
+    <AdC>4</AdC>
+    <ano>1822</ano>
+  </Obra>
+  <Obra>
+    <id>85</id>
+    <autor1>Séverine , Salomé </autor1>
+    <ISBN>377748688-4</ISBN>
+    <titulo>justo sit</titulo>
+    <preco>80.49</preco>
+    <estado>excelente</estado>
+    <AdC>2</AdC>
+    <ano>1983</ano>
+  </Obra>
+  <Obra>
+    <id>86</id>
+    <autor1>Torbjörn , Félicie </autor1>
+    <ISBN>844164728-3</ISBN>
+    <titulo>et ultrices posuere cubilia</titulo>
+    <preco>22.72</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>1900</ano>
+  </Obra>
+  <Obra>
+    <id>87</id>
+    <autor1>Faîtes Steffan, Anaëlle Moria</autor1>
+    <ISBN>417402787-0</ISBN>
+    <titulo>donec vitae nisi nam</titulo>
+    <preco>16.94</preco>
+    <estado>novo</estado>
+    <AdC>3</AdC>
+    <ano>1938</ano>
+  </Obra>
+  <Obra>
+    <id>88</id>
+    <autor1>Hélèna , Marie-françoise </autor1>
+    <ISBN>933612716-0</ISBN>
+    <titulo>eget eros elementum pellentesque</titulo>
+    <preco>6.08</preco>
+    <estado>bom</estado>
+    <AdC>6</AdC>
+    <ano>1910</ano>
+  </Obra>
+  <Obra>
+    <id>89</id>
+    <autor1>Méthode , Magdalène </autor1>
+    <ISBN>237140037-8</ISBN>
+    <titulo>lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada</titulo>
+    <preco>62.5</preco>
+    <estado>mau</estado>
+    <AdC>5</AdC>
+    <ano>1899</ano>
+  </Obra>
+  <Obra>
+    <id>90</id>
+    <autor1> Shere,  Geoffrey</autor1>
+    <ISBN>628595196-9</ISBN>
+    <titulo>maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus</titulo>
+    <preco>57.59</preco>
+    <estado>bom</estado>
+    <AdC>3</AdC>
+    <ano>1813</ano>
+  </Obra>
+  <Obra>
+    <id>91</id>
+    <autor1>Judicaël , Andrée </autor1>
+    <ISBN>818631980-8</ISBN>
+    <titulo>egestas metus aenean fermentum donec ut mauris eget massa tempor convallis</titulo>
+    <preco>108.84</preco>
+    <estado>bom</estado>
+    <AdC>6</AdC>
+    <ano>1840</ano>
+  </Obra>
+  <Obra>
+    <id>92</id>
+    <autor1>Marylène , Léone </autor1>
+    <ISBN>169936876-7</ISBN>
+    <titulo>in libero</titulo>
+    <preco>5.51</preco>
+    <estado>excelente</estado>
+    <AdC>2</AdC>
+    <ano>1890</ano>
+  </Obra>
+  <Obra>
+    <id>93</id>
+    <autor1>Océane Commings, Mélinda Berne</autor1>
+    <ISBN>499899335-6</ISBN>
+    <titulo>sodales sed tincidunt eu felis</titulo>
+    <preco>108.14</preco>
+    <estado>excelente</estado>
+    <AdC>6</AdC>
+    <ano>1993</ano>
+  </Obra>
+  <Obra>
+    <id>94</id>
+    <autor1>Françoise , Lyséa </autor1>
+    <ISBN>612936580-2</ISBN>
+    <titulo>erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu</titulo>
+    <preco>46.46</preco>
+    <estado>aceitável</estado>
+    <AdC>2</AdC>
+    <ano>1861</ano>
+  </Obra>
+  <Obra>
+    <id>95</id>
+    <autor1>Cloé , Mélina </autor1>
+    <ISBN>224702143-3</ISBN>
+    <titulo>at feugiat non pretium</titulo>
+    <preco>2.34</preco>
+    <estado>retirado</estado>
+    <AdC>3</AdC>
+    <ano>1972</ano>
+  </Obra>
+  <Obra>
+    <id>96</id>
+    <autor1>Märta Hobell, Pål Virgilio</autor1>
+    <ISBN>654709602-5</ISBN>
+    <titulo>ligula nec sem duis aliquam convallis nunc proin at turpis a pede</titulo>
+    <preco>43.21</preco>
+    <estado>bom</estado>
+    <AdC>3</AdC>
+    <ano>1952</ano>
+  </Obra>
+  <Obra>
+    <id>97</id>
+    <autor1>Maëlyss Petrus, Garçon Marven</autor1>
+    <ISBN>832302940-7</ISBN>
+    <titulo>pellentesque viverra pede ac diam cras pellentesque</titulo>
+    <preco>85.48</preco>
+    <estado>excelente</estado>
+    <AdC>4</AdC>
+    <ano>2011</ano>
+  </Obra>
+  <Obra>
+    <id>98</id>
+    <autor1>Magdalène Halso, Börje Granville</autor1>
+    <ISBN>349536286-X</ISBN>
+    <titulo>blandit lacinia erat vestibulum sed magna at</titulo>
+    <preco>6.35</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>2008</ano>
+  </Obra>
+  <Obra>
+    <id>99</id>
+    <autor1>Magdalène , Valérie </autor1>
+    <ISBN>573887471-4</ISBN>
+    <titulo>blandit mi in porttitor pede justo eu massa donec dapibus duis</titulo>
+    <preco>93.18</preco>
+    <estado>aceitável</estado>
+    <AdC>5</AdC>
+    <ano>2005</ano>
+  </Obra>
+  <Obra>
+    <id>100</id>
+    <autor1>Noémie , Sélène </autor1>
+    <ISBN>963092822-1</ISBN>
+    <titulo>interdum eu tincidunt in leo maecenas pulvinar</titulo>
+    <preco>62.44</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1955</ano>
+  </Obra>
+  <Obra>
+    <id>101</id>
+    <autor1>Dafnée Veneur, Mén Taddeo</autor1>
+    <ISBN>833308071-5</ISBN>
+    <titulo>sapien dignissim vestibulum vestibulum</titulo>
+    <preco>107.1</preco>
+    <estado>mau</estado>
+    <AdC>2</AdC>
+    <ano>1927</ano>
+  </Obra>
+  <Obra>
+    <id>102</id>
+    <autor1> Pottinger,  Harmony</autor1>
+    <ISBN>230674343-6</ISBN>
+    <titulo>quam turpis adipiscing lorem</titulo>
+    <preco>11.28</preco>
+    <estado>retirado</estado>
+    <AdC>5</AdC>
+    <ano>1931</ano>
+  </Obra>
+  <Obra>
+    <id>103</id>
+    <autor1> Stonbridge,  Lindy</autor1>
+    <ISBN>701785052-1</ISBN>
+    <titulo>lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci</titulo>
+    <preco>6.69</preco>
+    <estado>retirado</estado>
+    <AdC>5</AdC>
+    <ano>1864</ano>
+  </Obra>
+  <Obra>
+    <id>104</id>
+    <autor1>Maïté Wands, Ophélie Jordana</autor1>
+    <ISBN>173635777-8</ISBN>
+    <titulo>gravida sem praesent id massa id nisl venenatis</titulo>
+    <preco>65.63</preco>
+    <estado>novo</estado>
+    <AdC>5</AdC>
+    <ano>2014</ano>
+  </Obra>
+  <Obra>
+    <id>105</id>
+    <autor1>Daphnée , Sélène </autor1>
+    <ISBN>569570589-4</ISBN>
+    <titulo>cras pellentesque volutpat dui maecenas</titulo>
+    <preco>116.23</preco>
+    <estado>aceitável</estado>
+    <AdC>3</AdC>
+    <ano>1866</ano>
+  </Obra>
+  <Obra>
+    <id>106</id>
+    <autor1>Lorène , Intéressant </autor1>
+    <ISBN>713917191-2</ISBN>
+    <titulo>turpis elementum ligula vehicula consequat</titulo>
+    <preco>71.51</preco>
+    <estado>retirado</estado>
+    <AdC>4</AdC>
+    <ano>1829</ano>
+  </Obra>
+  <Obra>
+    <id>107</id>
+    <autor1> Scales,  Justinn</autor1>
+    <ISBN>370634877-2</ISBN>
+    <titulo>sapien ut nunc</titulo>
+    <preco>73.84</preco>
+    <estado>mau</estado>
+    <AdC>6</AdC>
+    <ano>2002</ano>
+  </Obra>
+  <Obra>
+    <id>108</id>
+    <autor1>Séréna , Méline </autor1>
+    <ISBN>595447814-7</ISBN>
+    <titulo>amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque</titulo>
+    <preco>95.04</preco>
+    <estado>aceitável</estado>
+    <AdC>2</AdC>
+    <ano>1909</ano>
+  </Obra>
+  <Obra>
+    <id>109</id>
+    <autor1>Yáo Van Arsdall, Marie-josée Aguste</autor1>
+    <ISBN>888316137-8</ISBN>
+    <titulo>malesuada in</titulo>
+    <preco>94.12</preco>
+    <estado>bom</estado>
+    <AdC>2</AdC>
+    <ano>1957</ano>
+  </Obra>
+  <Obra>
+    <id>110</id>
+    <autor1>Amélie , Eléa </autor1>
+    <ISBN>722753889-3</ISBN>
+    <titulo>orci vehicula condimentum curabitur in libero ut massa volutpat</titulo>
+    <preco>25.65</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1981</ano>
+  </Obra>
+  <Obra>
+    <id>111</id>
+    <autor1>Naéva , Béatrice </autor1>
+    <ISBN>265855766-3</ISBN>
+    <titulo>et ultrices posuere cubilia curae mauris viverra diam vitae quam</titulo>
+    <preco>5.3</preco>
+    <estado>excelente</estado>
+    <AdC>6</AdC>
+    <ano>1920</ano>
+  </Obra>
+  <Obra>
+    <id>112</id>
+    <autor1>Annotée , Cléa </autor1>
+    <ISBN>547583153-X</ISBN>
+    <titulo>nam ultrices libero non mattis pulvinar nulla</titulo>
+    <preco>20.83</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>1966</ano>
+  </Obra>
+  <Obra>
+    <id>113</id>
+    <autor1>Marie-thérèse , Mélanie </autor1>
+    <ISBN>082864128-5</ISBN>
+    <titulo>turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum</titulo>
+    <preco>70.77</preco>
+    <estado>excelente</estado>
+    <AdC>4</AdC>
+    <ano>1991</ano>
+  </Obra>
+  <Obra>
+    <id>114</id>
+    <autor1>Maï , Estève </autor1>
+    <ISBN>979155692-X</ISBN>
+    <titulo>pede ac</titulo>
+    <preco>63.51</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1828</ano>
+  </Obra>
+  <Obra>
+    <id>115</id>
+    <autor1> Wearing,  Ethelda</autor1>
+    <ISBN>230899838-5</ISBN>
+    <titulo>sapien varius ut blandit non interdum in</titulo>
+    <preco>100.41</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1868</ano>
+  </Obra>
+  <Obra>
+    <id>116</id>
+    <autor1>Magdalène Josephi, Marie-thérèse Chickie</autor1>
+    <ISBN>110381608-X</ISBN>
+    <titulo>quam sapien varius ut blandit non interdum in ante vestibulum ante</titulo>
+    <preco>79.51</preco>
+    <estado>mau</estado>
+    <AdC>4</AdC>
+    <ano>1917</ano>
+  </Obra>
+  <Obra>
+    <id>117</id>
+    <autor1>Maéna , Illustrée </autor1>
+    <ISBN>320394405-7</ISBN>
+    <titulo>tortor id nulla ultrices aliquet maecenas leo odio</titulo>
+    <preco>92.59</preco>
+    <estado>aceitável</estado>
+    <AdC>5</AdC>
+    <ano>1800</ano>
+  </Obra>
+  <Obra>
+    <id>118</id>
+    <autor1>Sélène , Miléna </autor1>
+    <ISBN>112746635-6</ISBN>
+    <titulo>lobortis vel dapibus at diam nam tristique tortor</titulo>
+    <preco>88.76</preco>
+    <estado>bom</estado>
+    <AdC>2</AdC>
+    <ano>1967</ano>
+  </Obra>
+  <Obra>
+    <id>119</id>
+    <autor1>Naéva , Ruì </autor1>
+    <ISBN>619059649-5</ISBN>
+    <titulo>et ultrices posuere cubilia curae nulla dapibus dolor vel</titulo>
+    <preco>26.53</preco>
+    <estado>aceitável</estado>
+    <AdC>4</AdC>
+    <ano>2011</ano>
+  </Obra>
+  <Obra>
+    <id>120</id>
+    <autor1>Aí , Angélique </autor1>
+    <ISBN>783716645-0</ISBN>
+    <titulo>tincidunt ante vel ipsum praesent blandit lacinia erat</titulo>
+    <preco>4.73</preco>
+    <estado>excelente</estado>
+    <AdC>2</AdC>
+    <ano>1948</ano>
+  </Obra>
+  <Obra>
+    <id>121</id>
+    <autor1> Shovel,  Leanna</autor1>
+    <ISBN>722166450-1</ISBN>
+    <titulo>integer aliquet</titulo>
+    <preco>48.79</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>2012</ano>
+  </Obra>
+  <Obra>
+    <id>122</id>
+    <autor1>Maëline , Aurélie </autor1>
+    <ISBN>626678706-7</ISBN>
+    <titulo>lectus suspendisse potenti</titulo>
+    <preco>12.94</preco>
+    <estado>excelente</estado>
+    <AdC>5</AdC>
+    <ano>1818</ano>
+  </Obra>
+  <Obra>
+    <id>123</id>
+    <autor1>Cécilia , Gaëlle </autor1>
+    <ISBN>263212420-4</ISBN>
+    <titulo>mi sit</titulo>
+    <preco>29.91</preco>
+    <estado>aceitável</estado>
+    <AdC>1</AdC>
+    <ano>1947</ano>
+  </Obra>
+  <Obra>
+    <id>124</id>
+    <autor1>Zoé Erni, Kuí Teriann</autor1>
+    <ISBN>756288337-8</ISBN>
+    <titulo>nisl aenean lectus pellentesque eget nunc donec quis orci</titulo>
+    <preco>102.87</preco>
+    <estado>retirado</estado>
+    <AdC>6</AdC>
+    <ano>1853</ano>
+  </Obra>
+  <Obra>
+    <id>125</id>
+    <autor1>Thérèse , Léonore </autor1>
+    <ISBN>786052979-3</ISBN>
+    <titulo>pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est</titulo>
+    <preco>95.03</preco>
+    <estado>excelente</estado>
+    <AdC>2</AdC>
+    <ano>1838</ano>
+  </Obra>
+  <Obra>
+    <id>126</id>
+    <autor1>Marlène , Marie-ève </autor1>
+    <ISBN>536323688-5</ISBN>
+    <titulo>donec diam neque vestibulum eget vulputate ut ultrices vel</titulo>
+    <preco>92.97</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1954</ano>
+  </Obra>
+  <Obra>
+    <id>127</id>
+    <autor1>Andréa , Bérangère </autor1>
+    <ISBN>382390239-3</ISBN>
+    <titulo>praesent blandit nam nulla integer pede</titulo>
+    <preco>45.03</preco>
+    <estado>aceitável</estado>
+    <AdC>6</AdC>
+    <ano>1924</ano>
+  </Obra>
+  <Obra>
+    <id>128</id>
+    <autor1>Léane Shovlar, Märta Georgiana</autor1>
+    <ISBN>493701089-1</ISBN>
+    <titulo>condimentum neque sapien</titulo>
+    <preco>41.24</preco>
+    <estado>aceitável</estado>
+    <AdC>5</AdC>
+    <ano>1918</ano>
+  </Obra>
+  <Obra>
+    <id>129</id>
+    <autor1>Léonore , Kallisté </autor1>
+    <ISBN>512208000-3</ISBN>
+    <titulo>odio condimentum id luctus nec molestie sed</titulo>
+    <preco>95.67</preco>
+    <estado>aceitável</estado>
+    <AdC>6</AdC>
+    <ano>2000</ano>
+  </Obra>
+  <Obra>
+    <id>130</id>
+    <autor1>Yénora , Gérald </autor1>
+    <ISBN>380125637-5</ISBN>
+    <titulo>lectus pellentesque at nulla suspendisse potenti cras in purus eu</titulo>
+    <preco>90.74</preco>
+    <estado>novo</estado>
+    <AdC>3</AdC>
+    <ano>1855</ano>
+  </Obra>
+  <Obra>
+    <id>131</id>
+    <autor1>Cécile , Adélaïde </autor1>
+    <ISBN>369115891-9</ISBN>
+    <titulo>rhoncus aliquet pulvinar sed nisl nunc</titulo>
+    <preco>86.9</preco>
+    <estado>bom</estado>
+    <AdC>5</AdC>
+    <ano>1848</ano>
+  </Obra>
+  <Obra>
+    <id>132</id>
+    <autor1>Cinéma Eccersley, Réservés Carola</autor1>
+    <ISBN>629551142-2</ISBN>
+    <titulo>nonummy maecenas tincidunt lacus at velit vivamus</titulo>
+    <preco>28.76</preco>
+    <estado>aceitável</estado>
+    <AdC>1</AdC>
+    <ano>1806</ano>
+  </Obra>
+  <Obra>
+    <id>133</id>
+    <autor1>Tú , Béatrice </autor1>
+    <ISBN>911126426-8</ISBN>
+    <titulo>natoque penatibus et magnis</titulo>
+    <preco>121.84</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>1895</ano>
+  </Obra>
+  <Obra>
+    <id>134</id>
+    <autor1>Loïca , Marie-noël </autor1>
+    <ISBN>235666485-8</ISBN>
+    <titulo>sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at</titulo>
+    <preco>32.43</preco>
+    <estado>novo</estado>
+    <AdC>1</AdC>
+    <ano>1973</ano>
+  </Obra>
+  <Obra>
+    <id>135</id>
+    <autor1>Göran , Maëline </autor1>
+    <ISBN>763819413-6</ISBN>
+    <titulo>quisque ut erat curabitur gravida nisi at nibh in hac habitasse</titulo>
+    <preco>46.4</preco>
+    <estado>bom</estado>
+    <AdC>4</AdC>
+    <ano>1816</ano>
+  </Obra>
+  <Obra>
+    <id>136</id>
+    <autor1>Félicie , Marylène </autor1>
+    <ISBN>926446747-5</ISBN>
+    <titulo>ultricies eu nibh quisque id</titulo>
+    <preco>25.3</preco>
+    <estado>aceitável</estado>
+    <AdC>6</AdC>
+    <ano>2010</ano>
+  </Obra>
+  <Obra>
+    <id>137</id>
+    <autor1>Andréa , Kallisté </autor1>
+    <ISBN>934427971-3</ISBN>
+    <titulo>iaculis justo in hac habitasse platea dictumst etiam</titulo>
+    <preco>56.47</preco>
+    <estado>novo</estado>
+    <AdC>3</AdC>
+    <ano>1985</ano>
+  </Obra>
+  <Obra>
+    <id>138</id>
+    <autor1>Ophélie , Renée </autor1>
+    <ISBN>529988307-2</ISBN>
+    <titulo>vel accumsan tellus nisi eu orci mauris</titulo>
+    <preco>18.89</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1991</ano>
+  </Obra>
+  <Obra>
+    <id>139</id>
+    <autor1>Görel , Mélinda </autor1>
+    <ISBN>459238631-0</ISBN>
+    <titulo>orci luctus et</titulo>
+    <preco>94.54</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>1883</ano>
+  </Obra>
+  <Obra>
+    <id>140</id>
+    <autor1>Adèle , Néhémie </autor1>
+    <ISBN>089728422-4</ISBN>
+    <titulo>convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris</titulo>
+    <preco>37.21</preco>
+    <estado>aceitável</estado>
+    <AdC>2</AdC>
+    <ano>1943</ano>
+  </Obra>
+  <Obra>
+    <id>141</id>
+    <autor1>Véronique , Léonore </autor1>
+    <ISBN>932238513-8</ISBN>
+    <titulo>quam turpis adipiscing</titulo>
+    <preco>42.98</preco>
+    <estado>novo</estado>
+    <AdC>1</AdC>
+    <ano>1908</ano>
+  </Obra>
+  <Obra>
+    <id>142</id>
+    <autor1>Eléonore Manach, Anaëlle Kelsey</autor1>
+    <ISBN>106377666-X</ISBN>
+    <titulo>vestibulum sit amet</titulo>
+    <preco>41.67</preco>
+    <estado>bom</estado>
+    <AdC>2</AdC>
+    <ano>2004</ano>
+  </Obra>
+  <Obra>
+    <id>143</id>
+    <autor1>Cécile , Célia </autor1>
+    <ISBN>901744262-X</ISBN>
+    <titulo>libero rutrum ac lobortis vel dapibus at diam nam tristique tortor eu</titulo>
+    <preco>33.17</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>2013</ano>
+  </Obra>
+  <Obra>
+    <id>144</id>
+    <autor1>Aí , Océanne </autor1>
+    <ISBN>225003942-9</ISBN>
+    <titulo>pellentesque ultrices phasellus id</titulo>
+    <preco>45.77</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>1836</ano>
+  </Obra>
+  <Obra>
+    <id>145</id>
+    <autor1>Mélina , Edmée </autor1>
+    <ISBN>470152586-3</ISBN>
+    <titulo>in felis donec semper sapien a libero nam dui</titulo>
+    <preco>9.44</preco>
+    <estado>aceitável</estado>
+    <AdC>5</AdC>
+    <ano>1895</ano>
+  </Obra>
+  <Obra>
+    <id>146</id>
+    <autor1>Marie-ève , Naëlle </autor1>
+    <ISBN>865953242-2</ISBN>
+    <titulo>at turpis donec posuere metus</titulo>
+    <preco>12.73</preco>
+    <estado>aceitável</estado>
+    <AdC>1</AdC>
+    <ano>1984</ano>
+  </Obra>
+  <Obra>
+    <id>147</id>
+    <autor1>Björn , Régine </autor1>
+    <ISBN>624859516-X</ISBN>
+    <titulo>accumsan odio curabitur convallis duis consequat dui nec nisi volutpat eleifend</titulo>
+    <preco>94.42</preco>
+    <estado>novo</estado>
+    <AdC>1</AdC>
+    <ano>2011</ano>
+  </Obra>
+  <Obra>
+    <id>148</id>
+    <autor1>Léonie Coatts, Aimée Dorice</autor1>
+    <ISBN>026456483-9</ISBN>
+    <titulo>ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae</titulo>
+    <preco>1.35</preco>
+    <estado>excelente</estado>
+    <AdC>2</AdC>
+    <ano>2019</ano>
+  </Obra>
+  <Obra>
+    <id>149</id>
+    <autor1>Östen Cranage, Pélagie Brent</autor1>
+    <ISBN>546701661-X</ISBN>
+    <titulo>viverra eget congue eget semper</titulo>
+    <preco>4.29</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1831</ano>
+  </Obra>
+  <Obra>
+    <id>150</id>
+    <autor1>Eloïse , Marie-hélène </autor1>
+    <ISBN>459183558-8</ISBN>
+    <titulo>quis odio consequat varius integer ac leo pellentesque ultrices</titulo>
+    <preco>87.66</preco>
+    <estado>aceitável</estado>
+    <AdC>5</AdC>
+    <ano>1825</ano>
+  </Obra>
+  <Obra>
+    <id>151</id>
+    <autor1>Régine , Marie-josée </autor1>
+    <ISBN>615335959-0</ISBN>
+    <titulo>pede venenatis non sodales sed</titulo>
+    <preco>74.98</preco>
+    <estado>mau</estado>
+    <AdC>4</AdC>
+    <ano>1982</ano>
+  </Obra>
+  <Obra>
+    <id>152</id>
+    <autor1>Léane , Stéphanie </autor1>
+    <ISBN>417162952-7</ISBN>
+    <titulo>vel dapibus at diam nam</titulo>
+    <preco>68.7</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>1869</ano>
+  </Obra>
+  <Obra>
+    <id>153</id>
+    <autor1>Alizée , Mélinda </autor1>
+    <ISBN>502677866-6</ISBN>
+    <titulo>ut odio cras mi pede malesuada in imperdiet et</titulo>
+    <preco>4.77</preco>
+    <estado>retirado</estado>
+    <AdC>1</AdC>
+    <ano>1943</ano>
+  </Obra>
+  <Obra>
+    <id>154</id>
+    <autor1>Desirée Revan, Görel Marillin</autor1>
+    <ISBN>226503116-X</ISBN>
+    <titulo>justo maecenas rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet</titulo>
+    <preco>15.95</preco>
+    <estado>mau</estado>
+    <AdC>5</AdC>
+    <ano>1970</ano>
+  </Obra>
+  <Obra>
+    <id>155</id>
+    <autor1>Erwéi , Cunégonde </autor1>
+    <ISBN>146570001-3</ISBN>
+    <titulo>eu sapien cursus</titulo>
+    <preco>17.76</preco>
+    <estado>novo</estado>
+    <AdC>1</AdC>
+    <ano>1930</ano>
+  </Obra>
+  <Obra>
+    <id>156</id>
+    <autor1>Torbjörn , Céline </autor1>
+    <ISBN>870048148-3</ISBN>
+    <titulo>proin interdum mauris non ligula pellentesque ultrices</titulo>
+    <preco>33.42</preco>
+    <estado>retirado</estado>
+    <AdC>4</AdC>
+    <ano>1829</ano>
+  </Obra>
+  <Obra>
+    <id>157</id>
+    <autor1>Marie-josée , Cléopatre </autor1>
+    <ISBN>354427181-8</ISBN>
+    <titulo>donec quis orci eget orci</titulo>
+    <preco>98.75</preco>
+    <estado>excelente</estado>
+    <AdC>5</AdC>
+    <ano>1971</ano>
+  </Obra>
+  <Obra>
+    <id>158</id>
+    <autor1>Anaëlle Hearle, Håkan Stephani</autor1>
+    <ISBN>762222050-7</ISBN>
+    <titulo>curabitur convallis duis consequat dui nec nisi volutpat eleifend</titulo>
+    <preco>23.48</preco>
+    <estado>aceitável</estado>
+    <AdC>4</AdC>
+    <ano>2011</ano>
+  </Obra>
+  <Obra>
+    <id>159</id>
+    <autor1>Mélia Hearnes, Illustrée Edgardo</autor1>
+    <ISBN>583529493-X</ISBN>
+    <titulo>dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam</titulo>
+    <preco>11.1</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>1997</ano>
+  </Obra>
+  <Obra>
+    <id>160</id>
+    <autor1>Desirée Cases, Mélys Nicolais</autor1>
+    <ISBN>133252081-2</ISBN>
+    <titulo>cras pellentesque volutpat dui maecenas tristique est et tempus</titulo>
+    <preco>32.14</preco>
+    <estado>mau</estado>
+    <AdC>2</AdC>
+    <ano>1830</ano>
+  </Obra>
+  <Obra>
+    <id>161</id>
+    <autor1>Dù , Mélissandre </autor1>
+    <ISBN>570085787-1</ISBN>
+    <titulo>felis ut at dolor quis odio consequat</titulo>
+    <preco>35.3</preco>
+    <estado>retirado</estado>
+    <AdC>3</AdC>
+    <ano>1905</ano>
+  </Obra>
+  <Obra>
+    <id>162</id>
+    <autor1>Östen Reith, Médiamass Rex</autor1>
+    <ISBN>058568963-6</ISBN>
+    <titulo>turpis adipiscing lorem vitae mattis</titulo>
+    <preco>56.53</preco>
+    <estado>mau</estado>
+    <AdC>2</AdC>
+    <ano>1980</ano>
+  </Obra>
+  <Obra>
+    <id>163</id>
+    <autor1>Dù , Laurène </autor1>
+    <ISBN>331283763-4</ISBN>
+    <titulo>sapien iaculis</titulo>
+    <preco>91.73</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1960</ano>
+  </Obra>
+  <Obra>
+    <id>164</id>
+    <autor1>Torbjörn , Félicie </autor1>
+    <ISBN>844164728-3</ISBN>
+    <titulo>et ultrices posuere cubilia</titulo>
+    <preco>22.72</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1900</ano>
+  </Obra>
+  <Obra>
+    <id>165</id>
+    <autor1>Faîtes Steffan, Anaëlle Moria</autor1>
+    <ISBN>417402787-0</ISBN>
+    <titulo>donec vitae nisi nam</titulo>
+    <preco>16.94</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>1938</ano>
+  </Obra>
+  <Obra>
+    <id>166</id>
+    <autor1>Hélèna , Marie-françoise </autor1>
+    <ISBN>933612716-0</ISBN>
+    <titulo>eget eros elementum pellentesque</titulo>
+    <preco>6.08</preco>
+    <estado>novo</estado>
+    <AdC>6</AdC>
+    <ano>1910</ano>
+  </Obra>
+  <Obra>
+    <id>167</id>
+    <autor1>Méthode , Magdalène </autor1>
+    <ISBN>237140037-8</ISBN>
+    <titulo>lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada</titulo>
+    <preco>62.5</preco>
+    <estado>excelente</estado>
+    <AdC>5</AdC>
+    <ano>1899</ano>
+  </Obra>
+  <Obra>
+    <id>168</id>
+    <autor1> Shere,  Geoffrey</autor1>
+    <ISBN>628595196-9</ISBN>
+    <titulo>maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus</titulo>
+    <preco>57.59</preco>
+    <estado>retirado</estado>
+    <AdC>3</AdC>
+    <ano>1813</ano>
+  </Obra>
+  <Obra>
+    <id>169</id>
+    <autor1>Marylène , Léone </autor1>
+    <ISBN>169936876-7</ISBN>
+    <titulo>in libero</titulo>
+    <preco>5.51</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1890</ano>
+  </Obra>
+  <Obra>
+    <id>170</id>
+    <autor1>Dafnée Veneur, Mén Taddeo</autor1>
+    <ISBN>833308071-5</ISBN>
+    <titulo>sapien dignissim vestibulum vestibulum</titulo>
+    <preco>107.1</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1927</ano>
+  </Obra>
+  <Obra>
+    <id>171</id>
+    <autor1>Daphnée , Sélène </autor1>
+    <ISBN>569570589-4</ISBN>
+    <titulo>cras pellentesque volutpat dui maecenas</titulo>
+    <preco>116.23</preco>
+    <estado>bom</estado>
+    <AdC>3</AdC>
+    <ano>1866</ano>
+  </Obra>
+  <Obra>
+    <id>172</id>
+    <autor1>Lorène , Intéressant </autor1>
+    <ISBN>713917191-2</ISBN>
+    <titulo>turpis elementum ligula vehicula consequat</titulo>
+    <preco>71.51</preco>
+    <estado>excelente</estado>
+    <AdC>4</AdC>
+    <ano>1829</ano>
+  </Obra>
+  <Obra>
+    <id>173</id>
+    <autor1>Séréna , Méline </autor1>
+    <ISBN>595447814-7</ISBN>
+    <titulo>amet consectetuer adipiscing elit proin interdum mauris non ligula pellentesque</titulo>
+    <preco>95.04</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1909</ano>
+  </Obra>
+  <Obra>
+    <id>174</id>
+    <autor1>Naéva , Béatrice </autor1>
+    <ISBN>265855766-3</ISBN>
+    <titulo>et ultrices posuere cubilia curae mauris viverra diam vitae quam</titulo>
+    <preco>5.3</preco>
+    <estado>bom</estado>
+    <AdC>6</AdC>
+    <ano>1920</ano>
+  </Obra>
+  <Obra>
+    <id>175</id>
+    <autor1>Sélène , Miléna </autor1>
+    <ISBN>112746635-6</ISBN>
+    <titulo>lobortis vel dapibus at diam nam tristique tortor</titulo>
+    <preco>88.76</preco>
+    <estado>mau</estado>
+    <AdC>2</AdC>
+    <ano>1967</ano>
+  </Obra>
+  <Obra>
+    <id>176</id>
+    <autor1>Maëline , Aurélie </autor1>
+    <ISBN>626678706-7</ISBN>
+    <titulo>lectus suspendisse potenti</titulo>
+    <preco>12.94</preco>
+    <estado>aceitável</estado>
+    <AdC>5</AdC>
+    <ano>1818</ano>
+  </Obra>
+  <Obra>
+    <id>177</id>
+    <autor1>Thérèse , Léonore </autor1>
+    <ISBN>786052979-3</ISBN>
+    <titulo>pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus in est</titulo>
+    <preco>95.03</preco>
+    <estado>bom</estado>
+    <AdC>2</AdC>
+    <ano>1838</ano>
+  </Obra>
+  <Obra>
+    <id>178</id>
+    <autor1>Marlène , Marie-ève </autor1>
+    <ISBN>536323688-5</ISBN>
+    <titulo>donec diam neque vestibulum eget vulputate ut ultrices vel</titulo>
+    <preco>92.97</preco>
+    <estado>aceitável</estado>
+    <AdC>4</AdC>
+    <ano>1954</ano>
+  </Obra>
+  <Obra>
+    <id>179</id>
+    <autor1>Andréa , Bérangère </autor1>
+    <ISBN>382390239-3</ISBN>
+    <titulo>praesent blandit nam nulla integer pede</titulo>
+    <preco>45.03</preco>
+    <estado>retirado</estado>
+    <AdC>6</AdC>
+    <ano>1924</ano>
+  </Obra>
+  <Obra>
+    <id>180</id>
+    <autor1>Cécile , Adélaïde </autor1>
+    <ISBN>369115891-9</ISBN>
+    <titulo>rhoncus aliquet pulvinar sed nisl nunc</titulo>
+    <preco>86.9</preco>
+    <estado>mau</estado>
+    <AdC>5</AdC>
+    <ano>1848</ano>
+  </Obra>
+  <Obra>
+    <id>181</id>
+    <autor1>Cinéma Eccersley, Réservés Carola</autor1>
+    <ISBN>629551142-2</ISBN>
+    <titulo>nonummy maecenas tincidunt lacus at velit vivamus</titulo>
+    <preco>28.76</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>1806</ano>
+  </Obra>
+  <Obra>
+    <id>182</id>
+    <autor1>Loïca , Marie-noël </autor1>
+    <ISBN>235666485-8</ISBN>
+    <titulo>sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at</titulo>
+    <preco>32.43</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>1973</ano>
+  </Obra>
+  <Obra>
+    <id>183</id>
+    <autor1>Véronique , Léonore </autor1>
+    <ISBN>932238513-8</ISBN>
+    <titulo>quam turpis adipiscing</titulo>
+    <preco>42.98</preco>
+    <estado>retirado</estado>
+    <AdC>1</AdC>
+    <ano>1908</ano>
+  </Obra>
+  <Obra>
+    <id>184</id>
+    <autor1>Gaïa , Åsa </autor1>
+    <ISBN>691460361-8</ISBN>
+    <titulo>morbi ut odio cras mi pede malesuada in</titulo>
+    <preco>65.98</preco>
+    <estado>mau</estado>
+    <AdC>6</AdC>
+    <ano>1806</ano>
+  </Obra>
+  <Obra>
+    <id>185</id>
+    <autor1>Mahélie , Nélie </autor1>
+    <ISBN>034625373-X</ISBN>
+    <titulo>morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate</titulo>
+    <preco>67.84</preco>
+    <estado>mau</estado>
+    <AdC>4</AdC>
+    <ano>1935</ano>
+  </Obra>
+  <Obra>
+    <id>186</id>
+    <autor1>Bérangère , Eléa </autor1>
+    <ISBN>497804230-5</ISBN>
+    <titulo>ipsum dolor sit amet consectetuer adipiscing elit proin risus</titulo>
+    <preco>108.82</preco>
+    <estado>bom</estado>
+    <AdC>2</AdC>
+    <ano>1879</ano>
+  </Obra>
+  <Obra>
+    <id>187</id>
+    <autor1>Gaétane , Naëlle </autor1>
+    <ISBN>437883432-4</ISBN>
+    <titulo>luctus ultricies eu</titulo>
+    <preco>102.11</preco>
+    <estado>bom</estado>
+    <AdC>5</AdC>
+    <ano>1893</ano>
+  </Obra>
+  <Obra>
+    <id>188</id>
+    <autor1>Joséphine Evett, Geneviève Ansell</autor1>
+    <ISBN>884072587-3</ISBN>
+    <titulo>semper est quam pharetra magna ac consequat metus sapien ut</titulo>
+    <preco>56.64</preco>
+    <estado>bom</estado>
+    <AdC>4</AdC>
+    <ano>1954</ano>
+  </Obra>
+  <Obra>
+    <id>189</id>
+    <autor1>Sélène , Gaëlle </autor1>
+    <ISBN>723124588-9</ISBN>
+    <titulo>eleifend pede libero quis orci nullam</titulo>
+    <preco>72.39</preco>
+    <estado>excelente</estado>
+    <AdC>4</AdC>
+    <ano>1886</ano>
+  </Obra>
+  <Obra>
+    <id>190</id>
+    <autor1>Léonie , Laurène </autor1>
+    <ISBN>342607792-2</ISBN>
+    <titulo>pretium nisl ut volutpat sapien arcu sed</titulo>
+    <preco>78.8</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1804</ano>
+  </Obra>
+  <Obra>
+    <id>191</id>
+    <autor1>Intéressant , Andréa </autor1>
+    <ISBN>454670257-4</ISBN>
+    <titulo>augue a suscipit nulla</titulo>
+    <preco>83.16</preco>
+    <estado>excelente</estado>
+    <AdC>5</AdC>
+    <ano>1880</ano>
+  </Obra>
+  <Obra>
+    <id>192</id>
+    <autor1>Stéphanie , Marie-françoise </autor1>
+    <ISBN>743809185-6</ISBN>
+    <titulo>non mattis</titulo>
+    <preco>2.43</preco>
+    <estado>novo</estado>
+    <AdC>1</AdC>
+    <ano>1880</ano>
+  </Obra>
+  <Obra>
+    <id>193</id>
+    <autor1> Cockling,  Glendon</autor1>
+    <ISBN>752735939-0</ISBN>
+    <titulo>maecenas tincidunt lacus at velit</titulo>
+    <preco>50.91</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1947</ano>
+  </Obra>
+  <Obra>
+    <id>194</id>
+    <autor1>Táng Jacquest, Cloé Leland</autor1>
+    <ISBN>674187063-6</ISBN>
+    <titulo>dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien</titulo>
+    <preco>95.1</preco>
+    <estado>bom</estado>
+    <AdC>4</AdC>
+    <ano>1983</ano>
+  </Obra>
+  <Obra>
+    <id>195</id>
+    <autor1>Desirée , Gaëlle </autor1>
+    <ISBN>031032417-3</ISBN>
+    <titulo>justo nec condimentum neque sapien placerat ante nulla justo aliquam quis</titulo>
+    <preco>108.17</preco>
+    <estado>excelente</estado>
+    <AdC>2</AdC>
+    <ano>1922</ano>
+  </Obra>
+  <Obra>
+    <id>196</id>
+    <autor1>Táng , Athéna </autor1>
+    <ISBN>800359905-9</ISBN>
+    <titulo>convallis duis consequat dui nec</titulo>
+    <preco>71.66</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1971</ano>
+  </Obra>
+  <Obra>
+    <id>197</id>
+    <autor1>Gwenaëlle Rhodes, Åke Sylvester</autor1>
+    <ISBN>331023325-1</ISBN>
+    <titulo>ac nulla sed vel enim sit amet nunc viverra dapibus</titulo>
+    <preco>62.02</preco>
+    <estado>aceitável</estado>
+    <AdC>1</AdC>
+    <ano>1821</ano>
+  </Obra>
+  <Obra>
+    <id>198</id>
+    <autor1>Véronique Darcey, Cloé Jarrett</autor1>
+    <ISBN>495182860-X</ISBN>
+    <titulo>ante ipsum</titulo>
+    <preco>85.0</preco>
+    <estado>novo</estado>
+    <AdC>6</AdC>
+    <ano>1833</ano>
+  </Obra>
+  <Obra>
+    <id>199</id>
+    <autor1>Jú Bruggeman, Intéressant Finley</autor1>
+    <ISBN>218281321-7</ISBN>
+    <titulo>vestibulum ante ipsum primis in faucibus orci luctus et</titulo>
+    <preco>82.16</preco>
+    <estado>aceitável</estado>
+    <AdC>2</AdC>
+    <ano>1918</ano>
+  </Obra>
+  <Obra>
+    <id>200</id>
+    <autor1> Onslow,  Skelly</autor1>
+    <ISBN>823828513-5</ISBN>
+    <titulo>nulla integer pede justo lacinia eget tincidunt eget tempus vel</titulo>
+    <preco>29.87</preco>
+    <estado>retirado</estado>
+    <AdC>3</AdC>
+    <ano>1802</ano>
+  </Obra>
+  <Obra>
+    <id>201</id>
+    <autor1>Kévina , Örjan </autor1>
+    <ISBN>978283110-7</ISBN>
+    <titulo>velit donec diam neque vestibulum eget</titulo>
+    <preco>14.56</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>2003</ano>
+  </Obra>
+  <Obra>
+    <id>202</id>
+    <autor1>Edmée Mereweather, Lèi Holden</autor1>
+    <ISBN>663852145-4</ISBN>
+    <titulo>ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris</titulo>
+    <preco>41.37</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1938</ano>
+  </Obra>
+  <Obra>
+    <id>203</id>
+    <autor1>Maéna , Gaétane </autor1>
+    <ISBN>698381507-6</ISBN>
+    <titulo>rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas</titulo>
+    <preco>90.83</preco>
+    <estado>retirado</estado>
+    <AdC>5</AdC>
+    <ano>1949</ano>
+  </Obra>
+  <Obra>
+    <id>204</id>
+    <autor1>Kallisté de Castelain, Yè Livvyy</autor1>
+    <ISBN>824041753-1</ISBN>
+    <titulo>neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo</titulo>
+    <preco>55.24</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>1851</ano>
+  </Obra>
+  <Obra>
+    <id>205</id>
+    <autor1>Chloé , Maëlla </autor1>
+    <ISBN>076608637-2</ISBN>
+    <titulo>aliquet ultrices</titulo>
+    <preco>52.93</preco>
+    <estado>novo</estado>
+    <AdC>1</AdC>
+    <ano>1832</ano>
+  </Obra>
+  <Obra>
+    <id>206</id>
+    <autor1>Maïwenn , Cléa </autor1>
+    <ISBN>858765292-3</ISBN>
+    <titulo>orci luctus et ultrices posuere cubilia</titulo>
+    <preco>37.69</preco>
+    <estado>bom</estado>
+    <AdC>3</AdC>
+    <ano>1962</ano>
+  </Obra>
+  <Obra>
+    <id>207</id>
+    <autor1>Michèle , Léa </autor1>
+    <ISBN>180070492-5</ISBN>
+    <titulo>justo eu massa donec dapibus duis</titulo>
+    <preco>81.36</preco>
+    <estado>retirado</estado>
+    <AdC>1</AdC>
+    <ano>1975</ano>
+  </Obra>
+  <Obra>
+    <id>208</id>
+    <autor1>Eliès Limeburner, Aloïs Clarissa</autor1>
+    <ISBN>827735036-8</ISBN>
+    <titulo>varius integer ac leo pellentesque</titulo>
+    <preco>17.55</preco>
+    <estado>aceitável</estado>
+    <AdC>2</AdC>
+    <ano>1927</ano>
+  </Obra>
+  <Obra>
+    <id>209</id>
+    <autor1>Lén , Zhì </autor1>
+    <ISBN>210090651-8</ISBN>
+    <titulo>ipsum praesent blandit lacinia erat vestibulum sed magna at</titulo>
+    <preco>6.74</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1822</ano>
+  </Obra>
+  <Obra>
+    <id>210</id>
+    <autor1>Solène Neilus, Marylène Lisa</autor1>
+    <ISBN>057348641-7</ISBN>
+    <titulo>pede ac diam cras pellentesque volutpat dui</titulo>
+    <preco>117.75</preco>
+    <estado>bom</estado>
+    <AdC>3</AdC>
+    <ano>1850</ano>
+  </Obra>
+  <Obra>
+    <id>211</id>
+    <autor1>Crééz , Maïté </autor1>
+    <ISBN>786853109-6</ISBN>
+    <titulo>eget elit sodales scelerisque mauris sit amet eros suspendisse</titulo>
+    <preco>119.74</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>1894</ano>
+  </Obra>
+  <Obra>
+    <id>212</id>
+    <autor1>Méthode , Mélys </autor1>
+    <ISBN>282568629-8</ISBN>
+    <titulo>ultrices enim lorem ipsum</titulo>
+    <preco>44.01</preco>
+    <estado>novo</estado>
+    <AdC>6</AdC>
+    <ano>1932</ano>
+  </Obra>
+  <Obra>
+    <id>213</id>
+    <autor1>Laurélie , Erwéi </autor1>
+    <ISBN>522742682-1</ISBN>
+    <titulo>morbi odio odio elementum eu interdum eu tincidunt in leo maecenas</titulo>
+    <preco>105.14</preco>
+    <estado>mau</estado>
+    <AdC>5</AdC>
+    <ano>1890</ano>
+  </Obra>
+  <Obra>
+    <id>214</id>
+    <autor1>Bénédicte Jermyn, Aurélie Em</autor1>
+    <ISBN>543643650-1</ISBN>
+    <titulo>sociis natoque penatibus et magnis dis</titulo>
+    <preco>15.59</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>1829</ano>
+  </Obra>
+  <Obra>
+    <id>215</id>
+    <autor1>Göran , Publicité </autor1>
+    <ISBN>215772370-6</ISBN>
+    <titulo>fermentum donec ut mauris eget massa tempor convallis nulla neque libero</titulo>
+    <preco>7.44</preco>
+    <estado>retirado</estado>
+    <AdC>6</AdC>
+    <ano>1917</ano>
+  </Obra>
+  <Obra>
+    <id>216</id>
+    <autor1>Pò , Léone </autor1>
+    <ISBN>869757778-0</ISBN>
+    <titulo>imperdiet et</titulo>
+    <preco>26.1</preco>
+    <estado>bom</estado>
+    <AdC>2</AdC>
+    <ano>1814</ano>
+  </Obra>
+  <Obra>
+    <id>217</id>
+    <autor1> Sein,  Whitman</autor1>
+    <ISBN>336180601-1</ISBN>
+    <titulo>id justo</titulo>
+    <preco>43.65</preco>
+    <estado>retirado</estado>
+    <AdC>2</AdC>
+    <ano>1992</ano>
+  </Obra>
+  <Obra>
+    <id>218</id>
+    <autor1>Lorène , Börje </autor1>
+    <ISBN>113525232-7</ISBN>
+    <titulo>suspendisse potenti cras</titulo>
+    <preco>3.69</preco>
+    <estado>aceitável</estado>
+    <AdC>3</AdC>
+    <ano>1865</ano>
+  </Obra>
+  <Obra>
+    <id>219</id>
+    <autor1>Eléonore Rohan, Åke Linnet</autor1>
+    <ISBN>772404270-5</ISBN>
+    <titulo>proin leo odio porttitor id consequat in consequat</titulo>
+    <preco>40.63</preco>
+    <estado>bom</estado>
+    <AdC>2</AdC>
+    <ano>1949</ano>
+  </Obra>
+  <Obra>
+    <id>220</id>
+    <autor1> Corteis,  Page</autor1>
+    <ISBN>215941779-3</ISBN>
+    <titulo>sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at</titulo>
+    <preco>99.22</preco>
+    <estado>excelente</estado>
+    <AdC>2</AdC>
+    <ano>1835</ano>
+  </Obra>
+  <Obra>
+    <id>221</id>
+    <autor1>Athéna , Solène </autor1>
+    <ISBN>675825140-3</ISBN>
+    <titulo>ac diam cras pellentesque volutpat dui maecenas tristique est</titulo>
+    <preco>80.1</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>2010</ano>
+  </Obra>
+  <Obra>
+    <id>222</id>
+    <autor1>Angélique , Yè </autor1>
+    <ISBN>251210083-9</ISBN>
+    <titulo>tincidunt lacus at velit</titulo>
+    <preco>70.98</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1817</ano>
+  </Obra>
+  <Obra>
+    <id>223</id>
+    <autor1>Séverine , Salomé </autor1>
+    <ISBN>377748688-4</ISBN>
+    <titulo>justo sit</titulo>
+    <preco>80.49</preco>
+    <estado>excelente</estado>
+    <AdC>2</AdC>
+    <ano>1983</ano>
+  </Obra>
+  <Obra>
+    <id>224</id>
+    <autor1>Judicaël , Andrée </autor1>
+    <ISBN>818631980-8</ISBN>
+    <titulo>egestas metus aenean fermentum donec ut mauris eget massa tempor convallis</titulo>
+    <preco>108.84</preco>
+    <estado>bom</estado>
+    <AdC>6</AdC>
+    <ano>1840</ano>
+  </Obra>
+  <Obra>
+    <id>225</id>
+    <autor1>Océane Commings, Mélinda Berne</autor1>
+    <ISBN>499899335-6</ISBN>
+    <titulo>sodales sed tincidunt eu felis</titulo>
+    <preco>108.14</preco>
+    <estado>retirado</estado>
+    <AdC>6</AdC>
+    <ano>1993</ano>
+  </Obra>
+  <Obra>
+    <id>226</id>
+    <autor1>Cloé , Mélina </autor1>
+    <ISBN>224702143-3</ISBN>
+    <titulo>at feugiat non pretium</titulo>
+    <preco>2.34</preco>
+    <estado>bom</estado>
+    <AdC>3</AdC>
+    <ano>1972</ano>
+  </Obra>
+  <Obra>
+    <id>227</id>
+    <autor1>Märta Hobell, Pål Virgilio</autor1>
+    <ISBN>654709602-5</ISBN>
+    <titulo>ligula nec sem duis aliquam convallis nunc proin at turpis a pede</titulo>
+    <preco>43.21</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>1952</ano>
+  </Obra>
+  <Obra>
+    <id>228</id>
+    <autor1> Pottinger,  Harmony</autor1>
+    <ISBN>230674343-6</ISBN>
+    <titulo>quam turpis adipiscing lorem</titulo>
+    <preco>11.28</preco>
+    <estado>novo</estado>
+    <AdC>5</AdC>
+    <ano>1931</ano>
+  </Obra>
+  <Obra>
+    <id>229</id>
+    <autor1> Stonbridge,  Lindy</autor1>
+    <ISBN>701785052-1</ISBN>
+    <titulo>lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci</titulo>
+    <preco>6.69</preco>
+    <estado>novo</estado>
+    <AdC>5</AdC>
+    <ano>1864</ano>
+  </Obra>
+  <Obra>
+    <id>230</id>
+    <autor1>Maïté Wands, Ophélie Jordana</autor1>
+    <ISBN>173635777-8</ISBN>
+    <titulo>gravida sem praesent id massa id nisl venenatis</titulo>
+    <preco>65.63</preco>
+    <estado>novo</estado>
+    <AdC>5</AdC>
+    <ano>2014</ano>
+  </Obra>
+  <Obra>
+    <id>231</id>
+    <autor1>Amélie , Eléa </autor1>
+    <ISBN>722753889-3</ISBN>
+    <titulo>orci vehicula condimentum curabitur in libero ut massa volutpat</titulo>
+    <preco>25.65</preco>
+    <estado>retirado</estado>
+    <AdC>4</AdC>
+    <ano>1981</ano>
+  </Obra>
+  <Obra>
+    <id>232</id>
+    <autor1>Marie-thérèse , Mélanie </autor1>
+    <ISBN>082864128-5</ISBN>
+    <titulo>turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum</titulo>
+    <preco>70.77</preco>
+    <estado>retirado</estado>
+    <AdC>4</AdC>
+    <ano>1991</ano>
+  </Obra>
+  <Obra>
+    <id>233</id>
+    <autor1>Maï , Estève </autor1>
+    <ISBN>979155692-X</ISBN>
+    <titulo>pede ac</titulo>
+    <preco>63.51</preco>
+    <estado>aceitável</estado>
+    <AdC>4</AdC>
+    <ano>1828</ano>
+  </Obra>
+  <Obra>
+    <id>234</id>
+    <autor1>Maéna , Illustrée </autor1>
+    <ISBN>320394405-7</ISBN>
+    <titulo>tortor id nulla ultrices aliquet maecenas leo odio</titulo>
+    <preco>92.59</preco>
+    <estado>novo</estado>
+    <AdC>5</AdC>
+    <ano>1800</ano>
+  </Obra>
+  <Obra>
+    <id>235</id>
+    <autor1>Naéva , Ruì </autor1>
+    <ISBN>619059649-5</ISBN>
+    <titulo>et ultrices posuere cubilia curae nulla dapibus dolor vel</titulo>
+    <preco>26.53</preco>
+    <estado>excelente</estado>
+    <AdC>4</AdC>
+    <ano>2011</ano>
+  </Obra>
+  <Obra>
+    <id>236</id>
+    <autor1>Cécilia , Gaëlle </autor1>
+    <ISBN>263212420-4</ISBN>
+    <titulo>mi sit</titulo>
+    <preco>29.91</preco>
+    <estado>retirado</estado>
+    <AdC>1</AdC>
+    <ano>1947</ano>
+  </Obra>
+  <Obra>
+    <id>237</id>
+    <autor1>Léane Shovlar, Märta Georgiana</autor1>
+    <ISBN>493701089-1</ISBN>
+    <titulo>condimentum neque sapien</titulo>
+    <preco>41.24</preco>
+    <estado>retirado</estado>
+    <AdC>5</AdC>
+    <ano>1918</ano>
+  </Obra>
+  <Obra>
+    <id>238</id>
+    <autor1>Léonore , Kallisté </autor1>
+    <ISBN>512208000-3</ISBN>
+    <titulo>odio condimentum id luctus nec molestie sed</titulo>
+    <preco>95.67</preco>
+    <estado>excelente</estado>
+    <AdC>6</AdC>
+    <ano>2000</ano>
+  </Obra>
+  <Obra>
+    <id>239</id>
+    <autor1>Yénora , Gérald </autor1>
+    <ISBN>380125637-5</ISBN>
+    <titulo>lectus pellentesque at nulla suspendisse potenti cras in purus eu</titulo>
+    <preco>90.74</preco>
+    <estado>novo</estado>
+    <AdC>3</AdC>
+    <ano>1855</ano>
+  </Obra>
+  <Obra>
+    <id>240</id>
+    <autor1>Tú , Béatrice </autor1>
+    <ISBN>911126426-8</ISBN>
+    <titulo>natoque penatibus et magnis</titulo>
+    <preco>121.84</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>1895</ano>
+  </Obra>
+  <Obra>
+    <id>241</id>
+    <autor1>Göran , Maëline </autor1>
+    <ISBN>763819413-6</ISBN>
+    <titulo>quisque ut erat curabitur gravida nisi at nibh in hac habitasse</titulo>
+    <preco>46.4</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>1816</ano>
+  </Obra>
+  <Obra>
+    <id>242</id>
+    <autor1>Ophélie , Renée </autor1>
+    <ISBN>529988307-2</ISBN>
+    <titulo>vel accumsan tellus nisi eu orci mauris</titulo>
+    <preco>18.89</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>1991</ano>
+  </Obra>
+  <Obra>
+    <id>243</id>
+    <autor1>Görel , Mélinda </autor1>
+    <ISBN>459238631-0</ISBN>
+    <titulo>orci luctus et</titulo>
+    <preco>94.54</preco>
+    <estado>bom</estado>
+    <AdC>3</AdC>
+    <ano>1883</ano>
+  </Obra>
+  <Obra>
+    <id>244</id>
+    <autor1>Adèle , Néhémie </autor1>
+    <ISBN>089728422-4</ISBN>
+    <titulo>convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris</titulo>
+    <preco>37.21</preco>
+    <estado>mau</estado>
+    <AdC>2</AdC>
+    <ano>1943</ano>
+  </Obra>
+  <Obra>
+    <id>245</id>
+    <autor1>Gaïa , Åsa </autor1>
+    <ISBN>691460361-8</ISBN>
+    <titulo>morbi ut odio cras mi pede malesuada in</titulo>
+    <preco>65.98</preco>
+    <estado>retirado</estado>
+    <AdC>6</AdC>
+    <ano>1806</ano>
+  </Obra>
+  <Obra>
+    <id>246</id>
+    <autor1>Mahélie , Nélie </autor1>
+    <ISBN>034625373-X</ISBN>
+    <titulo>morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate</titulo>
+    <preco>67.84</preco>
+    <estado>mau</estado>
+    <AdC>4</AdC>
+    <ano>1935</ano>
+  </Obra>
+  <Obra>
+    <id>247</id>
+    <autor1>Bérangère , Eléa </autor1>
+    <ISBN>497804230-5</ISBN>
+    <titulo>ipsum dolor sit amet consectetuer adipiscing elit proin risus</titulo>
+    <preco>108.82</preco>
+    <estado>bom</estado>
+    <AdC>2</AdC>
+    <ano>1879</ano>
+  </Obra>
+  <Obra>
+    <id>248</id>
+    <autor1>Gaétane , Naëlle </autor1>
+    <ISBN>437883432-4</ISBN>
+    <titulo>luctus ultricies eu</titulo>
+    <preco>102.11</preco>
+    <estado>retirado</estado>
+    <AdC>5</AdC>
+    <ano>1893</ano>
+  </Obra>
+  <Obra>
+    <id>249</id>
+    <autor1>Joséphine Evett, Geneviève Ansell</autor1>
+    <ISBN>884072587-3</ISBN>
+    <titulo>semper est quam pharetra magna ac consequat metus sapien ut</titulo>
+    <preco>56.64</preco>
+    <estado>aceitável</estado>
+    <AdC>4</AdC>
+    <ano>1954</ano>
+  </Obra>
+  <Obra>
+    <id>250</id>
+    <autor1>Sélène , Gaëlle </autor1>
+    <ISBN>723124588-9</ISBN>
+    <titulo>eleifend pede libero quis orci nullam</titulo>
+    <preco>72.39</preco>
+    <estado>mau</estado>
+    <AdC>4</AdC>
+    <ano>1886</ano>
+  </Obra>
+  <Obra>
+    <id>251</id>
+    <autor1>Léonie , Laurène </autor1>
+    <ISBN>342607792-2</ISBN>
+    <titulo>pretium nisl ut volutpat sapien arcu sed</titulo>
+    <preco>78.8</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1804</ano>
+  </Obra>
+  <Obra>
+    <id>252</id>
+    <autor1>Intéressant , Andréa </autor1>
+    <ISBN>454670257-4</ISBN>
+    <titulo>augue a suscipit nulla</titulo>
+    <preco>83.16</preco>
+    <estado>bom</estado>
+    <AdC>5</AdC>
+    <ano>1880</ano>
+  </Obra>
+  <Obra>
+    <id>253</id>
+    <autor1>Stéphanie , Marie-françoise </autor1>
+    <ISBN>743809185-6</ISBN>
+    <titulo>non mattis</titulo>
+    <preco>2.43</preco>
+    <estado>retirado</estado>
+    <AdC>1</AdC>
+    <ano>1880</ano>
+  </Obra>
+  <Obra>
+    <id>254</id>
+    <autor1> Cockling,  Glendon</autor1>
+    <ISBN>752735939-0</ISBN>
+    <titulo>maecenas tincidunt lacus at velit</titulo>
+    <preco>50.91</preco>
+    <estado>excelente</estado>
+    <AdC>4</AdC>
+    <ano>1947</ano>
+  </Obra>
+  <Obra>
+    <id>255</id>
+    <autor1>Táng Jacquest, Cloé Leland</autor1>
+    <ISBN>674187063-6</ISBN>
+    <titulo>dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien</titulo>
+    <preco>95.1</preco>
+    <estado>aceitável</estado>
+    <AdC>4</AdC>
+    <ano>1983</ano>
+  </Obra>
+  <Obra>
+    <id>256</id>
+    <autor1>Desirée , Gaëlle </autor1>
+    <ISBN>031032417-3</ISBN>
+    <titulo>justo nec condimentum neque sapien placerat ante nulla justo aliquam quis</titulo>
+    <preco>108.17</preco>
+    <estado>aceitável</estado>
+    <AdC>2</AdC>
+    <ano>1922</ano>
+  </Obra>
+  <Obra>
+    <id>257</id>
+    <autor1>Táng , Athéna </autor1>
+    <ISBN>800359905-9</ISBN>
+    <titulo>convallis duis consequat dui nec</titulo>
+    <preco>71.66</preco>
+    <estado>aceitável</estado>
+    <AdC>1</AdC>
+    <ano>1971</ano>
+  </Obra>
+  <Obra>
+    <id>258</id>
+    <autor1>Gwenaëlle Rhodes, Åke Sylvester</autor1>
+    <ISBN>331023325-1</ISBN>
+    <titulo>ac nulla sed vel enim sit amet nunc viverra dapibus</titulo>
+    <preco>62.02</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>1821</ano>
+  </Obra>
+  <Obra>
+    <id>259</id>
+    <autor1>Véronique Darcey, Cloé Jarrett</autor1>
+    <ISBN>495182860-X</ISBN>
+    <titulo>ante ipsum</titulo>
+    <preco>85.0</preco>
+    <estado>novo</estado>
+    <AdC>6</AdC>
+    <ano>1833</ano>
+  </Obra>
+  <Obra>
+    <id>260</id>
+    <autor1>Jú Bruggeman, Intéressant Finley</autor1>
+    <ISBN>218281321-7</ISBN>
+    <titulo>vestibulum ante ipsum primis in faucibus orci luctus et</titulo>
+    <preco>82.16</preco>
+    <estado>retirado</estado>
+    <AdC>2</AdC>
+    <ano>1918</ano>
+  </Obra>
+  <Obra>
+    <id>261</id>
+    <autor1> Onslow,  Skelly</autor1>
+    <ISBN>823828513-5</ISBN>
+    <titulo>nulla integer pede justo lacinia eget tincidunt eget tempus vel</titulo>
+    <preco>29.87</preco>
+    <estado>excelente</estado>
+    <AdC>3</AdC>
+    <ano>1802</ano>
+  </Obra>
+  <Obra>
+    <id>262</id>
+    <autor1>Kévina , Örjan </autor1>
+    <ISBN>978283110-7</ISBN>
+    <titulo>velit donec diam neque vestibulum eget</titulo>
+    <preco>14.56</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>2003</ano>
+  </Obra>
+  <Obra>
+    <id>263</id>
+    <autor1>Edmée Mereweather, Lèi Holden</autor1>
+    <ISBN>663852145-4</ISBN>
+    <titulo>ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris</titulo>
+    <preco>41.37</preco>
+    <estado>aceitável</estado>
+    <AdC>1</AdC>
+    <ano>1938</ano>
+  </Obra>
+  <Obra>
+    <id>264</id>
+    <autor1>Maéna , Gaétane </autor1>
+    <ISBN>698381507-6</ISBN>
+    <titulo>rhoncus aliquam lacus morbi quis tortor id nulla ultrices aliquet maecenas</titulo>
+    <preco>90.83</preco>
+    <estado>excelente</estado>
+    <AdC>5</AdC>
+    <ano>1949</ano>
+  </Obra>
+  <Obra>
+    <id>265</id>
+    <autor1>Kallisté de Castelain, Yè Livvyy</autor1>
+    <ISBN>824041753-1</ISBN>
+    <titulo>neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo</titulo>
+    <preco>55.24</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1851</ano>
+  </Obra>
+  <Obra>
+    <id>266</id>
+    <autor1>Chloé , Maëlla </autor1>
+    <ISBN>076608637-2</ISBN>
+    <titulo>aliquet ultrices</titulo>
+    <preco>52.93</preco>
+    <estado>aceitável</estado>
+    <AdC>1</AdC>
+    <ano>1832</ano>
+  </Obra>
+  <Obra>
+    <id>267</id>
+    <autor1>Maïwenn , Cléa </autor1>
+    <ISBN>858765292-3</ISBN>
+    <titulo>orci luctus et ultrices posuere cubilia</titulo>
+    <preco>37.69</preco>
+    <estado>excelente</estado>
+    <AdC>3</AdC>
+    <ano>1962</ano>
+  </Obra>
+  <Obra>
+    <id>268</id>
+    <autor1>Michèle , Léa </autor1>
+    <ISBN>180070492-5</ISBN>
+    <titulo>justo eu massa donec dapibus duis</titulo>
+    <preco>81.36</preco>
+    <estado>bom</estado>
+    <AdC>1</AdC>
+    <ano>1975</ano>
+  </Obra>
+  <Obra>
+    <id>269</id>
+    <autor1>Eliès Limeburner, Aloïs Clarissa</autor1>
+    <ISBN>827735036-8</ISBN>
+    <titulo>varius integer ac leo pellentesque</titulo>
+    <preco>17.55</preco>
+    <estado>bom</estado>
+    <AdC>2</AdC>
+    <ano>1927</ano>
+  </Obra>
+  <Obra>
+    <id>270</id>
+    <autor1>Lén , Zhì </autor1>
+    <ISBN>210090651-8</ISBN>
+    <titulo>ipsum praesent blandit lacinia erat vestibulum sed magna at</titulo>
+    <preco>6.74</preco>
+    <estado>mau</estado>
+    <AdC>4</AdC>
+    <ano>1822</ano>
+  </Obra>
+  <Obra>
+    <id>271</id>
+    <autor1>Solène Neilus, Marylène Lisa</autor1>
+    <ISBN>057348641-7</ISBN>
+    <titulo>pede ac diam cras pellentesque volutpat dui</titulo>
+    <preco>117.75</preco>
+    <estado>retirado</estado>
+    <AdC>3</AdC>
+    <ano>1850</ano>
+  </Obra>
+  <Obra>
+    <id>272</id>
+    <autor1>Crééz , Maïté </autor1>
+    <ISBN>786853109-6</ISBN>
+    <titulo>eget elit sodales scelerisque mauris sit amet eros suspendisse</titulo>
+    <preco>119.74</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>1894</ano>
+  </Obra>
+  <Obra>
+    <id>273</id>
+    <autor1>Méthode , Mélys </autor1>
+    <ISBN>282568629-8</ISBN>
+    <titulo>ultrices enim lorem ipsum</titulo>
+    <preco>44.01</preco>
+    <estado>retirado</estado>
+    <AdC>6</AdC>
+    <ano>1932</ano>
+  </Obra>
+  <Obra>
+    <id>274</id>
+    <autor1>Laurélie , Erwéi </autor1>
+    <ISBN>522742682-1</ISBN>
+    <titulo>morbi odio odio elementum eu interdum eu tincidunt in leo maecenas</titulo>
+    <preco>105.14</preco>
+    <estado>novo</estado>
+    <AdC>5</AdC>
+    <ano>1890</ano>
+  </Obra>
+  <Obra>
+    <id>275</id>
+    <autor1>Bénédicte Jermyn, Aurélie Em</autor1>
+    <ISBN>543643650-1</ISBN>
+    <titulo>sociis natoque penatibus et magnis dis</titulo>
+    <preco>15.59</preco>
+    <estado>mau</estado>
+    <AdC>1</AdC>
+    <ano>1829</ano>
+  </Obra>
+  <Obra>
+    <id>276</id>
+    <autor1>Göran , Publicité </autor1>
+    <ISBN>215772370-6</ISBN>
+    <titulo>fermentum donec ut mauris eget massa tempor convallis nulla neque libero</titulo>
+    <preco>7.44</preco>
+    <estado>aceitável</estado>
+    <AdC>6</AdC>
+    <ano>1917</ano>
+  </Obra>
+  <Obra>
+    <id>277</id>
+    <autor1>Pò , Léone </autor1>
+    <ISBN>869757778-0</ISBN>
+    <titulo>imperdiet et</titulo>
+    <preco>26.1</preco>
+    <estado>bom</estado>
+    <AdC>2</AdC>
+    <ano>1814</ano>
+  </Obra>
+  <Obra>
+    <id>278</id>
+    <autor1> Sein,  Whitman</autor1>
+    <ISBN>336180601-1</ISBN>
+    <titulo>id justo</titulo>
+    <preco>43.65</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1992</ano>
+  </Obra>
+  <Obra>
+    <id>279</id>
+    <autor1>Lorène , Börje </autor1>
+    <ISBN>113525232-7</ISBN>
+    <titulo>suspendisse potenti cras</titulo>
+    <preco>3.69</preco>
+    <estado>novo</estado>
+    <AdC>3</AdC>
+    <ano>1865</ano>
+  </Obra>
+  <Obra>
+    <id>280</id>
+    <autor1>Eléonore Rohan, Åke Linnet</autor1>
+    <ISBN>772404270-5</ISBN>
+    <titulo>proin leo odio porttitor id consequat in consequat</titulo>
+    <preco>40.63</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1949</ano>
+  </Obra>
+  <Obra>
+    <id>281</id>
+    <autor1> Corteis,  Page</autor1>
+    <ISBN>215941779-3</ISBN>
+    <titulo>sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at</titulo>
+    <preco>99.22</preco>
+    <estado>novo</estado>
+    <AdC>2</AdC>
+    <ano>1835</ano>
+  </Obra>
+  <Obra>
+    <id>282</id>
+    <autor1>Athéna , Solène </autor1>
+    <ISBN>675825140-3</ISBN>
+    <titulo>ac diam cras pellentesque volutpat dui maecenas tristique est</titulo>
+    <preco>80.1</preco>
+    <estado>novo</estado>
+    <AdC>1</AdC>
+    <ano>2010</ano>
+  </Obra>
+  <Obra>
+    <id>283</id>
+    <autor1>Angélique , Yè </autor1>
+    <ISBN>251210083-9</ISBN>
+    <titulo>tincidunt lacus at velit</titulo>
+    <preco>70.98</preco>
+    <estado>retirado</estado>
+    <AdC>2</AdC>
+    <ano>1817</ano>
+  </Obra>
+  <Obra>
+    <id>284</id>
+    <autor1>Séverine , Salomé </autor1>
+    <ISBN>377748688-4</ISBN>
+    <titulo>justo sit</titulo>
+    <preco>80.49</preco>
+    <estado>aceitável</estado>
+    <AdC>2</AdC>
+    <ano>1983</ano>
+  </Obra>
+  <Obra>
+    <id>285</id>
+    <autor1>Judicaël , Andrée </autor1>
+    <ISBN>818631980-8</ISBN>
+    <titulo>egestas metus aenean fermentum donec ut mauris eget massa tempor convallis</titulo>
+    <preco>108.84</preco>
+    <estado>excelente</estado>
+    <AdC>6</AdC>
+    <ano>1840</ano>
+  </Obra>
+  <Obra>
+    <id>286</id>
+    <autor1>Océane Commings, Mélinda Berne</autor1>
+    <ISBN>499899335-6</ISBN>
+    <titulo>sodales sed tincidunt eu felis</titulo>
+    <preco>108.14</preco>
+    <estado>mau</estado>
+    <AdC>6</AdC>
+    <ano>1993</ano>
+  </Obra>
+  <Obra>
+    <id>287</id>
+    <autor1>Cloé , Mélina </autor1>
+    <ISBN>224702143-3</ISBN>
+    <titulo>at feugiat non pretium</titulo>
+    <preco>2.34</preco>
+    <estado>bom</estado>
+    <AdC>3</AdC>
+    <ano>1972</ano>
+  </Obra>
+  <Obra>
+    <id>288</id>
+    <autor1>Märta Hobell, Pål Virgilio</autor1>
+    <ISBN>654709602-5</ISBN>
+    <titulo>ligula nec sem duis aliquam convallis nunc proin at turpis a pede</titulo>
+    <preco>43.21</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>1952</ano>
+  </Obra>
+  <Obra>
+    <id>289</id>
+    <autor1> Pottinger,  Harmony</autor1>
+    <ISBN>230674343-6</ISBN>
+    <titulo>quam turpis adipiscing lorem</titulo>
+    <preco>11.28</preco>
+    <estado>excelente</estado>
+    <AdC>5</AdC>
+    <ano>1931</ano>
+  </Obra>
+  <Obra>
+    <id>290</id>
+    <autor1> Stonbridge,  Lindy</autor1>
+    <ISBN>701785052-1</ISBN>
+    <titulo>lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci</titulo>
+    <preco>6.69</preco>
+    <estado>bom</estado>
+    <AdC>5</AdC>
+    <ano>1864</ano>
+  </Obra>
+  <Obra>
+    <id>291</id>
+    <autor1>Maïté Wands, Ophélie Jordana</autor1>
+    <ISBN>173635777-8</ISBN>
+    <titulo>gravida sem praesent id massa id nisl venenatis</titulo>
+    <preco>65.63</preco>
+    <estado>mau</estado>
+    <AdC>5</AdC>
+    <ano>2014</ano>
+  </Obra>
+  <Obra>
+    <id>292</id>
+    <autor1>Amélie , Eléa </autor1>
+    <ISBN>722753889-3</ISBN>
+    <titulo>orci vehicula condimentum curabitur in libero ut massa volutpat</titulo>
+    <preco>25.65</preco>
+    <estado>retirado</estado>
+    <AdC>4</AdC>
+    <ano>1981</ano>
+  </Obra>
+  <Obra>
+    <id>293</id>
+    <autor1>Marie-thérèse , Mélanie </autor1>
+    <ISBN>082864128-5</ISBN>
+    <titulo>turpis sed ante vivamus tortor duis mattis egestas metus aenean fermentum</titulo>
+    <preco>70.77</preco>
+    <estado>bom</estado>
+    <AdC>4</AdC>
+    <ano>1991</ano>
+  </Obra>
+  <Obra>
+    <id>294</id>
+    <autor1>Maï , Estève </autor1>
+    <ISBN>979155692-X</ISBN>
+    <titulo>pede ac</titulo>
+    <preco>63.51</preco>
+    <estado>mau</estado>
+    <AdC>4</AdC>
+    <ano>1828</ano>
+  </Obra>
+  <Obra>
+    <id>295</id>
+    <autor1>Maéna , Illustrée </autor1>
+    <ISBN>320394405-7</ISBN>
+    <titulo>tortor id nulla ultrices aliquet maecenas leo odio</titulo>
+    <preco>92.59</preco>
+    <estado>bom</estado>
+    <AdC>5</AdC>
+    <ano>1800</ano>
+  </Obra>
+  <Obra>
+    <id>296</id>
+    <autor1>Naéva , Ruì </autor1>
+    <ISBN>619059649-5</ISBN>
+    <titulo>et ultrices posuere cubilia curae nulla dapibus dolor vel</titulo>
+    <preco>26.53</preco>
+    <estado>novo</estado>
+    <AdC>4</AdC>
+    <ano>2011</ano>
+  </Obra>
+  <Obra>
+    <id>297</id>
+    <autor1>Cécilia , Gaëlle </autor1>
+    <ISBN>263212420-4</ISBN>
+    <titulo>mi sit</titulo>
+    <preco>29.91</preco>
+    <estado>novo</estado>
+    <AdC>1</AdC>
+    <ano>1947</ano>
+  </Obra>
+  <Obra>
+    <id>298</id>
+    <autor1>Léane Shovlar, Märta Georgiana</autor1>
+    <ISBN>493701089-1</ISBN>
+    <titulo>condimentum neque sapien</titulo>
+    <preco>41.24</preco>
+    <estado>excelente</estado>
+    <AdC>5</AdC>
+    <ano>1918</ano>
+  </Obra>
+  <Obra>
+    <id>299</id>
+    <autor1>Léonore , Kallisté </autor1>
+    <ISBN>512208000-3</ISBN>
+    <titulo>odio condimentum id luctus nec molestie sed</titulo>
+    <preco>95.67</preco>
+    <estado>novo</estado>
+    <AdC>6</AdC>
+    <ano>2000</ano>
+  </Obra>
+  <Obra>
+    <id>300</id>
+    <autor1>Yénora , Gérald </autor1>
+    <ISBN>380125637-5</ISBN>
+    <titulo>lectus pellentesque at nulla suspendisse potenti cras in purus eu</titulo>
+    <preco>90.74</preco>
+    <estado>mau</estado>
+    <AdC>3</AdC>
+    <ano>1855</ano>
+  </Obra>
+  <Obra>
+    <id>301</id>
+    <autor1>Tú , Béatrice </autor1>
+    <ISBN>911126426-8</ISBN>
+    <titulo>natoque penatibus et magnis</titulo>
+    <preco>121.84</preco>
+    <estado>novo</estado>
+    <AdC>3</AdC>
+    <ano>1895</ano>
+  </Obra>
+  <Obra>
+    <id>302</id>
+    <autor1>Göran , Maëline </autor1>
+    <ISBN>763819413-6</ISBN>
+    <titulo>quisque ut erat curabitur gravida nisi at nibh in hac habitasse</titulo>
+    <preco>46.4</preco>
+    <estado>bom</estado>
+    <AdC>4</AdC>
+    <ano>1816</ano>
+  </Obra>
+  <Obra>
+    <id>303</id>
+    <autor1>Ophélie , Renée </autor1>
+    <ISBN>529988307-2</ISBN>
+    <titulo>vel accumsan tellus nisi eu orci mauris</titulo>
+    <preco>18.89</preco>
+    <estado>excelente</estado>
+    <AdC>1</AdC>
+    <ano>1991</ano>
+  </Obra>
+  <Obra>
+    <id>304</id>
+    <autor1>Görel , Mélinda </autor1>
+    <ISBN>459238631-0</ISBN>
+    <titulo>orci luctus et</titulo>
+    <preco>94.54</preco>
+    <estado>aceitável</estado>
+    <AdC>3</AdC>
+    <ano>1883</ano>
+  </Obra>
+  <Obra>
+    <id>305</id>
+    <autor1>Adèle , Néhémie </autor1>
+    <ISBN>089728422-4</ISBN>
+    <titulo>convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris</titulo>
+    <preco>37.21</preco>
+    <estado>mau</estado>
+    <AdC>2</AdC>
+    <ano>1943</ano>
+  </Obra>
+</Obras>
