@@ -132,14 +132,62 @@
                 <property expression="get-property('uri.var.polo')" name="polo resource identifier"/>
             </log>
             <switch description="Case-Insensitive Switch Matcher for Polos" source="get-property('uri.var.polo')">
-                <case regex="([p|P][o|O][l|L][o|O]1)">
-                    <sequence key="GetPolo1ObrasSequence"/>
-                </case>
+                <case regex="([p|P][o|O][l|L][o|O]1)"/>
                 <case regex="([p|P][o|O][l|L][o|O]2)">
                     <sequence key="GetPolo2ObrasSequence"/>
                 </case>
                 <case regex="([p|P][o|O][l|L][o|O]3)">
                     <sequence key="GetPolo3ObrasSequence"/>
+                </case>
+                <default>
+                    <sequence description="Sequence that handles response properties when a resource is not found" key="ResourceNotFoundSequence"/>
+                </default>
+            </switch>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <payloadFactory description="Payload Error" media-type="json">
+                <format>
+					{&#xd;
+					"message":$1,&#xd;
+					"code":$2,&#xd;
+					"detail":$3,&#xd;
+					"exception":$4&#xd;
+					}
+				</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_CODE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_DETAIL"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_EXCEPTION"/>
+                </args>
+            </payloadFactory>
+            <respond description="Respond Error"/>
+        </faultSequence>
+    </resource>
+    <resource methods="GET" uri-template="/polos/{polo}/obras/{obra}">
+        <inSequence>
+            <log description="Incoming Request Log" level="custom">
+                <property name="message" value="Get Polo Obra"/>
+                <property expression="get-property('uri.var.polo')" name="polo resource identifier"/>
+                <property expression="get-property('uri.var.obra')" name="obra resource identifier"/>
+            </log>
+            <switch description="Case-Insensitive Switch Matcher for Polos" source="get-property('uri.var.polo')">
+                <case regex="([p|P][o|O][l|L][o|O]1)">
+                    <call-template description="GetPolo1ObraCallTemplate" target="GetPolo1ObraSequenceTemplate">
+                        <with-param name="obra" value="{get-property('uri.var.obra')}"/>
+                    </call-template>
+                </case>
+                <case regex="([p|P][o|O][l|L][o|O]2)">
+                    <call-template description="GetPolo2ObraCallTemplate" target="GetPolo2ObraSequenceTemplate">
+                        <with-param name="obra" value="{get-property('uri.var.obra')}"/>
+                    </call-template>
+                </case>
+                <case regex="([p|P][o|O][l|L][o|O]3)">
+                    <call-template description="GetPolo3ObraCallTemplate" target="GetPolo3ObraSequenceTemplate">
+                        <with-param name="obra" value="{get-property('uri.var.obra')}"/>
+                    </call-template>
                 </case>
                 <default>
                     <sequence description="Sequence that handles response properties when a resource is not found" key="ResourceNotFoundSequence"/>

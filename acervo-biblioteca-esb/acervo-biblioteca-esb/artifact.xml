@@ -44,4 +44,13 @@
     <artifact name="GetPolo3ObrasSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/GetPolo3ObrasSequence.xml</file>
     </artifact>
+    <artifact name="GetPolo2ObraSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/templates/GetPolo2ObraSequenceTemplate.xml</file>
+    </artifact>
+    <artifact name="GetPolo1ObraSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/templates/GetPolo1ObraSequenceTemplate.xml</file>
+    </artifact>
+    <artifact name="GetPolo3ObraSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/templates/GetPolo3ObraSequenceTemplate.xml</file>
+    </artifact>
 </artifacts>
