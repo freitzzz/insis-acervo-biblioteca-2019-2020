@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template name="GetPolo1ObraSequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
-    <sequence/>
+    <parameter name="obra"/>
+    <sequence>
+        <log description="Start Get Polo1 Obra Sequence" level="custom">
+            <property name="message" value="Start getting Polo1 obra sequence"/>
+        </log>
+        <sequence key="Polo1ObraSequence"/>
+        <log description="Finish Get Polo1 Obras Sequence" level="custom">
+            <property name="message" value="Finished get polo1 obra..."/>
+        </log>
+    </sequence>
 </template>
