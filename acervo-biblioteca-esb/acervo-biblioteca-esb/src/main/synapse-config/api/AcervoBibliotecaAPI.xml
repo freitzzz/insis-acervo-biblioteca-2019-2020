@@ -83,7 +83,9 @@
                 </onComplete>
             </aggregate>
             <payloadFactory description="Get only array" media-type="json">
-                <format>$1</format>
+                <format>
+					$1
+				</format>
                 <args>
                     <arg evaluator="json" expression="$.AreasConhecimento"/>
                 </args>
@@ -133,11 +135,14 @@
                 <case regex="([p|P][o|O][l|L][o|O]1)">
                     <sequence key="GetPolo1ObrasSequence"/>
                 </case>
-                <case regex="([p|P][o|O][l|L][o|O]2)"/>
-                <case regex="([p|P][o|O][l|L][o|O]3)"/>
+                <case regex="([p|P][o|O][l|L][o|O]2)">
+                    <sequence key="GetPolo2ObrasSequence"/>
+                </case>
+                <case regex="([p|P][o|O][l|L][o|O]3)">
+                    <sequence key="GetPolo3ObrasSequence"/>
+                </case>
                 <default>
                     <sequence description="Sequence that handles response properties when a resource is not found" key="ResourceNotFoundSequence"/>
-                    <respond/>
                 </default>
             </switch>
             <respond/>
