@@ -213,67 +213,10 @@
                 <case regex="([f|F][o|O][r|R][n|N][e|E][c|C][e|E][d|D][o|O][r|R]1)"/>
                 <case regex="([f|F][o|O][r|R][n|N][e|E][c|C][e|E][d|D][o|O][r|R]2)">
                     <sequence key="Fornecedor2ObraByTituloSequence"/>
-                    <payloadFactory description="TO BE REMOVED" media-type="xml">
-                        <format>
-                            <Obras xmlns="Fornecedor2">
-                                <Obra>
-                                    <id>1</id>
-                                    <titulo>volutpat eleifend donec ut</titulo>
-                                    <preco>57.88</preco>
-                                    <encad>10</encad>
-                                    <ano>1871</ano>
-                                </Obra>
-                                <Obra>
-                                    <id>1</id>
-                                    <titulo>volutpat eleifend donec ut</titulo>
-                                    <preco>57.88</preco>
-                                    <encad>3</encad>
-                                    <ano>1871</ano>
-                                </Obra>
-                                <Obra>
-                                    <id>1</id>
-                                    <titulo>volutpat eleifend donec ut</titulo>
-                                    <preco>57.88</preco>
-                                    <encad>2</encad>
-                                    <ano>1871</ano>
-                                </Obra>
-                                <Obra>
-                                    <id>1</id>
-                                    <titulo>volutpat eleifend donec ut</titulo>
-                                    <preco>57.88</preco>
-                                    <encad>3</encad>
-                                    <ano>1871</ano>
-                                </Obra>
-                            </Obras>
-                        </format>
-                        <args/>
-                    </payloadFactory>
-                    <log level="full"/>
-                    <log level="custom">
-                        <property expression="//*[local-name()='encad']" name="aaa"/>
-                        <property expression="$body//Obras" name="$body//Obras"/>
-                        <property expression="$body//Obras/Obra" name="$body//Obras/Obra"/>
-                        <property expression="$body//Obras//Obra//encad" name="$body//Obras/Obra/encad"/>
-                    </log>
-                    <log level="custom">
-                        <property expression="//*[local-name()='encad']" name="tipos_encadernacao"/>
-                        <property expression="get-property('tipos_encadernacao')" name="tipos"/>
-                        <property expression="//Obra/encad[not(. = ../following-sibling::Obra/encad)]" name="not repeated"/>
-                    </log>
-                    <foreach expression="//*[local-name()='encad']" id="forEachID">
-                        <sequence>
-                            <log level="custom">
-                                <property expression="//*[local-name()='Obra']" name="obras"/>
-                            </log>
-                        </sequence>
-                    </foreach>
-                    <property expression="//*[local-name()='encad']" name="tipos_encadernacao" scope="default" type="OM"/>
-                    <log level="full">
-                        <property expression="get-property('tipos_encadernacao')" name="aa"/>
-                    </log>
-                    <property description="Remove repeated " expression="//*[get-property('tipos-encadernacao')='encad'][not(text()=preceding-sibling::*[get-property('tipos-encadernacao')='encad']/text())]" name="tipos-encadernacao" scope="default" type="STRING"/>
                 </case>
-                <case regex="([f|F][o|O][r|R][n|N][e|E][c|C][e|E][d|D][o|O][r|R]3)"/>
+                <case regex="([f|F][o|O][r|R][n|N][e|E][c|C][e|E][d|D][o|O][r|R]3)">
+                    <sequence key="Fornecedor3ObrasByTituloSequence"/>
+                </case>
                 <default>
                     <sequence description="Sequence that handles response properties when a resource is not found" key="ResourceNotFoundSequence"/>
                     <respond/>
