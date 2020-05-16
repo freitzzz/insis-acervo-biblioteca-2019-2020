@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<template name="Polo2ObraSequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
+<template name="Polo3ObraSequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="obra"/>
     <sequence>
         <log description="Start Retrieve Obra Polo 2 Log" level="custom">

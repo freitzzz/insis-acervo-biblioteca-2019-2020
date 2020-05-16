@@ -56,6 +56,7 @@
     <com.example.acervo-biblioteca-esb.endpoint_._Polo1ObraEP>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.endpoint_._Polo1ObraEP>
     <com.example.acervo-biblioteca-esb.endpoint_._Polo3EP>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.endpoint_._Polo3EP>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_inputSchema>
+    <com.example.acervo-biblioteca-esb.template_._Polo3ObraSequenceTemplate>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.template_._Polo3ObraSequenceTemplate>
     <com.example.acervo-biblioteca-esb.sequence_._Polo1ObrasSequence>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.sequence_._Polo1ObrasSequence>
     <com.example.acervo-biblioteca-esb.template_._GetPolo2ObraStatesSequenceTemplate>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.template_._GetPolo2ObraStatesSequenceTemplate>
     <com.example.acervo-biblioteca-esb.resource_._MapPolo3ObrasToObrasPolo>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapPolo3ObrasToObrasPolo>
@@ -277,6 +278,12 @@
     <dependency>
       <groupId>com.example.acervo-biblioteca-esb.template</groupId>
       <artifactId>Polo2ObraSequenceTemplate</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.template</groupId>
+      <artifactId>Polo3ObraSequenceTemplate</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>

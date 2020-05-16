@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template name="GetPolo3ObraSequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
-    <sequence/>
+    <parameter name="obra"/>
+    <sequence>
+        <log description="Start Get Polo3 Obra Sequence" level="custom">
+            <property name="message" value="Start getting Polo3 obra sequence"/>
+        </log>
+        <call-template description="Polo3ObraSequenceTemplate" target="Polo3ObraSequenceTemplate">
+            <with-param name="obra" value="{$func:obra}"/>
+        </call-template>
+        <log description="Finish Get Polo3 Obras Sequence" level="custom">
+            <property name="message" value="Finished get polo3 obra..."/>
+        </log>
+    </sequence>
 </template>
