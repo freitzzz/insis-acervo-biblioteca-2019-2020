@@ -26,6 +26,7 @@
     <com.example.acervo-biblioteca-esb.sequence_._Polo1AreasConhecimentoSequence>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.sequence_._Polo1AreasConhecimentoSequence>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_xsltStyleSheet>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1>
+    <com.example.acervo-biblioteca-esb.sequence_._SendEmailSequence>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.sequence_._SendEmailSequence>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1_outputSchema>
     <com.example.acervo-biblioteca-esb.endpoint_._Fornecedor3ObrasEP>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.endpoint_._Fornecedor3ObrasEP>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_inputSchema>
@@ -160,6 +161,9 @@
       <version>3.0.8</version>
       <type>zip</type>
     </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.sequence</groupId>
+      <artifactId>SendEmailSequence</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>

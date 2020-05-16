@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="SendEmailSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Log Sequence" level="custom">
+        <property name="message" value="SendEmailSequence"/>
+    </log>
+    <property expression="json-eval($.userEmail)" name="email" scope="default" type="STRING"/>
+    <property expression="json-eval($.message)" name="message" scope="default" type="STRING"/>
+    <property expression="json-eval($.subject)" name="subject" scope="default" type="STRING"/>
+    <log level="custom">
+        <property expression="get-property('email')" name="email"/>
+        <property expression="get-property('message')" name="message"/>
+        <property expression="get-property('subject')" name="subject"/>
+    </log>
+    <gmail.init>
+        <userId>insis.email.2020@gmail.com</userId>
+        <accessToken>ya29.a0AfH6SMAfaSfgDCSSIqzUrTHO8pgGkzyKSc8sjY01GhpPWZIVOOJWQ7OC_zyHq7Ahv_8wreCab7vzG2r52kShyfp5D8AIIwZuX-ov6NHU3StzQUbf0u0_obfRLk_ybLxMk_u6y2kC-bIgnyDqgB2TAVwX3NoK0ycTdLg</accessToken>
+        <apiUrl>https://www.googleapis.com/gmail</apiUrl>
+        <clientId>918464397747-raiikdntoqtfebmttdj30dor29l52deo.apps.googleusercontent.com</clientId>
+        <clientSecret>vdbLSFO7LloIZEDETXt2mmL4</clientSecret>
+        <refreshToken>1//04xF1qhhO0Cl5CgYIARAAGAQSNwF-L9IreQxnD9nCbF1v-RtIwKStoK_g-c1c5PvWyE5sjzc4YrTnPRO25WqFpBEolIjqqI8p9rI</refreshToken>
+    </gmail.init>
+    <gmail.sendMail>
+        <to>{$ctx:email}</to>
+        <subject>{$ctx:subject}</subject>
+        <messageBody>{$ctx:message}</messageBody>
+    </gmail.sendMail>
+    <payloadFactory description="Payload Success" media-type="json">
+        <format>
+					{&#xd;
+					"message":"$1",&#xd;
+					"code":"$2",&#xd;
+					"detail":"$3"&#xd;
+					}
+				</format>
+        <args>
+            <arg evaluator="xml" expression="fn:concat('Email sent to ', $ctx:email)"/>
+            <arg value="200"/>
+            <arg evaluator="xml" expression="fn:concat('Subject: ', $ctx:subject, ', Message: ', $ctx:message)"/>
+        </args>
+    </payloadFactory>
+</sequence>
