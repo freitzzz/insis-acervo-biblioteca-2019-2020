@@ -42,4 +42,7 @@
     <artifact name="SendEmailSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/SendEmailSequence.xml</file>
     </artifact>
+    <artifact name="Fornecedor3ObrasSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Fornecedor3ObrasSequence.xml</file>
+    </artifact>
 </artifacts>
