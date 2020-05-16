@@ -1,0 +1,40 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+var count_i_autores_386665b0_0078_40c9_ab8f_a480ef38c75f = 0;
+var count_i_estado_ae682367_1c30_4312_aa58_869b4892dfce = 0;
+outputroot =  {};
+outputroot.id = inputroot.originalPayload.Obras.Obra.id;
+outputroot.authors =  [];
+outputroot.isbn = inputroot.originalPayload.Obras.Obra.ISBN;
+outputroot.title = inputroot.originalPayload.Obras.Obra.titulo;
+outputroot.price = inputroot.originalPayload.Obras.Obra.preco;
+outputroot.count = inputroot.properties.count;
+outputroot.states =  [];
+outputroot.areaconhecimento = inputroot.adc.Desc;
+outputroot.publishedYear = inputroot.originalPayload.Obras.Obra.ano;
+
+for(i_autores_386665b0_0078_40c9_ab8f_a480ef38c75f in inputroot.properties.autores){
+outputroot.authors[count_i_autores_386665b0_0078_40c9_ab8f_a480ef38c75f] = inputroot.properties.autores[i_autores_386665b0_0078_40c9_ab8f_a480ef38c75f];
+
+count_i_autores_386665b0_0078_40c9_ab8f_a480ef38c75f++;
+}
+
+for(i_estado_ae682367_1c30_4312_aa58_869b4892dfce in inputroot.properties.estados.estado){
+outputroot.states[count_i_estado_ae682367_1c30_4312_aa58_869b4892dfce] = inputroot.properties.estados.estado[i_estado_ae682367_1c30_4312_aa58_869b4892dfce];
+
+count_i_estado_ae682367_1c30_4312_aa58_869b4892dfce++;
+}
+return outputroot;
+};
+
+
+
+
+
+
+
+
+
+
+

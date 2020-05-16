@@ -1,0 +1,35 @@
+{
+  "originalPayload": {
+    "Obras": {
+      "Obra": {
+        "id": 245,
+        "autor1": "Gaïa , Åsa ",
+        "autor2": "n/a",
+        "titulo": "morbi ut odio cras mi pede malesuada in",
+        "preco": 65.98,
+        "estado": "retirado",
+        "AdC": 6,
+        "ano": 1806,
+        "ISBN": "691460361-8"
+      }
+    }
+  },
+  "properties": {
+    "autores": [
+      "Gaïa , Åsa Gaïa , Åsa Gaïa , Åsa ",
+      "n/an/an/a"
+    ],
+    "count": 3.0,
+    "estados": {
+      "estado": [
+        "retirado",
+        "novo",
+        "mau"
+      ]
+    }
+  },
+  "adc": {
+    "id": "6",
+    "Desc": "literatura"
+  }
+}

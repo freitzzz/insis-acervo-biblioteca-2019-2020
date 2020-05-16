@@ -38,12 +38,14 @@
     <com.example.acervo-biblioteca-esb.endpoint_._GetPolo1ObrasEP>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.endpoint_._GetPolo1ObrasEP>
     <com.example.acervo-biblioteca-esb.sequences_._Polo3AreasConhecimentoSequence>capp/ApplicationServer</com.example.acervo-biblioteca-esb.sequences_._Polo3AreasConhecimentoSequence>
     <com.example.acervo-biblioteca-esb.resource_._TestMapper_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._TestMapper_xsltStyleSheet>
+    <com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties_xsltStyleSheet>
     <com.example.acervo-biblioteca-esb.resource_._MapObrasPolo1ToObrasPolos_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapObrasPolo1ToObrasPolos_inputSchema>
     <com.example.acervo-biblioteca-esb.resource_._RemovePolo3ObrasSoapHeadersMapper_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._RemovePolo3ObrasSoapHeadersMapper_outputSchema>
     <com.example.acervo-biblioteca-esb.resource_._FormatPolo1ObraProperties_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._FormatPolo1ObraProperties_outputSchema>
     <com.example.acervo-biblioteca-esb.sequence_._Polo3ObrasSequence>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.sequence_._Polo3ObrasSequence>
     <com.example.acervo-biblioteca-esb.resource_._FormatPolo1ObraProperties_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._FormatPolo1ObraProperties_xsltStyleSheet>
     <com.example.acervo-biblioteca-esb.resource_._TestMapper3_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._TestMapper3_outputSchema>
+    <com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties>
     <com.example.acervo-biblioteca-esb.resource_._FormatPolo1ObraProperties_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._FormatPolo1ObraProperties_inputSchema>
     <com.example.acervo-biblioteca-esb.sequence_._Polo1AreasConhecimentoSequence>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.sequence_._Polo1AreasConhecimentoSequence>
     <com.example.acervo-biblioteca-esb.resource_._MapPolo1ObrasJsonToXML_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapPolo1ObrasJsonToXML_xsltStyleSheet>
@@ -79,7 +81,9 @@
     <com.example.acervo-biblioteca-esb.ressb.resource_._TestMapper_inputSchema>capp/ApplicationServer</com.example.acervo-biblioteca-esb.ressb.resource_._TestMapper_inputSchema>
     <com.example.acervo-biblioteca-esb.resource_._MapPolo2ObrasToObrasPolo>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapPolo2ObrasToObrasPolo>
     <com.example.acervo-biblioteca-esb.endpoint_._Polo2ObrasEP>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.endpoint_._Polo2ObrasEP>
+    <com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties_inputSchema>
     <com.example.acervo-biblioteca-esb.template_._Polo2ObraSequenceTemplate>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.template_._Polo2ObraSequenceTemplate>
+    <com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties_outputSchema>
     <com.example.acervo-biblioteca-esb.sequence_._ResourceNotFoundSequence>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.sequence_._ResourceNotFoundSequence>
     <com.example.acervo-biblioteca-esb.sequence_._Polo1AreasConhecimentoRawSequence>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.sequence_._Polo1AreasConhecimentoRawSequence>
   </properties>
@@ -345,6 +349,30 @@
     <dependency>
       <groupId>com.example.acervo-biblioteca-esb.resource</groupId>
       <artifactId>CleanupPolo1ObraProperties_xsltStyleSheet</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.resource</groupId>
+      <artifactId>CleanupPolo2ObraProperties</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.resource</groupId>
+      <artifactId>CleanupPolo2ObraProperties_inputSchema</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.resource</groupId>
+      <artifactId>CleanupPolo2ObraProperties_outputSchema</artifactId>
+      <version>1.0.0</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.resource</groupId>
+      <artifactId>CleanupPolo2ObraProperties_xsltStyleSheet</artifactId>
       <version>1.0.0</version>
       <type>zip</type>
     </dependency>
