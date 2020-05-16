@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <endpoint name="Polo3EP" xmlns="http://ws.apache.org/ns/synapse">
-    <wsdl port="Port" service="Service" uri="file:samples/data-services/wsdl/Polo3.wsdl">
+    <wsdl port="Port" service="Service" statistics="enable" trace="enable" uri="file:samples/data-services/wsdl/Polo3.wsdl">
         <suspendOnFailure>
             <initialDuration>-1</initialDuration>
             <progressionFactor>1.0</progressionFactor>

@@ -1,0 +1,21 @@
+{
+  "estados": {
+    "value": {
+      "estado": [
+        "retirado",
+        "novo",
+        "retirado"
+      ]
+    }
+  },
+  "properties": {
+    "autores": [
+      "Maëlla Anaïs"
+    ],
+    "isbn": "122867628-3",
+    "titulo": "arcu libero rutrum ac lobortis vel dapibus at diam nam tristique",
+    "ano": 2008,
+    "areaconhecimento": "ensaio",
+    "count": 3.0
+  }
+}

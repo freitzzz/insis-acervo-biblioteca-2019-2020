@@ -1,0 +1,36 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+var count_i_autores_44f40dbc_fbe9_4508_b804_cabae7af4cdf = 0;
+var count_i_estado_e690dead_5e90_4cb9_ace2_09f65ad322bc = 0;
+outputroot =  {};
+outputroot.authors =  [];
+outputroot.isbn = inputroot.properties.isbn;
+outputroot.title = inputroot.properties.titulo;
+outputroot.count = inputroot.properties.count;
+outputroot.states =  [];
+outputroot.areaconhecimento = inputroot.properties.areaconhecimento;
+outputroot.publishedYear = inputroot.properties.ano;
+
+for(i_autores_44f40dbc_fbe9_4508_b804_cabae7af4cdf in inputroot.properties.autores){
+outputroot.authors[count_i_autores_44f40dbc_fbe9_4508_b804_cabae7af4cdf] = inputroot.properties.autores[i_autores_44f40dbc_fbe9_4508_b804_cabae7af4cdf];
+
+count_i_autores_44f40dbc_fbe9_4508_b804_cabae7af4cdf++;
+}
+
+for(i_estado_e690dead_5e90_4cb9_ace2_09f65ad322bc in inputroot.estados.value.estado){
+outputroot.states[count_i_estado_e690dead_5e90_4cb9_ace2_09f65ad322bc] = inputroot.estados.value.estado[i_estado_e690dead_5e90_4cb9_ace2_09f65ad322bc];
+
+count_i_estado_e690dead_5e90_4cb9_ace2_09f65ad322bc++;
+}
+return outputroot;
+};
+
+
+
+
+
+
+
+
+

@@ -2,100 +2,123 @@
 <template name="Polo3ObraSequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="obra"/>
     <sequence>
-        <log description="Start Retrieve Obra Polo 2 Log" level="custom">
-            <property name="message" value="Starting to retrieve Polo 2 obra..."/>
+        <log description="Start Retrieve Obra Polo3 Log" level="custom">
+            <property name="message" value="Starting to retrieve Polo3 obra..."/>
         </log>
         <property description="Store obra as uri property" expression="$func:obra" name="uri.var.obra" scope="default" type="STRING"/>
-        <payloadFactory description="Payload Soap" media-type="xml">
-            <format>
-                <xs:title xmlns:xs="http://ws.wso2.org/dataservice">$1</xs:title>
-            </format>
-            <args>
-                <arg evaluator="xml" expression="get-property('uri.var.obra')"/>
-            </args>
-        </payloadFactory>
-        <header description="Soap Header" name="Action" scope="default" value="GetObrasWithAllPropertiesByTitleOp"/>
-        <call>
-            <endpoint key="Polo2ObrasEP"/>
-        </call>
-        <payloadFactory description="Remove Soap Headers" media-type="xml">
+        <sequence key="Polo3ObrasSequence"/>
+        <payloadFactory description="Filter obras" media-type="xml">
             <format>
                 <Obras xmlns="">$1</Obras>
             </format>
             <args>
-                <arg evaluator="xml" expression="//*[name() = 'Obra']"/>
+                <arg evaluator="xml" expression="//*[local-name()= 'titulo' and ./text() = get-property('uri.var.obra')]/.."/>
             </args>
         </payloadFactory>
         <enrich description="Store Payload">
             <source clone="true" type="body"/>
             <target property="payload" type="property"/>
         </enrich>
-        <property description="Store area de conhecimento as uri property" expression="(//*[local-name()='AdC']/text())[1]" name="uri.var.adc" scope="default" type="STRING"/>
         <payloadFactory description="Get Properties" media-type="json">
             <format>
-				{"autores":["$1", "$2"],
-				"count":$3,
-				"estados":$4
+				{
+				"autores":["$1"],
+				"isbn":"$2",
+				"titulo":"$3",
+				"ano":$4,
+				"areaconhecimento":"$5",
+				"count":$6
 				}
 			</format>
             <args>
-                <arg evaluator="xml" expression="(//*[local-name()='autor1']/text())[1]"/>
-                <arg evaluator="xml" expression="(//*[local-name()='autor2']/text())[1]"/>
+                <arg evaluator="xml" expression="(//*[local-name()='autores']/text())[1]"/>
+                <arg evaluator="xml" expression="(//*[local-name()='ISBN']/text())[1]"/>
+                <arg evaluator="xml" expression="(//*[local-name()='titulo']/text())[1]"/>
+                <arg evaluator="xml" expression="(//*[local-name()='ano']/text())[1]"/>
+                <arg evaluator="xml" expression="(//*[local-name()='AdC']/text())[1]"/>
                 <arg evaluator="xml" expression="count(//*[local-name() = 'Obra'])"/>
-                <arg evaluator="xml" expression="//*[local-name()= 'estado']"/>
             </args>
         </payloadFactory>
         <enrich description="Store Properties">
             <source clone="true" type="body"/>
             <target property="properties" type="property"/>
         </enrich>
-        <call description="Area de conhecimento">
-            <endpoint>
-                <http method="get" uri-template="http://5dbf329fe295da001400b4dd.mockapi.io/polo1/AdC/{uri.var.adc}">
-                    <suspendOnFailure>
-                        <initialDuration>-1</initialDuration>
-                        <progressionFactor>-1</progressionFactor>
-                        <maximumDuration>0</maximumDuration>
-                    </suspendOnFailure>
-                    <markForSuspension>
-                        <retriesBeforeSuspension>0</retriesBeforeSuspension>
-                    </markForSuspension>
-                </http>
-            </endpoint>
-        </call>
-        <enrich description="Store adc">
-            <source clone="true" type="body"/>
-            <target property="adc" type="property"/>
-        </enrich>
         <enrich description="Restore original payload">
             <source clone="false" property="payload" type="property"/>
             <target type="body"/>
         </enrich>
-        <payloadFactory description="Get First Obra" media-type="xml">
-            <format>
-                <Obras xmlns="">$1</Obras>
-            </format>
-            <args>
-                <arg evaluator="xml" expression="(//*[local-name() = 'Obra'])[1]"/>
-            </args>
-        </payloadFactory>
-        <enrich description="Store Payload">
-            <source clone="true" type="body"/>
-            <target property="payload" type="property"/>
-        </enrich>
-        <payloadFactory description="Prepare Mapper" media-type="json">
-            <format>
-				{"originalPayload":$1, "properties":$2, "adc":$3}
-			</format>
-            <args>
-                <arg evaluator="xml" expression="($ctx:payload)[1]"/>
-                <arg evaluator="xml" expression="$ctx:properties"/>
-                <arg evaluator="xml" expression="$ctx:adc"/>
-            </args>
-        </payloadFactory>
-        <datamapper config="gov:datamapper/CleanupPolo2ObraProperties.dmc" description="CleanupPolo2ObraProperties" inputSchema="gov:datamapper/CleanupPolo2ObraProperties_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/CleanupPolo2ObraProperties_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/CleanupPolo2ObraProperties_xsltStyleSheet.xml"/>
-        <log description="End Retrieve Obra Polo 2 Log" level="custom">
-            <property name="message" value="Finished retrieving Polo2 obra"/>
+        <iterate expression="//Obra" id="GetEstados" sequential="true">
+            <target>
+                <sequence>
+                    <property description="Get Estado property" expression="//status/text()" name="estado" scope="default" type="STRING"/>
+                    <log description="Log Estado property" level="custom">
+                        <property expression="get-property('estado')" name="estado"/>
+                    </log>
+                    <script description="Convert estado value" language="groovy"><![CDATA[def estado = mc.getProperty('estado').toInteger()
+def rule = 6 / 10
+def estado_with_rule = Math.round(estado * rule)
+println(estado_with_rule)
+
+mc.setProperty('uri.var.estado', estado_with_rule)]]></script>
+                    <call>
+                        <endpoint>
+                            <http method="get" statistics="enable" trace="enable" uri-template="http://5dbf329fe295da001400b4dd.mockapi.io/polo1/estados/{uri.var.estado}">
+                                <suspendOnFailure>
+                                    <initialDuration>-1</initialDuration>
+                                    <progressionFactor>-1</progressionFactor>
+                                    <maximumDuration>0</maximumDuration>
+                                </suspendOnFailure>
+                                <markForSuspension>
+                                    <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                                </markForSuspension>
+                            </http>
+                        </endpoint>
+                    </call>
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <estado xmlns="">$1</estado>
+                        </format>
+                        <args>
+                            <arg evaluator="xml" expression="//denominação"/>
+                        </args>
+                    </payloadFactory>
+                </sequence>
+            </target>
+        </iterate>
+        <property description="enclosing_element" name="enclosing_element" scope="default">
+            <value xmlns=""/>
+        </property>
+        <aggregate id="GetEstados">
+            <completeCondition>
+                <messageCount max="3" min="3"/>
+            </completeCondition>
+            <onComplete enclosingElementProperty="enclosing_element" expression="//estado">
+                <log description="bruh" level="custom">
+                    <property name="bruh" value="bruh"/>
+                </log>
+                <log description="Full" level="full"/>
+                <enrich description="Store estados">
+                    <source clone="true" type="body"/>
+                    <target property="estados" type="property"/>
+                </enrich>
+                <payloadFactory description="Prepara Mapper" media-type="json">
+                    <format>
+						{
+						"estados":$1,
+						"properties":$2
+						}
+					</format>
+                    <args>
+                        <arg evaluator="xml" expression="$ctx:estados"/>
+                        <arg evaluator="xml" expression="$ctx:properties"/>
+                    </args>
+                </payloadFactory>
+                <datamapper config="gov:datamapper/CleanupPolo3ObraProperties.dmc" description="CleanupPolo3ObraProperties" inputSchema="gov:datamapper/CleanupPolo3ObraProperties_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/CleanupPolo3ObraProperties_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/CleanupPolo3ObraProperties_xsltStyleSheet.xml"/>
+                <send/>
+            </onComplete>
+        </aggregate>
+        <log description="End Retrieve Obra Polo3 Log" level="custom">
+            <property name="message" value="Finished retrieving Polo3 obra"/>
         </log>
     </sequence>
 </template>
