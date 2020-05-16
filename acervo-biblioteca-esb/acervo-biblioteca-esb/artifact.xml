@@ -30,14 +30,11 @@
     <artifact name="Fornecedor3ObrasEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/Fornecedor3ObrasEP.xml</file>
     </artifact>
-    <artifact name="Fornecedor2ObrasEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/endpoints/Fornecedor2ObrasEP.xml</file>
-    </artifact>
-    <artifact name="Fornecedor2ObraByTituloEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/endpoints/Fornecedor2ObraByTituloEP.xml</file>
-    </artifact>
     <artifact name="Fornecedor1ObraByISBNEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/Fornecedor1ObraByISBNEP.xml</file>
+    </artifact>
+    <artifact name="Fornecedor2EP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/Fornecedor2EP.xml</file>
     </artifact>
     <artifact name="SendEmailSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/SendEmailSequence.xml</file>

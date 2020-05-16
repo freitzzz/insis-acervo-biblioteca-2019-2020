@@ -2,7 +2,7 @@
 <api context="/acervobiblioteca" name="AcervoBibliotecaAPI" xmlns="http://ws.apache.org/ns/synapse">
     <resource methods="GET" uri-template="/polos">
         <inSequence>
-            <log description="Log Request" level="custom">
+            <log description="Incoming Request Log" level="custom">
                 <property name="message" value="Get Polos"/>
             </log>
             <property description="URL Fix" name="REST_URL_POSTFIX" scope="axis2" type="STRING" value=""/>
@@ -36,6 +36,7 @@
         </inSequence>
         <outSequence/>
         <faultSequence>
+            <store messageStore=""/>
             <payloadFactory description="Payload Error" media-type="json">
                 <format>
 					{&#xd;
@@ -57,7 +58,7 @@
     </resource>
     <resource methods="GET" uri-template="/areasconhecimento">
         <inSequence>
-            <log description="Log Request" level="custom">
+            <log description="Incoming Request Log" level="custom">
                 <property name="message" value="Get Areas Conhecimento"/>
             </log>
             <property description="URL Fix" name="REST_URL_POSTFIX" scope="axis2" type="STRING" value=""/>
@@ -75,6 +76,7 @@
                     <messageCount max="-1" min="-1"/>
                 </completeCondition>
                 <onComplete enclosingElementProperty="enclosing_element" expression="//*[local-name() = 'AreasConhecimento']">
+                    <log level="full"/>
                     <payloadFactory description="Remove repeated AreasConhecimento" media-type="json">
                         <format>$1</format>
                         <args>
@@ -111,19 +113,6 @@
             <respond description="Respond Error"/>
         </faultSequence>
     </resource>
-    <resource methods="GET" uri-template="/temp">
-        <inSequence>
-            <log description="Log Request" level="custom">
-                <property name="message" value="TEMP"/>
-            </log>
-            <sequence key="Polo3ObrasSequence"/>
-            <sequence key="Polo3AreasConhecimentoSequence"/>
-        </inSequence>
-        <outSequence>
-            <respond/>
-        </outSequence>
-        <faultSequence/>
-    </resource>
     <resource methods="GET" uri-template="/polos/{polo}/obras">
         <inSequence>
             <log description="Incoming Request Log" level="custom">
@@ -139,6 +128,219 @@
                 <default>
                     <sequence description="Sequence that handles response properties when a resource is not found" key="ResourceNotFoundSequence"/>
                     <respond/>
+                </default>
+            </switch>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <payloadFactory description="Payload Error" media-type="json">
+                <format>
+					{&#xd;
+					"message":$1,&#xd;
+					"code":$2,&#xd;
+					"detail":$3,&#xd;
+					"exception":$4&#xd;
+					}
+				</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_CODE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_DETAIL"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_EXCEPTION"/>
+                </args>
+            </payloadFactory>
+            <respond description="Respond Error"/>
+        </faultSequence>
+    </resource>
+    <resource methods="GET" uri-template="/fornecedores">
+        <inSequence>
+            <log description="Incoming Request Log" level="custom">
+                <property name="message" value="Get Fornecedores"/>
+            </log>
+            <property description="URL Fix" name="REST_URL_POSTFIX" scope="axis2" type="STRING" value=""/>
+            <payloadFactory description="Fornecedores" media-type="json">
+                <format>
+					[&#xd;
+					{&#xd;
+					"name":"$1",&#xd;
+					},&#xd;
+					{&#xd;
+					"name":"$2",&#xd;
+					},&#xd;
+					{&#xd;
+					"name":"$3",&#xd;
+					}&#xd;
+					]
+				</format>
+                <args>
+                    <arg value="Fornecedor1"/>
+                    <arg value="Fornecedor2"/>
+                    <arg value="Fornecedor3"/>
+                </args>
+            </payloadFactory>
+            <respond description="Respond"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <payloadFactory description="Payload Error" media-type="json">
+                <format>
+					{&#xd;
+					"message":$1,&#xd;
+					"code":$2,&#xd;
+					"detail":$3,&#xd;
+					"exception":$4&#xd;
+					}
+				</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_CODE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_DETAIL"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_EXCEPTION"/>
+                </args>
+            </payloadFactory>
+            <respond description="Respond Error"/>
+        </faultSequence>
+    </resource>
+    <resource methods="GET" uri-template="/fornecedores/{fornecedor}/obras/{titulo}">
+        <inSequence>
+            <log description="Incoming Request Log" level="custom">
+                <property expression="get-property('uri.var.fornecedor')" name="Fornecedor"/>
+                <property expression="get-property('uri.var.titulo')" name="Titulo"/>
+            </log>
+            <property description="URL Fix" name="REST_URL_POSTFIX" scope="axis2" type="STRING" value=""/>
+            <switch description="Case-Insensitive Switch Matcher for Fornecedores" source="get-property('uri.var.fornecedor')">
+                <case regex="([f|F][o|O][r|R][n|N][e|E][c|C][e|E][d|D][o|O][r|R]1)"/>
+                <case regex="([f|F][o|O][r|R][n|N][e|E][c|C][e|E][d|D][o|O][r|R]2)">
+                    <sequence key="Fornecedor2ObraByTituloSequence"/>
+                    <payloadFactory description="TO BE REMOVED" media-type="xml">
+                        <format>
+                            <Obras xmlns="Fornecedor2">
+                                <Obra>
+                                    <id>1</id>
+                                    <titulo>volutpat eleifend donec ut</titulo>
+                                    <preco>57.88</preco>
+                                    <encad>10</encad>
+                                    <ano>1871</ano>
+                                </Obra>
+                                <Obra>
+                                    <id>1</id>
+                                    <titulo>volutpat eleifend donec ut</titulo>
+                                    <preco>57.88</preco>
+                                    <encad>3</encad>
+                                    <ano>1871</ano>
+                                </Obra>
+                                <Obra>
+                                    <id>1</id>
+                                    <titulo>volutpat eleifend donec ut</titulo>
+                                    <preco>57.88</preco>
+                                    <encad>2</encad>
+                                    <ano>1871</ano>
+                                </Obra>
+                                <Obra>
+                                    <id>1</id>
+                                    <titulo>volutpat eleifend donec ut</titulo>
+                                    <preco>57.88</preco>
+                                    <encad>3</encad>
+                                    <ano>1871</ano>
+                                </Obra>
+                            </Obras>
+                        </format>
+                        <args/>
+                    </payloadFactory>
+                    <log level="full"/>
+                    <log level="custom">
+                        <property expression="//*[local-name()='encad']" name="aaa"/>
+                        <property expression="$body//Obras" name="$body//Obras"/>
+                        <property expression="$body//Obras/Obra" name="$body//Obras/Obra"/>
+                        <property expression="$body//Obras//Obra//encad" name="$body//Obras/Obra/encad"/>
+                    </log>
+                    <log level="custom">
+                        <property expression="//*[local-name()='encad']" name="tipos_encadernacao"/>
+                        <property expression="get-property('tipos_encadernacao')" name="tipos"/>
+                        <property expression="//Obra/encad[not(. = ../following-sibling::Obra/encad)]" name="not repeated"/>
+                    </log>
+                    <foreach expression="//*[local-name()='encad']" id="forEachID">
+                        <sequence>
+                            <log level="custom">
+                                <property expression="//*[local-name()='Obra']" name="obras"/>
+                            </log>
+                        </sequence>
+                    </foreach>
+                    <property expression="//*[local-name()='encad']" name="tipos_encadernacao" scope="default" type="OM"/>
+                    <log level="full">
+                        <property expression="get-property('tipos_encadernacao')" name="aa"/>
+                    </log>
+                    <property description="Remove repeated " expression="//*[get-property('tipos-encadernacao')='encad'][not(text()=preceding-sibling::*[get-property('tipos-encadernacao')='encad']/text())]" name="tipos-encadernacao" scope="default" type="STRING"/>
+                </case>
+                <case regex="([f|F][o|O][r|R][n|N][e|E][c|C][e|E][d|D][o|O][r|R]3)"/>
+                <default>
+                    <sequence description="Sequence that handles response properties when a resource is not found" key="ResourceNotFoundSequence"/>
+                    <respond/>
+                </default>
+            </switch>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <payloadFactory description="Payload Error" media-type="json">
+                <format>
+					{&#xd;
+					"message":$1,&#xd;
+					"code":$2,&#xd;
+					"detail":$3,&#xd;
+					"exception":$4&#xd;
+					}
+				</format>
+                <args>
+                    <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_CODE"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_DETAIL"/>
+                    <arg evaluator="xml" expression="$ctx:ERROR_EXCEPTION"/>
+                </args>
+            </payloadFactory>
+            <respond description="Respond Error"/>
+        </faultSequence>
+    </resource>
+    <resource methods="POST" url-mapping="/notification">
+        <inSequence>
+            <log description="Incoming Request Log" level="custom">
+                <property name="message" value="Send Notification"/>
+            </log>
+            <property expression="json-eval($.notificationChannel)" name="notification-channel" scope="default" type="STRING"/>
+            <switch source="get-property('notification-channel')">
+                <case regex="([e|E][m|M][a|A][i|I][l|L])">
+                    <sequence key="SendEmailSequence"/>
+                </case>
+                <case regex="([s|S][m|M][s|S])">
+                    <sequence key="ResourceNotFoundSequence"/>
+                    <payloadFactory description="Payload Error" media-type="json">
+                        <format>
+							{&#xd;
+							"message":"$1",&#xd;
+							"detail":"$2"&#xd;
+							}
+						</format>
+                        <args>
+                            <arg value="Not Implemented yet"/>
+                            <arg evaluator="xml" expression="fn:concat('Notification channel ', $ctx:notification-channel, ' is not implemented')"/>
+                        </args>
+                    </payloadFactory>
+                </case>
+                <default>
+                    <sequence key="ResourceNotFoundSequence"/>
+                    <payloadFactory description="Payload Error" media-type="json">
+                        <format>
+							{&#xd;
+							"message":"$1",&#xd;
+							"detail":"$2"&#xd;
+							}
+						</format>
+                        <args>
+                            <arg value="Could not send notification"/>
+                            <arg evaluator="xml" expression="fn:concat('Notification channel ', $ctx:notification-channel, ' does not exist')"/>
+                        </args>
+                    </payloadFactory>
                 </default>
             </switch>
             <respond/>
