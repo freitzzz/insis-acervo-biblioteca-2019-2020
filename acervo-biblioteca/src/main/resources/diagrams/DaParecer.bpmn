@@ -194,7 +194,7 @@ println(estadosObraPorPoloTableJson)</script>
           <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
           <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
           <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
-          <activiti:in sourceExpression="&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&lt;title&gt;Notificação Proposta de Aquisição&lt;/title&gt;&lt;/head&gt;&lt;body&gt;O perito ${perito} &lt;b&gt;aceitou&lt;/b&gt; a sua proposta de aquisição de obra&lt;br&gt;Comentário: ${comentario}&lt;br&gt;&lt;/body&gt;&lt;/html&gt;" target="message"></activiti:in>
+          <activiti:in sourceExpression="&lt;html&gt;&lt;head&gt;&lt;title&gt;Notificação Proposta de Aquisição&lt;/title&gt;&lt;/head&gt;&lt;body&gt;O perito ${perito} &lt;b&gt;aceitou&lt;/b&gt; a sua proposta de aquisição de obra&lt;br&gt;Comentário: ${comentario}&lt;br&gt;&lt;/body&gt;&lt;/html&gt;" target="message"></activiti:in>
           <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
         </extensionElements>
       </callActivity>
@@ -208,7 +208,7 @@ println(estadosObraPorPoloTableJson)</script>
           <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
           <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
           <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
-          <activiti:in sourceExpression="&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&lt;title&gt;Notificação Proposta de Aquisição&lt;/title&gt;&lt;/head&gt;&lt;body&gt;O perito ${perito} &lt;b&gt;recusou&lt;/b&gt; a sua proposta de aquisição de obra&lt;br&gt;Comentário: ${comentario}&lt;br&gt;&lt;/body&gt;&lt;/html&gt;" target="message"></activiti:in>
+          <activiti:in sourceExpression="&lt;html&gt;&lt;head&gt;&lt;title&gt;Notificação Proposta de Aquisição&lt;/title&gt;&lt;/head&gt;&lt;body&gt;O perito ${perito} &lt;b&gt;recusou&lt;/b&gt; a sua proposta de aquisição de obra&lt;br&gt;Comentário: ${comentario}&lt;br&gt;&lt;/body&gt;&lt;/html&gt;" target="message"></activiti:in>
           <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
         </extensionElements>
       </callActivity>
@@ -230,7 +230,7 @@ println(estadosObraPorPoloTableJson)</script>
         <activiti:in source="proponenteEmail" target="userEmail"></activiti:in>
         <activiti:in source="proponentePhoneNumber" target="userPhoneNumber"></activiti:in>
         <activiti:in sourceExpression="Notificação Proposta de Aquisição" target="subject"></activiti:in>
-        <activiti:in sourceExpression="&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;&lt;title&gt;Notificação Proposta de Aquisição&lt;/title&gt;&lt;/head&gt;&lt;body&gt;O perito ${perito} não deu o seu parecer deste modo a sua resposta será considerada negativa, isto é, &lt;b&gt;recusa&lt;/b&gt; a sua proposta de aquisição da obra.&lt;br&gt;&lt;/body&gt;&lt;/html&gt;" target="message"></activiti:in>
+        <activiti:in sourceExpression="&lt;html&gt;&lt;head&gt;&lt;title&gt;Notificação Proposta de Aquisição&lt;/title&gt;&lt;/head&gt;&lt;body&gt;O perito ${perito} não deu o seu parecer deste modo a sua resposta será considerada negativa, isto é, &lt;b&gt;recusa&lt;/b&gt; a sua proposta de aquisição da obra.&lt;br&gt;&lt;/body&gt;&lt;/html&gt;" target="message"></activiti:in>
         <activiti:in sourceExpression="$FILE:notificationChannel" target="notificationChannel"></activiti:in>
       </extensionElements>
     </callActivity>

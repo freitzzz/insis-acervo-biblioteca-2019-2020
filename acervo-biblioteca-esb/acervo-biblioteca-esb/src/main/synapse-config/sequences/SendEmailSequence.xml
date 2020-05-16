@@ -23,6 +23,7 @@
         <to>{$ctx:email}</to>
         <subject>{$ctx:subject}</subject>
         <messageBody>{$ctx:message}</messageBody>
+        <contentType>text/html; charset=UTF-8</contentType>
     </gmail.sendMail>
     <payloadFactory description="Payload Success" media-type="json">
         <format>
