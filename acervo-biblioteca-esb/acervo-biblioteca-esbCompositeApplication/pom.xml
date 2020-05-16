@@ -10,6 +10,7 @@
   <description>acervo-biblioteca-esbCompositeApplication</description>
   <properties>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1_inputSchema>
+    <com.example.acervo-biblioteca-esb.lib_._gmail-connector>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.lib_._gmail-connector>
     <com.example.acervo-biblioteca-esb.api_._AcervoBibliotecaAPI>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.api_._AcervoBibliotecaAPI>
     <com.example.acervo-biblioteca-esb.endpoint_._GetPolo1ObrasEP>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.endpoint_._GetPolo1ObrasEP>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_outputSchema>
@@ -157,6 +158,12 @@
     <dependency>
       <groupId>com.example.acervo-biblioteca-esb.endpoint</groupId>
       <artifactId>Fornecedor2ObraByTituloEP</artifactId>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.lib</groupId>
+      <artifactId>gmail-connector</artifactId>
+      <version>3.0.8</version>
+      <type>zip</type>
+    </dependency>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>
