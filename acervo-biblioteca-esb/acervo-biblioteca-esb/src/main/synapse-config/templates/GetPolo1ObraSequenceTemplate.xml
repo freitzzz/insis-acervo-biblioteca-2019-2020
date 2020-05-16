@@ -5,7 +5,9 @@
         <log description="Start Get Polo1 Obra Sequence" level="custom">
             <property name="message" value="Start getting Polo1 obra sequence"/>
         </log>
-        <sequence key="Polo1ObraSequence"/>
+        <call-template description="Polo1ObraSequenceTemplate" target="Polo1ObraSequenceTemplate">
+            <with-param name="obra" value="{$func:obra}"/>
+        </call-template>
         <log description="Finish Get Polo1 Obras Sequence" level="custom">
             <property name="message" value="Finished get polo1 obra..."/>
         </log>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="Polo1ObraSequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="obra"/>
+    <sequence>
+        <log description="Start Retrieve Obra Polo 1 Log" level="custom">
+            <property name="message" value="Starting to retrieve Polo 1 obra..."/>
+        </log>
+        <property description="Store obra as property" expression="$func:obra" name="uri.var.obra" scope="default" type="STRING"/>
+        <log description="Obra" level="custom">
+            <property expression="$func:obra" name="obra"/>
+        </log>
+        <call>
+            <endpoint>
+                <http method="get" uri-template="http://5dbf329fe295da001400b4dd.mockapi.io/polo1/obras/{uri.var.obra}">
+                    <suspendOnFailure>
+                        <initialDuration>-1</initialDuration>
+                        <progressionFactor>-1</progressionFactor>
+                        <maximumDuration>0</maximumDuration>
+                    </suspendOnFailure>
+                    <markForSuspension>
+                        <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                    </markForSuspension>
+                </http>
+            </endpoint>
+        </call>
+        <log description="Full" level="full"/>
+        <log description="End Retrieve Obra Polo 1 Log" level="custom">
+            <property name="message" value="Finished retrieving Polo1 obra"/>
+        </log>
+    </sequence>
+</template>

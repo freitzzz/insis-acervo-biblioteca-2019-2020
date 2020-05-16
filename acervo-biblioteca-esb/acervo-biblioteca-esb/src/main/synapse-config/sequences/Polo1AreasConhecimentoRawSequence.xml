@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Polo1AreasConhecimentoRawSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Start Retrieve Polo 1 Areas Conhecimento" level="custom">
+        <property name="message" value="Starting to retrieve polo 1 areas conhecimento"/>
+    </log>
+    <call>
+        <endpoint key="Polo1AreasConhecimentoEP"/>
+    </call>
+    <log description="Finish Retrieve Polo 1 Areas Conhecimento" level="custom">
+        <property name="message" value="Finished retrieving polo 1 areas conhecimento"/>
+    </log>
+    <log description="Full" level="full"/>
+</sequence>
