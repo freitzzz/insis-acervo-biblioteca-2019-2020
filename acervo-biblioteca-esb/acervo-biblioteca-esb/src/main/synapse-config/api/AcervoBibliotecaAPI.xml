@@ -190,12 +190,15 @@
                     </call-template>
                 </case>
                 <default>
-                    <sequence description="Sequence that handles response properties when a resource is not found" key="ResourceNotFoundSequence"/>
+                    <loopback/>
                 </default>
             </switch>
             <respond/>
         </inSequence>
-        <outSequence/>
+        <outSequence>
+            <sequence key="ResourceNotFoundSequence"/>
+            <respond/>
+        </outSequence>
         <faultSequence>
             <payloadFactory description="Payload Error" media-type="json">
                 <format>
