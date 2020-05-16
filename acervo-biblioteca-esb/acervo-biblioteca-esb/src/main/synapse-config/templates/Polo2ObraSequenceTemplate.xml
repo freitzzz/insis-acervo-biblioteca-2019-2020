@@ -26,6 +26,20 @@
                 <arg evaluator="xml" expression="//*[name() = 'Obra']"/>
             </args>
         </payloadFactory>
+        <filter xpath="count(//*[local-name() = 'Obra']) = 0">
+            <then>
+                <log description="Does not have Obras" level="custom">
+                    <property name="message" value="Does not have obras"/>
+                </log>
+                <loopback description="No Obras Found"/>
+            </then>
+            <else>
+                <log description="Has Obras" level="custom">
+                    <property name="message" value="has obras"/>
+                </log>
+                <log description="Full" level="full"/>
+            </else>
+        </filter>
         <enrich description="Store Payload">
             <source clone="true" type="body"/>
             <target property="payload" type="property"/>
