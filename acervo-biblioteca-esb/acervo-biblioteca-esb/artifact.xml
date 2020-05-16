@@ -36,6 +36,9 @@
     <artifact name="Fornecedor2EP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/Fornecedor2EP.xml</file>
     </artifact>
+    <artifact name="Fornecedor2ObraByTituloSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Fornecedor2ObraByTituloSequence.xml</file>
+    </artifact>
     <artifact name="SendEmailSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/SendEmailSequence.xml</file>
     </artifact>

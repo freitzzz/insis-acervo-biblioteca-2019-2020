@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Fornecedor2ObraByTituloSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Log Sequence" level="custom">
+        <property name="message" value="Fornecedor2ObraByTituloSequence"/>
+    </log>
+    <payloadFactory description="Payload Soap" media-type="xml">
+        <format>
+            <body xmlns="">
+                <p:GetObrasByTituloAllAttributesOp xmlns:p="Fornecedor2">
+                    <!--Exactly 1 occurrence-->
+                    <xs:titulo xmlns:xs="Fornecedor2">$1</xs:titulo>
+                </p:GetObrasByTituloAllAttributesOp>
+            </body>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('uri.var.titulo')"/>
+        </args>
+    </payloadFactory>
+    <header description="Soap Header" name="Action" scope="default" value="GetObrasByTituloAllAttributesOp"/>
+    <call>
+        <endpoint key="Fornecedor2EP"/>
+    </call>
+</sequence>
