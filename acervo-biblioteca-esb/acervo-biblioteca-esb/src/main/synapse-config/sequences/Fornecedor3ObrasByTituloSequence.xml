@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Fornecedor3ObrasByTituloSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Log Sequence" level="custom">
+        <property name="message" value="Fornecedor3ObrasByTituloSequence"/>
+    </log>
+    <sequence key="Fornecedor3ObrasSequence"/>
+    <log level="full"/>
+    <log level="custom">
+        <property expression="//*[local-name()= 'titulo' and ./text() = get-property('uri.var.titulo')]/.." name="jmyvh"/>
+    </log>
+    <payloadFactory description="Get Obras With Titulo = uri.var.titulo" media-type="xml">
+        <format>
+            <obras xmlns="">$1</obras>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="//*[local-name()= 'titulo' and ./text() = get-property('uri.var.titulo')]/.."/>
+        </args>
+    </payloadFactory>
+</sequence>
