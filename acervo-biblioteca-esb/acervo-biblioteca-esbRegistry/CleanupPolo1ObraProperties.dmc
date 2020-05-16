@@ -1,0 +1,48 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+var count_i_authors_ea343ced_68b3_4fbc_9eaf_db9105a243b7 = 0;
+var count_i_states_7ce68023_6646_43c4_9219_25c300a30385 = 0;
+var count_i_adc_1939f593_3c1b_4170_9321_a0c6b477cfd9 = 0;
+outputroot =  {};
+outputroot.id = Number(inputroot.originalPayload.id);
+outputroot.authors =  [];
+outputroot.isbn = inputroot.originalPayload.ISBN;
+outputroot.title = inputroot.originalPayload.Title;
+outputroot.price = Number(inputroot.originalPayload['Preço1']);
+outputroot.count = Number(inputroot.originalPayload['# exemplares']);
+outputroot.type = inputroot.originalPayload.tipoID;
+outputroot.states =  [];
+outputroot.publishedYear = Number(inputroot.originalPayload['Ano de Publicação']);
+
+for(i_authors_ea343ced_68b3_4fbc_9eaf_db9105a243b7 in inputroot.authors){
+outputroot.authors[count_i_authors_ea343ced_68b3_4fbc_9eaf_db9105a243b7] = inputroot.authors[i_authors_ea343ced_68b3_4fbc_9eaf_db9105a243b7];
+
+count_i_authors_ea343ced_68b3_4fbc_9eaf_db9105a243b7++;
+}
+
+for(i_states_7ce68023_6646_43c4_9219_25c300a30385 in inputroot.states){
+outputroot.states[count_i_states_7ce68023_6646_43c4_9219_25c300a30385] = inputroot.states[i_states_7ce68023_6646_43c4_9219_25c300a30385];
+
+count_i_states_7ce68023_6646_43c4_9219_25c300a30385++;
+}
+
+for(i_adc_1939f593_3c1b_4170_9321_a0c6b477cfd9 in inputroot.adc){
+outputroot.areaconhecimento = inputroot.adc[i_adc_1939f593_3c1b_4170_9321_a0c6b477cfd9];
+
+count_i_adc_1939f593_3c1b_4170_9321_a0c6b477cfd9++;
+}
+return outputroot;
+};
+
+
+
+
+
+
+
+
+
+
+
+

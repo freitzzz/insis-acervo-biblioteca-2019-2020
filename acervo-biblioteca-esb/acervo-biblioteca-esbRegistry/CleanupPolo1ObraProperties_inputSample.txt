@@ -1,0 +1,31 @@
+{
+  "authors": [
+    "Réjane ",
+    "Elmira"
+  ],
+  "states": [
+    "asdasdsadasd"
+  ],
+  "adc": [
+    "ciência-tecnologia"
+  ],
+  "originalPayload": {
+    "id": "299",
+    "ID_autores": [
+      258,
+      568
+    ],
+    "ISBN": "212502920-0",
+    "Title": "ante ipsum primis in faucibus orci luctus et",
+    "Preço1": "90.1",
+    "# exemplares": "3",
+    "tipoID": "2",
+    "EstadosID": [
+      2,
+      3,
+      6
+    ],
+    "ID_AdC": "4",
+    "Ano de Publicação": "1824"
+  }
+}

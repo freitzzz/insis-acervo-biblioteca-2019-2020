@@ -216,4 +216,60 @@
             <mediaType>text/plain</mediaType>
         </item>
     </artifact>
+    <artifact name="FormatPolo1ObraProperties" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>FormatPolo1ObraProperties.dmc</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="FormatPolo1ObraProperties_inputSchema" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>FormatPolo1ObraProperties_inputSchema.json</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="FormatPolo1ObraProperties_outputSchema" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>FormatPolo1ObraProperties_outputSchema.json</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="FormatPolo1ObraProperties_xsltStyleSheet" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>FormatPolo1ObraProperties_xsltStyleSheet.xml</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="CleanupPolo1ObraProperties" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>CleanupPolo1ObraProperties.dmc</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="CleanupPolo1ObraProperties_inputSchema" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>CleanupPolo1ObraProperties_inputSchema.json</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="CleanupPolo1ObraProperties_outputSchema" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>CleanupPolo1ObraProperties_outputSchema.json</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="CleanupPolo1ObraProperties_xsltStyleSheet" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>CleanupPolo1ObraProperties_xsltStyleSheet.xml</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
 </artifacts>

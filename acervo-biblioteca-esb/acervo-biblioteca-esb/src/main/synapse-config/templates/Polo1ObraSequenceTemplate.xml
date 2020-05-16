@@ -5,10 +5,7 @@
         <log description="Start Retrieve Obra Polo 1 Log" level="custom">
             <property name="message" value="Starting to retrieve Polo 1 obra..."/>
         </log>
-        <property description="Store obra as property" expression="$func:obra" name="uri.var.obra" scope="default" type="STRING"/>
-        <log description="Obra" level="custom">
-            <property expression="$func:obra" name="obra"/>
-        </log>
+        <property description="Store obra as uri property" expression="$func:obra" name="uri.var.obra" scope="default" type="STRING"/>
         <call>
             <endpoint>
                 <http method="get" uri-template="http://5dbf329fe295da001400b4dd.mockapi.io/polo1/obras/{uri.var.obra}">
@@ -23,7 +20,143 @@
                 </http>
             </endpoint>
         </call>
-        <log description="Full" level="full"/>
+        <enrich>
+            <source clone="true" type="body"/>
+            <target property="payload" type="property"/>
+        </enrich>
+        <clone id="GetObraProperties" sequential="true">
+            <target>
+                <sequence>
+                    <property description="Store area de conhecimento as uri property" expression="//ID_AdC/text()" name="uri.var.adc" scope="default" type="STRING"/>
+                    <call description="Area de conhecimento">
+                        <endpoint>
+                            <http method="get" uri-template="http://5dbf329fe295da001400b4dd.mockapi.io/polo1/AdC/{uri.var.adc}">
+                                <suspendOnFailure>
+                                    <initialDuration>-1</initialDuration>
+                                    <progressionFactor>-1</progressionFactor>
+                                    <maximumDuration>0</maximumDuration>
+                                </suspendOnFailure>
+                                <markForSuspension>
+                                    <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                                </markForSuspension>
+                            </http>
+                        </endpoint>
+                    </call>
+                </sequence>
+            </target>
+            <target>
+                <sequence>
+                    <payloadFactory description="Transform autores array" media-type="xml">
+                        <format>
+                            <autor xmlns="">$1</autor>
+                        </format>
+                        <args>
+                            <arg evaluator="json" expression="$.ID_autores"/>
+                        </args>
+                    </payloadFactory>
+                    <log description="Full" level="full"/>
+                    <iterate description="Autores" expression="//jsonElement" sequential="true">
+                        <target>
+                            <sequence>
+                                <log description="Full" level="full"/>
+                                <property description="Store autor as uri property" expression="//jsonElement/text()" name="uri.var.autor" scope="default" type="STRING"/>
+                                <log description="Log Autor Property" level="custom">
+                                    <property expression="get-property('uri.var.autor')" name="uri-var-autor"/>
+                                </log>
+                                <call>
+                                    <endpoint>
+                                        <http method="get" statistics="enable" trace="enable" uri-template="http://5dbf329fe295da001400b4dd.mockapi.io/polo1/autores/{uri.var.autor}">
+                                            <suspendOnFailure>
+                                                <initialDuration>-1</initialDuration>
+                                                <progressionFactor>-1</progressionFactor>
+                                                <maximumDuration>0</maximumDuration>
+                                            </suspendOnFailure>
+                                            <markForSuspension>
+                                                <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                                            </markForSuspension>
+                                        </http>
+                                    </endpoint>
+                                </call>
+                            </sequence>
+                        </target>
+                    </iterate>
+                </sequence>
+            </target>
+            <target>
+                <sequence>
+                    <payloadFactory description="Transform estados array" media-type="xml">
+                        <format>
+                            <estado xmlns="">$1</estado>
+                        </format>
+                        <args>
+                            <arg evaluator="json" expression="$.EstadosID"/>
+                        </args>
+                    </payloadFactory>
+                    <log description="Full" level="full"/>
+                    <iterate description="Estados" expression="//jsonElement" sequential="true">
+                        <target>
+                            <sequence>
+                                <log description="Full" level="full"/>
+                                <property description="Store estado as uri property" expression="//jsonElement/text()" name="uri.var.estado" scope="default" type="STRING"/>
+                                <log description="Log Estado Property" level="custom">
+                                    <property expression="get-property('uri.var.estado')" name="uri-var-estado"/>
+                                </log>
+                                <call>
+                                    <endpoint>
+                                        <http method="get" statistics="enable" trace="enable" uri-template="http://5dbf329fe295da001400b4dd.mockapi.io/polo1/estados/{uri.var.estado}">
+                                            <suspendOnFailure>
+                                                <initialDuration>-1</initialDuration>
+                                                <progressionFactor>-1</progressionFactor>
+                                                <maximumDuration>0</maximumDuration>
+                                            </suspendOnFailure>
+                                            <markForSuspension>
+                                                <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                                            </markForSuspension>
+                                        </http>
+                                    </endpoint>
+                                </call>
+                            </sequence>
+                        </target>
+                    </iterate>
+                </sequence>
+            </target>
+        </clone>
+        <property description="enclosing_element" name="enclosing_element" scope="default">
+            <value xmlns=""/>
+        </property>
+        <aggregate id="GetObraProperties">
+            <completeCondition>
+                <messageCount max="-1" min="-1"/>
+            </completeCondition>
+            <onComplete enclosingElementProperty="enclosing_element" expression="s11:Body/child::* | s12:Body/child::*" xmlns:m0="http://services.samples" xmlns:s11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:s12="http://www.w3.org/2003/05/soap-envelope">
+                <log description="Ei" level="custom">
+                    <property name="ei" value="!"/>
+                </log>
+                <log description="Full" level="full"/>
+                <payloadFactory media-type="json">
+                    <format>
+						{
+						"authors": $1,
+						"states": $2,
+						"adc": $3,
+						"originalPayload":$4
+						}
+					</format>
+                    <args>
+                        <arg evaluator="json" expression="$..nome"/>
+                        <arg evaluator="json" expression="$..denominação"/>
+                        <arg evaluator="json" expression="$..Desc"/>
+                        <arg evaluator="xml" expression="$ctx:payload"/>
+                    </args>
+                </payloadFactory>
+                <datamapper config="gov:datamapper/CleanupPolo1ObraProperties.dmc" description="CleanupPolo1ObraProperties" inputSchema="gov:datamapper/CleanupPolo1ObraProperties_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/CleanupPolo1ObraProperties_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/CleanupPolo1ObraProperties_xsltStyleSheet.xml"/>
+                <log description="Full" level="full"/>
+                <send/>
+            </onComplete>
+        </aggregate>
+        <log description="Log enclosing element" level="custom">
+            <property expression="get-property('enclosing_element')" name="enclosing_element"/>
+        </log>
         <log description="End Retrieve Obra Polo 1 Log" level="custom">
             <property name="message" value="Finished retrieving Polo1 obra"/>
         </log>
