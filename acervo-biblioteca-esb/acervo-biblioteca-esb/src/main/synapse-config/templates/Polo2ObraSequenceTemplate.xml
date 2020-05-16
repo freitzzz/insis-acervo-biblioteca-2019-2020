@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="Polo2ObraSequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="obra"/>
+    <sequence>
+        <log description="Start Retrieve Obra Polo 1 Log" level="custom">
+            <property name="message" value="Starting to retrieve Polo 1 obra..."/>
+        </log>
+        <property description="Store obra as uri property" expression="$func:obra" name="uri.var.obra" scope="default" type="STRING"/>
+        <payloadFactory description="Payload Soap" media-type="xml">
+            <format>
+                <xs:title xmlns:xs="http://ws.wso2.org/dataservice">$1</xs:title>
+            </format>
+            <args>
+                <arg evaluator="xml" expression="get-property('uri.var.obra')"/>
+            </args>
+        </payloadFactory>
+        <header description="Soap Header" name="Action" scope="default" value="GetObrasWithAllPropertiesByTitleOp"/>
+        <call>
+            <endpoint key="Polo2ObrasEP"/>
+        </call>
+        <payloadFactory description="Remove Soap Headers" media-type="xml">
+            <format>
+                <Obras xmlns="">$1</Obras>
+            </format>
+            <args>
+                <arg evaluator="xml" expression="//*[name() = 'Obra']"/>
+            </args>
+        </payloadFactory>
+        <enrich>
+            <source clone="true" type="body"/>
+            <target property="payload" type="property"/>
+        </enrich>
+        <property description="enclosing_element" name="enclosing_element" scope="default">
+            <value xmlns=""/>
+        </property>
+        <log description="Log enclosing element" level="custom">
+            <property expression="get-property('enclosing_element')" name="enclosing_element"/>
+        </log>
+        <log description="End Retrieve Obra Polo 1 Log" level="custom">
+            <property name="message" value="Finished retrieving Polo1 obra"/>
+        </log>
+    </sequence>
+</template>

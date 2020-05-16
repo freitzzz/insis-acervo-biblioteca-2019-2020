@@ -65,4 +65,7 @@
     <artifact name="Polo1ObraSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/templates/Polo1ObraSequenceTemplate.xml</file>
     </artifact>
+    <artifact name="Polo2ObraSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/templates/Polo2ObraSequenceTemplate.xml</file>
+    </artifact>
 </artifacts>
