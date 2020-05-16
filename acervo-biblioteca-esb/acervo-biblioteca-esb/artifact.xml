@@ -48,4 +48,7 @@
     <artifact name="Fornecedor3ObrasByTituloSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/Fornecedor3ObrasByTituloSequence.xml</file>
     </artifact>
+    <artifact name="Fornecedor2EncadernacoesByIDEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/Fornecedor2EncadernacoesByIDEP.xml</file>
+    </artifact>
 </artifacts>
