@@ -4,4 +4,5 @@
         <property name="message" value="Resource not found! Replying with Not Found (404)"/>
     </log>
     <property description="Set HTTP Status Code as 404" name="HTTP_SC" scope="axis2" type="STRING" value="404"/>
+    <property description="Set Response Body Empty" name="NO_ENTITY_BODY" scope="axis2" type="BOOLEAN" value="true"/>
 </sequence>
