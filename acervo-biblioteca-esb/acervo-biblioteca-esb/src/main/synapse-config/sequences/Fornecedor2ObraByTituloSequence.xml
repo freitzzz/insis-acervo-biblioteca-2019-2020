@@ -81,23 +81,7 @@
             <messageCount max="-1" min="-1"/>
         </completeCondition>
         <onComplete enclosingElementProperty="enclosing_element" expression="//*[local-name()='book']">
-            <payloadFactory description="Remove repeated Book" media-type="json">
-                <format>
-							$1
-						</format>
-                <args>
-                    <arg evaluator="xml" expression="//*[local-name()='book'][not(.=preceding-sibling::*[local-name()='book'])]"/>
-                </args>
-            </payloadFactory>
-            <payloadFactory description="Get only array" media-type="json">
-                <format>
-							$1
-						</format>
-                <args>
-                    <arg evaluator="json" expression="$.book"/>
-                </args>
-            </payloadFactory>
-            <property description="Message Type" name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <sequence key="PrepareFornecedorResponseSequence"/>
             <send/>
         </onComplete>
     </aggregate>

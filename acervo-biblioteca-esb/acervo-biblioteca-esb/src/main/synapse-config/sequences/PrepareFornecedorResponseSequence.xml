@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="PrepareFornecedorResponseSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <payloadFactory description="Remove repeated Book" media-type="json">
+        <format>
+							$1
+						</format>
+        <args>
+            <arg evaluator="xml" expression="//*[local-name()='book'][not(.=preceding-sibling::*[local-name()='book'])]"/>
+        </args>
+    </payloadFactory>
+    <payloadFactory description="Get only array" media-type="json">
+        <format>
+							$1
+						</format>
+        <args>
+            <arg evaluator="json" expression="$.book"/>
+        </args>
+    </payloadFactory>
+    <filter xpath="count(//title)=1">
+        <then>
+            <payloadFactory description="Array" media-type="json">
+                <format>[$1]</format>
+                <args>
+                    <arg evaluator="xml" expression="//title/.."/>
+                </args>
+            </payloadFactory>
+        </then>
+        <else/>
+    </filter>
+    <property description="Message Type" name="messageType" scope="axis2" type="STRING" value="application/json"/>
+</sequence>

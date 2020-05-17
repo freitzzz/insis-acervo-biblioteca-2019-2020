@@ -91,6 +91,7 @@
     <com.example.acervo-biblioteca-esb.resource_._MapPolo2ObrasToObrasPolo_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapPolo2ObrasToObrasPolo_inputSchema>
     <com.example.acervo-biblioteca-esb.resource_._CleanupPolo1ObraProperties>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._CleanupPolo1ObraProperties>
     <com.example.acervo-biblioteca-esb.sequence_._GetPolo1ObrasSequence>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.sequence_._GetPolo1ObrasSequence>
+    <com.example.acervo-biblioteca-esb.sequence_._PrepareFornecedorResponseSequence>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.sequence_._PrepareFornecedorResponseSequence>
     <com.example.acervo-biblioteca-esb.resource_._MapPolo1ObrasJsonToXML_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapPolo1ObrasJsonToXML_inputSchema>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1>
     <com.example.acervo-biblioteca-esb.resource_._MapPoloObraStatesPropertyToPoloObraStates>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapPoloObraStatesPropertyToPoloObraStates>
@@ -649,6 +650,12 @@
     <dependency>
       <groupId>com.example.acervo-biblioteca-esb.sequence</groupId>
       <artifactId>Polo3ObrasSequence</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.sequence</groupId>
+      <artifactId>PrepareFornecedorResponseSequence</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>
