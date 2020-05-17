@@ -6,6 +6,19 @@
     <sequence key="GetObraISBNSequence"/>
     <property description="uri.var.isbn" expression="get-property('isbn')" name="uri.var.isbn" scope="default" type="STRING"/>
     <sequence key="Fornecedor1ObrasByISBNSequence"/>
+    <filter xpath="count(//title) = 0">
+        <then>
+            <log description="Does not have Obras" level="custom">
+                <property name="message" value="Does not have obras"/>
+            </log>
+            <loopback description="No Obras Found"/>
+        </then>
+        <else>
+            <log description="Has Obras" level="custom">
+                <property name="message" value="has obras"/>
+            </log>
+        </else>
+    </filter>
     <filter xpath="count(//title)=1">
         <then>
             <payloadFactory description="Array" media-type="json">
