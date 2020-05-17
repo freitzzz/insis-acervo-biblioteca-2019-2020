@@ -12,48 +12,6 @@
             <arg evaluator="xml" expression="//*[local-name()= 'titulo' and ./text() = get-property('uri.var.titulo')]/.."/>
         </args>
     </payloadFactory>
-    <payloadFactory description="TO BE REMOVED" media-type="xml">
-        <format>
-            <obras xmlns="">
-                <obra>
-                    <id>165</id>
-                    <titulo>sit amet eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
-                    <preco>76.15</preco>
-                    <enc>brochura</enc>
-                    <ano>1829</ano>
-                </obra>
-                <obra>
-                    <id>165</id>
-                    <titulo>sit amet eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
-                    <preco>76</preco>
-                    <enc>capa dura</enc>
-                    <ano>1829</ano>
-                </obra>
-                <obra>
-                    <id>165</id>
-                    <titulo>sit amet eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
-                    <preco>76.15</preco>
-                    <enc>brochura</enc>
-                    <ano>1829</ano>
-                </obra>
-                <obra>
-                    <id>165</id>
-                    <titulo>sit amet eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
-                    <preco>76.15</preco>
-                    <enc>brochura</enc>
-                    <ano>1829</ano>
-                </obra>
-                <obra>
-                    <id>165</id>
-                    <titulo>sit amet eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
-                    <preco>76</preco>
-                    <enc>capa dura</enc>
-                    <ano>1829</ano>
-                </obra>
-            </obras>
-        </format>
-        <args/>
-    </payloadFactory>
     <enrich description="Store Payload">
         <source clone="true" type="body"/>
         <target property="payload" type="property"/>
