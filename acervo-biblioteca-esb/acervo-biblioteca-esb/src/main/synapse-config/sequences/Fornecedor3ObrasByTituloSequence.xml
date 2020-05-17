@@ -39,16 +39,13 @@
                 <args>
                     <arg evaluator="xml" expression="get-property('titulo')"/>
                     <arg evaluator="xml" expression="get-property('preco')"/>
-                    <arg value="sad"/>
+                    <arg value="euro"/>
                     <arg evaluator="xml" expression="get-property('encadernacao')"/>
                     <arg evaluator="xml" expression="get-property('count')"/>
                 </args>
             </payloadFactory>
         </sequence>
     </foreach>
-    <property description="Enclosing" name="enclosing_element" scope="default">
-        <value xmlns=""/>
-    </property>
     <payloadFactory description="Remove repeated Book" media-type="json">
         <format>
 							$1
