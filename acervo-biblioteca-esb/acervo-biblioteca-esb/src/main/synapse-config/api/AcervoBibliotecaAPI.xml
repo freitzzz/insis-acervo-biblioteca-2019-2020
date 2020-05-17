@@ -10,26 +10,20 @@
                 <format>
 					[&#xd;
 					{&#xd;
-					"name":"$1",&#xd;
-					"apiUrl":"$2"&#xd;
+					"name":"$1"
 					},&#xd;
 					{&#xd;
-					"name":"$3",&#xd;
-					"apiUrl":"$4"&#xd;
+					"name":"$2"
 					},&#xd;
 					{&#xd;
-					"name":"$5",&#xd;
-					"apiUrl":"$6"&#xd;
+					"name":"$3"
 					}&#xd;
 					]
 				</format>
                 <args>
                     <arg value="Polo1"/>
-                    <arg value="/polo1"/>
                     <arg value="Polo2"/>
-                    <arg value="/polo2"/>
                     <arg value="Polo3"/>
-                    <arg value="/polo3"/>
                 </args>
             </payloadFactory>
             <respond description="Respond"/>
