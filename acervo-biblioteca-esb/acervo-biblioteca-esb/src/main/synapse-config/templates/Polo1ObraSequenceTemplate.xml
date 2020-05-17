@@ -7,20 +7,17 @@
         </log>
         <property description="Store obra as uri property" expression="$func:obra" name="uri.var.obra" scope="default" type="STRING"/>
         <call>
-            <endpoint>
-                <http method="get" uri-template="http://5dbf329fe295da001400b4dd.mockapi.io/polo1/obras/{uri.var.obra}">
-                    <suspendOnFailure>
-                        <initialDuration>-1</initialDuration>
-                        <progressionFactor>-1</progressionFactor>
-                        <maximumDuration>0</maximumDuration>
-                    </suspendOnFailure>
-                    <markForSuspension>
-                        <retriesBeforeSuspension>0</retriesBeforeSuspension>
-                    </markForSuspension>
-                </http>
-            </endpoint>
+            <endpoint key="GetPolo1ObrasEP"/>
         </call>
-        <filter regex="404" source="$axis2:HTTP_SC">
+        <payloadFactory description="Filter obras" media-type="xml">
+            <format>
+                <Obras xmlns="">$1</Obras>
+            </format>
+            <args>
+                <arg evaluator="xml" expression="(//*[local-name()= 'Title' and ./text() = get-property('uri.var.obra')]/..)[1]"/>
+            </args>
+        </payloadFactory>
+        <filter xpath="count(//*[local-name() = 'id']) = 0">
             <then>
                 <log description="Does not have Obras" level="custom">
                     <property name="message" value="Does not have obras"/>
@@ -34,6 +31,24 @@
                 <log description="Full" level="full"/>
             </else>
         </filter>
+        <property description="Store obra id as uri property" expression="//*[local-name() = 'id']/text()" name="uri.var.obra" scope="default" type="STRING"/>
+        <log description="Start Retrieve Obra Polo 1 Log" level="custom">
+            <property expression="get-property('uri.var.obra')" name="message"/>
+        </log>
+        <call>
+            <endpoint>
+                <http method="get" statistics="enable" trace="enable" uri-template="http://5dbf329fe295da001400b4dd.mockapi.io/polo1/obras/{uri.var.obra}">
+                    <suspendOnFailure>
+                        <initialDuration>-1</initialDuration>
+                        <progressionFactor>-1</progressionFactor>
+                        <maximumDuration>0</maximumDuration>
+                    </suspendOnFailure>
+                    <markForSuspension>
+                        <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                    </markForSuspension>
+                </http>
+            </endpoint>
+        </call>
         <enrich description="Store payload">
             <source clone="true" type="body"/>
             <target property="payload" type="property"/>
