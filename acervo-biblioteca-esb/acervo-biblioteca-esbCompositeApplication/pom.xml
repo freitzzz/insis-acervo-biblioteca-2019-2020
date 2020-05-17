@@ -45,7 +45,7 @@
     <com.example.acervo-biblioteca-esb.resource_._TestMapper_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._TestMapper_xsltStyleSheet>
     <com.example.acervo-biblioteca-esb.resource_._MapPoloObraStatesPropertyToPoloObraStates_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapPoloObraStatesPropertyToPoloObraStates_inputSchema>
     <com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties_xsltStyleSheet>
-    <com.example.acervo-biblioteca-esb.sequence_._GetObraISBNSequence>capp/ApplicationServer</com.example.acervo-biblioteca-esb.sequence_._GetObraISBNSequence>
+    <com.example.acervo-biblioteca-esb.sequence_._GetObraISBNSequence>capp/EnterpriseIntegrator</com.example.acervo-biblioteca-esb.sequence_._GetObraISBNSequence>
     <com.example.acervo-biblioteca-esb.resource_._MapObrasPolo1ToObrasPolos_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapObrasPolo1ToObrasPolos_inputSchema>
     <com.example.acervo-biblioteca-esb.resource_._RemovePolo3ObrasSoapHeadersMapper_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._RemovePolo3ObrasSoapHeadersMapper_outputSchema>
     <com.example.acervo-biblioteca-esb.resource_._FormatPolo1ObraProperties_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._FormatPolo1ObraProperties_outputSchema>
@@ -96,8 +96,8 @@
     <com.example.acervo-biblioteca-esb.resource_._MapPoloObraStatesPropertyToPoloObraStates>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapPoloObraStatesPropertyToPoloObraStates>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoXPathResultsMapper_xsltStyleSheet>
     <com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._AreasConhecimentoPolo1_xsltStyleSheet>
-    <com.example.acervo-biblioteca-esb.lib_._gmail-connector>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.lib_._gmail-connector>
     <com.example.acervo-biblioteca-esb.resource_._MapPoloObraStatesPropertyToPoloObraStates_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapPoloObraStatesPropertyToPoloObraStates_outputSchema>
+    <com.example.acervo-biblioteca-esb.lib_._gmail-connector>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.lib_._gmail-connector>
     <com.example.acervo-biblioteca-esb.resource_._MapObrasPolo1ToObrasPolos>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapObrasPolo1ToObrasPolos>
     <com.example.acervo-biblioteca-esb.resource_._MapPolo2ObrasToObrasPolo_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapPolo2ObrasToObrasPolo_outputSchema>
     <com.example.acervo-biblioteca-esb.resource_._CleanupPolo3ObraProperties>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._CleanupPolo3ObraProperties>

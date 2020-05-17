@@ -4,24 +4,22 @@
         <property name="message" value="Fornecedor1ObrasByTituloSequence"/>
     </log>
     <sequence key="GetObraISBNSequence"/>
+    <property description="uri.var.isbn" expression="get-property('isbn')" name="uri.var.isbn" scope="default" type="STRING"/>
     <sequence key="Fornecedor1ObrasByISBNSequence"/>
     <enrich description="Store Payload">
         <source clone="true" type="body"/>
         <target property="payload" type="property"/>
     </enrich>
-    <log level="custom">
-        <property name="asdffasd" value="saddascvacv"/>
-    </log>
-    <foreach expression="//*[local-name()='obra']" id="foreachID">
+    <foreach expression="//jsonArray/jsonElement" id="foreachID">
         <sequence>
-            <property description="Titulo" expression="//*[local-name()='titulo']" name="titulo" scope="default" type="STRING"/>
-            <property description="Preco" expression="//*[local-name()='preco']" name="preco" scope="default" type="STRING"/>
-            <property description="Tipo de Encadernacao" expression="//*[local-name()='enc']/text()" name="encadernacao" scope="default" type="STRING"/>
+            <property description="Tipo de Encadernacao" expression="json-eval($.pub_type)" name="encadernacao" scope="default" type="STRING"/>
+            <property description="Titulo" expression="//*[local-name()='title']" name="titulo" scope="default" type="STRING"/>
+            <property description="Preco" expression="//*[local-name()='price']" name="preco" scope="default" type="STRING"/>
             <enrich description="Restore original payload">
                 <source clone="false" property="payload" type="property"/>
                 <target type="body"/>
             </enrich>
-            <property description="Numero de Obras Disponiveis" expression="string(count(//*[local-name()= 'enc' and ./text() = get-property('encadernacao')]))" name="count" scope="default" type="STRING"/>
+            <property description="Numero de Obras Disponiveis" expression="string(count(//*[local-name()= 'pub_type' and ./text() = get-property('encadernacao')]))" name="count" scope="default" type="STRING"/>
             <payloadFactory description="Obra" media-type="xml">
                 <format>
                     <book xmlns="">
@@ -35,16 +33,13 @@
                 <args>
                     <arg evaluator="xml" expression="get-property('titulo')"/>
                     <arg evaluator="xml" expression="get-property('preco')"/>
-                    <arg value="sad"/>
+                    <arg value="euro"/>
                     <arg evaluator="xml" expression="get-property('encadernacao')"/>
                     <arg evaluator="xml" expression="get-property('count')"/>
                 </args>
             </payloadFactory>
         </sequence>
     </foreach>
-    <property description="Enclosing" name="enclosing_element" scope="default">
-        <value xmlns=""/>
-    </property>
     <payloadFactory description="Remove repeated Book" media-type="json">
         <format>
 							$1
