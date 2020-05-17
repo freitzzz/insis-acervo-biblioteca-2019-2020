@@ -132,7 +132,9 @@
                 <property expression="get-property('uri.var.polo')" name="polo resource identifier"/>
             </log>
             <switch description="Case-Insensitive Switch Matcher for Polos" source="get-property('uri.var.polo')">
-                <case regex="([p|P][o|O][l|L][o|O]1)"/>
+                <case regex="([p|P][o|O][l|L][o|O]1)">
+                    <sequence key="GetPolo1ObrasSequence"/>
+                </case>
                 <case regex="([p|P][o|O][l|L][o|O]2)">
                     <sequence key="GetPolo2ObrasSequence"/>
                 </case>
