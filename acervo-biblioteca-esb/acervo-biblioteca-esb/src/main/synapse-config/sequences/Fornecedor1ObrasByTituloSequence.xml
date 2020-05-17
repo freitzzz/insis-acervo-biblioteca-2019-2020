@@ -6,12 +6,27 @@
     <sequence key="GetObraISBNSequence"/>
     <property description="uri.var.isbn" expression="get-property('isbn')" name="uri.var.isbn" scope="default" type="STRING"/>
     <sequence key="Fornecedor1ObrasByISBNSequence"/>
+    <filter xpath="count(//title)=1">
+        <then>
+            <payloadFactory description="Array" media-type="json">
+                <format>[$1]</format>
+                <args>
+                    <arg evaluator="xml" expression="//title/.."/>
+                </args>
+            </payloadFactory>
+        </then>
+        <else/>
+    </filter>
     <enrich description="Store Payload">
         <source clone="true" type="body"/>
         <target property="payload" type="property"/>
     </enrich>
+    <log level="full"/>
     <foreach expression="//jsonArray/jsonElement" id="foreachID">
         <sequence>
+            <log level="custom">
+                <property name="here" value="herehereherehere"/>
+            </log>
             <property description="Tipo de Encadernacao" expression="json-eval($.pub_type)" name="encadernacao" scope="default" type="STRING"/>
             <property description="Titulo" expression="//*[local-name()='title']" name="titulo" scope="default" type="STRING"/>
             <property description="Preco" expression="//*[local-name()='price']" name="preco" scope="default" type="STRING"/>
