@@ -20,41 +20,6 @@
     <call>
         <endpoint key="Fornecedor2EP"/>
     </call>
-    <payloadFactory description="TO BE REMOVED" media-type="xml">
-        <format>
-            <Obras xmlns="Fornecedor2">
-                <Obra>
-                    <id>1</id>
-                    <titulo>volutpat eleifend donec ut</titulo>
-                    <preco>66</preco>
-                    <encad>4</encad>
-                    <ano>1871</ano>
-                </Obra>
-                <Obra>
-                    <id>1</id>
-                    <titulo>volutpat eleifend donec ut</titulo>
-                    <preco>55</preco>
-                    <encad>3</encad>
-                    <ano>1871</ano>
-                </Obra>
-                <Obra>
-                    <id>1</id>
-                    <titulo>volutpat eleifend donec ut</titulo>
-                    <preco>57.88</preco>
-                    <encad>2</encad>
-                    <ano>1871</ano>
-                </Obra>
-                <Obra>
-                    <id>1</id>
-                    <titulo>volutpat eleifend donec ut</titulo>
-                    <preco>55</preco>
-                    <encad>3</encad>
-                    <ano>1871</ano>
-                </Obra>
-            </Obras>
-        </format>
-        <args/>
-    </payloadFactory>
     <enrich description="Store Payload">
         <source clone="true" type="body"/>
         <target property="payload" type="property"/>
