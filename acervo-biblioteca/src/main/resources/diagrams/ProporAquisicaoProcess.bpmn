@@ -37,7 +37,7 @@
     <serviceTask id="proporAquisicaoAreasConhecimentoRESTTask" name="Obter Áreas de Conhecimento" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:string>http://www.mocky.io/v2/5e6e1fcd2f00006700a037a3</activiti:string>
+          <activiti:expression>${acervoBibliotecaAPIBaseUrl}/areasconhecimento</activiti:expression>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
