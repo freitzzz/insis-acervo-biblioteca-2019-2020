@@ -24,7 +24,7 @@
                     <log description="More than 1 Obra" level="custom">
                         <property name="message" value="More than 1 Obra"/>
                     </log>
-                    <property description="ISBN" expression="//isbn[1]" name="isbn" scope="default" type="STRING"/>
+                    <property description="ISBN" expression="(//isbn)[1]" name="isbn" scope="default" type="STRING"/>
                 </else>
             </filter>
         </else>
