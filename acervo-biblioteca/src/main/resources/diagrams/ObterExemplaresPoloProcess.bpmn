@@ -6,7 +6,7 @@
     <serviceTask id="obterExemplaresPoloBuscaPolosRestTask" name="Busca Polos" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:string>http://www.mocky.io/v2/5e6cdc3b2e000072000eea6e</activiti:string>
+          <activiti:expression>${acervoBibliotecaAPIBaseUrl}/polos</activiti:expression>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
@@ -22,7 +22,7 @@
     <serviceTask id="obterExemplaresPoloBuscaExemplaresPorPoloRestTask" name="Busca Exemplares Por Polo" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:expression>${polos.get(loopCounter).get("apiUrl").asText()}</activiti:expression>
+          <activiti:expression>${acervoBibliotecaAPIBaseUrl}/polos/${polos.get(loopCounter).get("name").asText()}/obras/${encoded_titulo}/states</activiti:expression>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
@@ -38,7 +38,7 @@
         <loopCardinality>${polos.size()}</loopCardinality>
       </multiInstanceLoopCharacteristics>
     </serviceTask>
-    <sequenceFlow id="flow1" sourceRef="obterExemplaresPoloStartEvent" targetRef="obterExemplaresPoloBuscaPolosRestTask"></sequenceFlow>
+    <sequenceFlow id="flow1" sourceRef="obterExemplaresPoloReplaceTitleSpacesScriptTask" targetRef="obterExemplaresPoloBuscaPolosRestTask"></sequenceFlow>
     <scriptTask id="obterExemplaresPoloAgregaInformacaoScriptTask" name="Agrega Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
       <script>import groovy.json.JsonBuilder
 import com.google.gson.Gson
@@ -53,6 +53,8 @@ println("\n ** Processo de Obter Exemplares por Polo ** \n")
 def exemplaresPoloTableRows = []
 Gson gson = new Gson()
 
+println(polos)
+
 for (int i=0; i &lt; polos.size(); i++) {
 
 	def polo = polos.get(i)
@@ -60,6 +62,10 @@ for (int i=0; i &lt; polos.size(); i++) {
 	def poloName = polo.get('name').asText()
 
 	def poloData = execution.getVariableLocal(poloName)
+
+	println(poloName)
+
+	println(poloData)
 	
     def exemplaresDataRows = []
 
@@ -87,6 +93,14 @@ println(exemplaresPoloTableRows)</script>
     <sequenceFlow id="flow4" sourceRef="obterExemplaresPoloAgregaInformacaoScriptTask" targetRef="obterExemplaresPoloEndEvent"></sequenceFlow>
     <sequenceFlow id="flow5" sourceRef="obterExemplaresPoloBuscaPolosRestTask" targetRef="obterExemplaresPoloBuscaExemplaresPorPoloRestTask"></sequenceFlow>
     <sequenceFlow id="flow6" sourceRef="obterExemplaresPoloBuscaExemplaresPorPoloRestTask" targetRef="obterExemplaresPoloAgregaInformacaoScriptTask"></sequenceFlow>
+    <scriptTask id="obterExemplaresPoloReplaceTitleSpacesScriptTask" name="Replace title spaces" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>def title = execution.getVariable('titulo')
+
+def title_no_spaces = java.net.URLEncoder.encode(title, "UTF-8").replace("+", "%20")
+
+execution.setVariable('encoded_titulo', title_no_spaces)</script>
+    </scriptTask>
+    <sequenceFlow id="flow7" sourceRef="obterExemplaresPoloStartEvent" targetRef="obterExemplaresPoloReplaceTitleSpacesScriptTask"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_obterExemplaresPoloProcess">
     <bpmndi:BPMNPlane bpmnElement="obterExemplaresPoloProcess" id="BPMNPlane_obterExemplaresPoloProcess">
@@ -94,32 +108,39 @@ println(exemplaresPoloTableRows)</script>
         <omgdc:Bounds height="35.0" width="35.0" x="50.0" y="150.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloEndEvent" id="BPMNShape_obterExemplaresPoloEndEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="760.0" y="150.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="850.0" y="150.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloBuscaPolosRestTask" id="BPMNShape_obterExemplaresPoloBuscaPolosRestTask">
-        <omgdc:Bounds height="55.0" width="105.0" x="170.0" y="140.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="320.0" y="140.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloBuscaExemplaresPorPoloRestTask" id="BPMNShape_obterExemplaresPoloBuscaExemplaresPorPoloRestTask">
-        <omgdc:Bounds height="65.0" width="181.0" x="341.0" y="135.0"></omgdc:Bounds>
+        <omgdc:Bounds height="65.0" width="181.0" x="470.0" y="135.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloAgregaInformacaoScriptTask" id="BPMNShape_obterExemplaresPoloAgregaInformacaoScriptTask">
-        <omgdc:Bounds height="55.0" width="121.0" x="580.0" y="140.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="121.0" x="690.0" y="140.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloReplaceTitleSpacesScriptTask" id="BPMNShape_obterExemplaresPoloReplaceTitleSpacesScriptTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="150.0" y="140.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
-        <omgdi:waypoint x="85.0" y="167.0"></omgdi:waypoint>
-        <omgdi:waypoint x="170.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="255.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="320.0" y="167.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
-        <omgdi:waypoint x="701.0" y="167.0"></omgdi:waypoint>
-        <omgdi:waypoint x="760.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="811.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="850.0" y="167.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
-        <omgdi:waypoint x="275.0" y="167.0"></omgdi:waypoint>
-        <omgdi:waypoint x="341.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="425.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="470.0" y="167.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
-        <omgdi:waypoint x="522.0" y="167.0"></omgdi:waypoint>
-        <omgdi:waypoint x="580.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="651.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="690.0" y="167.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="85.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="150.0" y="167.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

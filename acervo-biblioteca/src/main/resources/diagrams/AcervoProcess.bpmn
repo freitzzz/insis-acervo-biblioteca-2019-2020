@@ -37,6 +37,7 @@
         <activiti:in source="globalProponenteTelemovel" target="proponentePhoneNumber"></activiti:in>
         <activiti:in source="perito" target="perito"></activiti:in>
         <activiti:in sourceExpression="${execution.getProcessInstanceId()}" target="acervoProcessInstanceId"></activiti:in>
+        <activiti:in source="esbAcervoBibliotecaAPIBaseUrl" target="acervoBibliotecaAPIBaseUrl"></activiti:in>
       </extensionElements>
       <multiInstanceLoopCharacteristics isSequential="false" activiti:collection="globalTodosPeritos" activiti:elementVariable="perito"></multiInstanceLoopCharacteristics>
     </callActivity>
