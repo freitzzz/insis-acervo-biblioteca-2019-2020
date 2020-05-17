@@ -12,6 +12,21 @@
                 <property name="message" value="Does not have obra"/>
             </log>
         </then>
-        <else/>
+        <else>
+            <filter xpath="count(//isbn) = 1">
+                <then>
+                    <log description="1 Obra" level="custom">
+                        <property name="message" value="1 Obra"/>
+                    </log>
+                    <property description="ISBN" expression="//isbn" name="isbn" scope="default" type="STRING"/>
+                </then>
+                <else>
+                    <log description="More than 1 Obra" level="custom">
+                        <property name="message" value="More than 1 Obra"/>
+                    </log>
+                    <property description="ISBN" expression="//isbn[1]" name="isbn" scope="default" type="STRING"/>
+                </else>
+            </filter>
+        </else>
     </filter>
 </sequence>
