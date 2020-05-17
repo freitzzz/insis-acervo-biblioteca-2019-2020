@@ -91,10 +91,13 @@
         <file>src/main/synapse-config/templates/GetPoloObraStatesSequenceTemplate.xml</file>
     </artifact>
     <artifact name="GetObraISBNSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/sequences/GetIObraSBNSequence.xml</file>
+        <file>src/main/synapse-config/sequences/GetObraISBNSequence.xml</file>
     </artifact>
     <artifact name="GetISBNSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/GetISBNSequence.xml</file>
+    </artifact>
+    <artifact name="Fornecedor1ObrasByTituloSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Fornecedor1ObrasByTituloSequence.xml</file>
     </artifact>
     <artifact name="Fornecedor1ObrasByISBNSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/sequences/Fornecedor1ObrasByISBNSequence.xml</file>
