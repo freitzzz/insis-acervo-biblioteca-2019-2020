@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="GetISBNSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <payloadFactory description="Get Obras With title= uri.var.titulo" media-type="json">
+        <format>$1</format>
+        <args>
+            <arg evaluator="xml" expression="//*[local-name()= 'title' and ./text() = get-property('uri.var.titulo')]/.."/>
+        </args>
+    </payloadFactory>
+    <filter xpath="count(//isbn) = 0">
+        <then>
+            <log description="Does not have Obra" level="custom">
+                <property name="message" value="Does not have obra"/>
+            </log>
+        </then>
+        <else/>
+    </filter>
+</sequence>
