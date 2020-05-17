@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts>
+<?xml version="1.0" encoding="UTF-8"?>
+<artifacts>
     <artifact name="Polo1AreasConhecimentoEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/Polo1AreasConhecimentoEP.xml</file>
     </artifact>
@@ -52,15 +53,6 @@
     </artifact>
     <artifact name="GetPolo3ObraSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/templates/GetPolo3ObraSequenceTemplate.xml</file>
-    </artifact>
-    <artifact name="GetPolo1ObraStatesSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/templates/GetPolo1ObraStatesSequenceTemplate.xml</file>
-    </artifact>
-    <artifact name="GetPolo2ObraStatesSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/templates/GetPolo2ObraStatesSequenceTemplate.xml</file>
-    </artifact>
-    <artifact name="GetPolo3ObraStatesSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
-        <file>src/main/synapse-config/templates/GetPolo3ObraStatesSequenceTemplate.xml</file>
     </artifact>
     <artifact name="Polo1ObraSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/templates/Polo1ObraSequenceTemplate.xml</file>
