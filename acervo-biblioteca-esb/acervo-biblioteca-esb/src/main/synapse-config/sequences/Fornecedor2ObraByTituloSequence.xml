@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Fornecedor2ObraByTituloSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Log Sequence" level="custom">
+        <property name="message" value="Fornecedor2ObraByTituloSequence"/>
+    </log>
+    <payloadFactory description="Payload Soap" media-type="xml">
+        <format>
+            <body xmlns="">
+                <p:GetObrasByTituloAllAttributesOp xmlns:p="Fornecedor2">
+                    <!--Exactly 1 occurrence-->
+                    <xs:titulo xmlns:xs="Fornecedor2">$1</xs:titulo>
+                </p:GetObrasByTituloAllAttributesOp>
+            </body>
+        </format>
+        <args>
+            <arg evaluator="xml" expression="get-property('uri.var.titulo')"/>
+        </args>
+    </payloadFactory>
+    <header description="Soap Header" name="Action" scope="default" value="GetObrasByTituloAllAttributesOp"/>
+    <call>
+        <endpoint key="Fornecedor2EP"/>
+    </call>
+    <enrich>
+        <source clone="true" property="Store Payload" type="property"/>
+        <target type="body"/>
+    </enrich>
+    <iterate expression="//*[local-name()='Obra']">
+        <target>
+            <sequence>
+                <property description="Titulo" expression="//*[local-name()='titulo']" name="titulo" scope="default" type="STRING"/>
+                <property description="Preco" expression="//*[local-name()='preco']" name="preco" scope="default" type="STRING"/>
+                <property description="Tipo de Encadernacao" expression="//*[local-name()='encad']/text()" name="uri.var.encadernacao" scope="default" type="STRING"/>
+                <call>
+                    <endpoint key="Fornecedor2EncadernacoesByIDEP"/>
+                </call>
+                <log level="custom">
+                    <property expression="get-property('titulo')" name="titulo"/>
+                    <property expression="get-property('preco')" name="preco"/>
+                    <property expression="//*[local-name()='descr']" name="descr"/>
+                </log>
+                <payloadFactory description="Obra" media-type="xml">
+                    <format>
+                        <Obra xmlns="">
+                            <Titulo>$1</Titulo>
+                            <Preco>$2</Preco>
+                            <Encadercacao>$3</Encadercacao>
+                        </Obra>
+                    </format>
+                    <args>
+                        <arg evaluator="xml" expression="get-property('titulo')"/>
+                        <arg evaluator="xml" expression="get-property('preco')"/>
+                        <arg evaluator="xml" expression="//*[local-name()='descr']"/>
+                    </args>
+                </payloadFactory>
+            </sequence>
+        </target>
+    </iterate>
+    <property description="Enclosing" name="enclosing_element" scope="default">
+        <value xmlns=""/>
+    </property>
+    <aggregate>
+        <completeCondition>
+            <messageCount max="-1" min="-1"/>
+        </completeCondition>
+        <onComplete enclosingElementProperty="enclosing_element" expression="//*[local-name()='Obra']">
+            <log level="custom">
+                <property expression="//*[local-name()= 'enc' and ./text() = 'capa dura']/.." name=""/>
+            </log>
+            <send/>
+        </onComplete>
+    </aggregate>
+</sequence>

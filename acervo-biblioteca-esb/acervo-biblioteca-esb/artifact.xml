@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts>
+<?xml version="1.0" encoding="UTF-8"?>
+<artifacts>
     <artifact name="Polo1AreasConhecimentoEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/Polo1AreasConhecimentoEP.xml</file>
     </artifact>
@@ -70,5 +71,30 @@
     </artifact>
     <artifact name="Polo3ObraSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/templates/Polo3ObraSequenceTemplate.xml</file>
+    </artifact>
+    <artifact name="Fornecedor3ObrasEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/Fornecedor3ObrasEP.xml</file>
+    </artifact>
+    <artifact name="Fornecedor1ObraByISBNEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/Fornecedor1ObraByISBNEP.xml</file>
+    </artifact>
+    <artifact name="Fornecedor2EP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/Fornecedor2EP.xml</file>
+    </artifact>
+    <artifact name="Fornecedor2ObraByTituloSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Fornecedor2ObraByTituloSequence.xml</file>
+    </artifact>
+    <artifact name="SendEmailSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/SendEmailSequence.xml</file>
+    </artifact>
+    <artifact name="Fornecedor3ObrasSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Fornecedor3ObrasSequence.xml</file>
+    </artifact>
+    <artifact name="Fornecedor3ObrasByTituloSequence" groupId="com.example.acervo-biblioteca-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Fornecedor3ObrasByTituloSequence.xml</file>
+    </artifact>
+    <artifact name="Fornecedor2EncadernacoesByIDEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/Fornecedor2EncadernacoesByIDEP.xml</file>
+    >>>>>>> 48240e0566b729dbb90c07075fd98e499c3a1834
     </artifact>
 </artifacts>

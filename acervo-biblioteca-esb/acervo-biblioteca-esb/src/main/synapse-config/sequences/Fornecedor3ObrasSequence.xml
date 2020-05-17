@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Fornecedor3ObrasSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Log Sequence" level="custom">
+        <property name="message" value="Fornecedor3ObrasSequence"/>
+    </log>
+    <call>
+        <endpoint key="Fornecedor3ObrasEP"/>
+    </call>
+</sequence>

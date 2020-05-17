@@ -1,1 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><artifacts/>
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="gmail-connector" groupId="com.example.acervo-biblioteca-esb.lib" version="3.0.8" type="synapse/lib" serverRole="EnterpriseServiceBus">
+        <file>gmail-connector-3.0.8.zip</file>
+    </artifact>
+</artifacts>

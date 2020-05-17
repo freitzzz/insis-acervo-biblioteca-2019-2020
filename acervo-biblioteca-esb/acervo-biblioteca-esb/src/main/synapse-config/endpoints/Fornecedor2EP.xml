@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="Fornecedor2EP" xmlns="http://ws.apache.org/ns/synapse">
+    <wsdl port="SecureSOAP11Endpoint" service="Fornecedor2" uri="file:samples/data-services/wsdl/Fornecedor2.wsdl">
+        <suspendOnFailure>
+            <initialDuration>-1</initialDuration>
+            <progressionFactor>1.0</progressionFactor>
+        </suspendOnFailure>
+        <markForSuspension>
+            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+        </markForSuspension>
+    </wsdl>
+</endpoint>

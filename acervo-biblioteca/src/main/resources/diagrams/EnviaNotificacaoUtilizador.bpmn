@@ -3,32 +3,7 @@
   <process id="enviaNotificacaoUtilizadorProcess" name="Envia uma notificação a um utilizador" isExecutable="true">
     <startEvent id="enviaNotificacaoUtilizadorStartEvent" name="Start Event"></startEvent>
     <exclusiveGateway id="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" name="Decide Método Notificação"></exclusiveGateway>
-    <serviceTask id="enviaNotificacaoUtilizadorMailTask" name="Envia Notificação Por Email" activiti:type="mail">
-      <extensionElements>
-        <activiti:field name="to">
-          <activiti:expression><![CDATA[${userEmail}]]></activiti:expression>
-        </activiti:field>
-        <activiti:field name="subject">
-          <activiti:expression><![CDATA[${subject}]]></activiti:expression>
-        </activiti:field>
-        <activiti:field name="from">
-          <activiti:expression><![CDATA[${config.get('notificationEmail').asText()}]]></activiti:expression>
-        </activiti:field>
-        <activiti:field name="html">
-          <activiti:expression><![CDATA[${message}]]></activiti:expression>
-        </activiti:field>
-      </extensionElements>
-    </serviceTask>
-    <sequenceFlow id="flow2" sourceRef="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" targetRef="enviaNotificacaoUtilizadorMailTask">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${config.get('notificationChannel').asText() == 'email'}]]></conditionExpression>
-    </sequenceFlow>
-    <serviceTask id="enviaNotificacaoUtilizadorSMSServiceTask" name="Envia Notificação Por SMS" activiti:class="org.wso2.bpmn.helloworld.v1.HelloWorldServiceTaskV1"></serviceTask>
-    <sequenceFlow id="flow3" sourceRef="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" targetRef="enviaNotificacaoUtilizadorSMSServiceTask">
-      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${config.get('notificationChannel').asText() == 'sms'}]]></conditionExpression>
-    </sequenceFlow>
     <endEvent id="enviaNotificacaoUtilizadorEndEvent" name="End Event"></endEvent>
-    <sequenceFlow id="flow4" sourceRef="enviaNotificacaoUtilizadorSMSServiceTask" targetRef="enviaNotificacaoUtilizadorEndEvent"></sequenceFlow>
-    <sequenceFlow id="flow5" sourceRef="enviaNotificacaoUtilizadorMailTask" targetRef="enviaNotificacaoUtilizadorEndEvent"></sequenceFlow>
     <serviceTask id="enviaNotificacaoUtilizadorBuscaInformacaoMecanismoNotificacaoRestTask" name="Busca Informação Mecanismo de Notificação" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
@@ -47,6 +22,27 @@
     </serviceTask>
     <sequenceFlow id="flow6" sourceRef="enviaNotificacaoUtilizadorStartEvent" targetRef="enviaNotificacaoUtilizadorBuscaInformacaoMecanismoNotificacaoRestTask"></sequenceFlow>
     <sequenceFlow id="flow7" sourceRef="enviaNotificacaoUtilizadorBuscaInformacaoMecanismoNotificacaoRestTask" targetRef="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway"></sequenceFlow>
+    <serviceTask id="servicetask1" name="REST Task" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
+      <extensionElements>
+        <activiti:field name="serviceURL">
+          <activiti:string>http://localhost:8280/acervobiblioteca/notification</activiti:string>
+        </activiti:field>
+        <activiti:field name="method">
+          <activiti:string>POST</activiti:string>
+        </activiti:field>
+        <activiti:field name="input">
+          <activiti:expression>{"notificationChannel": "${config.get('notificationChannel').asText()}", "userEmail": "${userEmail}", "userPhoneNumber": "${userPhoneNumber}", "subject": "${subject}", "message": "${message}"}</activiti:expression>
+        </activiti:field>
+        <activiti:field name="outputVariable">
+          <activiti:string>result</activiti:string>
+        </activiti:field>
+        <activiti:field name="headers">
+          <activiti:string>{"Content-Type": "application/json"}</activiti:string>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow8" sourceRef="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" targetRef="servicetask1"></sequenceFlow>
+    <sequenceFlow id="flow9" sourceRef="servicetask1" targetRef="enviaNotificacaoUtilizadorEndEvent"></sequenceFlow>
     <textAnnotation id="enviaNotificacaoUtilizadorInputVariablesNote">
       <text>Requer como parâmetros de input:
 - userEmail: Email do utilizador cuja notificação vai ser enviada
@@ -65,42 +61,18 @@
       <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway" id="BPMNShape_enviaNotificacaoUtilizadorDecideMetodoNotificacaoExclusiveGateway">
         <omgdc:Bounds height="40.0" width="40.0" x="330.0" y="147.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorMailTask" id="BPMNShape_enviaNotificacaoUtilizadorMailTask">
-        <omgdc:Bounds height="61.0" width="111.0" x="497.0" y="70.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorSMSServiceTask" id="BPMNShape_enviaNotificacaoUtilizadorSMSServiceTask">
-        <omgdc:Bounds height="61.0" width="105.0" x="500.0" y="200.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorEndEvent" id="BPMNShape_enviaNotificacaoUtilizadorEndEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="720.0" y="146.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="640.0" y="150.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorBuscaInformacaoMecanismoNotificacaoRestTask" id="BPMNShape_enviaNotificacaoUtilizadorBuscaInformacaoMecanismoNotificacaoRestTask">
         <omgdc:Bounds height="71.0" width="115.0" x="150.0" y="132.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="servicetask1" id="BPMNShape_servicetask1">
+        <omgdc:Bounds height="55.0" width="105.0" x="421.0" y="140.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="enviaNotificacaoUtilizadorInputVariablesNote" id="BPMNShape_enviaNotificacaoUtilizadorInputVariablesNote">
         <omgdc:Bounds height="150.0" width="240.0" x="1.0" y="260.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
-        <omgdi:waypoint x="350.0" y="147.0"></omgdi:waypoint>
-        <omgdi:waypoint x="350.0" y="100.0"></omgdi:waypoint>
-        <omgdi:waypoint x="497.0" y="100.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
-        <omgdi:waypoint x="350.0" y="187.0"></omgdi:waypoint>
-        <omgdi:waypoint x="350.0" y="230.0"></omgdi:waypoint>
-        <omgdi:waypoint x="500.0" y="230.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
-        <omgdi:waypoint x="605.0" y="230.0"></omgdi:waypoint>
-        <omgdi:waypoint x="736.0" y="230.0"></omgdi:waypoint>
-        <omgdi:waypoint x="737.0" y="181.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
-        <omgdi:waypoint x="608.0" y="100.0"></omgdi:waypoint>
-        <omgdi:waypoint x="608.0" y="100.0"></omgdi:waypoint>
-        <omgdi:waypoint x="737.0" y="100.0"></omgdi:waypoint>
-        <omgdi:waypoint x="737.0" y="146.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
         <omgdi:waypoint x="95.0" y="167.0"></omgdi:waypoint>
         <omgdi:waypoint x="150.0" y="167.0"></omgdi:waypoint>
@@ -108,6 +80,14 @@
       <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
         <omgdi:waypoint x="265.0" y="167.0"></omgdi:waypoint>
         <omgdi:waypoint x="330.0" y="167.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="370.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="421.0" y="167.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="526.0" y="167.0"></omgdi:waypoint>
+        <omgdi:waypoint x="640.0" y="167.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

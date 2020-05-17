@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="Fornecedor3ObrasEP" xmlns="http://ws.apache.org/ns/synapse">
+    <http method="get" uri-template="http://www.mocky.io/v2/5eb5119c0e00004d5a081f20">
+        <suspendOnFailure>
+            <initialDuration>-1</initialDuration>
+            <progressionFactor>1.0</progressionFactor>
+        </suspendOnFailure>
+        <markForSuspension>
+            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+        </markForSuspension>
+    </http>
+</endpoint>
