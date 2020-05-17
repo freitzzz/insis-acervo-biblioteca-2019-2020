@@ -12,4 +12,101 @@
             <arg evaluator="xml" expression="//*[local-name()= 'titulo' and ./text() = get-property('uri.var.titulo')]/.."/>
         </args>
     </payloadFactory>
+    <payloadFactory description="TO BE REMOVED" media-type="xml">
+        <format>
+            <obras xmlns="">
+                <obra>
+                    <id>165</id>
+                    <titulo>sit amet eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
+                    <preco>76.15</preco>
+                    <enc>brochura</enc>
+                    <ano>1829</ano>
+                </obra>
+                <obra>
+                    <id>165</id>
+                    <titulo>sit amet eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
+                    <preco>76</preco>
+                    <enc>capa dura</enc>
+                    <ano>1829</ano>
+                </obra>
+                <obra>
+                    <id>165</id>
+                    <titulo>sit amet eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
+                    <preco>76.15</preco>
+                    <enc>brochura</enc>
+                    <ano>1829</ano>
+                </obra>
+                <obra>
+                    <id>165</id>
+                    <titulo>sit amet eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
+                    <preco>76.15</preco>
+                    <enc>brochura</enc>
+                    <ano>1829</ano>
+                </obra>
+                <obra>
+                    <id>165</id>
+                    <titulo>sit amet eleifend pede libero quis orci nullam molestie nibh in lectus</titulo>
+                    <preco>76</preco>
+                    <enc>capa dura</enc>
+                    <ano>1829</ano>
+                </obra>
+            </obras>
+        </format>
+        <args/>
+    </payloadFactory>
+    <enrich description="Store Payload">
+        <source clone="true" type="body"/>
+        <target property="payload" type="property"/>
+    </enrich>
+    <foreach expression="//*[local-name()='obra']" id="foreachID">
+        <sequence>
+            <property description="Titulo" expression="//*[local-name()='titulo']" name="titulo" scope="default" type="STRING"/>
+            <property description="Preco" expression="//*[local-name()='preco']" name="preco" scope="default" type="STRING"/>
+            <property description="Tipo de Encadernacao" expression="//*[local-name()='enc']/text()" name="encadernacao" scope="default" type="STRING"/>
+            <enrich description="Restore original payload">
+                <source clone="false" property="payload" type="property"/>
+                <target type="body"/>
+            </enrich>
+            <property description="Numero de Obras Disponiveis" expression="string(count(//*[local-name()= 'enc' and ./text() = get-property('encadernacao')]))" name="count" scope="default" type="STRING"/>
+            <payloadFactory description="Obra" media-type="xml">
+                <format>
+                    <book xmlns="">
+                        <title>$1</title>
+                        <price>$2</price>
+                        <currency>$3</currency>
+                        <binding>$4</binding>
+                        <availableNumber>$5</availableNumber>
+                    </book>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('titulo')"/>
+                    <arg evaluator="xml" expression="get-property('preco')"/>
+                    <arg value="sad"/>
+                    <arg evaluator="xml" expression="get-property('encadernacao')"/>
+                    <arg evaluator="xml" expression="get-property('count')"/>
+                </args>
+            </payloadFactory>
+        </sequence>
+    </foreach>
+    <property description="Enclosing" name="enclosing_element" scope="default">
+        <value xmlns=""/>
+    </property>
+    <payloadFactory description="Remove repeated Book" media-type="json">
+        <format>
+							$1
+						</format>
+        <args>
+            <arg evaluator="xml" expression="//*[local-name()='book'][not(.=preceding-sibling::*[local-name()='book'])]"/>
+        </args>
+    </payloadFactory>
+    <payloadFactory description="Get only array" media-type="json">
+        <format>
+							$1
+						</format>
+        <args>
+            <arg evaluator="json" expression="$.book"/>
+        </args>
+    </payloadFactory>
+    <property description="Message Type" name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <send/>
 </sequence>

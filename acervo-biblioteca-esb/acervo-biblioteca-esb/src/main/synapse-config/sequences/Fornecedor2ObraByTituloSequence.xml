@@ -68,7 +68,7 @@
             <messageCount max="-1" min="-1"/>
         </completeCondition>
         <onComplete enclosingElementProperty="enclosing_element" expression="//*[local-name()='book']">
-            <payloadFactory description="Remove repeated AreasConhecimento" media-type="json">
+            <payloadFactory description="Remove repeated Book" media-type="json">
                 <format>
 							$1
 						</format>
