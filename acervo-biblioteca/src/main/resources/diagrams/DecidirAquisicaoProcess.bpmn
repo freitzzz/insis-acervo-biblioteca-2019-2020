@@ -7,6 +7,7 @@
         <activiti:in source="titulo" target="titulo"></activiti:in>
         <activiti:in source="autores" target="autores"></activiti:in>
         <activiti:in source="anoPublicacao" target="anoPublicacao"></activiti:in>
+        <activiti:in source="acervoBibliotecaAPIBaseUrl" target="acervoBibliotecaAPIBaseUrl"></activiti:in>
         <activiti:out source="obraPorPoloTable" target="exemplaresPolos"></activiti:out>
         <activiti:out source="fornecedoresTable" target="fornecedores"></activiti:out>
         <activiti:out source="propostas" target="propostas"></activiti:out>

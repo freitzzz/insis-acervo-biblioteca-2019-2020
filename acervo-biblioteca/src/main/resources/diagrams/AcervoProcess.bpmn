@@ -60,6 +60,7 @@
         <activiti:in source="globalProponenteTelemovel" target="userPhoneNumber"></activiti:in>
         <activiti:in source="globalProponenteEmail" target="userEmail"></activiti:in>
         <activiti:in source="globalDisponibilidadeFinanceiraComentario" target="disponibilidadeFinanceiraComentario"></activiti:in>
+        <activiti:in source="esbAcervoBibliotecaAPIBaseUrl" target="acervoBibliotecaAPIBaseUrl"></activiti:in>
         <activiti:out source="aquisicaoAprovada" target="globalAquisicaoAprovada"></activiti:out>
         <activiti:out source="comentario" target="globalDecisaoAquisicaoComentario"></activiti:out>
       </extensionElements>
