@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="GetObraISBNSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="custom">
+        <property name="message" value="GetIObraSBNSequence"/>
+    </log>
+    <sequence key="GetPolo1ObrasSequence"/>
+    <sequence key="GetISBNSequence"/>
+    <filter xpath="boolean(get-property('isbn'))">
+        <then/>
+        <else>
+            <sequence key="GetPolo2ObrasSequence"/>
+            <log level="full"/>
+            <sequence key="GetISBNSequence"/>
+        </else>
+    </filter>
+    <filter xpath="boolean(get-property('isbn'))">
+        <then/>
+        <else>
+            <sequence key="GetPolo3ObrasSequence"/>
+            <log level="full"/>
+            <sequence key="GetISBNSequence"/>
+        </else>
+    </filter>
+    <filter xpath="boolean(get-property('isbn'))">
+        <then>
+            <log description="ISBN" level="custom">
+                <property expression="get-property('isbn')" name="isbn"/>
+            </log>
+        </then>
+        <else>
+            <log description="Could not find isbn" level="custom">
+                <property name="message" value="Could not find isbn"/>
+            </log>
+            <loopback/>
+        </else>
+    </filter>
+</sequence>

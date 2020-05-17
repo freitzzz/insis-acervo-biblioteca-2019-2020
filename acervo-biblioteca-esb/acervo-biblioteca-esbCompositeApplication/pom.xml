@@ -44,6 +44,7 @@
     <com.example.acervo-biblioteca-esb.resource_._TestMapper_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._TestMapper_xsltStyleSheet>
     <com.example.acervo-biblioteca-esb.resource_._MapPoloObraStatesPropertyToPoloObraStates_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapPoloObraStatesPropertyToPoloObraStates_inputSchema>
     <com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties_xsltStyleSheet>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._CleanupPolo2ObraProperties_xsltStyleSheet>
+    <com.example.acervo-biblioteca-esb.sequence_._GetObraISBNSequence>capp/ApplicationServer</com.example.acervo-biblioteca-esb.sequence_._GetObraISBNSequence>
     <com.example.acervo-biblioteca-esb.resource_._MapObrasPolo1ToObrasPolos_inputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._MapObrasPolo1ToObrasPolos_inputSchema>
     <com.example.acervo-biblioteca-esb.resource_._RemovePolo3ObrasSoapHeadersMapper_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._RemovePolo3ObrasSoapHeadersMapper_outputSchema>
     <com.example.acervo-biblioteca-esb.resource_._FormatPolo1ObraProperties_outputSchema>capp/EnterpriseServiceBus</com.example.acervo-biblioteca-esb.resource_._FormatPolo1ObraProperties_outputSchema>
@@ -199,6 +200,12 @@
       <artifactId>GetPolo3ObraStatesSequenceTemplate</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.acervo-biblioteca-esb.lib</groupId>
+      <artifactId>gmail-connector</artifactId>
+      <version>3.0.8</version>
+      <type>zip</type>
     </dependency>
     <dependency>
       <groupId>com.example.acervo-biblioteca-esb.resource</groupId>
@@ -501,10 +508,10 @@
       <type>zip</type>
     </dependency>
     <dependency>
-      <groupId>com.example.acervo-biblioteca-esb.lib</groupId>
-      <artifactId>gmail-connector</artifactId>
-      <version>3.0.8</version>
-      <type>zip</type>
+      <groupId>com.example.acervo-biblioteca-esb.sequence</groupId>
+      <artifactId>GetObraISBNSequence</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
     </dependency>
     <dependency>
       <groupId>com.example.acervo-biblioteca-esb.api</groupId>
