@@ -20,36 +20,76 @@
     <call>
         <endpoint key="Fornecedor2EP"/>
     </call>
-    <enrich>
-        <source clone="true" property="Store Payload" type="property"/>
-        <target type="body"/>
+    <payloadFactory description="TO BE REMOVED" media-type="xml">
+        <format>
+            <Obras xmlns="Fornecedor2">
+                <Obra>
+                    <id>1</id>
+                    <titulo>volutpat eleifend donec ut</titulo>
+                    <preco>66</preco>
+                    <encad>4</encad>
+                    <ano>1871</ano>
+                </Obra>
+                <Obra>
+                    <id>1</id>
+                    <titulo>volutpat eleifend donec ut</titulo>
+                    <preco>55</preco>
+                    <encad>3</encad>
+                    <ano>1871</ano>
+                </Obra>
+                <Obra>
+                    <id>1</id>
+                    <titulo>volutpat eleifend donec ut</titulo>
+                    <preco>57.88</preco>
+                    <encad>2</encad>
+                    <ano>1871</ano>
+                </Obra>
+                <Obra>
+                    <id>1</id>
+                    <titulo>volutpat eleifend donec ut</titulo>
+                    <preco>55</preco>
+                    <encad>3</encad>
+                    <ano>1871</ano>
+                </Obra>
+            </Obras>
+        </format>
+        <args/>
+    </payloadFactory>
+    <enrich description="Store Payload">
+        <source clone="true" type="body"/>
+        <target property="payload" type="property"/>
     </enrich>
     <iterate expression="//*[local-name()='Obra']">
         <target>
             <sequence>
                 <property description="Titulo" expression="//*[local-name()='titulo']" name="titulo" scope="default" type="STRING"/>
                 <property description="Preco" expression="//*[local-name()='preco']" name="preco" scope="default" type="STRING"/>
-                <property description="Tipo de Encadernacao" expression="//*[local-name()='encad']/text()" name="uri.var.encadernacao" scope="default" type="STRING"/>
+                <property description="Tipo de Encadernacao ID" expression="//*[local-name()='encad']/text()" name="uri.var.encadernacao" scope="default" type="STRING"/>
                 <call>
                     <endpoint key="Fornecedor2EncadernacoesByIDEP"/>
                 </call>
-                <log level="custom">
-                    <property expression="get-property('titulo')" name="titulo"/>
-                    <property expression="get-property('preco')" name="preco"/>
-                    <property expression="//*[local-name()='descr']" name="descr"/>
-                </log>
+                <property description="Tipo de Encadernacao" expression="//*[local-name()='descr']" name="encadernacao" scope="default" type="STRING"/>
+                <enrich description="Restore original payload">
+                    <source clone="false" property="payload" type="property"/>
+                    <target type="body"/>
+                </enrich>
+                <property description="Numero de Obras Disponiveis" expression="string(count(//*[local-name()= 'encad' and ./text() = get-property('uri.var.encadernacao')]))" name="count" scope="default" type="STRING"/>
                 <payloadFactory description="Obra" media-type="xml">
                     <format>
-                        <Obra xmlns="">
-                            <Titulo>$1</Titulo>
-                            <Preco>$2</Preco>
-                            <Encadercacao>$3</Encadercacao>
-                        </Obra>
+                        <book xmlns="">
+                            <title>$1</title>
+                            <price>$2</price>
+                            <currency>$3</currency>
+                            <binding>$4</binding>
+                            <availableNumber>$5</availableNumber>
+                        </book>
                     </format>
                     <args>
                         <arg evaluator="xml" expression="get-property('titulo')"/>
                         <arg evaluator="xml" expression="get-property('preco')"/>
-                        <arg evaluator="xml" expression="//*[local-name()='descr']"/>
+                        <arg value="sad"/>
+                        <arg evaluator="xml" expression="get-property('encadernacao')"/>
+                        <arg evaluator="xml" expression="get-property('count')"/>
                     </args>
                 </payloadFactory>
             </sequence>
@@ -62,10 +102,24 @@
         <completeCondition>
             <messageCount max="-1" min="-1"/>
         </completeCondition>
-        <onComplete enclosingElementProperty="enclosing_element" expression="//*[local-name()='Obra']">
-            <log level="custom">
-                <property expression="//*[local-name()= 'enc' and ./text() = 'capa dura']/.." name=""/>
-            </log>
+        <onComplete enclosingElementProperty="enclosing_element" expression="//*[local-name()='book']">
+            <payloadFactory description="Remove repeated AreasConhecimento" media-type="json">
+                <format>
+							$1
+						</format>
+                <args>
+                    <arg evaluator="xml" expression="//*[local-name()='book'][not(.=preceding-sibling::*[local-name()='book'])]"/>
+                </args>
+            </payloadFactory>
+            <payloadFactory description="Get only array" media-type="json">
+                <format>
+							$1
+						</format>
+                <args>
+                    <arg evaluator="json" expression="$.book"/>
+                </args>
+            </payloadFactory>
+            <property description="Message Type" name="messageType" scope="axis2" type="STRING" value="application/json"/>
             <send/>
         </onComplete>
     </aggregate>
