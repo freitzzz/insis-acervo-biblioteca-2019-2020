@@ -54,6 +54,7 @@ execution.setVariable('fornecedorMaisBaratoTable', fornecedorMaisBaratoTableJson
         <activiti:in source="titulo" target="titulo"></activiti:in>
         <activiti:in source="autores" target="autores"></activiti:in>
         <activiti:in source="anoPublicacao" target="anoPublicacao"></activiti:in>
+        <activiti:in source="acervoBibliotecaAPIBaseUrl" target="acervoBibliotecaAPIBaseUrl"></activiti:in>
         <activiti:out source="fornecedores" target="fornecedores"></activiti:out>
       </extensionElements>
     </callActivity>

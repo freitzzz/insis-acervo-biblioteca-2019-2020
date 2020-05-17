@@ -38,7 +38,7 @@
         <loopCardinality>${polos.size()}</loopCardinality>
       </multiInstanceLoopCharacteristics>
     </serviceTask>
-    <sequenceFlow id="flow1" sourceRef="obterExemplaresPoloReplaceTitleSpacesScriptTask" targetRef="obterExemplaresPoloBuscaPolosRestTask"></sequenceFlow>
+    <sequenceFlow id="flow1" sourceRef="obterExemplaresPoloRetiraEspacosTituloScriptTask" targetRef="obterExemplaresPoloBuscaPolosRestTask"></sequenceFlow>
     <scriptTask id="obterExemplaresPoloAgregaInformacaoScriptTask" name="Agrega Informação" scriptFormat="groovy" activiti:autoStoreVariables="false">
       <script>import groovy.json.JsonBuilder
 import com.google.gson.Gson
@@ -93,14 +93,14 @@ println(exemplaresPoloTableRows)</script>
     <sequenceFlow id="flow4" sourceRef="obterExemplaresPoloAgregaInformacaoScriptTask" targetRef="obterExemplaresPoloEndEvent"></sequenceFlow>
     <sequenceFlow id="flow5" sourceRef="obterExemplaresPoloBuscaPolosRestTask" targetRef="obterExemplaresPoloBuscaExemplaresPorPoloRestTask"></sequenceFlow>
     <sequenceFlow id="flow6" sourceRef="obterExemplaresPoloBuscaExemplaresPorPoloRestTask" targetRef="obterExemplaresPoloAgregaInformacaoScriptTask"></sequenceFlow>
-    <scriptTask id="obterExemplaresPoloReplaceTitleSpacesScriptTask" name="Replace title spaces" scriptFormat="groovy" activiti:autoStoreVariables="false">
+    <scriptTask id="obterExemplaresPoloRetiraEspacosTituloScriptTask" name="Retira espaços titulo" scriptFormat="groovy" activiti:autoStoreVariables="false">
       <script>def title = execution.getVariable('titulo')
 
 def title_no_spaces = java.net.URLEncoder.encode(title, "UTF-8").replace("+", "%20")
 
 execution.setVariable('encoded_titulo', title_no_spaces)</script>
     </scriptTask>
-    <sequenceFlow id="flow7" sourceRef="obterExemplaresPoloStartEvent" targetRef="obterExemplaresPoloReplaceTitleSpacesScriptTask"></sequenceFlow>
+    <sequenceFlow id="flow7" sourceRef="obterExemplaresPoloStartEvent" targetRef="obterExemplaresPoloRetiraEspacosTituloScriptTask"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_obterExemplaresPoloProcess">
     <bpmndi:BPMNPlane bpmnElement="obterExemplaresPoloProcess" id="BPMNPlane_obterExemplaresPoloProcess">
@@ -119,7 +119,7 @@ execution.setVariable('encoded_titulo', title_no_spaces)</script>
       <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloAgregaInformacaoScriptTask" id="BPMNShape_obterExemplaresPoloAgregaInformacaoScriptTask">
         <omgdc:Bounds height="55.0" width="121.0" x="690.0" y="140.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloReplaceTitleSpacesScriptTask" id="BPMNShape_obterExemplaresPoloReplaceTitleSpacesScriptTask">
+      <bpmndi:BPMNShape bpmnElement="obterExemplaresPoloRetiraEspacosTituloScriptTask" id="BPMNShape_obterExemplaresPoloRetiraEspacosTituloScriptTask">
         <omgdc:Bounds height="55.0" width="105.0" x="150.0" y="140.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">

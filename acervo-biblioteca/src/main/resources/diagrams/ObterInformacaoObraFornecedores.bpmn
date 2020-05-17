@@ -5,7 +5,7 @@
     <serviceTask id="obterInformacaoObraFornecedoresBuscaFornecedoresRestTask" name="Busca Fornecedores" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:string>http://www.mocky.io/v2/5e6ce3642e000057000eea83</activiti:string>
+          <activiti:expression>${acervoBibliotecaAPIBaseUrl}/fornecedores</activiti:expression>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
@@ -18,11 +18,10 @@
         </activiti:field>
       </extensionElements>
     </serviceTask>
-    <sequenceFlow id="flow1" sourceRef="obterInformacaoObraFornecedoresStartEvent" targetRef="obterInformacaoObraFornecedoresBuscaFornecedoresRestTask"></sequenceFlow>
     <serviceTask id="obterInformacaoObraFornecedoresBuscaObraPorFornecedorRestTask" name="Obter Informação de Obra por Fornecedor" activiti:class="org.wso2.carbon.bpmn.extensions.rest.RESTTask" activiti:extensionId="org.wso2.developerstudio.bpmn.extensions.restTask.RESTTask">
       <extensionElements>
         <activiti:field name="serviceURL">
-          <activiti:expression>${fornecedores.get(loopCounter).get("apiUrl").asText()}</activiti:expression>
+          <activiti:expression>${acervoBibliotecaAPIBaseUrl}/fornecedores/${fornecedores.get(loopCounter).get("name").asText()}/obras/${encoded_titulo}</activiti:expression>
         </activiti:field>
         <activiti:field name="method">
           <activiti:string>GET</activiti:string>
@@ -48,7 +47,11 @@ for(int i = 0; i &lt; fornecedores.size(); i++) {
 
 	def fornecedorName = fornecedores.get(i).get('name').asText()
 
-	def fornecedor = execution.getVariableLocal(fornecedorName)
+	def nextFornecedor = execution.getVariableLocal(fornecedorName)
+
+	for(int j = 0; j &lt; nextFornecedor.size(); j++) {
+
+	def fornecedor = nextFornecedor.get(j)
 
 	def price = fornecedor.get('price').asDouble()
 
@@ -59,6 +62,8 @@ for(int i = 0; i &lt; fornecedores.size(); i++) {
 	def entry = [name: fornecedorName, price: price, currency: currency, availableNumber: availableNumber]
 
 	fornecedoresInfo.add(entry)
+
+	}
 	
 }
 
@@ -71,6 +76,15 @@ println(fornecedoresInfo)</script>
     <sequenceFlow id="flow4" sourceRef="obterInformacaoObraFornecedoresBuscaObraPorFornecedorRestTask" targetRef="obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask"></sequenceFlow>
     <sequenceFlow id="flow5" sourceRef="obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask" targetRef="obterInformacaoObraFornecedoresBuscaFornecedoresEndEvent"></sequenceFlow>
     <sequenceFlow id="flow6" sourceRef="obterInformacaoObraFornecedoresBuscaFornecedoresRestTask" targetRef="obterInformacaoObraFornecedoresBuscaObraPorFornecedorRestTask"></sequenceFlow>
+    <scriptTask id="obterInformacaoObraFornecedoresRetiraEspacosTituloScriptTask" name="Retira espaços titulo" scriptFormat="groovy" activiti:autoStoreVariables="false">
+      <script>def title = execution.getVariable('titulo')
+
+def title_no_spaces = java.net.URLEncoder.encode(title, "UTF-8").replace("+", "%20")
+
+execution.setVariable('encoded_titulo', title_no_spaces)</script>
+    </scriptTask>
+    <sequenceFlow id="flow7" sourceRef="obterInformacaoObraFornecedoresStartEvent" targetRef="obterInformacaoObraFornecedoresRetiraEspacosTituloScriptTask"></sequenceFlow>
+    <sequenceFlow id="flow8" sourceRef="obterInformacaoObraFornecedoresRetiraEspacosTituloScriptTask" targetRef="obterInformacaoObraFornecedoresBuscaFornecedoresRestTask"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_obterInformacaoObraFornecedores">
     <bpmndi:BPMNPlane bpmnElement="obterInformacaoObraFornecedores" id="BPMNPlane_obterInformacaoObraFornecedores">
@@ -78,32 +92,39 @@ println(fornecedoresInfo)</script>
         <omgdc:Bounds height="35.0" width="35.0" x="70.0" y="90.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="obterInformacaoObraFornecedoresBuscaFornecedoresRestTask" id="BPMNShape_obterInformacaoObraFornecedoresBuscaFornecedoresRestTask">
-        <omgdc:Bounds height="55.0" width="105.0" x="180.0" y="80.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="300.0" y="80.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="obterInformacaoObraFornecedoresBuscaObraPorFornecedorRestTask" id="BPMNShape_obterInformacaoObraFornecedoresBuscaObraPorFornecedorRestTask">
-        <omgdc:Bounds height="71.0" width="131.0" x="360.0" y="72.0"></omgdc:Bounds>
+        <omgdc:Bounds height="71.0" width="131.0" x="450.0" y="72.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="obterInformacaoObraFornecedoresBuscaFornecedoresEndEvent" id="BPMNShape_obterInformacaoObraFornecedoresBuscaFornecedoresEndEvent">
-        <omgdc:Bounds height="35.0" width="35.0" x="720.0" y="90.0"></omgdc:Bounds>
+        <omgdc:Bounds height="35.0" width="35.0" x="790.0" y="90.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask" id="BPMNShape_obterInformacaoObraFornecedoresBuscaObraPorFornecedorAgrupaInformacaoScriptTask">
-        <omgdc:Bounds height="55.0" width="105.0" x="560.0" y="80.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="640.0" y="80.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
-        <omgdi:waypoint x="105.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="180.0" y="107.0"></omgdi:waypoint>
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape bpmnElement="obterInformacaoObraFornecedoresRetiraEspacosTituloScriptTask" id="BPMNShape_obterInformacaoObraFornecedoresRetiraEspacosTituloScriptTask">
+        <omgdc:Bounds height="55.0" width="105.0" x="160.0" y="80.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
-        <omgdi:waypoint x="491.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="560.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="581.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="640.0" y="107.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
-        <omgdi:waypoint x="665.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="720.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="745.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="790.0" y="107.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
-        <omgdi:waypoint x="285.0" y="107.0"></omgdi:waypoint>
-        <omgdi:waypoint x="360.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="405.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="450.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="105.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="160.0" y="107.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="265.0" y="107.0"></omgdi:waypoint>
+        <omgdi:waypoint x="300.0" y="107.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
