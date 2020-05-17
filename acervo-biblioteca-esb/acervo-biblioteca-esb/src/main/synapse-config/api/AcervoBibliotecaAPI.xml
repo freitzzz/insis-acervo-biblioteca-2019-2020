@@ -263,13 +263,13 @@
                 <format>
 					[&#xd;
 					{&#xd;
-					"name":"$1",&#xd;
+					"name":"$1"&#xd;
 					},&#xd;
 					{&#xd;
-					"name":"$2",&#xd;
+					"name":"$2"&#xd;
 					},&#xd;
 					{&#xd;
-					"name":"$3",&#xd;
+					"name":"$3"&#xd;
 					}&#xd;
 					]
 				</format>
