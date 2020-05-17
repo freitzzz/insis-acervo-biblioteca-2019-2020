@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<artifacts>
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
     <artifact name="Polo1AreasConhecimentoEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/Polo1AreasConhecimentoEP.xml</file>
     </artifact>
@@ -95,6 +94,8 @@
     </artifact>
     <artifact name="Fornecedor2EncadernacoesByIDEP" groupId="com.example.acervo-biblioteca-esb.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/Fornecedor2EncadernacoesByIDEP.xml</file>
-    >>>>>>> 48240e0566b729dbb90c07075fd98e499c3a1834
+    </artifact>
+    <artifact name="GetPoloObraStatesSequenceTemplate" groupId="com.example.acervo-biblioteca-esb.template" version="1.0.0" type="synapse/sequenceTemplate" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/templates/GetPoloObraStatesSequenceTemplate.xml</file>
     </artifact>
 </artifacts>

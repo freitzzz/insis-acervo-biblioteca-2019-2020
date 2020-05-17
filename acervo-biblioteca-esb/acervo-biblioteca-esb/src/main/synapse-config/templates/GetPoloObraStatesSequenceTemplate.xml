@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="GetPoloObraStatesSequenceTemplate" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="polo"/>
+    <parameter name="obra"/>
+    <sequence>
+        <log description="Start Get Polo Obra States Sequence" level="custom">
+            <property name="message" value="Start getting Polo obra states sequence"/>
+        </log>
+        <property description="Store polo as uri property" expression="$func:polo" name="uri.var.polo" scope="default" type="STRING"/>
+        <property description="Store obra as uri property" expression="$func:obra" name="uri.var.obra" scope="default" type="STRING"/>
+        <log description="hmmm" level="custom">
+            <property name="message" value="hmm"/>
+            <property expression="get-property('uri.var.polo')" name="polo"/>
+            <property expression="get-property('uri.var.obra')" name="obra"/>
+        </log>
+        <call>
+            <endpoint>
+                <http method="get" statistics="enable" trace="enable" uri-template="http://localhost:8280/acervobiblioteca/polos/{uri.var.polo}/obras/{uri.var.obra}">
+                    <suspendOnFailure>
+                        <initialDuration>-1</initialDuration>
+                        <progressionFactor>-1</progressionFactor>
+                        <maximumDuration>0</maximumDuration>
+                    </suspendOnFailure>
+                    <markForSuspension>
+                        <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                    </markForSuspension>
+                </http>
+            </endpoint>
+        </call>
+        <filter regex="404" source="$axis2:HTTP_SC">
+            <then>
+                <log description="Does not have Obra" level="custom">
+                    <property name="message" value="Does not have obra"/>
+                </log>
+                <loopback description="No Obra Found"/>
+            </then>
+            <else>
+                <log description="Has Obra" level="custom">
+                    <property name="message" value="has obra"/>
+                </log>
+                <log description="Full" level="full"/>
+            </else>
+        </filter>
+        <datamapper config="gov:datamapper/MapPoloObraStatesPropertyToPoloObraStates.dmc" description="MapPoloObraStatesPropertyToPoloObraStates" inputSchema="gov:datamapper/MapPoloObraStatesPropertyToPoloObraStates_inputSchema.json" inputType="JSON" outputSchema="gov:datamapper/MapPoloObraStatesPropertyToPoloObraStates_outputSchema.json" outputType="JSON" xsltStyleSheet="gov:datamapper/MapPoloObraStatesPropertyToPoloObraStates_xsltStyleSheet.xml"/>
+        <log description="Finish Get Polo Obra States Sequence" level="custom">
+            <property name="message" value="Finished get polo obra states..."/>
+        </log>
+    </sequence>
+</template>

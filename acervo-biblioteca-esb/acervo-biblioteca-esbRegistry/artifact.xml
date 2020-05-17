@@ -328,4 +328,32 @@
             <mediaType>text/plain</mediaType>
         </item>
     </artifact>
+    <artifact name="MapPoloObraStatesPropertyToPoloObraStates" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapPoloObraStatesPropertyToPoloObraStates.dmc</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="MapPoloObraStatesPropertyToPoloObraStates_inputSchema" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapPoloObraStatesPropertyToPoloObraStates_inputSchema.json</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="MapPoloObraStatesPropertyToPoloObraStates_outputSchema" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapPoloObraStatesPropertyToPoloObraStates_outputSchema.json</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
+    <artifact name="MapPoloObraStatesPropertyToPoloObraStates_xsltStyleSheet" groupId="com.example.acervo-biblioteca-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>MapPoloObraStatesPropertyToPoloObraStates_xsltStyleSheet.xml</file>
+            <path>/_system/governance/datamapper</path>
+            <mediaType>text/plain</mediaType>
+        </item>
+    </artifact>
 </artifacts>

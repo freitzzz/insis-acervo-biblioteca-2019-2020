@@ -1,0 +1,16 @@
+map_S_root_S_root = function(){ 
+var outputroot={};
+
+var count_i_states_9c056131_cb5b_4bb6_aee1_b5c8f2f982fb = 0;
+outputroot =  [];
+
+for(i_states_9c056131_cb5b_4bb6_aee1_b5c8f2f982fb in inputroot.states){
+outputroot[count_i_states_9c056131_cb5b_4bb6_aee1_b5c8f2f982fb] =  {};
+outputroot[count_i_states_9c056131_cb5b_4bb6_aee1_b5c8f2f982fb].state = inputroot.states[i_states_9c056131_cb5b_4bb6_aee1_b5c8f2f982fb];
+
+count_i_states_9c056131_cb5b_4bb6_aee1_b5c8f2f982fb++;
+}
+return outputroot;
+};
+
+

@@ -1,0 +1,1 @@
+{"$schema":"http:\/\/wso2.org\/json-schema\/wso2-data-mapper-v5.0.0\/schema#","outputType":"JSON","id":"http:\/\/wso2jsonschema.org","title":"root","type":"array","items":[{"id":"http:\/\/wso2jsonschema.org\/0","type":"object","properties":{"state":{"id":"http:\/\/wso2jsonschema.org\/0\/state","type":"string"}}}]}

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:datamapper="http:///org/wso2/developerstudio/eclipse/gmf/datamapper" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_isQ18JfeEeqTpIPC16ZHRQ" type="DataMapper" name="MapPoloObraStatesPropertyToPoloObraStates.datamapper_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_jKEMQJfeEeqTpIPC16ZHRQ" type="2002" fontName="Ubuntu">
+    <children xmi:type="notation:Shape" xmi:id="_u14TIJfeEeqTpIPC16ZHRQ" type="3002" fontName="Ubuntu">
+      <children xmi:type="notation:DecorationNode" xmi:id="_u146MJfeEeqTpIPC16ZHRQ" type="5002"/>
+      <children xmi:type="notation:Shape" xmi:id="_u2IKwJfeEeqTpIPC16ZHRQ" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_u2Ix0JfeEeqTpIPC16ZHRQ" type="5001"/>
+        <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2IKwZfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_u2Ix0ZfeEeqTpIPC16ZHRQ" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_u2Ix05feEeqTpIPC16ZHRQ" type="5001"/>
+        <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.1"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2Ix0pfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_u2Ix1JfeEeqTpIPC16ZHRQ" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_u2Ix1pfeEeqTpIPC16ZHRQ" type="5001"/>
+        <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.2"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2Ix1ZfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_u2Ix15feEeqTpIPC16ZHRQ" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_u2Ix2ZfeEeqTpIPC16ZHRQ" type="5001"/>
+        <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.3"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2Ix2JfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_u2Ix2pfeEeqTpIPC16ZHRQ" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_u2JY4ZfeEeqTpIPC16ZHRQ" type="5001"/>
+        <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.4"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2JY4JfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_u2JY4pfeEeqTpIPC16ZHRQ" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_u2JY5JfeEeqTpIPC16ZHRQ" type="5001"/>
+        <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.5"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2JY45feEeqTpIPC16ZHRQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_u2JY5ZfeEeqTpIPC16ZHRQ" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_u2JY55feEeqTpIPC16ZHRQ" type="5001"/>
+        <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.6"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2JY5pfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_u2JY6JfeEeqTpIPC16ZHRQ" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_u2JY6pfeEeqTpIPC16ZHRQ" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_u2_tcJfeEeqTpIPC16ZHRQ" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.7/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2_tcZfeEeqTpIPC16ZHRQ" x="-1" y="1"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_u2_tcpfeEeqTpIPC16ZHRQ" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.7/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2_tc5feEeqTpIPC16ZHRQ"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.7"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2JY6ZfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_u2J_8JfeEeqTpIPC16ZHRQ" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_u2J_8pfeEeqTpIPC16ZHRQ" type="5001"/>
+        <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.8"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2J_8ZfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_u2J_85feEeqTpIPC16ZHRQ" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_u2J_9ZfeEeqTpIPC16ZHRQ" type="5001"/>
+        <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.9"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2J_9JfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_u2J_9pfeEeqTpIPC16ZHRQ" type="3020" fontName="Ubuntu">
+        <element xmi:type="datamapper:InNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2J_95feEeqTpIPC16ZHRQ" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_u2J_-JfeEeqTpIPC16ZHRQ" type="3019" fontName="Ubuntu">
+        <element xmi:type="datamapper:OutNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u2J_-ZfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u14TIZfeEeqTpIPC16ZHRQ"/>
+    </children>
+    <element xmi:type="datamapper:Input" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jKEMQZfeEeqTpIPC16ZHRQ" width="250" height="160"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_jKFaYJfeEeqTpIPC16ZHRQ" type="2003" fontName="Ubuntu">
+    <children xmi:type="notation:Shape" xmi:id="_xCNAwJfeEeqTpIPC16ZHRQ" type="3011" fontName="Ubuntu">
+      <children xmi:type="notation:DecorationNode" xmi:id="_xCNAwpfeEeqTpIPC16ZHRQ" type="5003"/>
+      <children xmi:type="notation:Shape" xmi:id="_xCWKsJfeEeqTpIPC16ZHRQ" type="3003" fontName="Ubuntu">
+        <children xmi:type="notation:DecorationNode" xmi:id="_xCWKspfeEeqTpIPC16ZHRQ" type="5001"/>
+        <children xmi:type="notation:Shape" xmi:id="_xCXY0JfeEeqTpIPC16ZHRQ" type="3020" fontName="Ubuntu">
+          <element xmi:type="datamapper:InNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@output/@treeNode.0/@node.0/@inNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xCXY0ZfeEeqTpIPC16ZHRQ" x="-10" y="4"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_xCXY0pfeEeqTpIPC16ZHRQ" type="3019" fontName="Ubuntu">
+          <element xmi:type="datamapper:OutNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@output/@treeNode.0/@node.0/@outNode"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xCXY05feEeqTpIPC16ZHRQ"/>
+        </children>
+        <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@output/@treeNode.0/@node.0"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xCWKsZfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_xCWKs5feEeqTpIPC16ZHRQ" type="3020" fontName="Ubuntu">
+        <element xmi:type="datamapper:InNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@output/@treeNode.0/@inNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xCWKtJfeEeqTpIPC16ZHRQ" x="-1" y="-11"/>
+      </children>
+      <children xmi:type="notation:Shape" xmi:id="_xCWKtZfeEeqTpIPC16ZHRQ" type="3019" fontName="Ubuntu">
+        <element xmi:type="datamapper:OutNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@output/@treeNode.0/@outNode"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xCWKtpfeEeqTpIPC16ZHRQ"/>
+      </children>
+      <element xmi:type="datamapper:TreeNode" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@output/@treeNode.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xCNAwZfeEeqTpIPC16ZHRQ"/>
+    </children>
+    <element xmi:type="datamapper:Output" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@output"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jKGBcJfeEeqTpIPC16ZHRQ" x="310" width="250" height="160"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_isQ18ZfeEeqTpIPC16ZHRQ"/>
+  <element xmi:type="datamapper:DataMapperRoot" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_xpcm8JfeEeqTpIPC16ZHRQ" type="4001" source="_u2_tcpfeEeqTpIPC16ZHRQ" target="_xCXY0JfeEeqTpIPC16ZHRQ">
+    <styles xmi:type="notation:FontStyle" xmi:id="_xpcm8ZfeEeqTpIPC16ZHRQ" fontName="Ubuntu"/>
+    <element xmi:type="datamapper:DataMapperLink" href="MapPoloObraStatesPropertyToPoloObraStates.datamapper#//@input/@treeNode.0/@node.7/@outNode/@outgoingLink.0"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_xpcm8pfeEeqTpIPC16ZHRQ" points="[-2, 0, -252, 103]$[248, -103, -2, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xp4EwJfeEeqTpIPC16ZHRQ" id="CENTER"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xp4EwZfeEeqTpIPC16ZHRQ" id="CENTER"/>
+  </edges>
+</notation:Diagram>

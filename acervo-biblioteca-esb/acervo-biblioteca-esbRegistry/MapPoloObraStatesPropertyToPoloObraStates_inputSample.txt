@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "authors": [
+    "Uncle Bob"
+  ],
+  "isbn": "1",
+  "title": "Clean Code",
+  "price": 1.0,
+  "count": 1,
+  "type": "capa dura",
+  "states": [
+    "usado"
+  ],
+  "areaconhecimento": "informatica",
+  "publishedYear": 2008
+}
