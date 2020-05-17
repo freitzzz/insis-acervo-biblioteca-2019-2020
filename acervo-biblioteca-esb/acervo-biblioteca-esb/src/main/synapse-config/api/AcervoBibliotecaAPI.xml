@@ -316,7 +316,9 @@
             </log>
             <property description="URL Fix" name="REST_URL_POSTFIX" scope="axis2" type="STRING" value=""/>
             <switch description="Case-Insensitive Switch Matcher for Fornecedores" source="get-property('uri.var.fornecedor')">
-                <case regex="([f|F][o|O][r|R][n|N][e|E][c|C][e|E][d|D][o|O][r|R]1)"/>
+                <case regex="([f|F][o|O][r|R][n|N][e|E][c|C][e|E][d|D][o|O][r|R]1)">
+                    <sequence key="Fornecedor1ObrasByTituloSequence"/>
+                </case>
                 <case regex="([f|F][o|O][r|R][n|N][e|E][c|C][e|E][d|D][o|O][r|R]2)">
                     <sequence key="Fornecedor2ObraByTituloSequence"/>
                 </case>
@@ -330,7 +332,10 @@
             </switch>
             <respond/>
         </inSequence>
-        <outSequence/>
+        <outSequence>
+            <sequence key="ResourceNotFoundSequence"/>
+            <respond/>
+        </outSequence>
         <faultSequence>
             <payloadFactory description="Payload Error" media-type="json">
                 <format>
@@ -394,7 +399,10 @@
             </switch>
             <respond/>
         </inSequence>
-        <outSequence/>
+        <outSequence>
+            <sequence key="ResourceNotFoundSequence"/>
+            <respond/>
+        </outSequence>
         <faultSequence>
             <payloadFactory description="Payload Error" media-type="json">
                 <format>
