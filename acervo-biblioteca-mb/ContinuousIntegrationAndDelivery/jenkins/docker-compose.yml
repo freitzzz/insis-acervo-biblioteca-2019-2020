@@ -1,0 +1,29 @@
+version: "2"
+
+services:
+  jenkins:
+    image: "jenkins/jenkins:lts"
+
+    environment:
+      - JAVA_OPTS=-Djava.awt.headless=true -Dmail.smtp.starttls.enable=true
+
+    labels:
+      kompose.service.type: nodeport
+
+    ports:
+      - "8080:8080"
+
+      - "50000:50000"
+
+    volumes:
+      - "jenkins_home:/var/jenkins_home"
+
+    networks:
+      - bridge
+
+volumes:
+  jenkins_home:
+    external: true
+
+networks:
+  bridge:
