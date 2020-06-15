@@ -14,3 +14,15 @@ service-tasks/src/main/java/insis/acervo/v1/AdquireObra.java
 service-tasks/src/main/java/insis/acervo/v1/ObtainPeritoUsers.java
 service-tasks/src/main/java/insis/acervo/v1/ObtainRegisteredUsers.java
 ExemplosPipelines/*
+
+
+
+# Visual Studio Code
+.vscode/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+[Bb]in/
+[Oo]bj/
