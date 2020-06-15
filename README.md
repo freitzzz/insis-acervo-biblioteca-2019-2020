@@ -5,3 +5,6 @@
 
 ## Diagrama de Processos de Negócio
 ![Business Process Diagram](diagrams/BusinessProcessDiagram.png)
+
+## Diagrama de Componentes
+![components_diagram](diagrams/acervo_biblioteca_components_diagram.png)
