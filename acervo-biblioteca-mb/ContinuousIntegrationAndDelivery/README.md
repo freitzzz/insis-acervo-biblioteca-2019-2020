@@ -1,6 +1,6 @@
 # Continuous Integration and Delivery
 
-This folder exposes all documents related to the CI/CD processes applied for Acervo Biblioteca.
+This folder exposes all documents related to the CI & CD processes applied for Acervo Biblioteca.
 
 ## Motivations
 
@@ -22,3 +22,23 @@ Before designing the CI/CD processes, it is first needed to address the requirem
 - No money budget means everything should be open-source and free of use;
 - Automatic tests that validate software need to be executed before delivering these;
 - Load / Throttling tests need to be executed before delivering a piece of software.
+
+## Pipeline Design
+
+The following UML activity diagram illustrates the pipeline that will handle the needed CI & CD processes:
+
+![pipeline_design](../../diagrams/acervo_biblioteca_continuous_integration_and_delivery_pipeline.png)
+
+The CI platform should be continuously checking if new changes on the repository are available and if so initialize the pipeline. It should also hold a flag that indicates whether the current build is to be published in production.
+
+## Technologies
+
+The following table describes the technologies being used and their responsibilities in the CI & CD processes:
+
+|Technology|Responsibilities|
+|----------|----------------|
+|Bitbucket|Host the software code|
+|Jenkins|Continuous Integration & Delivery platform that will listen repository changes, trigger and build the software.|
+|Heroku|Host the software on the cloud|
+|Docker|Container of the software|
+|Docker Swarm|Launch new Docker containers in Heroku|
