@@ -39,6 +39,6 @@ The following table describes the technologies being used and their responsibili
 |----------|----------------|
 |Bitbucket|Host the software code|
 |Jenkins|Continuous Integration & Delivery platform that will listen repository changes, trigger and build the software.|
-|Heroku|Host the software on the cloud|
+|Heroku|Run the software on the cloud|
 |Docker|Container of the software|
 |Docker Swarm|Launch new Docker containers in Heroku|
