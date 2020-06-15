@@ -12,7 +12,7 @@ namespace GestaoReservasQuery.Migrations
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     utente = table.Column<string>(nullable: true),
                     dataInicio = table.Column<DateTime>(nullable: false),
                     dataFim = table.Column<DateTime>(nullable: false),
