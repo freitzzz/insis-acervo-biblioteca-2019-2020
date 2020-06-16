@@ -29,9 +29,8 @@ namespace GestaoReservasQuery.Repositories
         protected IEnumerable<T> GetQueryable(ISpecification<T> spec)
         {
             return _dbContext.Set<T>()
-            .AsEnumerable()
-                // .Include(spec.Include)
-                .Where(spec.Criteria.Compile());
+                .Include(spec.Include)
+                .Where(spec.Criteria);
         }
 
         /*
@@ -56,7 +55,11 @@ namespace GestaoReservasQuery.Repositories
          */
         public List<T> List(ISpecification<T> spec)
         {
-            return this.GetQueryable(spec).ToList();
+            if (this.GetQueryable(spec) != null)
+            {
+                return this.GetQueryable(spec).ToList();
+            }
+            return new List<T>();
         }
 
         /*
@@ -87,7 +90,7 @@ namespace GestaoReservasQuery.Repositories
          */
         public T Update(T entity)
         {
-            
+
             // _dbContext.Entry(entity).State = EntityState.Modified;
 
             _dbContext.SaveChanges();
