@@ -63,9 +63,21 @@ namespace GestaoReservasQuery.Controllers
             bool added = _reservaService.AddReserva(reserva);
             if (added)
             {
-                return Ok(reserva);
+                return CreatedAtRoute("GetCategory", reserva);
             }
             return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<ReservaDTO> DeleteById([FromRoute] long id)
+        {
+            _logger.LogDebug(" -- DeleteById -- ");
+            ReservaDTO reserva = _reservaService.RemoveReservaById(id);
+            if (reserva != null)
+            {
+                return Ok(reserva);
+            }
+            return NotFound();
         }
     }
 }
