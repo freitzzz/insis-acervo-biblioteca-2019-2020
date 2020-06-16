@@ -30,8 +30,9 @@ namespace GestaoReservasQuery.Services
 
         public bool AddReserva(ReservaDTO dto)
         {
+            dto.estado = ReservaEstado.NaoCumprida.ToString();
             Reserva reserva = _mapper.Map<Reserva>(dto);
-            if (GetReserva(dto.dataInicio.ToString(), dto.dataFim.ToString(), dto.obra, dto.utente) == null)
+            if (GetReserva(dto.dataInicio.ToString(), dto.dataFim.ToString(), dto.obra.titulo, dto.utente) == null)
             {
                 _reservaRepository.Add(reserva);
                 return true;
@@ -61,6 +62,12 @@ namespace GestaoReservasQuery.Services
                 return reserva;
             }
             return null;
+        }
+
+        public ReservaDTO GetReservaById(long id)
+        {
+            var reserva = _reservaRepository.GetById(id);
+            return _mapper.Map<ReservaDTO>(reserva);
         }
     }
 }
