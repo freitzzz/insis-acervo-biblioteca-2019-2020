@@ -4,6 +4,7 @@
   "description": "Query Service of Gestao Utentes Microservice",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "test"
   },
   "author": "",
