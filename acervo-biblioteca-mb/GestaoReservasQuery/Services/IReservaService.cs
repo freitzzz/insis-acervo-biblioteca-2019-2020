@@ -11,5 +11,6 @@ namespace GestaoReservasQuery.Services
         List<ReservaDTO> GetReservasInPeriodo(String dataInicio, String dataFim, String obra);
         ReservaDTO GetReserva(String dataInicio, String dataFim, String obra, String utente);
         ReservaDTO GetReservaById(long id);
+        ReservaDTO RemoveReservaById(long id);
     }
 }

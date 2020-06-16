@@ -1,14 +1,9 @@
 using System;
-using System.Text;
 using System.Collections.Generic;
-using GestaoReservasQuery.Configurations;
 using GestaoReservasQuery.DTO;
 using GestaoReservasQuery.Model;
 using GestaoReservasQuery.Repositories;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Newtonsoft.Json;
-using RabbitMQ.Client;
 using AutoMapper;
 
 namespace GestaoReservasQuery.Services
@@ -68,6 +63,18 @@ namespace GestaoReservasQuery.Services
         {
             var reserva = _reservaRepository.GetById(id);
             return _mapper.Map<ReservaDTO>(reserva);
+        }
+
+        public ReservaDTO RemoveReservaById(long id)
+        {
+            var reserva = _reservaRepository.GetById(id);
+            if (reserva != null)
+            {
+                reserva.estado = ReservaEstado.Cancelada.ToString();
+                _reservaRepository.Update(reserva);
+                return _mapper.Map<ReservaDTO>(reserva);
+            }
+            return null;
         }
     }
 }
