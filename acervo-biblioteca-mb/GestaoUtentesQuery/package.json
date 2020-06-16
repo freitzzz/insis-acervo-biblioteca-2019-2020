@@ -1,0 +1,11 @@
+{
+  "name": "gestaoutentesquery",
+  "version": "1.0.0",
+  "description": "Query Service of Gestao Utentes Microservice",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
+}
