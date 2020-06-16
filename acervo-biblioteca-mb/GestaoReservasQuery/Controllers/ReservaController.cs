@@ -20,6 +20,18 @@ namespace GestaoReservasQuery.Controllers
             _reservaService = reservaService;
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<ReservaDTO> GetReservaById([FromRoute] long id)
+        {
+            _logger.LogDebug(" -- GetReservaById -- ");
+            ReservaDTO reserva = _reservaService.GetReservaById(id);
+            if (reserva != null)
+            {
+                return Ok(reserva);
+            }
+            return NotFound();
+        }
+
         [HttpGet]
         public ActionResult<ListReservaDTO> GetReservaInPeriodo([FromQuery] String dataInicio, [FromQuery] String dataFim, [FromQuery] String obra)
         {
