@@ -4,7 +4,7 @@ const schema = {
   primeiroNome: String,
   ultimoNome: String,
   estatuto: Number,
-  dataHoraFinalSuspensao: new Date
+  dataHoraFinalSuspensao: Date
 };
 
 function create(primeiroNome, ultimoNome) {
