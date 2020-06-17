@@ -1,0 +1,21 @@
+{
+  "name": "gestaoutentesquery",
+  "version": "1.0.0",
+  "description": "Query Service of Gestao Utentes Microservice",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "mongoose": "5.6.9",
+    "amqplib": "0.5.6"
+  },
+  "devDependencies": {
+    "jest": "25.5.4"
+  },
+  "author": "",
+  "license": "ISC"
+}
