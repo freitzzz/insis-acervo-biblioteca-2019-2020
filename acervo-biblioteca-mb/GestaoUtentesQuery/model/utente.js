@@ -4,7 +4,7 @@ const schema = {
   primeiroNome: String,
   ultimoNome: String,
   estatuto: Number,
-  dataHoraFinalSuspensao: Date
+  dataHoraFinalSuspensao: new Date
 };
 
 function create(primeiroNome, ultimoNome) {
@@ -30,6 +30,10 @@ function updateEstatuto(utente, newEstatuto) {
   if (newEstatuto > 6) {
 
     newEstatuto = 6;
+
+    dataHoraFinalSuspensao = undefined;
+
+  } else if (newEstatuto <= 6 && newEstatuto >= 2) {
 
     dataHoraFinalSuspensao = undefined;
 
