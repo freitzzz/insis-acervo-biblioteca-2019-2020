@@ -6,9 +6,19 @@ const moongoose = require('mongoose');
 
 const amqp = require('amqplib/callback_api');
 
+const api = require('./api/api.js');
+
 const app = express();
 
 app.use(cors());
+
+app.use(express.json());
+
+app.post('/utentes', api.createUtente);
+
+app.get('/utentes/:id', api.getUtente);
+
+app.put('/utentes/:id', api.updateUtente);
 
 app.listen(process.env.PORT);
 
