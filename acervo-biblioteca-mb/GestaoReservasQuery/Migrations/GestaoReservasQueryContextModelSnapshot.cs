@@ -16,6 +16,26 @@ namespace GestaoReservasQuery.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.5");
 
+            modelBuilder.Entity("GestaoReservasQuery.Model.Obra", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("estado")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("polo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("titulo")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Obra");
+                });
+
             modelBuilder.Entity("GestaoReservasQuery.Model.Reserva", b =>
                 {
                     b.Property<long>("Id")
@@ -28,15 +48,27 @@ namespace GestaoReservasQuery.Migrations
                     b.Property<DateTime>("dataInicio")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("obra")
+                    b.Property<string>("estado")
                         .HasColumnType("TEXT");
+
+                    b.Property<long?>("obraId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("utente")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("obraId");
+
                     b.ToTable("Reservas");
+                });
+
+            modelBuilder.Entity("GestaoReservasQuery.Model.Reserva", b =>
+                {
+                    b.HasOne("GestaoReservasQuery.Model.Obra", "obra")
+                        .WithMany()
+                        .HasForeignKey("obraId");
                 });
 #pragma warning restore 612, 618
         }

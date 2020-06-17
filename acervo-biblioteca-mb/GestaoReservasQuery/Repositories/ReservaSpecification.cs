@@ -18,9 +18,10 @@ namespace GestaoReservasQuery.Repositories
             // var parameter = Expression.Parameter(typeof(Reserva), "r");
     
             // Criteria = Expression.Lambda<Func<Reserva, bool>>(Expression.AndAlso(periodo.Body, ofObra.Body), parameter);
+            Include = (r => r.obra);
             Criteria = r => (r.dataInicio.CompareTo(dataInicio) >= 0 && (r.dataInicio.CompareTo(dataFim) <= 0)
                         || r.dataFim.CompareTo(dataInicio) >= 0 && (r.dataInicio.CompareTo(dataFim) <= 0))
-                        && (r.obra == obra);
+                        && (r.obra.titulo == obra);
                         
             return this;
         }
@@ -29,9 +30,10 @@ namespace GestaoReservasQuery.Repositories
         {
             // Criteria = Expression.Lambda<Func<Reserva, bool>>(Expression.AndAlso(InPeriodo(dataInicio, dataFim), OfObra(obra)));
             // Criteria = Expression.Lambda<Func<Reserva, bool>>(Expression.AndAlso(Criteria, OfUtente(utente)));
+            Include = r => r.obra;
             Criteria = r => (r.dataInicio.CompareTo(dataInicio) >= 0 && (r.dataInicio.CompareTo(dataFim) <= 0)
                         || r.dataFim.CompareTo(dataInicio) >= 0 && (r.dataInicio.CompareTo(dataFim) <= 0))
-                        && (r.obra == obra)
+                        && (r.obra.titulo == obra)
                         && (r.utente == utente);
                         
             return this;
@@ -46,7 +48,7 @@ namespace GestaoReservasQuery.Repositories
 
         private Expression<Func<Reserva, bool>> OfObra(string obra)
         {
-            Criteria = r => (r.obra == obra);
+            Criteria = r => (r.obra.titulo == obra);
             return Criteria;
         }
 

@@ -9,6 +9,7 @@ namespace GestaoReservasQuery.Configurations.AutoMapper
         public DtoToDomainMappingProfile()
         {
             CreateMap<ReservaDTO, Reserva>();
+            CreateMap<ObraDTO, Obra>();
         }
 
     }
