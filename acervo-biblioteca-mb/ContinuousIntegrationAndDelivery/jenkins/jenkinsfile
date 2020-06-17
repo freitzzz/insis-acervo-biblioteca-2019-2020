@@ -1,0 +1,118 @@
+#!/usr/bin/env groovy
+
+// Runs a command on the system defined interface (if in Unix system calls sh, else bat for Windows)
+def run_command(command){
+  
+  def running_in_unix = isUnix()
+
+  if(running_in_unix){
+    sh command
+  }else{
+    bat command
+  }
+}
+
+def setup_node(){
+  
+  def running_in_unix = isUnix()
+  
+  env.NODEJS_HOME = "${tool 'GestaoUtentesQuery'}"
+
+  if(running_in_unix){
+    env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
+  }else{
+    env.PATH="${env.NODEJS_HOME};${env.PATH}"
+  }
+}
+
+// Runs gradle wrapper located in the folder of the current running execution environment
+def run_gradlew(gradlew_commands){
+
+  def running_in_unix = isUnix()
+  
+  if(running_in_unix){
+    run_command("./gradlew ${gradlew_commands}")
+  }else{
+    run_command("gradlew.bat ${gradlew_commands}")
+  }
+}
+
+// Allows the retrieval of the bitbucket username defined in bitbucketCredentials authentication keys
+def get_bitbucket_username(){
+  withCredentials([[$class: 'UsernamePasswordMultiBinding',
+    credentialsId: "bitbucketCredentials",
+    usernameVariable: 'GIT_USERNAME', 
+    passwordVariable: 'GIT_PASSWORD']]) {
+      return env.GIT_USERNAME
+    }
+}
+
+// Allows the retrieval of the bitbucket username defined in bitbucketCredentials authentication keys
+def get_bitbucket_password(){
+  withCredentials([[$class: 'UsernamePasswordMultiBinding',
+    credentialsId: "bitbucketCredentials",
+    usernameVariable: 'GIT_USERNAME', 
+    passwordVariable: 'GIT_PASSWORD']]) {
+      return env.GIT_PASSWORD
+    }
+}
+
+// Resolves a given path by replacing either / with \\ in Windows, or replacing \\ with / in Unix systems
+def resolve_path(path){
+  def running_in_unix = isUnix()
+
+  if(running_in_unix){
+    return path.replaceAll("\\+", "/")
+  }else{
+    return path.replaceAll("/", "\\\\")
+  }
+}
+
+// Executes a GET HTTP request. In Unix system uses curl, Invoke-RestMethod on Windows using powershell
+def get_http_request(uri){
+  def running_in_unix = isUnix()
+
+  if(running_in_unix){
+    sh "curl ${uri}"
+  }else{
+    powershell "Invoke-RestMethod -Uri ${uri}"
+  }
+}
+
+node {
+
+  // Indicates the username to be used in bitbucket repositories
+  def bitbucket_username = get_bitbucket_username()
+
+  // Indicates the password to be used in bitbucket repositories
+  def bitbucket_password = get_bitbucket_password()
+
+  // Indicates the relative path to microservices directory
+  def microservices_path = "${env.WORKSPACE}${resolve_path("/acervo-biblioteca-mb/")}"
+
+  def gestao_utentes_query_path = "${env.WORKSPACE}${resolve_path("/acervo-biblioteca-mb/GestaoUtentesQuery/")}"
+
+  setup_node()
+
+  stage ("Checkout"){
+    // Performs a Git checkout of the repository using Bitbucket credentials stored in Jenkins
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'bitbucketCredentials', url: 'https://bitbucket.org/RuteSantos/insis-acervo-biblioteca-2019-2020/']]])
+  }
+
+  stage ("Pre Build Tests"){
+
+      // Unit tests can be run in parallel
+      parallel_steps = [:]
+
+      parallel_steps["unit tests gestao utentes query service"] = {
+          run_command("npm install --prefix ${gestao_utentes_query_path}")
+          run_command("npm test --prefix ${gestao_utentes_query_path}")
+      }
+      
+      
+      // Unit Tests Execution
+      
+
+      parallel parallel_steps
+    }
+}
