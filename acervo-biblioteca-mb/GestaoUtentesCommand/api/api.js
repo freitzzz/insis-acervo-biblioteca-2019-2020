@@ -1,3 +1,5 @@
+const Utente = require('../model/utente.js');
+
 const eventstore = require('eventstore')();
 
 // TODO: What to do in error cases ?
@@ -168,7 +170,69 @@ function onReporEstadoNaoAutorizado(bibliotecarioMor, idStream) {
 
 }
 
-function onReporEstadoAutorizado(utente, valorEstatuto, idStream, publishCallback) { }
+function onReporEstadoAutorizado(utente, valorEstatuto, idStream, publishCallback) {
+
+  console.log(`onReporEstadoAutorizado called with $utente: ${utente}, $valorEstatuto: ${valorEstatuto}, $idStream: ${idStream}`);
+
+  eventstore.getEventStream(idStream, function (errorGetEventStream, stream) {
+
+    if (errorGetEventStream) {
+
+      console.log(`Failed to get stream due to: ${errorGetEventStream}`);
+
+    } else {
+
+      console.log('Got event stream');
+
+      stream.addEvent({ my: 'repor_estado_autorizado' });
+
+      stream.commit(function (errorStreamCommit, _) {
+
+        if (errorStreamCommit) {
+
+          console.log(`Failed to commit`);
+
+        } else {
+
+          console.log('Successfully added event');
+
+          const isUtenteInativo = Utente.isUtenteInativo(utente);
+
+          if (isUtenteInativo) {
+
+            const isEstatutoValueEnoughToReporEstado = Utente.isEstatutoValueEnoughToReporEstado(valorEstatuto);
+
+            if (isEstatutoValueEnoughToReporEstado) {
+
+              publishCallback('repor_estado_aceite', {
+                id_utente: utente.id,
+                valor_estatuto: valorEstatuto
+              });
+
+            } else {
+
+              console.error('estatuto value is not enough to update utente');
+
+              // TODO: updateDatabase(estatuto_value_not_enough)
+
+            }
+
+          } else {
+
+            console.error('utente is not in estado inativo');
+
+            // TODO: updateDatabase(utente_not_inativo)
+
+          }
+        }
+
+      });
+
+    }
+
+  });
+
+}
 
 function onReporEstadoRealizado(idStream) { }
 
