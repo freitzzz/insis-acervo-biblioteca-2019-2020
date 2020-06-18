@@ -1,5 +1,3 @@
-const eventstore = require('eventstore')();
-
 function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto) {
 
   console.log(`onReporEstadoRecebido called with $idUtente: ${idUtente}, $idBibliotecarioMor: ${idBibliotecarioMor}, $valorEstatuto: ${valorEstatuto}`);
@@ -45,5 +43,3 @@ function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto) {
   });
 
 }
-
-exports.onReporEstadoRecebido = onReporEstadoRecebido;
