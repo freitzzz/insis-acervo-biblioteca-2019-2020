@@ -1,12 +1,35 @@
 
 const estados = ['inativo', 'suspenso', 'ativo'];
 
+const schema = {
+  primeiroNome: String,
+  ultimoNome: String,
+  estatuto: Number,
+  dataHoraFinalSuspensao: Date
+};
+
+function create(primeiroNome, ultimoNome) {
+
+  const utente = schema;
+
+  utente.primeiroNome = primeiroNome;
+
+  utente.ultimoNome = ultimoNome;
+
+  utente.estatuto = 2.5;
+
+  utente.dataHoraFinalSuspensao = undefined;
+
+  return utente;
+
+}
+
 
 function isUtenteInativo(utente) {
 
   const utenteEstado = estado(utente);
 
-  return utenteEstado == estados[0];
+  return utenteEstado === estados[0];
 
 }
 
@@ -35,3 +58,5 @@ function estado(utente) {
 
 module.exports.isEstatutoValueEnoughToReporEstado = isEstatutoValueEnoughToReporEstado;
 module.exports.isUtenteInativo = isUtenteInativo;
+module.exports.create = create;
+module.exports.estado = estado;

@@ -10,7 +10,7 @@ test('if utente estatuto value is equal to 2, then estado returns "ativo" string
 
   // Act
 
-  utente.updateEstatuto(utenteInstance, 2);
+  utenteInstance.estatuto = 2;
 
   const estado = utente.estado(utenteInstance);
 
@@ -28,7 +28,7 @@ test('if utente estatuto value is greater than 2, then estado returns "ativo" st
 
   // Act
 
-  utente.updateEstatuto(utenteInstance, 2.2);
+  utenteInstance.estatuto = 2.2;
 
   const estado = utente.estado(utenteInstance);
 
@@ -50,7 +50,7 @@ test('if utente estatuto value is less than 2 and dataHoraFinalSuspensao is grea
 
   // Act
 
-  utente.updateEstatuto(utenteInstance, 1.9);
+  utenteInstance.estatuto = 1.9;
 
   utenteInstance.dataHoraFinalSuspensao = currentDateInTwoMonths;
 
@@ -74,7 +74,7 @@ test('if utente estatuto value is less than 2 but dataHoraFinalSuspensao is less
 
   // Act
 
-  utente.updateEstatuto(utenteInstance, 1.9);
+  utenteInstance.estatuto = 1.9;
 
   utenteInstance.dataHoraFinalSuspensao = currentDateLessTwoMonths;
 
@@ -94,7 +94,7 @@ test('if utente estatuto value is less than 1, then estado returns "inativo" str
 
   // Act
 
-  utente.updateEstatuto(utenteInstance, 0.5);
+  utenteInstance.estatuto = 0.5;
 
   const estado = utente.estado(utenteInstance);
 
@@ -104,166 +104,108 @@ test('if utente estatuto value is less than 1, then estado returns "inativo" str
 
 });
 
-// "updateEstatuto" function
+// isUtenteInativo function
 
-test('if the new utente estatuto is greater than 6, then utente estatuto is updated to 6 and dataHoraFinalSuspensao is set as undefined', function () {
+test('if utente estado returns "ativo", then isUtenteInativo returns false', function () {
 
   // Arrange
 
   const utenteInstance = utente.create('Albale', 'Real');
 
-  const currentDate = new Date();
-
   // Act
 
-  utenteInstance.dataHoraFinalSuspensao = currentDate;
+  utenteInstance.estatuto = 2;
 
-  utente.updateEstatuto(utenteInstance, 6.1);
-
-  const estatuto = utenteInstance.estatuto;
-
-  const dataHoraFinalSuspensao = utenteInstance.dataHoraFinalSuspensao;
+  const isUtenteInativo = utente.isUtenteInativo(utenteInstance);
 
   // Assert
 
-  expect(estatuto).toBe(6);
-
-  expect(dataHoraFinalSuspensao).toBe(undefined);
+  expect(isUtenteInativo).toBe(false);
 
 });
 
-test('if the new utente estatuto is 6, then utente estatuto is updated to 6 and dataHoraFinalSuspensao is set as undefined', function () {
+test('if utente estado returns "suspenso", then isUtenteInativo returns false', function () {
 
   // Arrange
 
   const utenteInstance = utente.create('Albale', 'Real');
 
-  const currentDate = new Date();
-
   // Act
 
-  utenteInstance.dataHoraFinalSuspensao = currentDate;
+  utenteInstance.estatuto = 1.9;
 
-  utente.updateEstatuto(utenteInstance, 6);
-
-  const estatuto = utenteInstance.estatuto;
-
-  const dataHoraFinalSuspensao = utenteInstance.dataHoraFinalSuspensao;
+  const isUtenteInativo = utente.isUtenteInativo(utenteInstance);
 
   // Assert
 
-  expect(estatuto).toBe(6);
-
-  expect(dataHoraFinalSuspensao).toBe(undefined);
+  expect(isUtenteInativo).toBe(false);
 
 });
 
-test('if the new utente estatuto is less than 6 and greater than 2, then utente estatuto is updated to the given value and dataHoraFinalSuspensao is set as undefined', function () {
+test('if utente estado returns "inativo", then isUtenteInativo returns true', function () {
 
   // Arrange
 
   const utenteInstance = utente.create('Albale', 'Real');
 
-  const currentDate = new Date();
-
-  const newEstatuto = 2.1
-
   // Act
 
-  utenteInstance.dataHoraFinalSuspensao = currentDate;
+  utenteInstance.estatuto = 0.99;
 
-  utente.updateEstatuto(utenteInstance, newEstatuto);
-
-  const estatuto = utenteInstance.estatuto;
-
-  const dataHoraFinalSuspensao = utenteInstance.dataHoraFinalSuspensao;
+  const isUtenteInativo = utente.isUtenteInativo(utenteInstance);
 
   // Assert
 
-  expect(estatuto).toBe(newEstatuto);
-
-  expect(dataHoraFinalSuspensao).toBe(undefined);
+  expect(isUtenteInativo).toBe(true);
 
 });
 
-test('if the new utente estatuto is equal to 2, then utente estatuto is updated to 2 and dataHoraFinalSuspensao is set as undefined', function () {
+// isEstatutoValueEnoughToReporEstado function
+
+test('if utente estatuo is greater than 2, then isEstatutoValueEnoughToReporEstado returns true', function () {
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
-
-  const currentDate = new Date();
+  const estatuto = 2.1;
 
   // Act
 
-  utenteInstance.dataHoraFinalSuspensao = currentDate;
-
-  utente.updateEstatuto(utenteInstance, 2);
-
-  const estatuto = utenteInstance.estatuto;
-
-  const dataHoraFinalSuspensao = utenteInstance.dataHoraFinalSuspensao;
+  const isUtenteInativo = utente.isEstatutoValueEnoughToReporEstado(estatuto);
 
   // Assert
 
-  expect(estatuto).toBe(2);
-
-  expect(dataHoraFinalSuspensao).toBe(undefined);
+  expect(isUtenteInativo).toBe(true);
 
 });
 
-test('if the new utente estatuto is less than 2, then utente estatuto is updated to the given value and dataHoraFinalSuspensao is set as current date + two months', function () {
+test('if utente estatuo is equal to 2, then isEstatutoValueEnoughToReporEstado returns true', function () {
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
-
-  const currentDate = new Date();
-
-  const currentDateInTwoMonths = new Date(currentDate.setMonth(currentDate.getMonth() + 2));
-
-  const newEstatuto = 1.9;
+  const estatuto = 2;
 
   // Act
 
-  utente.updateEstatuto(utenteInstance, newEstatuto);
-
-  const estatuto = utenteInstance.estatuto;
-
-  const dataHoraFinalSuspensao = utenteInstance.dataHoraFinalSuspensao;
+  const isUtenteInativo = utente.isEstatutoValueEnoughToReporEstado(estatuto);
 
   // Assert
 
-  expect(estatuto).toBe(newEstatuto);
-
-  expect(dataHoraFinalSuspensao.getFullYear()).toBe(currentDateInTwoMonths.getFullYear());
-
-  expect(dataHoraFinalSuspensao.getMonth()).toBe(currentDateInTwoMonths.getMonth());
+  expect(isUtenteInativo).toBe(true);
 
 });
 
-test('if the new utente estatuto is less than 1, then utente estatuto is updated to 0.99 and dataHoraFinalSuspensao is set as undefined', function () {
+test('if utente estatuo is less than 2, then isEstatutoValueEnoughToReporEstado returns false', function () {
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
-
-  const currentDate = new Date();
+  const estatuto = 1.9;
 
   // Act
 
-  utenteInstance.dataHoraFinalSuspensao = currentDate;
-
-  utente.updateEstatuto(utenteInstance, 0.98);
-
-  const estatuto = utenteInstance.estatuto;
-
-  const dataHoraFinalSuspensao = utenteInstance.dataHoraFinalSuspensao;
+  const isUtenteInativo = utente.isEstatutoValueEnoughToReporEstado(estatuto);
 
   // Assert
 
-  expect(estatuto).toBe(0.99);
-
-  expect(dataHoraFinalSuspensao).toBe(undefined);
+  expect(isUtenteInativo).toBe(false);
 
 });
