@@ -34,8 +34,6 @@ app.get('/commands/:id', function (request, response, _) {
 
       console.log(`Got events history of stream: ${streamId}`);
 
-      console.log(stream.events);
-
       const events = stream.events[0].payload;
 
       if (events.repor_estado_utente_nao_encontrado) {
