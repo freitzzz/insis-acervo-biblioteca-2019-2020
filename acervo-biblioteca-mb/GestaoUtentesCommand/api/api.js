@@ -272,7 +272,41 @@ function onReporEstadoRealizado(idStream) {
 
 }
 
-function onReporEstadoNaoRealizado(idStream, razao) { }
+function onReporEstadoNaoRealizado(idStream, razao) {
+
+  console.log(`onReporEstadoNaoRealizado called with $razao: ${razao}, $idStream: ${idStream}`);
+
+  eventstore.getEventStream(idStream, function (errorGetEventStream, stream) {
+
+    if (errorGetEventStream) {
+
+      console.log(`Failed to get stream due to: ${errorGetEventStream}`);
+
+    } else {
+
+      console.log('Got event stream');
+
+      stream.addEvent({ my: 'repor_estado_nao_realizado' });
+
+      stream.commit(function (errorStreamCommit, _) {
+
+        if (errorStreamCommit) {
+
+          console.log(`Failed to commit`);
+
+        } else {
+
+          console.log('Successfully added event');
+
+        }
+
+      });
+
+    }
+
+  });
+
+}
 
 
 exports.onReporEstadoRecebido = onReporEstadoRecebido;
