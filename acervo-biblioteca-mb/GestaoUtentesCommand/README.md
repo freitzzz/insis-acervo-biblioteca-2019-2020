@@ -22,7 +22,7 @@ To run it is first needed to setup the following environment variables:
 |--------|-----------|
 |`PORT`|Port which API will be available on|
 |`RABBIT_MQ_CONNECTION_URL`|Connection String to connect to RabbitMQ server|
-|`GUQ_MONGODB_CONNECTION_URL`|Connection String to connect to MongoDB database|
+|`GUC_MONGODB_CONNECTION_URL`|Connection String to connect to MongoDB database|
 
 Then execute the following command:
 
