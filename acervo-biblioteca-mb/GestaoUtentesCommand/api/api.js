@@ -76,7 +76,7 @@ function onReporEstadoUtenteNaoEncontrado(idUtente, idStream) {
 
       stream.addEvent({ my: 'repor_estado_utente_nao_encontrado' });
 
-      stream.commit(function (errorStreamCommit, stream) {
+      stream.commit(function (errorStreamCommit, _) {
 
         if (errorStreamCommit) {
 
@@ -96,9 +96,77 @@ function onReporEstadoUtenteNaoEncontrado(idUtente, idStream) {
 
 }
 
-function onReporEstadoBibliotecarioMorNaoEncontrado(idBibliotecarioMor, idStream) { }
+function onReporEstadoBibliotecarioMorNaoEncontrado(idBibliotecarioMor, idStream) {
 
-function onReporEstadoNaoAutorizado(bibliotecarioMor, idStream) { }
+  console.log(`onReporEstadoBibliotecarioMorNaoEncontrado called with $idBibliotecarioMor: ${idBibliotecarioMor}, $idStream: ${idStream}`);
+
+  eventstore.getEventStream(idStream, function (errorGetEventStream, stream) {
+
+    if (errorGetEventStream) {
+
+      console.log(`Failed to get stream due to: ${errorGetEventStream}`);
+
+    } else {
+
+      console.log('Got event stream');
+
+      stream.addEvent({ my: 'repor_estado_bibliotecario_mor_nao_encontrado' });
+
+      stream.commit(function (errorStreamCommit, _) {
+
+        if (errorStreamCommit) {
+
+          console.log(`Failed to commit`);
+
+        } else {
+
+          console.log('Successfully added event');
+
+        }
+
+      });
+
+    }
+
+  });
+
+}
+
+function onReporEstadoNaoAutorizado(bibliotecarioMor, idStream) {
+
+  console.log(`onReporEstadoNaoAutorizado called with $bibliotecarioMor: ${bibliotecarioMor}, $idStream: ${idStream}`);
+
+  eventstore.getEventStream(idStream, function (errorGetEventStream, stream) {
+
+    if (errorGetEventStream) {
+
+      console.log(`Failed to get stream due to: ${errorGetEventStream}`);
+
+    } else {
+
+      console.log('Got event stream');
+
+      stream.addEvent({ my: 'repor_estado_nao_autorizado' });
+
+      stream.commit(function (errorStreamCommit, _) {
+
+        if (errorStreamCommit) {
+
+          console.log(`Failed to commit`);
+
+        } else {
+
+          console.log('Successfully added event');
+
+        }
+
+      });
+
+    }
+
+  });
+
+}
 
 function onReporEstadoAutorizado(utente, valorEstatuto, idStream, publishCallback) { }
 
