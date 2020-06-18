@@ -6,6 +6,8 @@ const eventstore = require('eventstore')();
 
 // TODO: Maybe URL can be composed by stream id?
 
+// TODO: Wrap common behavior in function to reduce duplicated code
+
 function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publishCallback, response) {
 
   console.log(`onReporEstadoRecebido called with $idUtente: ${idUtente}, $idBibliotecarioMor: ${idBibliotecarioMor}, $valorEstatuto: ${valorEstatuto}`);
@@ -234,7 +236,41 @@ function onReporEstadoAutorizado(utente, valorEstatuto, idStream, publishCallbac
 
 }
 
-function onReporEstadoRealizado(idStream) { }
+function onReporEstadoRealizado(idStream) {
+
+  console.log(`onReporEstadoRealizado called with $idStream: ${idStream}`);
+
+  eventstore.getEventStream(idStream, function (errorGetEventStream, stream) {
+
+    if (errorGetEventStream) {
+
+      console.log(`Failed to get stream due to: ${errorGetEventStream}`);
+
+    } else {
+
+      console.log('Got event stream');
+
+      stream.addEvent({ my: 'repor_estado_realizado' });
+
+      stream.commit(function (errorStreamCommit, _) {
+
+        if (errorStreamCommit) {
+
+          console.log(`Failed to commit`);
+
+        } else {
+
+          console.log('Successfully added event');
+
+        }
+
+      });
+
+    }
+
+  });
+
+}
 
 function onReporEstadoNaoRealizado(idStream, razao) { }
 
