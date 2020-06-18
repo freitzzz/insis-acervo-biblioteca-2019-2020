@@ -14,10 +14,6 @@ app.use(cors());
 
 app.use(express.json());
 
-app.post('/utentes', api.createUtente);
-
-app.get('/utentes/:id', api.getUtente);
-
 app.put('/utentes/:id', api.updateUtente);
 
 app.listen(process.env.PORT);
