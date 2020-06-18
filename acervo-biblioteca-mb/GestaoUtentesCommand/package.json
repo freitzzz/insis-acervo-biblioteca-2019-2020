@@ -1,7 +1,7 @@
 {
-  "name": "gestaoutentesquery",
+  "name": "gestaoutentescommand",
   "version": "1.0.0",
-  "description": "Query Service of Gestao Utentes Microservice",
+  "description": "Command Service of Gestao Utentes Microservice",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

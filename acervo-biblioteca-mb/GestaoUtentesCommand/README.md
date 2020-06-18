@@ -1,6 +1,6 @@
-# Gestão Utentes Query Service
+# Gestão Utentes Command Service
 
-This project contains the code for the query service of gestão utentes microservice. It is implemented in Javascript and is prepared to be interpreted by Node.JS.
+This project contains the code for the command service of gestão utentes microservice. It is implemented in Javascript and is prepared to be interpreted by Node.JS.
 
 ## Requirements
 
