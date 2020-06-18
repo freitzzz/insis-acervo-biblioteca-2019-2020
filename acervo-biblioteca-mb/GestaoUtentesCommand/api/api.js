@@ -1,5 +1,9 @@
 const eventstore = require('eventstore')();
 
+// TODO: What to do in error cases ?
+
+// TODO: Maybe URL can be composed by stream id?
+
 function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publishCallback, response) {
 
   console.log(`onReporEstadoRecebido called with $idUtente: ${idUtente}, $idBibliotecarioMor: ${idBibliotecarioMor}, $valorEstatuto: ${valorEstatuto}`);
@@ -39,7 +43,7 @@ function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publ
                 valor_estatuto: valorEstatuto
               });
 
-              //TODO: URL
+              // TODO: URL
 
               response.status(202).send();
 
@@ -56,7 +60,41 @@ function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publ
 
 }
 
-function onReporEstadoUtenteNaoEncontrado(idUtente, idStream) { }
+function onReporEstadoUtenteNaoEncontrado(idUtente, idStream) {
+
+  console.log(`onReporEstadoUtenteNaoEncontrado called with $idUtente: ${idUtente}, $idStream: ${idStream}`);
+
+  eventstore.getEventStream(idStream, function (errorGetEventStream, stream) {
+
+    if (errorGetEventStream) {
+
+      console.log(`Failed to get stream due to: ${errorGetEventStream}`);
+
+    } else {
+
+      console.log('Got event stream');
+
+      stream.addEvent({ my: 'repor_estado_utente_nao_encontrado' });
+
+      stream.commit(function (errorStreamCommit, stream) {
+
+        if (errorStreamCommit) {
+
+          console.log(`Failed to commit`);
+
+        } else {
+
+          console.log('Successfully added event');
+
+        }
+
+      });
+
+    }
+
+  });
+
+}
 
 function onReporEstadoBibliotecarioMorNaoEncontrado(idBibliotecarioMor, idStream) { }
 
