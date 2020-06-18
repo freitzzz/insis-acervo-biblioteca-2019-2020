@@ -1,6 +1,6 @@
 const eventstore = require('eventstore')();
 
-function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto) {
+function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publishCallback) {
 
   console.log(`onReporEstadoRecebido called with $idUtente: ${idUtente}, $idBibliotecarioMor: ${idBibliotecarioMor}, $valorEstatuto: ${valorEstatuto}`);
 
@@ -46,4 +46,24 @@ function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto) {
 
 }
 
+function onReporEstadoUtenteNaoEncontrado(idUtente, idStream) { }
+
+function onReporEstadoBibliotecarioMorNaoEncontrado(idBibliotecarioMor, idStream) { }
+
+function onReporEstadoNaoAutorizado(bibliotecarioMor, idStream) { }
+
+function onReporEstadoAutorizado(utente, valorEstatuto, idStream, publishCallback) { }
+
+function onReporEstadoRealizado(idStream) { }
+
+function onReporEstadoNaoRealizado(idStream, razao) { }
+
+
 exports.onReporEstadoRecebido = onReporEstadoRecebido;
+exports.onReporEstadoAutorizado = onReporEstadoAutorizado;
+exports.onReporEstadoBibliotecarioMorNaoEncontrado = onReporEstadoBibliotecarioMorNaoEncontrado;
+exports.onReporEstadoNaoAutorizado = onReporEstadoNaoAutorizado;
+exports.onReporEstadoNaoRealizado = onReporEstadoNaoRealizado;
+exports.onReporEstadoRealizado = onReporEstadoRealizado;
+exports.onReporEstadoRecebido = onReporEstadoRecebido;
+exports.onReporEstadoUtenteNaoEncontrado = onReporEstadoUtenteNaoEncontrado;
