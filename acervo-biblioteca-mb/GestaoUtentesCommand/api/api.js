@@ -4,8 +4,6 @@ const eventstore = require('eventstore')();
 
 // TODO: What to do in error cases ?
 
-// TODO: Maybe URL can be composed by stream id?
-
 // TODO: Wrap common behavior in function to reduce duplicated code
 
 function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publishCallback, response) {
@@ -47,9 +45,7 @@ function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publ
                 valor_estatuto: valorEstatuto
               });
 
-              // TODO: URL
-
-              response.status(202).send();
+              response.status(202).send({ url: `commands/${newId}` });
 
             }
 
