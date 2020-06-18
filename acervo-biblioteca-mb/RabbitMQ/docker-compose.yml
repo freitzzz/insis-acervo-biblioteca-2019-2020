@@ -13,8 +13,7 @@ services:
       - "15672:15672"
       - "5672:5672"
     volumes:
-      - rabbit1:/var/lib/rabbitmq
-      - ./conf/:/etc/rabbitmq/
+      - rabbit:/var/lib/rabbitmq
     command: bash -c "rabbitmq-server"
 volumes:
   rabbit1:
