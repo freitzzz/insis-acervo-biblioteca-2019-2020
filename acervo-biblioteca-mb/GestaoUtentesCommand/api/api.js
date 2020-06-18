@@ -1,6 +1,6 @@
 const eventstore = require('eventstore')();
 
-function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publishCallback) {
+function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publishCallback, response) {
 
   console.log(`onReporEstadoRecebido called with $idUtente: ${idUtente}, $idBibliotecarioMor: ${idBibliotecarioMor}, $valorEstatuto: ${valorEstatuto}`);
 
@@ -32,6 +32,16 @@ function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publ
             } else {
 
               console.log(`Commit with success the following events: ${stream.eventsToDispatch}`);
+
+              publishCallback('report_estado_recebido', {
+                id_utente: idUtente,
+                id_bibliotecario_mor: idBibliotecarioMor,
+                valor_estatuto: valorEstatuto
+              });
+
+              //TODO: URL
+
+              response.status(202).send();
 
             }
 
