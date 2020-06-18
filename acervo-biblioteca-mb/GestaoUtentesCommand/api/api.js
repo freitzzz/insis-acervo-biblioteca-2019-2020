@@ -1,12 +1,11 @@
 const Utente = require('../model/utente.js');
 
-const eventstore = require('eventstore')();
 
 // TODO: What to do in error cases ?
 
 // TODO: Wrap common behavior in function to reduce duplicated code
 
-function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publishCallback, response) {
+function onReporEstadoRecebido(eventstore, idUtente, idBibliotecarioMor, valorEstatuto, publishCallback, response) {
 
   console.log(`onReporEstadoRecebido called with $idUtente: ${idUtente}, $idBibliotecarioMor: ${idBibliotecarioMor}, $valorEstatuto: ${valorEstatuto}`);
 
@@ -27,7 +26,7 @@ function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publ
 
           console.log('Got event stream');
 
-          stream.addEvent({ my: 'repor_estado_recebido' });
+          stream.addEvent({ repor_estado_recebido: 'repor_estado_recebido' });
 
           stream.commit(function (errorStreamCommit, stream) {
 
@@ -45,7 +44,7 @@ function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publ
                 valor_estatuto: valorEstatuto
               });
 
-              response.status(202).send({ url: `commands/${newId}` });
+              response.status(202).send({ url: `/commands/${newId}` });
 
             }
 
@@ -60,7 +59,7 @@ function onReporEstadoRecebido(idUtente, idBibliotecarioMor, valorEstatuto, publ
 
 }
 
-function onReporEstadoUtenteNaoEncontrado(idUtente, idStream) {
+function onReporEstadoUtenteNaoEncontrado(eventstore, idUtente, idStream) {
 
   console.log(`onReporEstadoUtenteNaoEncontrado called with $idUtente: ${idUtente}, $idStream: ${idStream}`);
 
@@ -74,7 +73,7 @@ function onReporEstadoUtenteNaoEncontrado(idUtente, idStream) {
 
       console.log('Got event stream');
 
-      stream.addEvent({ my: 'repor_estado_utente_nao_encontrado' });
+      stream.addEvent({ repor_estado_utente_nao_encontrado: idUtente });
 
       stream.commit(function (errorStreamCommit, _) {
 
@@ -96,7 +95,7 @@ function onReporEstadoUtenteNaoEncontrado(idUtente, idStream) {
 
 }
 
-function onReporEstadoBibliotecarioMorNaoEncontrado(idBibliotecarioMor, idStream) {
+function onReporEstadoBibliotecarioMorNaoEncontrado(eventstore, idBibliotecarioMor, idStream) {
 
   console.log(`onReporEstadoBibliotecarioMorNaoEncontrado called with $idBibliotecarioMor: ${idBibliotecarioMor}, $idStream: ${idStream}`);
 
@@ -110,7 +109,7 @@ function onReporEstadoBibliotecarioMorNaoEncontrado(idBibliotecarioMor, idStream
 
       console.log('Got event stream');
 
-      stream.addEvent({ my: 'repor_estado_bibliotecario_mor_nao_encontrado' });
+      stream.addEvent({ repor_estado_bibliotecario_mor_nao_encontrado: idBibliotecarioMor });
 
       stream.commit(function (errorStreamCommit, _) {
 
@@ -132,9 +131,9 @@ function onReporEstadoBibliotecarioMorNaoEncontrado(idBibliotecarioMor, idStream
 
 }
 
-function onReporEstadoNaoAutorizado(bibliotecarioMor, idStream) {
+function onReporEstadoNaoAutorizado(eventstore, idBibliotecarioMor, idStream) {
 
-  console.log(`onReporEstadoNaoAutorizado called with $bibliotecarioMor: ${bibliotecarioMor}, $idStream: ${idStream}`);
+  console.log(`onReporEstadoNaoAutorizado called with $idBibliotecarioMor: ${idBibliotecarioMor}, $idStream: ${idStream}`);
 
   eventstore.getEventStream(idStream, function (errorGetEventStream, stream) {
 
@@ -146,7 +145,7 @@ function onReporEstadoNaoAutorizado(bibliotecarioMor, idStream) {
 
       console.log('Got event stream');
 
-      stream.addEvent({ my: 'repor_estado_nao_autorizado' });
+      stream.addEvent({ repor_estado_nao_autorizado: idBibliotecarioMor });
 
       stream.commit(function (errorStreamCommit, _) {
 
@@ -168,7 +167,7 @@ function onReporEstadoNaoAutorizado(bibliotecarioMor, idStream) {
 
 }
 
-function onReporEstadoAutorizado(utente, valorEstatuto, idStream, publishCallback) {
+function onReporEstadoAutorizado(eventstore, utente, valorEstatuto, idStream, publishCallback) {
 
   console.log(`onReporEstadoAutorizado called with $utente: ${utente}, $valorEstatuto: ${valorEstatuto}, $idStream: ${idStream}`);
 
@@ -182,7 +181,36 @@ function onReporEstadoAutorizado(utente, valorEstatuto, idStream, publishCallbac
 
       console.log('Got event stream');
 
-      stream.addEvent({ my: 'repor_estado_autorizado' });
+      stream.addEvent({ repor_estado_autorizado: 'repor_estado_autorizado' });
+
+      const isUtenteInativo = Utente.isUtenteInativo(utente);
+
+      if (isUtenteInativo) {
+
+        const isEstatutoValueEnoughToReporEstado = Utente.isEstatutoValueEnoughToReporEstado(valorEstatuto);
+
+        if (isEstatutoValueEnoughToReporEstado) {
+
+          publishCallback('repor_estado_aceite', {
+            id_utente: utente.id,
+            valor_estatuto: valorEstatuto
+          });
+
+        } else {
+
+          console.error('estatuto value is not enough to update utente');
+
+          stream.addEvent({ repor_estado_autorizado: 'repor_estado_estatuto_value_not_enough' });
+
+        }
+
+      } else {
+
+        console.error('utente is not in estado inativo');
+
+        stream.addEvent({ repor_estado_autorizado: 'repor_estado_estatuto_utente_not_inativo' });
+
+      }
 
       stream.commit(function (errorStreamCommit, _) {
 
@@ -192,36 +220,7 @@ function onReporEstadoAutorizado(utente, valorEstatuto, idStream, publishCallbac
 
         } else {
 
-          console.log('Successfully added event');
-
-          const isUtenteInativo = Utente.isUtenteInativo(utente);
-
-          if (isUtenteInativo) {
-
-            const isEstatutoValueEnoughToReporEstado = Utente.isEstatutoValueEnoughToReporEstado(valorEstatuto);
-
-            if (isEstatutoValueEnoughToReporEstado) {
-
-              publishCallback('repor_estado_aceite', {
-                id_utente: utente.id,
-                valor_estatuto: valorEstatuto
-              });
-
-            } else {
-
-              console.error('estatuto value is not enough to update utente');
-
-              // TODO: updateDatabase(estatuto_value_not_enough)
-
-            }
-
-          } else {
-
-            console.error('utente is not in estado inativo');
-
-            // TODO: updateDatabase(utente_not_inativo)
-
-          }
+          console.log('Successfully added events');
         }
 
       });
@@ -232,9 +231,9 @@ function onReporEstadoAutorizado(utente, valorEstatuto, idStream, publishCallbac
 
 }
 
-function onReporEstadoRealizado(idStream) {
+function onReporEstadoRealizado(eventstore, idUtente, idStream) {
 
-  console.log(`onReporEstadoRealizado called with $idStream: ${idStream}`);
+  console.log(`onReporEstadoRealizado called with $idUtente: ${idUtente}, $idStream: ${idStream}`);
 
   eventstore.getEventStream(idStream, function (errorGetEventStream, stream) {
 
@@ -246,7 +245,7 @@ function onReporEstadoRealizado(idStream) {
 
       console.log('Got event stream');
 
-      stream.addEvent({ my: 'repor_estado_realizado' });
+      stream.addEvent({ repor_estado_realizado: idUtente });
 
       stream.commit(function (errorStreamCommit, _) {
 
@@ -268,7 +267,7 @@ function onReporEstadoRealizado(idStream) {
 
 }
 
-function onReporEstadoNaoRealizado(idStream, razao) {
+function onReporEstadoNaoRealizado(eventstore, idStream, razao) {
 
   console.log(`onReporEstadoNaoRealizado called with $razao: ${razao}, $idStream: ${idStream}`);
 
@@ -282,7 +281,7 @@ function onReporEstadoNaoRealizado(idStream, razao) {
 
       console.log('Got event stream');
 
-      stream.addEvent({ my: 'repor_estado_nao_realizado' });
+      stream.addEvent({ repor_estado_nao_realizado: razao });
 
       stream.commit(function (errorStreamCommit, _) {
 
