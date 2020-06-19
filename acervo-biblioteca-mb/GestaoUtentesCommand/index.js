@@ -10,8 +10,9 @@ const app = express();
 
 const eventstore = require('eventstore')();
 
-const reporEstadoExchange = process.env.REPOR_ESTADO_EXCHANGE || 'repor_estado';
+const foldArrayToObject = (array) => array.length > 0 ? array.reduceRight((p, c) => Object.assign(p, c)) : [];
 
+const reporEstadoExchange = process.env.REPOR_ESTADO_EXCHANGE || 'repor_estado';
 amqp.connect(process.env.RABBIT_MQ_CONNECTION_URL, function (errorConnectRabbitMQ, connection) {
 
   if (errorConnectRabbitMQ) {
@@ -42,7 +43,7 @@ amqp.connect(process.env.RABBIT_MQ_CONNECTION_URL, function (errorConnectRabbitM
 
           }
 
-          channel.publish(exchange, message, Buffer.from(data));
+          channel.publish(exchange, message, Buffer.from(JSON.stringify(data)));
         }
 
         channel.assertExchange(reporEstadoExchange, 'direct', {
@@ -70,9 +71,31 @@ amqp.connect(process.env.RABBIT_MQ_CONNECTION_URL, function (errorConnectRabbitM
             channel.bindQueue(queue.queue, reporEstadoExchange, 'repor_estado_nao_realizado');
 
             channel.consume(queue.queue, function (message) {
+
+              const body = JSON.parse(message.content);
+
+              const idStream = body.id_stream || '';
+
               switch (message.fields.routingKey) {
+                case 'repor_estado_utente_nao_encontrado':
+                  api.onReporEstadoUtenteNaoEncontrado(eventstore, body.id_utente, idStream);
+                  break;
+                case 'repor_estado_bibliotecario_mor_nao_encontrado':
+                  api.onReporEstadoBibliotecarioMorNaoEncontrado(eventstore, body.id_bibliotecario_mor, idStream);
+                  break;
+                case 'repor_estado_nao_autorizado':
+                  api.onReporEstadoNaoAutorizado(eventstore, body.id_bibliotecario_mor, idStream);
+                  break;
+                case 'repor_estado_autorizado':
+                  api.onReporEstadoAutorizado(eventstore, body.utente, valor_estatuto, idStream, publishCallback);
+                  break;
+                case 'repor_estado_realizado':
+                  api.onReporEstadoRealizado(eventstore, body.id_utente, idStream);
+                case 'repor_estado_nao_realizado':
+                  api.onReporEstadoNaoRealizado(eventstore, body.id_utente, idStream);
+                  break;
                 default:
-                  console.log(message);
+                  console.warn(`Got unknown message: ${message.fields.routingKey}`);
                   break;
               }
             }, {
@@ -101,9 +124,12 @@ amqp.connect(process.env.RABBIT_MQ_CONNECTION_URL, function (errorConnectRabbitM
 
               console.log(`Got events history of stream: ${streamId}`);
 
-              const events = stream.events[0].payload;
+              const events = foldArrayToObject(stream.events.map((event => event.payload)));
+              if (events.length == 0) {
 
-              if (events.repor_estado_utente_nao_encontrado) {
+                response.status(404).send({ message: `Command with id: ${streamId} not found` });
+
+              } else if (events.repor_estado_utente_nao_encontrado) {
 
                 response.status(404).send({ message: `Utente with id: ${events.repor_estado_utente_nao_encontrado} not found` });
 
