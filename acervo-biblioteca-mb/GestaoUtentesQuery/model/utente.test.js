@@ -6,7 +6,7 @@ test('if utente estatuto value is equal to 2, then estado returns "ativo" string
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
+  const utenteInstance = utente.create('Albale', 'Real', false);
 
   // Act
 
@@ -24,7 +24,7 @@ test('if utente estatuto value is greater than 2, then estado returns "ativo" st
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
+  const utenteInstance = utente.create('Albale', 'Real', false);
 
   // Act
 
@@ -42,7 +42,7 @@ test('if utente estatuto value is less than 2 and dataHoraFinalSuspensao is grea
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
+  const utenteInstance = utente.create('Albale', 'Real', false);
 
   const currentDate = new Date();
 
@@ -66,7 +66,7 @@ test('if utente estatuto value is less than 2 but dataHoraFinalSuspensao is less
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
+  const utenteInstance = utente.create('Albale', 'Real', false);
 
   const currentDate = new Date();
 
@@ -90,7 +90,7 @@ test('if utente estatuto value is less than 1, then estado returns "inativo" str
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
+  const utenteInstance = utente.create('Albale', 'Real', false);
 
   // Act
 
@@ -110,7 +110,7 @@ test('if the new utente estatuto is greater than 6, then utente estatuto is upda
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
+  const utenteInstance = utente.create('Albale', 'Real', false);
 
   const currentDate = new Date();
 
@@ -136,7 +136,7 @@ test('if the new utente estatuto is 6, then utente estatuto is updated to 6 and 
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
+  const utenteInstance = utente.create('Albale', 'Real', false);
 
   const currentDate = new Date();
 
@@ -162,7 +162,7 @@ test('if the new utente estatuto is less than 6 and greater than 2, then utente 
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
+  const utenteInstance = utente.create('Albale', 'Real', false);
 
   const currentDate = new Date();
 
@@ -190,7 +190,7 @@ test('if the new utente estatuto is equal to 2, then utente estatuto is updated 
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
+  const utenteInstance = utente.create('Albale', 'Real', false);
 
   const currentDate = new Date();
 
@@ -216,7 +216,7 @@ test('if the new utente estatuto is less than 2, then utente estatuto is updated
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
+  const utenteInstance = utente.create('Albale', 'Real', false);
 
   const currentDate = new Date();
 
@@ -246,7 +246,7 @@ test('if the new utente estatuto is less than 1, then utente estatuto is updated
 
   // Arrange
 
-  const utenteInstance = utente.create('Albale', 'Real');
+  const utenteInstance = utente.create('Albale', 'Real', false);
 
   const currentDate = new Date();
 

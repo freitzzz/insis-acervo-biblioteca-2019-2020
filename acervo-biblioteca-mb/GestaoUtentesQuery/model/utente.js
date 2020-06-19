@@ -4,10 +4,11 @@ const schema = {
   primeiroNome: String,
   ultimoNome: String,
   estatuto: Number,
-  dataHoraFinalSuspensao: Date
+  dataHoraFinalSuspensao: Date,
+  permissoesEspeciais: Boolean
 };
 
-function create(primeiroNome, ultimoNome) {
+function create(primeiroNome, ultimoNome, permissoesEspeciais) {
 
   const utente = schema;
 
@@ -18,6 +19,8 @@ function create(primeiroNome, ultimoNome) {
   utente.estatuto = 2.5;
 
   utente.dataHoraFinalSuspensao = undefined;
+
+  utente.permissoesEspeciais = permissoesEspeciais;
 
   return utente;
 
