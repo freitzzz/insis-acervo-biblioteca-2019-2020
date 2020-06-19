@@ -29,7 +29,7 @@ function onReporEstadoRecebido(guQueryHost, idUtente, idBibliotecarioMor, valorE
 
           if (hasPermissionsToReporEstadoUtente) {
 
-            publishCallback('report_estado_autorizado', {
+            publishCallback('repor_estado_autorizado', {
               utente: utente,
               valor_estatuto: valorEstatuto,
               id_stream: idStream
@@ -37,7 +37,7 @@ function onReporEstadoRecebido(guQueryHost, idUtente, idBibliotecarioMor, valorE
 
           } else {
 
-            publishCallback('report_estado_nao_autorizado', {
+            publishCallback('repor_estado_nao_autorizado', {
               id_bibliotecario_mor: bibliotecarioMor.id,
               id_stream: idStream
             });
@@ -49,7 +49,7 @@ function onReporEstadoRecebido(guQueryHost, idUtente, idBibliotecarioMor, valorE
 
           if (errorGetBibliotecarioMor.response.status == 404) {
 
-            publishCallback('report_estado_bibliotecario_mor_nao_encontrado', {
+            publishCallback('repor_estado_bibliotecario_mor_nao_encontrado', {
               id_bibliotecario_mor: idBibliotecarioMor,
               id_stream: idStream
             });
@@ -63,7 +63,7 @@ function onReporEstadoRecebido(guQueryHost, idUtente, idBibliotecarioMor, valorE
 
       if (errorGetUtente.response.status == 404) {
 
-        publishCallback('report_estado_utente_nao_encontrado', {
+        publishCallback('repor_estado_utente_nao_encontrado', {
           id_utente: idUtente,
           id_stream: idStream
         });
