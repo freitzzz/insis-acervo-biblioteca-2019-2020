@@ -38,10 +38,11 @@ function onReporEstadoRecebido(eventstore, idUtente, idBibliotecarioMor, valorEs
 
               console.log(`Commit with success the following events: ${stream.eventsToDispatch}`);
 
-              publishCallback('report_estado_recebido', {
+              publishCallback('repor_estado_recebido', {
                 id_utente: idUtente,
                 id_bibliotecario_mor: idBibliotecarioMor,
-                valor_estatuto: valorEstatuto
+                valor_estatuto: valorEstatuto,
+                id_stream: newId
               });
 
               response.status(202).send({ url: `/commands/${newId}` });
