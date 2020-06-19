@@ -14,7 +14,12 @@ const reporEstadoExchange = process.env.REPOR_ESTADO_EXCHANGE || 'repor_estado';
 
 const eventstore = require('eventstore')({
   type: 'mongodb',
-  url: process.env.GUC_MONGODB_CONNECTION_URL
+  url: process.env.GUC_MONGODB_CONNECTION_URL,
+  options: {
+    ssl: true,
+    autoReconnect: false,
+    useNewUrlParser: true
+  }
 });
 
 
