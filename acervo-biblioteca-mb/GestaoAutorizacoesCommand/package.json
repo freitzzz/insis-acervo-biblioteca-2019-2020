@@ -1,7 +1,7 @@
 {
-  "name": "gestaoutentescommand",
+  "name": "gestaoautorizacoescommand",
   "version": "1.0.0",
-  "description": "Command Service of Gestao Utentes Microservice",
+  "description": "Command Service of Gestao Autorizações Microservice",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

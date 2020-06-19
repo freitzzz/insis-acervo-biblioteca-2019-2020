@@ -1,6 +1,6 @@
-# Gestão Utentes Command Service
+# Gestão Autorizações Command Service
 
-This project contains the code for the command service of gestão utentes microservice. It is implemented in Javascript and is prepared to be interpreted by Node.JS.
+This project contains the code for the command service of gestão autorizações microservice. It is implemented in Javascript and is prepared to be interpreted by Node.JS.
 
 ## Requirements
 
@@ -22,7 +22,7 @@ To run it is first needed to setup the following environment variables:
 |--------|-----------|
 |`PORT`|Port which API will be available on|
 |`RABBIT_MQ_CONNECTION_URL`|Connection String to connect to RabbitMQ server|
-|`GUC_MONGODB_CONNECTION_URL`|Connection String to connect to MongoDB database|
+|`GAC_MONGODB_CONNECTION_URL`|Connection String to connect to MongoDB database|
 |`REPOR_ESTADO_EXCHANGE`|Exchange identifier for repor estado use case. Defaults to `repor_estado`|
 
 Then execute the following command:
