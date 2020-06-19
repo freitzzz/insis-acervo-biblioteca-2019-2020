@@ -10,7 +10,7 @@ function createUtente(request, response) {
 
   const body = request.body;
 
-  const utenteInstance = utente.create(body.primeiroNome, body.ultimoNome);
+  const utenteInstance = utente.create(body.primeiroNome, body.ultimoNome, body.permissoesEspeciais);
 
   UtentesCollection.create(utenteInstance, function (error, document) {
     if (error) {
