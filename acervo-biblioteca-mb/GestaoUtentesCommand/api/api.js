@@ -267,7 +267,7 @@ function onReporEstadoRealizado(eventstore, idUtente, idStream) {
 
 }
 
-function onReporEstadoNaoRealizado(eventstore, idStream, razao) {
+function onReporEstadoNaoRealizado(eventstore, razao, idStream) {
 
   console.log(`onReporEstadoNaoRealizado called with $razao: ${razao}, $idStream: ${idStream}`);
 
