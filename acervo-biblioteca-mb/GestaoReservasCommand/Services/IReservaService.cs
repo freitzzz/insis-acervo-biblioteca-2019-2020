@@ -1,6 +1,4 @@
-using System;
-using System.Text;
-using GestaoReservasCommand.Configurations;
+using EventStore.ClientAPI;
 using GestaoReservasCommand.DTO;
 using GestaoReservasCommand.Model;
 
@@ -8,6 +6,7 @@ namespace GestaoReservasCommand.Services
 {
     public interface IReservaService : IService<Reserva, ReservaDTO>
     {
-        void CreateReserva(ReservaDTO dto);
+        string CreateReserva(ReservaDTO dto);
+        ResolvedEvent[] GetStreamInfo(string streamId);
     }
 }
