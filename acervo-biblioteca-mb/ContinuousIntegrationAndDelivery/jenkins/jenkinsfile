@@ -92,6 +92,10 @@ node {
 
   def gestao_utentes_query_path = "${env.WORKSPACE}${resolve_path("/acervo-biblioteca-mb/GestaoUtentesQuery/")}"
 
+  def gestao_utentes_command_path = "${env.WORKSPACE}${resolve_path("/acervo-biblioteca-mb/GestaoUtentesCommand/")}"
+
+  def gestao_autorizacoes_command_path = "${env.WORKSPACE}${resolve_path("/acervo-biblioteca-mb/GestaoAutorizacoesCommand/")}"
+
   setup_node()
 
   stage ("Checkout"){
@@ -107,6 +111,16 @@ node {
       parallel_steps["unit tests gestao utentes query service"] = {
           run_command("npm install --prefix ${gestao_utentes_query_path}")
           run_command("npm test --prefix ${gestao_utentes_query_path}")
+      }
+
+      parallel_steps["unit tests gestao utentes command service"] = {
+          run_command("npm install --prefix ${gestao_utentes_command_path}")
+          run_command("npm test --prefix ${gestao_utentes_command_path}")
+      }
+
+      parallel_steps["unit tests gestao autorizacoes command service"] = {
+          run_command("npm install --prefix ${gestao_autorizacoes_command_path}")
+          run_command("npm test --prefix ${gestao_autorizacoes_command_path}")
       }
       
       
