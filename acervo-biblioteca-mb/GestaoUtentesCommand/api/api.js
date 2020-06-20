@@ -194,14 +194,15 @@ function onReporEstadoAutorizado(eventstore, utente, valorEstatuto, idStream, pu
 
           publishCallback('repor_estado_aceite', {
             id_utente: utente.id,
-            valor_estatuto: valorEstatuto
+            valor_estatuto: valorEstatuto,
+            id_stream: idStream
           });
 
         } else {
 
           console.error('estatuto value is not enough to update utente');
 
-          stream.addEvent({ repor_estado_autorizado: 'repor_estado_estatuto_value_not_enough' });
+          stream.addEvent({ repor_estado_estatuto_value_not_enough: valorEstatuto });
 
         }
 
@@ -209,7 +210,7 @@ function onReporEstadoAutorizado(eventstore, utente, valorEstatuto, idStream, pu
 
         console.error('utente is not in estado inativo');
 
-        stream.addEvent({ repor_estado_autorizado: 'repor_estado_estatuto_utente_not_inativo' });
+        stream.addEvent({ repor_estado_utente_not_inativo: utente.id });
 
       }
 
