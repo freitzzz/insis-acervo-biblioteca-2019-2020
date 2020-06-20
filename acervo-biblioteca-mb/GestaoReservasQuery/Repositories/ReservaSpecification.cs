@@ -21,7 +21,8 @@ namespace GestaoReservasQuery.Repositories
             Include = (r => r.obra);
             Criteria = r => (r.dataInicio.CompareTo(dataInicio) >= 0 && (r.dataInicio.CompareTo(dataFim) <= 0)
                         || r.dataFim.CompareTo(dataInicio) >= 0 && (r.dataInicio.CompareTo(dataFim) <= 0))
-                        && (r.obra.titulo == obra);
+                        && (r.obra.titulo == obra)
+                        && (r.estado != ReservaEstado.Cancelada.ToString());
                         
             return this;
         }
@@ -34,7 +35,8 @@ namespace GestaoReservasQuery.Repositories
             Criteria = r => (r.dataInicio.CompareTo(dataInicio) >= 0 && (r.dataInicio.CompareTo(dataFim) <= 0)
                         || r.dataFim.CompareTo(dataInicio) >= 0 && (r.dataInicio.CompareTo(dataFim) <= 0))
                         && (r.obra.titulo == obra)
-                        && (r.utente == utente);
+                        && (r.utente == utente)
+                        && (r.estado != ReservaEstado.Cancelada.ToString());
                         
             return this;
         }
