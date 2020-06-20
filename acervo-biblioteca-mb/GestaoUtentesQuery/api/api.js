@@ -28,7 +28,7 @@ function getUtente(request, response) {
   const id = request.params.id;
 
   UtentesCollection.findById(id).exec(function (error, document) {
-    if (error) {
+    if (error || document == null) {
       response.status(404).send();
     } else {
 
@@ -44,7 +44,7 @@ function updateUtente(request, response) {
   const id = request.params.id;
 
   UtentesCollection.findById(id).exec(function (error, document) {
-    if (error) {
+    if (error || document == null) {
       response.status(404).send();
     } else {
 
@@ -77,6 +77,51 @@ function updateUtente(request, response) {
   });
 }
 
+// TODO: What to do in error cases ?
+
+// TODO: Wrap common behavior in function to reduce duplicated code
+
+function onReporEstadoAceite(idUtente, valorEstatuto, idStream, publishCallback) {
+
+  console.log(`onReporEstadoAceite called with $utente: ${idUtente}, $valorEstatuto: ${valorEstatuto}, $idStream: ${idStream}`);
+
+  UtentesCollection.findById(idUtente).exec(function (error, document) {
+    if (error) {
+      console.log(`Failed to retrieve database record of utente with id ${idUtente} due to: ${error}`);
+
+      publishCallback('repor_estado_nao_realizado', {
+        razao: `An error has occurred when retrieving the database record of utente with id: ${idUtente}`,
+        id_stream: idStream
+      });
+    } else {
+
+      const utenteInstance = document.toObject();
+
+      const newEstatuto = valorEstatuto
+
+      utente.updateEstatuto(utenteInstance, newEstatuto);
+
+      UtentesCollection.updateOne({ _id: idUtente }, utenteInstance).exec(function (error, _) {
+        if (error) {
+          console.log(`Failed to update database record of utente with id ${idUtente} due to: ${error}`);
+
+          publishCallback('repor_estado_nao_realizado', {
+            razao: `An error has occurred when updating the database record of utente with id: ${idUtente}`,
+            id_stream: idStream
+          });
+        } else {
+
+          publishCallback('repor_estado_realizado', {
+            id_utente: idUtente,
+            id_stream: idStream
+          });
+
+        }
+      });
+    }
+  });
+}
+
 function utenteDocumentToView(utenteDocument) {
 
   const utenteView = Object.assign({}, utenteDocument.toObject());
@@ -98,3 +143,5 @@ exports.createUtente = createUtente;
 exports.getUtente = getUtente;
 
 exports.updateUtente = updateUtente;
+
+exports.onReporEstadoAceite = onReporEstadoAceite;
