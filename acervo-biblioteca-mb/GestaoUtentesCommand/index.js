@@ -107,10 +107,11 @@ eventstore.init(function (eventStoreInitError) {
                       api.onReporEstadoNaoAutorizado(eventstore, body.id_bibliotecario_mor, idStream);
                       break;
                     case 'repor_estado_autorizado':
-                      api.onReporEstadoAutorizado(eventstore, body.utente, valor_estatuto, idStream, publishCallback);
+                      api.onReporEstadoAutorizado(eventstore, body.utente, body.valor_estatuto, idStream, publishCallback);
                       break;
                     case 'repor_estado_realizado':
                       api.onReporEstadoRealizado(eventstore, body.id_utente, idStream);
+                      break;
                     case 'repor_estado_nao_realizado':
                       api.onReporEstadoNaoRealizado(eventstore, body.id_utente, idStream);
                       break;
