@@ -23,6 +23,7 @@ To run it is first needed to setup the following environment variables:
 |`PORT`|Port which API will be available on|
 |`RABBIT_MQ_CONNECTION_URL`|Connection String to connect to RabbitMQ server|
 |`GUQ_MONGODB_CONNECTION_URL`|Connection String to connect to MongoDB database|
+|`REPOR_ESTADO_EXCHANGE`|Exchange identifier for repor estado use case. Defaults to `repor_estado`|
 
 Then execute the following command:
 
