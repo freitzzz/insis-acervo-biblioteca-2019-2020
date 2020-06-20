@@ -3,11 +3,12 @@ using GestaoReservasCommand.DTO;
 using GestaoReservasCommand.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 
 namespace GestaoReservasCommand.Controllers
 {
     [ApiController]
-    [Route("reserva")]
+    [Route("reservas")]
     public class ReservaController : ControllerBase
     {
         private readonly ILogger<ReservaController> _logger;
@@ -27,14 +28,32 @@ namespace GestaoReservasCommand.Controllers
             return date.ToString();
         }
 
+        [HttpGet("commands/{streamId}")]
+        public ActionResult<ReservaDTO> GetResouceInfo([FromRoute] String streamId)
+        {
+            _logger.LogDebug(" -- GetResouceInfo -- ");
+            var events = _reservaService.GetStreamInfo(streamId);
+            if (events == null || events.Length == 0)
+                return NotFound(new ResponseMessageDTO(String.Format("Command with id: {0} not found", streamId)));
+
+            if (events[0].Event.EventStreamId.Equals(streamId))
+                return Accepted(new ResourceDTO(String.Format("/commands/{0}", streamId)));
+
+            // TODO - Corrigir "/reservas/{0}", streamId
+            if (events[0].Event.EventType.Equals("reserva_aceite"))
+                return Accepted(new ResourceDTO(String.Format("/reservas/{0}", streamId)));
+
+            // TODO - acho que falta coisas
+            return Accepted(new ResourceDTO(String.Format("/reservas/{0}", streamId)));
+        }
 
         [HttpPost]
         public ActionResult<ReservaDTO> CreateReserva(ReservaDTO reserva)
         {
             _logger.LogDebug(" -- Create Reserva -- ");
-            _reservaService.CreateReserva(reserva);
+            var streamId = _reservaService.CreateReserva(reserva);
 
-            return Ok(reserva);
+            return Accepted(new ResourceDTO(String.Format("/commands/{0}", streamId)));
         }
     }
 }
