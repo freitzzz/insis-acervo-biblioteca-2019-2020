@@ -24,6 +24,7 @@ namespace GestaoReservasCommand
             ServiceConfiguration.configure(Configuration, services);
             RabbitMqConfiguration.configure(Configuration, services);
             ReservaClienteConfiguration.configure(Configuration, services);
+            EventStoreConfiguration.configure(Configuration, services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
