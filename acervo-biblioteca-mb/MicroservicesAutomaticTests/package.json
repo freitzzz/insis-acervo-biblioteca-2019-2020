@@ -1,0 +1,14 @@
+{
+  "name": "microservicesautomatictests",
+  "version": "1.0.0",
+  "description": "Automatic Tests of Acervo-Biblioteca Microservices",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "25.5.4",
+    "axios": "0.19.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
