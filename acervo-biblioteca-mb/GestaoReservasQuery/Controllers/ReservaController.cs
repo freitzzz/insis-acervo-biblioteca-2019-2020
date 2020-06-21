@@ -63,7 +63,7 @@ namespace GestaoReservasQuery.Controllers
             bool added = _reservaService.AddReserva(reserva);
             if (added)
             {
-                return CreatedAtRoute("GetCategory", reserva);
+                return Ok(reserva);
             }
             return BadRequest();
         }
