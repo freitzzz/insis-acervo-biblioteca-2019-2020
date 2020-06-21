@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PORT=8080
+export PORT=4000
 
 export RABBIT_MQ_CONNECTION_URL='amqp://guest:guest@insis-rabbitmq.northeurope.cloudapp.azure.com'
 
