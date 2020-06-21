@@ -83,7 +83,7 @@ namespace GestaoReservasCommand.Services
             var json = JsonConvert.SerializeObject(emprestimo);
             if (HasReservaInPeriodo(listaReservas))
             {
-                if (IsReservaOfUtente(listaReservas, emprestimo.dataFim, emprestimo.dataFim, emprestimo.utente))
+                if (IsReservaOfUtente(listaReservas, emprestimo.utente))
                 {
                     var existeReserva = new ExisteReservaEvent(emprestimo.utente, emprestimo.dataFim, emprestimo.dataFim, emprestimo.obra, listaReservas);
                     json = JsonConvert.SerializeObject(existeReserva);
@@ -129,7 +129,7 @@ namespace GestaoReservasCommand.Services
             return listaReservas.Count > 0;
         }
 
-        private bool IsReservaOfUtente(List<ReservaDTO> listaReservas, DateTime dataInicio, DateTime dataFim, String utente)
+        private bool IsReservaOfUtente(List<ReservaDTO> listaReservas, string utente)
         {
             var reservasUtente = listaReservas.FindAll(r => r.utente.Equals(utente));
             _logger.LogDebug("reservasUtente.Count: " + reservasUtente.Count);

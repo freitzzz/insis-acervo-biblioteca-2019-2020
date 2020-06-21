@@ -10,9 +10,15 @@ public static class APICall
 {
     private static HttpClient GetHttpClient(string url)
     {
-        var client = new HttpClient { BaseAddress = new Uri(url) };
+        HttpClientHandler clientHandler = new HttpClientHandler();
+        clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+        
+        HttpClient client = new HttpClient(clientHandler);
+        client.BaseAddress = new Uri(url);
+        //var client = new HttpClient { BaseAddress = new Uri(url) };
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        
         return client;
     }
 
@@ -35,7 +41,7 @@ public static class APICall
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex);
             return default(List<T>);
         }
     }

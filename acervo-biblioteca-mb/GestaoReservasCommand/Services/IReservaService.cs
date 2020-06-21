@@ -4,9 +4,9 @@ using GestaoReservasCommand.Model;
 
 namespace GestaoReservasCommand.Services
 {
-    public interface IReservaService : IService<Reserva, ReservaDTO>
+    public interface IReservaService : IService<Reserva, PedidoReservaDTO>
     {
-        string CreateReserva(ReservaDTO dto);
+        string CreateReserva(PedidoReservaDTO dto);
         ResolvedEvent[] GetStreamInfo(string streamId);
     }
 }
