@@ -1,5 +1,6 @@
 using System;
 using GestaoReservasCommand.DTO;
+using GestaoReservasCommand.Events;
 using GestaoReservasCommand.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -48,7 +49,7 @@ namespace GestaoReservasCommand.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ReservaDTO> CreateReserva(ReservaDTO reserva)
+        public ActionResult<PedidoReservaDTO> CreateReserva(PedidoReservaDTO reserva)
         {
             _logger.LogDebug(" -- Create Reserva -- ");
             var streamId = _reservaService.CreateReserva(reserva);
