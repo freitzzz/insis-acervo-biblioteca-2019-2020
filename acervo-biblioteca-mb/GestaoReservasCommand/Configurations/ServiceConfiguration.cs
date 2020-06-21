@@ -19,7 +19,7 @@ namespace GestaoReservasCommand.Configurations
 
             services.AddHostedService<ReservaService>();
             services.AddHostedService<EmprestimoService>();
-            services.AddHostedService<Receiver>();
+            
             services.AddTransient<IEventHandler, EventHandler>();
         }
     }
