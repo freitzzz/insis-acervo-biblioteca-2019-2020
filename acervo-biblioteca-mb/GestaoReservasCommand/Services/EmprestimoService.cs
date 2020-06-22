@@ -94,7 +94,7 @@ namespace GestaoReservasCommand.Services
                 }
                 else
                 {
-                    var existeReserva = new ExisteReservaEvent(emprestimo.utente, emprestimo.dataFim, emprestimo.dataFim, emprestimo.obra, listaReservas, emprestimo.streamId);
+                    var existeReserva = new ExisteReservaEvent(emprestimo.utente, emprestimo.dataFim, emprestimo.dataFim, emprestimo.obra, GetObrasReservadas(listaReservas), emprestimo.streamId);
                     json = JsonConvert.SerializeObject(existeReserva);
                     routingKey = EventName.ExisteReservas.Value;
                 }
@@ -120,6 +120,19 @@ namespace GestaoReservasCommand.Services
             var reservasUtente = listaReservas.FindAll(r => r.utente.Equals(utente));
             _logger.LogDebug("reservasUtente.Count: " + reservasUtente.Count);
             return reservasUtente.Count != 0;
+        }
+
+        private List<ObraDTO> GetObrasReservadas(List<ReservaDTO> listaReservas)
+        {
+            var obrasReservadas = new List<ObraDTO>();
+
+            if (listaReservas != null)
+                foreach (var item in listaReservas)
+                {
+                    obrasReservadas.Add(item.obra);
+                }
+
+            return obrasReservadas;
         }
     }
 }
