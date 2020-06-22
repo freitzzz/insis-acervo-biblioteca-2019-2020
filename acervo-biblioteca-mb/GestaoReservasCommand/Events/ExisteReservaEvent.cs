@@ -10,15 +10,15 @@ namespace GestaoReservasCommand.Event
         public DateTime dataInicio { get; set; }
         public DateTime dataFim { get; set; }
         public string obra { get; set; }
-        public List<ReservaDTO> listaReservas { get; set; }
-        public ExisteReservaEvent(string utente, DateTime dataInicio, DateTime dataFim, string obra, List<ReservaDTO> listaReservas, string streamId)
+        public List<ObraDTO> listaObrasReservadas { get; set; }
+        public ExisteReservaEvent(string utente, DateTime dataInicio, DateTime dataFim, string obra, List<ObraDTO> listaObrasReservadas, string streamId)
         {
             this.streamId = streamId;
             this.utente = utente;
             this.dataInicio = dataInicio;
             this.dataFim = dataFim;
             this.obra = obra;
-            this.listaReservas = listaReservas;
+            this.listaObrasReservadas = listaObrasReservadas;
         }
 
     }
