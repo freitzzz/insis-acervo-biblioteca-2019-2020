@@ -88,9 +88,12 @@ namespace GestaoReservasCommand.Services
             var json = JsonConvert.SerializeObject(emprestimo);
             if (HasReservaInPeriodo(listaReservas))
             {
-                if (IsReservaOfUtente(listaReservas, emprestimo.utente))
+                var obraReservadaOfUtente = GetObraReservadaOfUtente(listaReservas, emprestimo.utente);
+                if (obraReservadaOfUtente != null)
                 {
                     routingKey = EventName.ExisteReservaUtente.Value;
+                    var emprestimoUtente = new ReservaUtenteEvent(emprestimo.utente, emprestimo.dataFim, emprestimo.dataFim, obraReservadaOfUtente, emprestimo.streamId);
+                    json = JsonConvert.SerializeObject(emprestimoUtente);
                 }
                 else
                 {
@@ -115,11 +118,16 @@ namespace GestaoReservasCommand.Services
             return listaReservas.Count > 0;
         }
 
-        private bool IsReservaOfUtente(List<ReservaDTO> listaReservas, string utente)
+        private ObraDTO GetObraReservadaOfUtente(List<ReservaDTO> listaReservas, string utente)
         {
             var reservasUtente = listaReservas.FindAll(r => r.utente.Equals(utente));
-            _logger.LogDebug("reservasUtente.Count: " + reservasUtente.Count);
-            return reservasUtente.Count != 0;
+            if (reservasUtente != null && reservasUtente.Count != 0)
+            {
+                _logger.LogDebug("reservasUtente.Count: " + reservasUtente.Count);
+                return reservasUtente[0].obra;
+
+            }
+            return null;
         }
 
         private List<ObraDTO> GetObrasReservadas(List<ReservaDTO> listaReservas)
