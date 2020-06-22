@@ -10,7 +10,8 @@ namespace GestaoReservasCommand.Event
         public string obra { get; set; }
         
         public ReservaRecebidaEvent(){}
-        public ReservaRecebidaEvent(string utente, DateTime dataInicio, DateTime dataFim, string obra){
+        public ReservaRecebidaEvent(string utente, DateTime dataInicio, DateTime dataFim, string obra, string streamId){
+            this.streamId = streamId;
             this.utente = utente;
             this.dataInicio = dataInicio;
             this.dataFim = dataFim;
