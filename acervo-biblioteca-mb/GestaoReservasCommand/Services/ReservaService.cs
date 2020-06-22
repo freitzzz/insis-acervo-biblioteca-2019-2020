@@ -144,7 +144,7 @@ namespace GestaoReservasCommand.Services
             var listaReservas = GetReservas(dataInicio, dataFim, obra);
 
             var routingKey = EventName.ReservaNaoRealizada.Value;
-            var reservaEvent = new ReservaRecebidaEvent(utente, dataInicio, dataFim, obra);
+            var reservaEvent = new ReservaRecebidaEvent(utente, dataInicio, dataFim, obra, streamId);
             var json = JsonConvert.SerializeObject(reservaEvent);
 
             _logger.LogDebug(" -- obrasAutorizadas {0} -- ", obrasAutorizadas.Count);

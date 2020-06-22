@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GestaoReservasCommand.Configurations;
 using GestaoReservasCommand.DTO;
 using GestaoReservasCommand.Event;
+using GestaoReservasCommand.Events;
 using GestaoReservasCommand.Handlers;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -23,9 +24,11 @@ namespace GestaoReservasCommand.Services
         private readonly IEventStoreHandler _eventStoreHandler;
         private readonly ConnectionFactory _factory;
         private readonly String ExchangeName = "emprestimo";
+        Dictionary<string, Action<string>> _map;
         private IModel _channel;
+        private String _queueName;
 
-        public EmprestimoService(ILogger<EmprestimoService> logger, IOptions<RabbitMqConfiguration> rabbitMqOptions, 
+        public EmprestimoService(ILogger<EmprestimoService> logger, IOptions<RabbitMqConfiguration> rabbitMqOptions,
                 IOptions<ReservaClienteConfiguration> reservaClienteOptions, IEventHandler eventHandler,
                 IEventStoreHandler eventStoreHandler)
         {
@@ -34,7 +37,7 @@ namespace GestaoReservasCommand.Services
             _reservaClienteOptions = reservaClienteOptions;
             _eventHandler = eventHandler;
             _eventStoreHandler = eventStoreHandler;
-            
+
             _factory = new ConnectionFactory
             {
                 HostName = _rabbitMqOptions.Value.Hostname,
@@ -47,73 +50,56 @@ namespace GestaoReservasCommand.Services
 
         private void InitializeRabbitMqListener()
         {
+            _map = new Dictionary<string, Action<string>>();
+            _map.Add(EventName.EmprestimoRecebido.Value, ValidateEmprestimo);
+
+            // create connection  
             var _connection = _factory.CreateConnection();
+
+            // create channel
             _channel = _connection.CreateModel();
-            // _channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
-            _channel.ExchangeDeclare(exchange: ExchangeName, type: "direct");
+
+            // create exchange
+            _channel.ExchangeDeclare(exchange: ExchangeName, ExchangeType.Direct);
+
+            // declare queue
+            _queueName = _channel.QueueDeclare("", false, false, false, null).QueueName;
+
+            // bind queues
+            _eventHandler.BindQueues(_channel, ExchangeName, _queueName, new List<string>(_map.Keys));
+
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            // var consumer = new EventingBasicConsumer(_channel);
-            // consumer.Received += (model, ea) =>
-            // {
-            //     var content = Encoding.UTF8.GetString(ea.Body.ToArray());
-            //     var emprestimo = JsonConvert.DeserializeObject<EmprestimoDTO>(content);
+            _logger.LogDebug("ExecuteAsync");
+            _eventHandler.ReceiveEvent(_channel, ExchangeName, _queueName, _map);
 
-            //     ValidateEmprestimo(emprestimo);
-
-            //     _channel.BasicAck(ea.DeliveryTag, false);
-            // };
-
-            // _channel.BasicConsume(_queueName, false, consumer);
-
-            // _eventHandler.ReceiveEvent(_channel, ExchangeName, "emprestimo_recebido", ValidateEmprestimo);
             return Task.CompletedTask;
         }
 
         private void ValidateEmprestimo(String content)
         {
-            EmprestimoDTO emprestimo = JsonConvert.DeserializeObject<EmprestimoDTO>(content);
-            _eventStoreHandler.AddEvent("TODO", "emprestimo_recebido", content, "{}");
-            
+            EmprestimoEvent emprestimo = JsonConvert.DeserializeObject<EmprestimoEvent>(content);
+
             var listaReservas = GetReservas(emprestimo.dataFim, emprestimo.dataFim, emprestimo.obra);
 
-            var routingKey = "nao_existe_reserva";
+            var routingKey = EventName.NaoExisteReservas.Value;
             var json = JsonConvert.SerializeObject(emprestimo);
             if (HasReservaInPeriodo(listaReservas))
             {
                 if (IsReservaOfUtente(listaReservas, emprestimo.utente))
                 {
-                    var existeReserva = new ExisteReservaEvent(emprestimo.utente, emprestimo.dataFim, emprestimo.dataFim, emprestimo.obra, listaReservas);
-                    json = JsonConvert.SerializeObject(existeReserva);
-                    routingKey = "existe_reserva";
+                    routingKey = EventName.ExisteReservaUtente.Value;
                 }
                 else
                 {
-                    routingKey = "existe_reserva_utente";
+                    var existeReserva = new ExisteReservaEvent(emprestimo.utente, emprestimo.dataFim, emprestimo.dataFim, emprestimo.obra, listaReservas, emprestimo.streamId);
+                    json = JsonConvert.SerializeObject(existeReserva);
+                    routingKey = EventName.ExisteReservas.Value;
                 }
             }
-
-            
-            _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, "TODO");
-            
-            // using (var connection = factory.CreateConnection())
-            // using (var channel = connection.CreateModel())
-            // {
-            //     channel.ExchangeDeclare(exchange: _rabbitMqOptions.Value.ExchangeName,
-            //                             type: "direct");
-
-            // var json = JsonConvert.SerializeObject(emprestimo);
-            // var body = Encoding.UTF8.GetBytes(json);
-
-            //     channel.BasicPublish(exchange: _rabbitMqOptions.Value.ExchangeName,
-            //                         routingKey: routingKey,
-            //                         basicProperties: null,
-            //                         body: body);
-
-            // _logger.LogDebug(" [x] Sent {0}", json);
-            // }
+            _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, emprestimo.streamId);
         }
 
         private List<ReservaDTO> GetReservas(DateTime dataInicio, DateTime dataFim, String obra)
