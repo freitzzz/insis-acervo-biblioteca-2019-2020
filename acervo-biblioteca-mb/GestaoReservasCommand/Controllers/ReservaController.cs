@@ -42,12 +42,12 @@ namespace GestaoReservasCommand.Controllers
             if (events[0].Event.EventType.Equals(EventName.ReservaRealizada))
             {
                 var reservaRealizada = JsonConvert.DeserializeObject<ReservaRealizadaEvent>(events[0].Event.Data.ToString());
-                return Accepted(new ResourceDTO(String.Format("/reservas/{0}", reservaRealizada.reservaId)));
+                return Ok(new ResourceDTO(String.Format("/reservas/{0}", reservaRealizada.reservaId)));
             }
             if (events[0].Event.EventType.Equals(EventName.ReservaNaoRealizada))
             {
                 var reservaNaoRealizada = JsonConvert.DeserializeObject<ReservaNaoRealizadaEvent>(events[0].Event.Data.ToString());
-                return Accepted(new ResponseMessageDTO(String.Format("Operation failed due to {0}", reservaNaoRealizada.razao)));
+                return BadRequest(new ResponseMessageDTO(String.Format("Operation failed due to {0}", reservaNaoRealizada.razao)));
             }
 
             return Accepted(new ResourceDTO(String.Format("/commands/{0}", streamId)));
