@@ -81,36 +81,42 @@ function onReservaRecebida(guQueryHost, esbHost, utente, obra, dataInicio, dataF
     .default
     .get(`${guQueryHost}/utentes/${utente}`)
     .then(function (getUtente) {
-      var obrasExistentes = getObraInPolos(esbHost, obra);
-      if (obrasExistentes == undefined || obrasExistentes.length == 0) {
-        publishCallback('reserva_obra_nao_encontrada', {
-          utente: utente,
-          dataInicio: dataInicio,
-          dataFim: dataFim,
-          obra: obra,
-          id_stream: idStream
-        });
-      } else {
-        var obrasAutorizadas = getObrasUtenteAutorizado(getUtente, obrasExistentes);
-        if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
-          publishCallback('reserva_utente_autorizado', {
+      getObraInPolos(esbHost, obra).then(function (obrasExistentes) {
+        console.log(obrasExistentes)
+        if (obrasExistentes == undefined || obrasExistentes.length == 0) {
+          console.log("Sending reserva_obra_nao_encontrada");
+          publishCallback('reserva_obra_nao_encontrada', {
             utente: utente,
             dataInicio: dataInicio,
             dataFim: dataFim,
             obra: obra,
-            obrasAutorizadas: obrasAutorizadas,
             id_stream: idStream
           });
         } else {
-          publishCallback('reserva_utente_nao_autorizado', {
-            utente: utente,
-            dataInicio: dataInicio,
-            dataFim: dataFim,
-            obra: obra,
-            id_stream: idStream
-          });
+          var obrasAutorizadas = getObrasUtenteAutorizado(getUtente, obrasExistentes);
+          if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
+            console.log("Sending reserva_utente_autorizado");
+            publishCallback('reserva_utente_autorizado', {
+              utente: utente,
+              dataInicio: dataInicio,
+              dataFim: dataFim,
+              obra: obra,
+              obrasAutorizadas: obrasAutorizadas,
+              id_stream: idStream
+            });
+          } else {
+            console.log("Sending reserva_utente_nao_autorizado");
+            publishCallback('reserva_utente_nao_autorizado', {
+              utente: utente,
+              dataInicio: dataInicio,
+              dataFim: dataFim,
+              obra: obra,
+              id_stream: idStream
+            });
+          }
         }
-      }
+      })
+
     })
     .catch(function (errorGetUtente) {
       console.log(errorGetUtente);
@@ -182,38 +188,32 @@ function getObraInPolos(esbHost, obra) {
 
   console.log(`getObraInPolos called with $obra: ${obra}`);
 
-  var obras = new Array()
 
   var polos = getPolos(esbHost);
 
-  polos.forEach(polo => {
-    axios
-      .default
-      .get(`${esbHost}/acervobiblioteca/polos/${polo}/obras/${obra}`)
-      .then(function (getObraPolo) {
-        getObraPolo = getObraPolo.data;
-        if (getObraPolo.count != getObraPolo.states.length) {
-          getObraPolo.states = [getObraPolo.states.reduceRight((p, c) => p + c)];
+  const obrasPorPolo = polos.map((polo) => axios.default.get(`${esbHost}/acervobiblioteca/polos/${polo}/obras/${obra}`))
+
+  return axios.default.all(obrasPorPolo).then(function (responses) {
+    const obras = [];
+
+    responses.forEach(function (getObraPolo, index) {
+      getObraPolo = getObraPolo.data;
+      if (getObraPolo.count != getObraPolo.states.length) {
+        getObraPolo.states = [getObraPolo.states.reduceRight((p, c) => p + c)];
+      }
+
+      getObraPolo.states.forEach(state => {
+        var obra = {
+          titulo: obra,
+          estado: Estado.getValue(state), //convert string to int
+          polo: polos[index]
         }
-        getObraPolo.states.forEach(state => {
-          var obra = {
-            titulo: obra,
-            estado: Estado.getValue(state), //convert string to int
-            polo: polo
-          }
-          obras.push(obra);
-        });
-
-      })
-      .catch(function (errorGetObraPolo) {
-
-        console.log(`getObraInPolos error : ${errorGetObraPolo}`);
-
+        obras.push(obra);
       });
+
+      return obras;
+    });
   });
-
-  return obras;
-
 }
 
 function getPolos(esbHost) {
