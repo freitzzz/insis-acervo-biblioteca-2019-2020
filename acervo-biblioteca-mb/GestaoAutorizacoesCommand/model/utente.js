@@ -30,11 +30,11 @@ function hasPermissionsToReporEstadoUtente(utente) {
 }
 
 // Validates if the utente can reservar ou pedir emprestimo
-function hasPermissionsToRequire(utente, estado) {
-  if(utente.estatuto > 3 && estado == 3){
+function hasPermissionsToRequire(utente, estadoObra) {
+  if(utente.estatuto > 3 && estadoObra == 3){
     return true;
   }
-  if(utente.estatuto > 4 && estado < 3){
+  if(utente.estatuto > 4 && estadoObra < 3){
     return true;
   }
   return false;

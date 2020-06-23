@@ -12,6 +12,8 @@ const foldArrayToObject = (array) => array.length > 0 ? array.reduceRight((p, c)
 
 const emprestimoExchange = process.env.EMPRESTIMO_EXCHANGE || 'emprestimo';
 
+const reservaExchange = process.env.RESERVA_EXCHANGE || 'reserva';
+
 const esbHost = process.env.ESB_HOST;
 
 const geQueryHost = process.env.GE_QUERY_HOST;
@@ -66,6 +68,11 @@ eventstore.init(function (eventStoreInitError) {
                 exchange = emprestimoExchange;
 
               }
+              else if (message.startsWith('reserva')) {
+
+                exchange = reservaExchange;
+
+              }
 
               channel.publish(exchange, message, Buffer.from(JSON.stringify(data)));
             }
@@ -73,7 +80,9 @@ eventstore.init(function (eventStoreInitError) {
             channel.assertExchange(emprestimoExchange, 'direct', {
               durable: true
             });
-
+            channel.assertExchange(reservaExchange, 'direct', {
+              durable: true
+            });
             channel.assertQueue('', {
               exclusive: false,
               durable: true
@@ -87,18 +96,18 @@ eventstore.init(function (eventStoreInitError) {
 
               } else {
 
-                channel.bindQueue(queue.queue, emprestimoExchange, 'existe_reserva_utente');
-                channel.bindQueue(queue.queue, emprestimoExchange, 'existe_reserva');
-                channel.bindQueue(queue.queue, emprestimoExchange, 'nao_existe_reserva');
-                channel.bindQueue(queue.queue, emprestimoExchange, 'utente_nao_autorizado');
-                channel.bindQueue(queue.queue, emprestimoExchange, 'utente_autorizado');
-                channel.bindQueue(queue.queue, emprestimoExchange, 'reserva_recebida');
+                channel.bindQueue(queue.queue, reservaExchange, 'existe_reserva_utente');
+                channel.bindQueue(queue.queue, reservaExchange, 'existe_reserva');
+                channel.bindQueue(queue.queue, reservaExchange, 'nao_existe_reserva');
+                channel.bindQueue(queue.queue, emprestimoExchange, 'emprestimo_utente_nao_autorizado');
+                channel.bindQueue(queue.queue, emprestimoExchange, 'emprestimo_utente_autorizado');
+                channel.bindQueue(queue.queue, reservaExchange, 'reserva_recebida');
 
                 channel.consume(queue.queue, function (message) {
 
                   const body = JSON.parse(message.content);
-
-                  const idStream = body.idStream || '';
+                  console.log(body);
+                  const idStream = body.id_stream || '';
 
                   switch (message.fields.routingKey) {
                     case 'existe_reserva_utente':
@@ -161,7 +170,7 @@ eventstore.init(function (eventStoreInitError) {
                   } else if (events.emprestimo_realizado) {
 
                     response.status(200).send({ url: `/emprestimos/${events.emprestimo_realizado}` });
-                  
+
                   } else {
 
                     response.status(202).send({ url: `/commands/${streamId}` });
