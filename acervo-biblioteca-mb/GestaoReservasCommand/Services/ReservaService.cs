@@ -70,7 +70,7 @@ namespace GestaoReservasCommand.Services
             _channel = _connection.CreateModel();
 
             // create exchange
-            _channel.ExchangeDeclare(exchange: ExchangeName, ExchangeType.Direct);
+            _channel.ExchangeDeclare(exchange: ExchangeName, ExchangeType.Direct, durable: true);
 
             // declare queue
             _queueName = _channel.QueueDeclare("", false, false, false, null).QueueName;
@@ -90,8 +90,9 @@ namespace GestaoReservasCommand.Services
         public string CreateReserva(PedidoReservaDTO reserva)
         {
             var eventName = EventName.ReservaRecebida.Value;
-            var json = JsonConvert.SerializeObject(reserva);
             var streamId = Guid.NewGuid().ToString();
+            var reservaEvent = new ReservaRecebidaEvent(reserva.utente, reserva.dataInicio, reserva.dataFim, reserva.obra, streamId);
+            var json = JsonConvert.SerializeObject(reservaEvent);
             _eventHandler.SendEvent(_factory, ExchangeName, eventName, json, streamId);
 
             return streamId;
@@ -103,19 +104,19 @@ namespace GestaoReservasCommand.Services
 
             var routingKey = EventName.ReservaNaoAceite.Value;
             var json = JsonConvert.SerializeObject(emprestimoSobreposto);
-            _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, emprestimoSobreposto.streamId);
+            _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, emprestimoSobreposto.id_stream);
         }
 
         private void EmprestimoNaoSobreposto(String content)
         {
             EmprestimoNaoSobrepostoEvent emprestimoNaoSobreposto = JsonConvert.DeserializeObject<EmprestimoNaoSobrepostoEvent>(content);
 
-            var contentUtenteAutorizadoEvent = ContainsEvent(emprestimoNaoSobreposto.streamId, EventName.UtenteAutorizado.Value);
+            var contentUtenteAutorizadoEvent = ContainsEvent(emprestimoNaoSobreposto.id_stream, EventName.UtenteAutorizado.Value);
             if (contentUtenteAutorizadoEvent != null)
             {
                 var utenteAutorizado = JsonConvert.DeserializeObject<UtenteAutorizadoEvent>(contentUtenteAutorizadoEvent);
                 ValidateReserva(emprestimoNaoSobreposto.dataInicio, emprestimoNaoSobreposto.dataFim, emprestimoNaoSobreposto.obra, emprestimoNaoSobreposto.utente,
-                    emprestimoNaoSobreposto.streamId, utenteAutorizado.obrasAutorizadas, emprestimoNaoSobreposto.obrasSemEmprestimo);
+                    emprestimoNaoSobreposto.id_stream, utenteAutorizado.obrasAutorizadas, emprestimoNaoSobreposto.obrasSemEmprestimo);
             }
         }
 
@@ -123,12 +124,12 @@ namespace GestaoReservasCommand.Services
         {
             UtenteAutorizadoEvent utenteAutorizadoEvent = JsonConvert.DeserializeObject<UtenteAutorizadoEvent>(content);
 
-            var contentEmprestimoNaoSobrepostoEvent = ContainsEvent(utenteAutorizadoEvent.streamId, EventName.EmprestimoNaoSobreposto.Value);
+            var contentEmprestimoNaoSobrepostoEvent = ContainsEvent(utenteAutorizadoEvent.id_stream, EventName.EmprestimoNaoSobreposto.Value);
             if (contentEmprestimoNaoSobrepostoEvent != null)
             {
                 var emprestimoNaoSobreposto = JsonConvert.DeserializeObject<EmprestimoNaoSobrepostoEvent>(contentEmprestimoNaoSobrepostoEvent);
                 ValidateReserva(utenteAutorizadoEvent.dataInicio, utenteAutorizadoEvent.dataFim, utenteAutorizadoEvent.obra, utenteAutorizadoEvent.utente,
-                    utenteAutorizadoEvent.streamId, utenteAutorizadoEvent.obrasAutorizadas, emprestimoNaoSobreposto.obrasSemEmprestimo);
+                    utenteAutorizadoEvent.id_stream, utenteAutorizadoEvent.obrasAutorizadas, emprestimoNaoSobreposto.obrasSemEmprestimo);
             }
         }
 
@@ -138,7 +139,7 @@ namespace GestaoReservasCommand.Services
 
             var routingKey = EventName.ReservaNaoAceite.Value;
             var json = JsonConvert.SerializeObject(utenteNaoAutorizado);
-            _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, utenteNaoAutorizado.streamId);
+            _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, utenteNaoAutorizado.id_stream);
         }
 
         public void ValidateReserva(DateTime dataInicio, DateTime dataFim, string obra, string utente, string streamId, List<ObraDTO> obrasAutorizadas, List<ObraDTO> obrasSemEmprestimo)
@@ -202,7 +203,7 @@ namespace GestaoReservasCommand.Services
         {
             _logger.LogDebug("ReservaRealizada");
         }
-        
+
         private List<ReservaDTO> GetReservas(DateTime dataInicio, DateTime dataFim, String obra)
         {
             var inicio = String.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", dataInicio);

@@ -6,9 +6,9 @@ namespace GestaoReservasCommand.Event
     {
         public long reservaId { get; set; }
 
-        public ReservaRealizadaEvent(long reservaId, string streamId)
+        public ReservaRealizadaEvent(long reservaId, string id_stream)
         {
-            this.streamId = streamId;
+            this.id_stream = id_stream;
             this.reservaId = reservaId;
         }
 

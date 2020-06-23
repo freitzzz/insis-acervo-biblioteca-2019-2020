@@ -2,7 +2,7 @@ const Utente = require('../model/utente.js');
 
 const axios = require('axios');
 
-const getValue = require('../model/estado');
+const Estado = require('../model/estado');
 
 // TODO: What to do in error cases ?
 
@@ -88,7 +88,7 @@ function onReservaRecebida(guQueryHost, esbHost, utente, obra, dataInicio, dataF
           dataInicio: dataInicio,
           dataFim: dataFim,
           obra: obra,
-          streamId: idStream
+          id_stream: idStream
         });
       } else {
         var obrasAutorizadas = getObrasUtenteAutorizado(getUtente, obrasExistentes);
@@ -99,7 +99,7 @@ function onReservaRecebida(guQueryHost, esbHost, utente, obra, dataInicio, dataF
             dataFim: dataFim,
             obra: obra,
             obrasAutorizadas: obrasAutorizadas,
-            streamId: idStream
+            id_stream: idStream
           });
         } else {
           publishCallback('reserva_utente_nao_autorizado', {
@@ -107,13 +107,13 @@ function onReservaRecebida(guQueryHost, esbHost, utente, obra, dataInicio, dataF
             dataInicio: dataInicio,
             dataFim: dataFim,
             obra: obra,
-            streamId: idStream
+            id_stream: idStream
           });
         }
       }
     })
     .catch(function (errorGetUtente) {
-
+      console.log(errorGetUtente);
       if (errorGetUtente.response.status == 404) {
 
         publishCallback('reserva_recebida_utente_nao_encontrado', {
@@ -140,7 +140,7 @@ function onEmprestimoRecebido(guQueryHost, esbHost, utente, obra, dataInicio, da
           dataInicio: dataInicio,
           dataFim: dataFim,
           obra: obra,
-          streamId: idStream
+          id_stream: idStream
         });
       } else {
         var obrasAutorizadas = getObrasUtenteAutorizado(getUtente, obrasExistentes);
@@ -151,7 +151,7 @@ function onEmprestimoRecebido(guQueryHost, esbHost, utente, obra, dataInicio, da
             dataFim: dataFim,
             obra: obra,
             obrasAutorizadas: obrasAutorizadas,
-            streamId: idStream
+            id_stream: idStream
           });
         } else {
           publishCallback('emprestimo_utente_nao_autorizado', {
@@ -159,7 +159,7 @@ function onEmprestimoRecebido(guQueryHost, esbHost, utente, obra, dataInicio, da
             dataInicio: dataInicio,
             dataFim: dataFim,
             obra: obra,
-            streamId: idStream
+            id_stream: idStream
           });
         }
       }
@@ -191,11 +191,14 @@ function getObraInPolos(esbHost, obra) {
       .default
       .get(`${esbHost}/acervobiblioteca/polos/${polo}/obras/${obra}`)
       .then(function (getObraPolo) {
-
-        getObraPolo.states.forEach(estado => {
+        getObraPolo = getObraPolo.data;
+        if (getObraPolo.count != getObraPolo.states.length) {
+          getObraPolo.states = [getObraPolo.states.reduceRight((p, c) => p + c)];
+        }
+        getObraPolo.states.forEach(state => {
           var obra = {
             titulo: obra,
-            estado: getValue(estado), //convert string to int
+            estado: Estado.getValue(state), //convert string to int
             polo: polo
           }
           obras.push(obra);

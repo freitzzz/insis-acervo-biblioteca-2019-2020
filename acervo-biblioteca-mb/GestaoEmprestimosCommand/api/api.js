@@ -104,7 +104,7 @@ function onExisteReservaUtente(eventstore, utente, dataInicio, dataFim, obra, id
                 dataInicio: dataInicio,
                 dataFim: dataFim,
                 obra: obra,
-                streamId: idStream
+                id_stream: idStream
               });
             } else {
               // TODO - Tinha reserva mas já não está autorizado a levar aquele exemplar, por isso vamos emprestar outro
@@ -116,7 +116,7 @@ function onExisteReservaUtente(eventstore, utente, dataInicio, dataFim, obra, id
                   dataInicio: dataInicio,
                   dataFim: dataFim,
                   obra: obra,
-                  streamId: idStream
+                  id_stream: idStream
                 });
               }
             }
@@ -177,7 +177,7 @@ function onExisteReserva(eventstore, utente, dataInicio, dataFim, obra, obrasRes
             dataInicio: dataInicio,
             dataFim: dataFim,
             obra: obrasAutorizadasSemReservasSemEmprestimos[0],
-            streamId: idStream
+            id_stream: idStream
           });
         }
       }
@@ -215,15 +215,14 @@ function onNaoExisteReserva(eventstore, utente, dataInicio, dataFim, obra, idStr
 
       });
 
-      // TODO - Verificar se já recebeu o evento "utente_autorizado"
       const events = foldArrayToObject(stream.events.map((event => event.payload)));
       if (events.utente_autorizado) {
         var obrasAutorizadas = events.utente_autorizado;
         var obrasSemEmprestimo = getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim)
 
         var obrasAutorizadasSemEmprestimos = [];
-        if (obrasAutorizadasSemReservas != undefined && obrasAutorizadasSemReservas.length != 0) {
-          obrasAutorizadasSemEmprestimos = obrasAutorizadasSemReservas.filter(element => obrasSemEmprestimo.includes(element));
+        if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
+          obrasAutorizadasSemEmprestimos = obrasAutorizadas.filter(element => obrasSemEmprestimo.includes(element));
         }
 
         if (obrasAutorizadasSemEmprestimos != undefined && obrasAutorizadasSemEmprestimos.length != 0) {
@@ -232,7 +231,7 @@ function onNaoExisteReserva(eventstore, utente, dataInicio, dataFim, obra, idStr
             dataInicio: dataInicio,
             dataFim: dataFim,
             obra: obrasAutorizadasSemEmprestimos[0],
-            streamId: idStream
+            id_stream: idStream
           });
         }
       }
@@ -338,7 +337,7 @@ function onUtenteAutorizado(eventstore, utente, dataInicio, dataFim, obra, obras
           dataInicio: dataInicio,
           dataFim: dataFim,
           obra: obrasAutorizadasSemReservasSemEmprestimos[0],
-          streamId: newId
+          id_stream: newId
         });
       }
     }
@@ -382,7 +381,7 @@ function onReservaRecebida(eventstore, utente, dataInicio, dataFim, obra, idStre
               dataInicio: dataInicio,
               dataFim: dataFim,
               obra: obra,
-              streamId: newId
+              id_stream: newId
             });
 
           } else {
@@ -395,7 +394,7 @@ function onReservaRecebida(eventstore, utente, dataInicio, dataFim, obra, idStre
               dataFim: dataFim,
               obra: obra,
               obrasSemEmprestimo: obrasSemEmprestimo,
-              streamId: newId
+              id_stream: newId
             });
 
           }

@@ -121,3 +121,7 @@ exports.getUtente = getEmprestimo;
 exports.updateUtente = updateEmprestimo;
 
 exports.onEmprestimoAceite = onEmprestimoAceite;
+
+exports.getEmprestimo = getEmprestimo;
+
+exports.updateEmprestimo = updateEmprestimo;

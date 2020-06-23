@@ -21,12 +21,13 @@ namespace GestaoReservasCommand.Handlers
         }
         public void SendEvent(ConnectionFactory factory, string exchangeName, string routingKey, string json, string streamId)
         {
-            _logger.LogDebug(" [x] Sent {0}, {1}, {2}", factory.HostName, factory.UserName, factory.Password);
+            _logger.LogDebug(" exchangeName {0}, routingKey {1}, streamId {2}", exchangeName, routingKey, streamId);
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
                 channel.ExchangeDeclare(exchange: exchangeName,
-                                        type: ExchangeType.Direct);
+                                        type: ExchangeType.Direct,
+                                        durable: true);
 
                 var body = Encoding.UTF8.GetBytes(json);
 
@@ -68,7 +69,7 @@ namespace GestaoReservasCommand.Handlers
 
                 _logger.LogDebug(" [x] Received '{0}':'{1}'", routingKey, json);
 
-                var streamId = json.Value<string>("streamId");
+                var streamId = json.Value<string>("id_stream");
                 _eventStoreHandler.AddEvent(streamId, routingKey, message, "{}");
 
                 Action<string> action = map.GetValueOrDefault(routingKey);

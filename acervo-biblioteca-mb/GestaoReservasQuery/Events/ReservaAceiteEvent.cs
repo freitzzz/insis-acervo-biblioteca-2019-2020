@@ -9,9 +9,9 @@ namespace GestaoReservasQuery.Event
         public DateTime dataInicio { get; set; }
         public DateTime dataFim { get; set; }
         public ObraDTO obra { get; set; }
-        public ReservaAceiteEvent(string utente, DateTime dataInicio, DateTime dataFim, ObraDTO obra, string streamId)
+        public ReservaAceiteEvent(string utente, DateTime dataInicio, DateTime dataFim, ObraDTO obra, string id_stream)
         {
-            this.streamId = streamId;
+            this.id_stream = id_stream;
             this.utente = utente;
             this.dataInicio = dataInicio;
             this.dataFim = dataFim;

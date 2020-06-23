@@ -11,7 +11,6 @@ const reservaExchange = process.env.RESERVA_EXCHANGE || 'reserva';
 const guQueryHost = process.env.GU_QUERY_HOST;
 
 const esbHost = process.env.ESB_HOST;
-
 amqp.connect(process.env.RABBIT_MQ_CONNECTION_URL, function (errorConnectRabbitMQ, connection) {
 
   if (errorConnectRabbitMQ) {
@@ -53,8 +52,6 @@ amqp.connect(process.env.RABBIT_MQ_CONNECTION_URL, function (errorConnectRabbitM
           channel.publish(exchange, message, Buffer.from(JSON.stringify(data)));
         }
 
-
-        // TODO -  reporEstadoExchange ???? e os outros
         channel.assertExchange(reporEstadoExchange, 'direct', {
           durable: true
         });
@@ -65,7 +62,7 @@ amqp.connect(process.env.RABBIT_MQ_CONNECTION_URL, function (errorConnectRabbitM
         channel.assertExchange(reservaExchange, 'direct', {
           durable: true
         });
-        
+
         channel.assertQueue('', {
           exclusive: false,
           durable: true
@@ -85,7 +82,7 @@ amqp.connect(process.env.RABBIT_MQ_CONNECTION_URL, function (errorConnectRabbitM
             channel.consume(queue.queue, function (message) {
 
               const body = JSON.parse(message.content);
-
+              
               const idStream = body.id_stream || '';
 
               switch (message.fields.routingKey) {

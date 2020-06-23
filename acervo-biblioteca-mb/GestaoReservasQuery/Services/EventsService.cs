@@ -62,7 +62,7 @@ namespace GestaoReservasQuery.Services
             _channel = _connection.CreateModel();
 
             // create exchange
-            _channel.ExchangeDeclare(exchange: ExchangeName, ExchangeType.Direct);
+            _channel.ExchangeDeclare(exchange: ExchangeName, ExchangeType.Direct, durable: true);
 
             // declare queue
             _queueName = _channel.QueueDeclare("", false, false, false, null).QueueName;
@@ -107,13 +107,13 @@ namespace GestaoReservasQuery.Services
                     dbContext.SaveChanges();
 
                     // send event
-                    var reservaRealizada = new ReservaRealizadaEvent(reserva.Id, eventReceived.streamId);
+                    var reservaRealizada = new ReservaRealizadaEvent(reserva.Id, eventReceived.id_stream);
                     SendEvent(EventName.ReservaRealizada.Value, JsonConvert.SerializeObject(reserva));
                     _logger.LogDebug("Reserva was added to DataBase");
                 }
                 else
                 {
-                    var reservaNaoRealizada = new ReservaNaoRealizadaEvent("Reserva already exists on Database", eventReceived.streamId);
+                    var reservaNaoRealizada = new ReservaNaoRealizadaEvent("Reserva already exists on Database", eventReceived.id_stream);
                     SendEvent(EventName.ReservaNaoRealizada.Value, JsonConvert.SerializeObject(reserva));
                     _logger.LogDebug("Reserva was NOT added to DataBase");
                 }
@@ -147,7 +147,8 @@ namespace GestaoReservasQuery.Services
             using (var channel = connection.CreateModel())
             {
                 channel.ExchangeDeclare(exchange: ExchangeName,
-                                        type: ExchangeType.Direct);
+                                        type: ExchangeType.Direct,
+                                        durable: true);
 
                 var body = Encoding.UTF8.GetBytes(json);
 

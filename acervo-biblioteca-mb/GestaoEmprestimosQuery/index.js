@@ -10,7 +10,7 @@ const api = require('./api/api.js');
 
 const app = express();
 
-moongoose.connect(process.env.GUQ_MONGODB_CONNECTION_URL, { useNewUrlParser: true });
+moongoose.connect(process.env.GEQ_MONGODB_CONNECTION_URL, { useNewUrlParser: true });
 
 const emprestimosExchange = process.env.EMPRESTIMO_EXCHANGE || 'emprestimo';
 

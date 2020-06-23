@@ -11,9 +11,9 @@ namespace GestaoReservasCommand.Event
         public DateTime dataFim { get; set; }
         public string obra { get; set; }
         public List<ObraDTO> obrasReservadas { get; set; }
-        public ExisteReservaEvent(string utente, DateTime dataInicio, DateTime dataFim, string obra, List<ObraDTO> obrasReservadas, string streamId)
+        public ExisteReservaEvent(string utente, DateTime dataInicio, DateTime dataFim, string obra, List<ObraDTO> obrasReservadas, string id_stream)
         {
-            this.streamId = streamId;
+            this.id_stream = id_stream;
             this.utente = utente;
             this.dataInicio = dataInicio;
             this.dataFim = dataFim;

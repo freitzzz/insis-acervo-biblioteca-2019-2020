@@ -4,7 +4,7 @@ namespace GestaoReservasCommand.Event
 {
     public abstract class BaseEvent
     {
-        public string streamId { get; set; }
+        public string id_stream { get; set; }
 
         // public Boolean State { get; set; } = true;
     }

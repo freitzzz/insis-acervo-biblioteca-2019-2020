@@ -60,7 +60,7 @@ namespace GestaoReservasCommand.Services
             _channel = _connection.CreateModel();
 
             // create exchange
-            _channel.ExchangeDeclare(exchange: ExchangeName, ExchangeType.Direct);
+            _channel.ExchangeDeclare(exchange: ExchangeName, ExchangeType.Direct, durable: true);
 
             // declare queue
             _queueName = _channel.QueueDeclare("", false, false, false, null).QueueName;
@@ -92,17 +92,17 @@ namespace GestaoReservasCommand.Services
                 if (obraReservadaOfUtente != null)
                 {
                     routingKey = EventName.ExisteReservaUtente.Value;
-                    var emprestimoUtente = new ReservaUtenteEvent(emprestimo.utente, emprestimo.dataFim, emprestimo.dataFim, obraReservadaOfUtente, emprestimo.streamId);
+                    var emprestimoUtente = new ReservaUtenteEvent(emprestimo.utente, emprestimo.dataFim, emprestimo.dataFim, obraReservadaOfUtente, emprestimo.id_stream);
                     json = JsonConvert.SerializeObject(emprestimoUtente);
                 }
                 else
                 {
-                    var existeReserva = new ExisteReservaEvent(emprestimo.utente, emprestimo.dataFim, emprestimo.dataFim, emprestimo.obra, GetObrasReservadas(listaReservas), emprestimo.streamId);
+                    var existeReserva = new ExisteReservaEvent(emprestimo.utente, emprestimo.dataFim, emprestimo.dataFim, emprestimo.obra, GetObrasReservadas(listaReservas), emprestimo.id_stream);
                     json = JsonConvert.SerializeObject(existeReserva);
                     routingKey = EventName.ExisteReservas.Value;
                 }
             }
-            _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, emprestimo.streamId);
+            _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, emprestimo.id_stream);
         }
 
         private List<ReservaDTO> GetReservas(DateTime dataInicio, DateTime dataFim, String obra)
