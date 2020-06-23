@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace GestaoReservasQuery.Controllers
 {
     [ApiController]
-    [Route("reserva")]
+    [Route("reservas")]
     public class ReservaController : ControllerBase
     {
         private readonly ILogger<ReservaController> _logger;
@@ -33,13 +33,13 @@ namespace GestaoReservasQuery.Controllers
         }
 
         [HttpGet]
-        public ActionResult<ListReservaDTO> GetReservaInPeriodo([FromQuery] String dataInicio, [FromQuery] String dataFim, [FromQuery] String obra)
+        public ActionResult<List<ReservaDTO>> GetReservaInPeriodo([FromQuery] String dataInicio, [FromQuery] String dataFim, [FromQuery] String obra)
         {
             _logger.LogDebug(" -- GetReservaInPeriodo -- ");
             List<ReservaDTO> lista = _reservaService.GetReservasInPeriodo(dataInicio, dataFim, obra);
             if (lista != null & lista.Count != 0)
             {
-                return Ok(new ListReservaDTO(lista));
+                return Ok(new List<ReservaDTO>(lista));
             }
             return NotFound();
         }
@@ -63,7 +63,7 @@ namespace GestaoReservasQuery.Controllers
             bool added = _reservaService.AddReserva(reserva);
             if (added)
             {
-                return CreatedAtRoute("GetCategory", reserva);
+                return Ok(reserva);
             }
             return BadRequest();
         }

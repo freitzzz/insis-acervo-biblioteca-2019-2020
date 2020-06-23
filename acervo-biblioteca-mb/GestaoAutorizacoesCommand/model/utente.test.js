@@ -38,3 +38,158 @@ test('if utente permissoesEspeciais value is set to "false", then hasPermissions
   expect(hasPermissionsToReporEstadoUtente).toBe(false);
 
 });
+
+// hasPermissionsToRequire function
+
+test('if utente estatuto == 3, and obra estado == 3 then hasPermissionsToReporEstadoUtente returns false', function () {
+
+  // Arrange
+
+  const utenteInstance = utente.create('Albale', 'Real');
+  utenteInstance.estatuto = 3;
+
+  // Act
+
+  const hasPermissionsToRequire = utente.hasPermissionsToRequire(utenteInstance, 3);
+
+  // Assert
+
+  expect(hasPermissionsToRequire).toBe(false);
+
+});
+
+test('if utente estatuto == 3, and obra estado == 4 then hasPermissionsToReporEstadoUtente returns false', function () {
+
+  // Arrange
+
+  const utenteInstance = utente.create('Albale', 'Real');
+  utenteInstance.estatuto = 3;
+
+  // Act
+
+  const hasPermissionsToRequire = utente.hasPermissionsToRequire(utenteInstance, 4);
+
+  // Assert
+
+  expect(hasPermissionsToRequire).toBe(false);
+
+});
+
+test('if utente estatuto == 3, and obra estado == 2 then hasPermissionsToReporEstadoUtente returns false', function () {
+
+  // Arrange
+
+  const utenteInstance = utente.create('Albale', 'Real');
+  utenteInstance.estatuto = 3;
+
+  // Act
+
+  const hasPermissionsToRequire = utente.hasPermissionsToRequire(utenteInstance, 2);
+
+  // Assert
+
+  expect(hasPermissionsToRequire).toBe(false);
+
+});
+
+test('if utente estatuto == 4, and obra estado == 3 then hasPermissionsToReporEstadoUtente returns true', function () {
+
+  // Arrange
+
+  const utenteInstance = utente.create('Albale', 'Real');
+  utenteInstance.estatuto = 4;
+
+  // Act
+
+  const hasPermissionsToRequire = utente.hasPermissionsToRequire(utenteInstance, 3);
+
+  // Assert
+
+  expect(hasPermissionsToRequire).toBe(true);
+
+});
+
+test('if utente estatuto == 4, and obra estado == 2 then hasPermissionsToReporEstadoUtente returns false', function () {
+
+  // Arrange
+
+  const utenteInstance = utente.create('Albale', 'Real');
+  utenteInstance.estatuto = 4;
+
+  // Act
+
+  const hasPermissionsToRequire = utente.hasPermissionsToRequire(utenteInstance, 2);
+
+  // Assert
+
+  expect(hasPermissionsToRequire).toBe(false);
+
+});
+
+test('if utente estatuto == 4, and obra estado == 4 then hasPermissionsToReporEstadoUtente returns false', function () {
+
+  // Arrange
+
+  const utenteInstance = utente.create('Albale', 'Real');
+  utenteInstance.estatuto = 4;
+
+  // Act
+
+  const hasPermissionsToRequire = utente.hasPermissionsToRequire(utenteInstance, 4);
+
+  // Assert
+
+  expect(hasPermissionsToRequire).toBe(false);
+
+});
+
+test('if utente estatuto == 5, and obra estado == 3 then hasPermissionsToReporEstadoUtente returns true', function () {
+
+  // Arrange
+
+  const utenteInstance = utente.create('Albale', 'Real');
+  utenteInstance.estatuto = 5;
+
+  // Act
+
+  const hasPermissionsToRequire = utente.hasPermissionsToRequire(utenteInstance, 3);
+
+  // Assert
+
+  expect(hasPermissionsToRequire).toBe(true);
+
+});
+
+test('if utente estatuto == 5, and obra estado == 2 then hasPermissionsToReporEstadoUtente returns true', function () {
+
+  // Arrange
+
+  const utenteInstance = utente.create('Albale', 'Real');
+  utenteInstance.estatuto = 5;
+
+  // Act
+
+  const hasPermissionsToRequire = utente.hasPermissionsToRequire(utenteInstance, 2);
+
+  // Assert
+
+  expect(hasPermissionsToRequire).toBe(true);
+
+});
+
+test('if utente estatuto == 5, and obra estado == 4 then hasPermissionsToReporEstadoUtente returns false', function () {
+
+  // Arrange
+
+  const utenteInstance = utente.create('Albale', 'Real');
+  utenteInstance.estatuto = 5;
+
+  // Act
+
+  const hasPermissionsToRequire = utente.hasPermissionsToRequire(utenteInstance, 4);
+
+  // Assert
+
+  expect(hasPermissionsToRequire).toBe(false);
+
+});

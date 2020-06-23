@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using GestaoReservasCommand.Services;
+using GestaoReservasCommand.Handlers;
 
 namespace GestaoReservasCommand.Configurations
 {
@@ -15,6 +16,11 @@ namespace GestaoReservasCommand.Configurations
         {
             services.AddTransient<IReservaService, ReservaService>();
             services.AddTransient<IEmprestimoService, EmprestimoService>();
+
+            services.AddHostedService<ReservaService>();
+            services.AddHostedService<EmprestimoService>();
+            
+            services.AddTransient<IEventHandler, EventHandler>();
         }
     }
 }

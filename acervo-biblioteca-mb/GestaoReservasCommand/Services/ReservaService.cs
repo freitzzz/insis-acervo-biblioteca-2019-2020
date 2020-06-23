@@ -1,59 +1,246 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using EventStore.ClientAPI;
 using GestaoReservasCommand.Configurations;
 using GestaoReservasCommand.DTO;
+using GestaoReservasCommand.Event;
+using GestaoReservasCommand.Events;
+using GestaoReservasCommand.Handlers;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 namespace GestaoReservasCommand.Services
 {
-    public class ReservaService : IReservaService
+    public class ReservaService : BackgroundService, IReservaService
     {
         private readonly ILogger<ReservaService> _logger;
         private readonly IOptions<RabbitMqConfiguration> _rabbitMqOptions;
+        private readonly IOptions<ReservaClienteConfiguration> _reservaClienteOptions;
+        private readonly IEventHandler _eventHandler;
+        private readonly IEventStoreHandler _eventStoreHandler;
         private readonly ConnectionFactory _factory;
+        private readonly String ExchangeName = "reserva";
+        Dictionary<string, Action<string>> _map;
         private IModel _channel;
-        
-        public ReservaService(ILogger<ReservaService> logger, IOptions<RabbitMqConfiguration> rabbitMqOptions)
+        private String _queueName;
+
+        public ReservaService(ILogger<ReservaService> logger, IOptions<RabbitMqConfiguration> rabbitMqOptions,
+                IOptions<ReservaClienteConfiguration> reservaClienteOptions, IEventHandler eventHandler,
+                IEventStoreHandler eventStoreHandler)
         {
             _logger = logger;
             _rabbitMqOptions = rabbitMqOptions;
+            _reservaClienteOptions = reservaClienteOptions;
+            _eventHandler = eventHandler;
+            _eventStoreHandler = eventStoreHandler;
 
             _factory = new ConnectionFactory
             {
-                HostName = _rabbitMqOptions.Value.Hostname, 
-                UserName = _rabbitMqOptions.Value.UserName, 
-                Password = _rabbitMqOptions.Value.Password 
+                HostName = _rabbitMqOptions.Value.Hostname,
+                UserName = _rabbitMqOptions.Value.UserName,
+                Password = _rabbitMqOptions.Value.Password
             };
+
+            InitializeRabbitMqListener();
         }
 
-        public void CreateReserva(ReservaDTO reserva)
+        private void InitializeRabbitMqListener()
         {
-            var factory = new ConnectionFactory
+            _map = new Dictionary<string, Action<string>>();
+            _map.Add(EventName.EmprestimoSobreposto.Value, EmprestimoSobreposto);
+            _map.Add(EventName.EmprestimoNaoSobreposto.Value, EmprestimoNaoSobreposto);
+            _map.Add(EventName.UtenteAutorizado.Value, UtenteAutorizado);
+            _map.Add(EventName.UtenteNaoAutorizado.Value, UtenteNaoAutorizado);
+            _map.Add(EventName.ReservaNaoRealizada.Value, ReservaNaoRealizada);
+            _map.Add(EventName.ReservaRealizada.Value, ReservaRealizada);
+
+            // create connection  
+            var _connection = _factory.CreateConnection();
+
+            // create channel
+            _channel = _connection.CreateModel();
+
+            // create exchange
+            _channel.ExchangeDeclare(exchange: ExchangeName, ExchangeType.Direct);
+
+            // declare queue
+            _queueName = _channel.QueueDeclare("", false, false, false, null).QueueName;
+
+            // bind queues
+            _eventHandler.BindQueues(_channel, ExchangeName, _queueName, new List<string>(_map.Keys));
+        }
+
+        protected override Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            _logger.LogDebug("ExecuteAsync");
+            _eventHandler.ReceiveEvent(_channel, ExchangeName, _queueName, _map);
+
+            return Task.CompletedTask;
+        }
+
+        public string CreateReserva(PedidoReservaDTO reserva)
+        {
+            var eventName = EventName.ReservaRecebida.Value;
+            var json = JsonConvert.SerializeObject(reserva);
+            var streamId = Guid.NewGuid().ToString();
+            _eventHandler.SendEvent(_factory, ExchangeName, eventName, json, streamId);
+
+            return streamId;
+        }
+
+        private void EmprestimoSobreposto(String content)
+        {
+            EmprestimoSobrepostoEvent emprestimoSobreposto = JsonConvert.DeserializeObject<EmprestimoSobrepostoEvent>(content);
+
+            var routingKey = EventName.ReservaNaoAceite.Value;
+            var json = JsonConvert.SerializeObject(emprestimoSobreposto);
+            _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, emprestimoSobreposto.streamId);
+        }
+
+        private void EmprestimoNaoSobreposto(String content)
+        {
+            EmprestimoNaoSobrepostoEvent emprestimoNaoSobreposto = JsonConvert.DeserializeObject<EmprestimoNaoSobrepostoEvent>(content);
+
+            var contentUtenteAutorizadoEvent = ContainsEvent(emprestimoNaoSobreposto.streamId, EventName.UtenteAutorizado.Value);
+            if (contentUtenteAutorizadoEvent != null)
             {
-                HostName = _rabbitMqOptions.Value.Hostname, 
-                UserName = _rabbitMqOptions.Value.UserName, 
-                Password = _rabbitMqOptions.Value.Password 
-            };
-                _logger.LogDebug(" [x] Sent {0}, {1}, {2}", _factory.HostName, _factory.UserName, _factory.Password);
+                var utenteAutorizado = JsonConvert.DeserializeObject<UtenteAutorizadoEvent>(contentUtenteAutorizadoEvent);
+                ValidateReserva(emprestimoNaoSobreposto.dataInicio, emprestimoNaoSobreposto.dataFim, emprestimoNaoSobreposto.obra, emprestimoNaoSobreposto.utente,
+                    emprestimoNaoSobreposto.streamId, utenteAutorizado.obrasAutorizadas, emprestimoNaoSobreposto.obrasSemEmprestimo);
+            }
+        }
 
-            // using (var connection = factory.CreateConnection())
-            // using (var channel = connection.CreateModel())
-            // {
-            //     channel.ExchangeDeclare(exchange: _rabbitMqOptions.Value.ExchangeName,
-            //                             type: "direct");
+        private void UtenteAutorizado(String content)
+        {
+            UtenteAutorizadoEvent utenteAutorizadoEvent = JsonConvert.DeserializeObject<UtenteAutorizadoEvent>(content);
 
-                var json = JsonConvert.SerializeObject(reserva);
-                var body = Encoding.UTF8.GetBytes(json);
+            var contentEmprestimoNaoSobrepostoEvent = ContainsEvent(utenteAutorizadoEvent.streamId, EventName.EmprestimoNaoSobreposto.Value);
+            if (contentEmprestimoNaoSobrepostoEvent != null)
+            {
+                var emprestimoNaoSobreposto = JsonConvert.DeserializeObject<EmprestimoNaoSobrepostoEvent>(contentEmprestimoNaoSobrepostoEvent);
+                ValidateReserva(utenteAutorizadoEvent.dataInicio, utenteAutorizadoEvent.dataFim, utenteAutorizadoEvent.obra, utenteAutorizadoEvent.utente,
+                    utenteAutorizadoEvent.streamId, utenteAutorizadoEvent.obrasAutorizadas, emprestimoNaoSobreposto.obrasSemEmprestimo);
+            }
+        }
 
-            //     channel.BasicPublish(exchange: _exchangeName,
-            //                         routingKey: "reserva_recebida",
-            //                         basicProperties: null,
-            //                         body: body);
+        private void UtenteNaoAutorizado(String content)
+        {
+            UtenteNaoAutorizadoEvent utenteNaoAutorizado = JsonConvert.DeserializeObject<UtenteNaoAutorizadoEvent>(content);
 
-                _logger.LogDebug(" [x] Sent {0}", json);
-            // }
+            var routingKey = EventName.ReservaNaoAceite.Value;
+            var json = JsonConvert.SerializeObject(utenteNaoAutorizado);
+            _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, utenteNaoAutorizado.streamId);
+        }
+
+        public void ValidateReserva(DateTime dataInicio, DateTime dataFim, string obra, string utente, string streamId, List<ObraDTO> obrasAutorizadas, List<ObraDTO> obrasSemEmprestimo)
+        {
+            var listaReservas = GetReservas(dataInicio, dataFim, obra);
+
+            var routingKey = EventName.ReservaNaoAceite.Value;
+            var reservaEvent = new ReservaRecebidaEvent(utente, dataInicio, dataFim, obra, streamId);
+            var json = JsonConvert.SerializeObject(reservaEvent);
+
+            _logger.LogDebug(" -- obrasAutorizadas {0} -- ", obrasAutorizadas.Count);
+            _logger.LogDebug(" -- obrasSemEmprestimo {0} -- ", obrasSemEmprestimo.Count);
+
+            if (listaReservas != null && listaReservas.Count > 0 && IsReservaOfUtente(listaReservas, utente))
+            { //Utente já tem o livro reservado
+                _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, streamId);
+            }
+            else
+            {
+                var obrasComReservas = new List<ObraDTO>();
+
+                if (listaReservas != null)
+                    foreach (var item in listaReservas)
+                    {
+                        obrasComReservas.Add(item.obra);
+                    }
+                _logger.LogDebug(" -- obrasComReservas {0} -- ", obrasComReservas.Count);
+
+                var obrasAutorizadasSemEmprestimo = obrasAutorizadas.Intersect(obrasSemEmprestimo).ToList();
+                if (obrasAutorizadasSemEmprestimo == null || obrasAutorizadasSemEmprestimo.Count == 0)
+                {
+                    _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, streamId);
+                }
+                else
+                {
+                    _logger.LogDebug(" -- obrasAutorizadasSemEmprestimo {0} -- ", obrasAutorizadasSemEmprestimo.Count);
+
+                    var obrasAutorizadasSemEmprestimoSemReservas = obrasAutorizadasSemEmprestimo.Where(x => !obrasComReservas.Contains(x)).ToList();
+                    if (obrasAutorizadasSemEmprestimoSemReservas == null || obrasAutorizadasSemEmprestimoSemReservas.Count == 0)
+                    {
+                        _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, streamId);
+                    }
+                    else
+                    {
+                        _logger.LogDebug(" -- obrasAutorizadasSemEmprestimoSemReservas {0} -- ", obrasAutorizadasSemEmprestimoSemReservas.Count);
+                        routingKey = EventName.ReservaAceite.Value;
+                        var obraReservar = obrasAutorizadasSemEmprestimoSemReservas[0];
+                        json = JsonConvert.SerializeObject(new ReservaAceiteEvent(utente, dataInicio, dataFim, obraReservar, streamId));
+                        _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, streamId);
+
+                    }
+                }
+            }
+        }
+
+        private void ReservaNaoRealizada(string content)
+        {
+            _logger.LogDebug("ReservaNaoRealizada");
+        }
+        private void ReservaRealizada(string content)
+        {
+            _logger.LogDebug("ReservaRealizada");
+        }
+        
+        private List<ReservaDTO> GetReservas(DateTime dataInicio, DateTime dataFim, String obra)
+        {
+            var inicio = String.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", dataInicio);
+            var fim = String.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", dataFim);
+            string urlParameters = $"?dataInicio={inicio}&dataFim={fim}&obra={obra}";
+
+            var response = APICall.RunAsync<ReservaDTO>(_reservaClienteOptions.Value.URL, urlParameters).GetAwaiter().GetResult();
+
+            return response;
+        }
+        private bool IsReservaOfUtente(List<ReservaDTO> listaReservas, string utente)
+        {
+            var reservasUtente = listaReservas.FindAll(r => r.utente.Equals(utente));
+            if (reservasUtente == null)
+            {
+                return false;
+            }
+            _logger.LogDebug("reservasUtente.Count: " + reservasUtente.Count);
+            return reservasUtente.Count != 0;
+        }
+
+        private string ContainsEvent(string streamId, string routingKey)
+        {
+            var events = _eventStoreHandler.GetEvents(streamId);
+            foreach (var item in events)
+            {
+                if (item.Event.EventType == routingKey)
+                {
+                    return item.Event.Data.ToString();
+                }
+            }
+            return null;
+        }
+
+        public ResolvedEvent[] GetStreamInfo(string streamId)
+        {
+            var events = _eventStoreHandler.GetLastEvent(streamId);
+            return events;
         }
     }
 }
