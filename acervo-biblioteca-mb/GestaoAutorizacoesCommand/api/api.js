@@ -83,7 +83,7 @@ function onReservaRecebida(guQueryHost, esbHost, utente, obra, dataInicio, dataF
     .then(function (getUtente) {
       var obrasExistentes = getObraInPolos(esbHost, obra);
       if (obrasExistentes == undefined || obrasExistentes.length == 0) {
-        publishCallback('reserva_recebida_obra_nao_encontrada', {
+        publishCallback('reserva_obra_nao_encontrada', {
           utente: utente,
           dataInicio: dataInicio,
           dataFim: dataFim,
@@ -93,7 +93,7 @@ function onReservaRecebida(guQueryHost, esbHost, utente, obra, dataInicio, dataF
       } else {
         var obrasAutorizadas = getObrasUtenteAutorizado(getUtente, obrasExistentes);
         if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
-          publishCallback('utente_autorizado', {
+          publishCallback('reserva_utente_autorizado', {
             utente: utente,
             dataInicio: dataInicio,
             dataFim: dataFim,
@@ -102,7 +102,7 @@ function onReservaRecebida(guQueryHost, esbHost, utente, obra, dataInicio, dataF
             streamId: idStream
           });
         } else {
-          publishCallback('utente_nao_autorizado', {
+          publishCallback('reserva_utente_nao_autorizado', {
             utente: utente,
             dataInicio: dataInicio,
             dataFim: dataFim,
@@ -135,7 +135,7 @@ function onEmprestimoRecebido(guQueryHost, esbHost, utente, obra, dataInicio, da
     .then(function (getUtente) {
       var obrasExistentes = getObraInPolos(esbHost, obra);
       if (obrasExistentes == undefined || obrasExistentes.length == 0) {
-        publishCallback('emprestimo_recebido_obra_nao_encontrada', {
+        publishCallback('emprestimo_obra_nao_encontrada', {
           utente: utente,
           dataInicio: dataInicio,
           dataFim: dataFim,
@@ -145,7 +145,7 @@ function onEmprestimoRecebido(guQueryHost, esbHost, utente, obra, dataInicio, da
       } else {
         var obrasAutorizadas = getObrasUtenteAutorizado(getUtente, obrasExistentes);
         if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
-          publishCallback('utente_autorizado', {
+          publishCallback('emprestimo_utente_autorizado', {
             utente: utente,
             dataInicio: dataInicio,
             dataFim: dataFim,
@@ -154,7 +154,7 @@ function onEmprestimoRecebido(guQueryHost, esbHost, utente, obra, dataInicio, da
             streamId: idStream
           });
         } else {
-          publishCallback('utente_nao_autorizado', {
+          publishCallback('emprestimo_utente_nao_autorizado', {
             utente: utente,
             dataInicio: dataInicio,
             dataFim: dataFim,
@@ -217,25 +217,26 @@ function getPolos(esbHost) {
 
   console.log(`getPolos`);
 
-  axios
-    .default
-    .get(`${esbHost}/acervobiblioteca/polos`)
-    .then(function (getPolos) {
+  return ["polo2", "polo3"];
+  // axios
+  //   .default
+  //   .get(`${esbHost}/acervobiblioteca/polos`)
+  //   .then(function (getPolos) {
 
-      var polos = new Array()
+  //     var polos = new Array()
 
-      getPolos.forEach(element => {
-        polos.push(element.name)
-      });
+  //     getPolos.forEach(element => {
+  //       polos.push(element.name)
+  //     });
 
-      return polos;
-    })
-    .catch(function (errorGetPolos) {
+  //     return polos;
+  //   })
+  //   .catch(function (errorGetPolos) {
 
-      console.log(`getPolos error : ${errorGetPolos}`);
+  //     console.log(`getPolos error : ${errorGetPolos}`);
 
-      return [];
-    });
+  //     return [];
+  //   });
 }
 
 function getObrasUtenteAutorizado(utente, obrasExistentes) {

@@ -22,6 +22,8 @@ To run it is first needed to setup the following environment variables:
 |--------|-----------|
 |`RABBIT_MQ_CONNECTION_URL`|Connection String to connect to RabbitMQ server|
 |`REPOR_ESTADO_EXCHANGE`|Exchange identifier for repor estado use case. Defaults to `repor_estado`|
+|`EMPRESTIMO_EXCHANGE`|Exchange identifier for emprestimo use case. Defaults to `emprestimo`|
+|`RESERVA_EXCHANGE`|Exchange identifier for reserva use case. Defaults to `reserva`|
 |`GU_QUERY_HOST`|Host name of Gestao Utentes Query service|
 
 Then execute the following command:
