@@ -1,0 +1,514 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+   xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+   xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+   xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+   xmlns:ns0="Fornecedor2" 
+   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+   xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" 
+   xmlns:ns1="http://ws.wso2.org/dataservice" 
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="Fornecedor2">
+   <wsdl:documentation/>
+   <wsdl:types>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="Fornecedor2">
+         <xs:element name="GetObrasByTituloAllAttributesOp">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="titulo" nillable="true" type="xs:string"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="Obras" type="ns0:Obras"/>
+         <xs:complexType name="Obras">
+            <xs:sequence>
+               <xs:element maxOccurs="unbounded" minOccurs="0" name="Obra" type="ns0:Obra"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="Obra">
+            <xs:sequence>
+               <xs:element name="id" nillable="true" type="xs:string"/>
+               <xs:element name="titulo" nillable="true" type="xs:string"/>
+               <xs:element name="preco" nillable="true" type="xs:string"/>
+               <xs:element name="encad" nillable="true" type="xs:string"/>
+               <xs:element name="ano" nillable="true" type="xs:string"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:element name="GetAllEncadByIDAllAttributesOp">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="id" nillable="true" type="xs:string"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="Encadernacoes" type="ns0:Encadernacoes"/>
+         <xs:complexType name="Encadernacoes">
+            <xs:sequence>
+               <xs:element maxOccurs="unbounded" minOccurs="0" name="Encadernacao" type="ns0:Encadernacao"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="Encadernacao">
+            <xs:sequence>
+               <xs:element name="id" nillable="true" type="xs:string"/>
+               <xs:element name="descr" nillable="true" type="xs:string"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:element name="GetAllObrasAllAttributesOp">
+            <xs:complexType>
+               <xs:sequence/>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="GetAllEncadAllAttributesOp">
+            <xs:complexType>
+               <xs:sequence/>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="_get_exemplares">
+            <xs:complexType>
+               <xs:sequence/>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="_get_encadernacoes">
+            <xs:complexType>
+               <xs:sequence/>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="_get_exemplares_titulo">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="titulo" nillable="true" type="xs:string"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="_get_encadernacoes_id">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="id" nillable="true" type="xs:string"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:schema>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.wso2.org/dataservice">
+         <xs:element name="DataServiceFault">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="current_params" type="xs:string"/>
+                  <xs:element name="current_request_name" type="xs:string"/>
+                  <xs:element name="nested_exception" type="xs:string"/>
+                  <xs:element name="source_data_service">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:element name="location" type="xs:string"/>
+                           <xs:element name="default_namespace" type="xs:string"/>
+                           <xs:element name="description" type="xs:string"/>
+                           <xs:element name="data_service_name" type="xs:string"/>
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+                  <xs:element name="ds_code" type="xs:string"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="REQUEST_STATUS" type="xs:string"/>
+         <xs:element name="DATA_SERVICE_RESPONSE">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:any minOccurs="0"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="GetObrasByTituloAllAttributesOpRequest">
+      <wsdl:part name="parameters" element="ns0:GetObrasByTituloAllAttributesOp"/>
+   </wsdl:message>
+   <wsdl:message name="GetObrasByTituloAllAttributesOpResponse">
+      <wsdl:part name="parameters" element="ns0:Obras"/>
+   </wsdl:message>
+   <wsdl:message name="DataServiceFault">
+      <wsdl:part name="parameters" element="ns1:DataServiceFault"/>
+   </wsdl:message>
+   <wsdl:message name="_get_exemplares_tituloRequest">
+      <wsdl:part name="parameters" element="ns0:_get_exemplares_titulo"/>
+   </wsdl:message>
+   <wsdl:message name="_get_exemplares_tituloResponse">
+      <wsdl:part name="parameters" element="ns0:Obras"/>
+   </wsdl:message>
+   <wsdl:message name="GetAllEncadByIDAllAttributesOpRequest">
+      <wsdl:part name="parameters" element="ns0:GetAllEncadByIDAllAttributesOp"/>
+   </wsdl:message>
+   <wsdl:message name="GetAllEncadByIDAllAttributesOpResponse">
+      <wsdl:part name="parameters" element="ns0:Encadernacoes"/>
+   </wsdl:message>
+   <wsdl:message name="GetAllObrasAllAttributesOpRequest">
+      <wsdl:part name="parameters" element="ns0:GetAllObrasAllAttributesOp"/>
+   </wsdl:message>
+   <wsdl:message name="GetAllObrasAllAttributesOpResponse">
+      <wsdl:part name="parameters" element="ns0:Obras"/>
+   </wsdl:message>
+   <wsdl:message name="_get_encadernacoes_idRequest">
+      <wsdl:part name="parameters" element="ns0:_get_encadernacoes_id"/>
+   </wsdl:message>
+   <wsdl:message name="_get_encadernacoes_idResponse">
+      <wsdl:part name="parameters" element="ns0:Encadernacoes"/>
+   </wsdl:message>
+   <wsdl:message name="GetAllEncadAllAttributesOpRequest">
+      <wsdl:part name="parameters" element="ns0:GetAllEncadAllAttributesOp"/>
+   </wsdl:message>
+   <wsdl:message name="GetAllEncadAllAttributesOpResponse">
+      <wsdl:part name="parameters" element="ns0:Encadernacoes"/>
+   </wsdl:message>
+   <wsdl:message name="_get_exemplaresRequest">
+      <wsdl:part name="parameters" element="ns0:_get_exemplares"/>
+   </wsdl:message>
+   <wsdl:message name="_get_exemplaresResponse">
+      <wsdl:part name="parameters" element="ns0:Obras"/>
+   </wsdl:message>
+   <wsdl:message name="_get_encadernacoesRequest">
+      <wsdl:part name="parameters" element="ns0:_get_encadernacoes"/>
+   </wsdl:message>
+   <wsdl:message name="_get_encadernacoesResponse">
+      <wsdl:part name="parameters" element="ns0:Encadernacoes"/>
+   </wsdl:message>
+   <wsdl:portType name="Fornecedor2PortType">
+      <wsdl:operation name="GetObrasByTituloAllAttributesOp">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:GetObrasByTituloAllAttributesOpRequest" wsaw:Action="urn:GetObrasByTituloAllAttributesOp"/>
+         <wsdl:output message="ns0:GetObrasByTituloAllAttributesOpResponse" wsaw:Action="urn:GetObrasByTituloAllAttributesOpResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:GetObrasByTituloAllAttributesOpDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares_titulo">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:_get_exemplares_tituloRequest" wsaw:Action="urn:_get_exemplares_titulo"/>
+         <wsdl:output message="ns0:_get_exemplares_tituloResponse" wsaw:Action="urn:_get_exemplares_tituloResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:_get_exemplares_tituloDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllEncadByIDAllAttributesOp">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:GetAllEncadByIDAllAttributesOpRequest" wsaw:Action="urn:GetAllEncadByIDAllAttributesOp"/>
+         <wsdl:output message="ns0:GetAllEncadByIDAllAttributesOpResponse" wsaw:Action="urn:GetAllEncadByIDAllAttributesOpResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:GetAllEncadByIDAllAttributesOpDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllObrasAllAttributesOp">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:GetAllObrasAllAttributesOpRequest" wsaw:Action="urn:GetAllObrasAllAttributesOp"/>
+         <wsdl:output message="ns0:GetAllObrasAllAttributesOpResponse" wsaw:Action="urn:GetAllObrasAllAttributesOpResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:GetAllObrasAllAttributesOpDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="_get_encadernacoes_id">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:_get_encadernacoes_idRequest" wsaw:Action="urn:_get_encadernacoes_id"/>
+         <wsdl:output message="ns0:_get_encadernacoes_idResponse" wsaw:Action="urn:_get_encadernacoes_idResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:_get_encadernacoes_idDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllEncadAllAttributesOp">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:GetAllEncadAllAttributesOpRequest" wsaw:Action="urn:GetAllEncadAllAttributesOp"/>
+         <wsdl:output message="ns0:GetAllEncadAllAttributesOpResponse" wsaw:Action="urn:GetAllEncadAllAttributesOpResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:GetAllEncadAllAttributesOpDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:_get_exemplaresRequest" wsaw:Action="urn:_get_exemplares"/>
+         <wsdl:output message="ns0:_get_exemplaresResponse" wsaw:Action="urn:_get_exemplaresResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:_get_exemplaresDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="_get_encadernacoes">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:_get_encadernacoesRequest" wsaw:Action="urn:_get_encadernacoes"/>
+         <wsdl:output message="ns0:_get_encadernacoesResponse" wsaw:Action="urn:_get_encadernacoesResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:_get_encadernacoesDataServiceFault"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="Fornecedor2SOAP11Binding" type="ns0:Fornecedor2PortType">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="GetObrasByTituloAllAttributesOp">
+         <soap:operation soapAction="urn:GetObrasByTituloAllAttributesOp" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares_titulo">
+         <soap:operation soapAction="urn:_get_exemplares_titulo" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllEncadByIDAllAttributesOp">
+         <soap:operation soapAction="urn:GetAllEncadByIDAllAttributesOp" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllObrasAllAttributesOp">
+         <soap:operation soapAction="urn:GetAllObrasAllAttributesOp" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_encadernacoes_id">
+         <soap:operation soapAction="urn:_get_encadernacoes_id" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllEncadAllAttributesOp">
+         <soap:operation soapAction="urn:GetAllEncadAllAttributesOp" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares">
+         <soap:operation soapAction="urn:_get_exemplares" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_encadernacoes">
+         <soap:operation soapAction="urn:_get_encadernacoes" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="Fornecedor2SOAP12Binding" type="ns0:Fornecedor2PortType">
+      <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="GetObrasByTituloAllAttributesOp">
+         <soap12:operation soapAction="urn:GetObrasByTituloAllAttributesOp" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares_titulo">
+         <soap12:operation soapAction="urn:_get_exemplares_titulo" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllEncadByIDAllAttributesOp">
+         <soap12:operation soapAction="urn:GetAllEncadByIDAllAttributesOp" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllObrasAllAttributesOp">
+         <soap12:operation soapAction="urn:GetAllObrasAllAttributesOp" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_encadernacoes_id">
+         <soap12:operation soapAction="urn:_get_encadernacoes_id" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllEncadAllAttributesOp">
+         <soap12:operation soapAction="urn:GetAllEncadAllAttributesOp" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares">
+         <soap12:operation soapAction="urn:_get_exemplares" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_encadernacoes">
+         <soap12:operation soapAction="urn:_get_encadernacoes" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="Fornecedor2HttpBinding" type="ns0:Fornecedor2PortType">
+      <http:binding verb="POST"/>
+      <wsdl:operation name="GetObrasByTituloAllAttributesOp">
+         <http:operation location="GetObrasByTituloAllAttributesOp"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares_titulo">
+         <http:operation location="/exemplares/(titulo)"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllEncadByIDAllAttributesOp">
+         <http:operation location="GetAllEncadByIDAllAttributesOp"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllObrasAllAttributesOp">
+         <http:operation location="GetAllObrasAllAttributesOp"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="_get_encadernacoes_id">
+         <http:operation location="/encadernacoes/(id)"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetAllEncadAllAttributesOp">
+         <http:operation location="GetAllEncadAllAttributesOp"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares">
+         <http:operation location="/exemplares"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="_get_encadernacoes">
+         <http:operation location="/encadernacoes"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="Fornecedor2">
+      <wsdl:port name="SecureSOAP11Endpoint" binding="ns0:Fornecedor2SOAP11Binding">
+         <soap:address location="local:///services/Fornecedor2/"/>
+      </wsdl:port>
+      <wsdl:port name="SOAP11Endpoint" binding="ns0:Fornecedor2SOAP11Binding">
+         <soap:address location="http://freitas-X550CC:8280/services/Fornecedor2.SOAP11Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="SecureSOAP12Endpoint" binding="ns0:Fornecedor2SOAP12Binding">
+         <soap12:address location="https://freitas-X550CC:8243/services/Fornecedor2.SecureSOAP12Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="SOAP12Endpoint" binding="ns0:Fornecedor2SOAP12Binding">
+         <soap12:address location="http://freitas-X550CC:8280/services/Fornecedor2.SOAP12Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="SecureHTTPEndpoint" binding="ns0:Fornecedor2HttpBinding">
+         <http:address location="https://freitas-X550CC:8243/services/Fornecedor2.SecureHTTPEndpoint"/>
+      </wsdl:port>
+      <wsdl:port name="HTTPEndpoint" binding="ns0:Fornecedor2HttpBinding">
+         <http:address location="http://freitas-X550CC:8280/services/Fornecedor2.HTTPEndpoint"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

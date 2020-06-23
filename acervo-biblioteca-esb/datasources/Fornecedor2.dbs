@@ -1,0 +1,74 @@
+<data name="Fornecedor2" serviceNamespace="Fornecedor2" transports="http https local">
+   <config enableOData="false" id="Fornecedor2DS">
+      <property name="driverClassName">org.wso2.carbon.dataservices.sql.driver.TDriver</property>
+      <property name="url">jdbc:wso2:excel:filePath=./samples/data-services/resources/Fornecedor2.xls</property>
+   </config>
+   <query id="GetAllObrasAllAttributesQuery" useConfig="Fornecedor2DS">
+      <sql>SELECT id, titulo, preco, encad, ano FROM pub</sql>
+      <result element="Obras" rowName="Obra">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="titulo" name="titulo" xsdType="string"/>
+         <element column="preco" name="preco" xsdType="string"/>
+         <element column="encad" name="encad" xsdType="string"/>
+         <element column="ano" name="ano" xsdType="string"/>
+      </result>
+   </query>
+   <query id="GetObrasByTituloAllAttributesQuery" useConfig="Fornecedor2DS">
+      <sql>SELECT id, titulo, preco, encad, ano FROM pub WHERE titulo=:titulo</sql>
+      <result element="Obras" rowName="Obra">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="titulo" name="titulo" xsdType="string"/>
+         <element column="preco" name="preco" xsdType="string"/>
+         <element column="encad" name="encad" xsdType="string"/>
+         <element column="ano" name="ano" xsdType="string"/>
+      </result>
+      <param name="titulo" sqlType="STRING"/>
+   </query>
+   <query id="GetAllEncadAllAttributesQuery" useConfig="Fornecedor2DS">
+      <sql>SELECT id, descr FROM encad</sql>
+      <result element="Encadernacoes" rowName="Encadernacao">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="descr" name="descr" xsdType="string"/>
+      </result>
+   </query>
+   <query id="GetAllEncadByIDAllAttributesQuery" useConfig="Fornecedor2DS">
+      <sql>SELECT id, descr FROM encad WHERE id=:id</sql>
+      <result element="Encadernacoes" rowName="Encadernacao">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="descr" name="descr" xsdType="string"/>
+      </result>
+      <param name="id" sqlType="STRING"/>
+   </query>
+   <operation name="GetAllObrasAllAttributesOp">
+      <call-query href="GetAllObrasAllAttributesQuery"/>
+   </operation>
+   <operation name="GetObrasByTituloAllAttributesOp">
+      <call-query href="GetObrasByTituloAllAttributesQuery">
+         <with-param name="titulo" query-param="titulo"/>
+      </call-query>
+   </operation>
+   <operation name="GetAllEncadAllAttributesOp">
+      <call-query href="GetAllEncadAllAttributesQuery"/>
+   </operation>
+   <operation name="GetAllEncadByIDAllAttributesOp">
+      <call-query href="GetAllEncadByIDAllAttributesQuery">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </operation>
+   <resource method="GET" path="/exemplares">
+      <call-query href="GetAllObrasAllAttributesQuery"/>
+   </resource>
+   <resource method="GET" path="/encadernacoes">
+      <call-query href="GetAllEncadAllAttributesQuery"/>
+   </resource>
+   <resource method="GET" path="/exemplares/{titulo}">
+      <call-query href="GetObrasByTituloAllAttributesQuery">
+         <with-param name="titulo" query-param="titulo"/>
+      </call-query>
+   </resource>
+   <resource method="GET" path="/encadernacoes/{id}">
+      <call-query href="GetAllEncadByIDAllAttributesQuery">
+         <with-param name="id" query-param="id"/>
+      </call-query>
+   </resource>
+</data>

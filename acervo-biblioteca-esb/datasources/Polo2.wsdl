@@ -1,0 +1,402 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+   xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" 
+   xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+   xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+   xmlns:ns0="http://ws.wso2.org/dataservice" 
+   xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+   xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" 
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://ws.wso2.org/dataservice">
+   <wsdl:documentation/>
+   <wsdl:types>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.wso2.org/dataservice">
+         <xs:element name="DataServiceFault">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="current_params" type="xs:string"/>
+                  <xs:element name="current_request_name" type="xs:string"/>
+                  <xs:element name="nested_exception" type="xs:string"/>
+                  <xs:element name="source_data_service">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:element name="location" type="xs:string"/>
+                           <xs:element name="default_namespace" type="xs:string"/>
+                           <xs:element name="description" type="xs:string"/>
+                           <xs:element name="data_service_name" type="xs:string"/>
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+                  <xs:element name="ds_code" type="xs:string"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="REQUEST_STATUS" type="xs:string"/>
+         <xs:element name="DATA_SERVICE_RESPONSE">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:any minOccurs="0"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="GetObrasWithAllPropertiesByTitleOp">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="title" nillable="true" type="xs:string"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="Obras" type="ns0:Obras"/>
+         <xs:complexType name="Obras">
+            <xs:sequence>
+               <xs:element maxOccurs="unbounded" minOccurs="0" name="Obra" type="ns0:Obra"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="Obra">
+            <xs:sequence>
+               <xs:element name="id" nillable="true" type="xs:string"/>
+               <xs:element name="autor1" nillable="true" type="xs:string"/>
+               <xs:element name="autor2" nillable="true" type="xs:string"/>
+               <xs:element name="titulo" nillable="true" type="xs:string"/>
+               <xs:element name="preco" nillable="true" type="xs:string"/>
+               <xs:element name="estado" nillable="true" type="xs:string"/>
+               <xs:element name="AdC" nillable="true" type="xs:string"/>
+               <xs:element name="ano" nillable="true" type="xs:string"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:element name="GetObrasWithAllPropertiesByISBNOp">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="isbn" nillable="true" type="xs:string"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="GetObrasWithAllPropertiesOp">
+            <xs:complexType>
+               <xs:sequence/>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="_get_exemplares">
+            <xs:complexType>
+               <xs:sequence/>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="_get_exemplares_isbn">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="isbn" nillable="true" type="xs:string"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="_get_exemplares_title">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element name="title" nillable="true" type="xs:string"/>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="_get_exemplares_titleRequest">
+      <wsdl:part name="parameters" element="ns0:_get_exemplares_title"/>
+   </wsdl:message>
+   <wsdl:message name="_get_exemplares_titleResponse">
+      <wsdl:part name="parameters" element="ns0:Obras"/>
+   </wsdl:message>
+   <wsdl:message name="DataServiceFault">
+      <wsdl:part name="parameters" element="ns0:DataServiceFault"/>
+   </wsdl:message>
+   <wsdl:message name="GetObrasWithAllPropertiesByTitleOpRequest">
+      <wsdl:part name="parameters" element="ns0:GetObrasWithAllPropertiesByTitleOp"/>
+   </wsdl:message>
+   <wsdl:message name="GetObrasWithAllPropertiesByTitleOpResponse">
+      <wsdl:part name="parameters" element="ns0:Obras"/>
+   </wsdl:message>
+   <wsdl:message name="GetObrasWithAllPropertiesByISBNOpRequest">
+      <wsdl:part name="parameters" element="ns0:GetObrasWithAllPropertiesByISBNOp"/>
+   </wsdl:message>
+   <wsdl:message name="GetObrasWithAllPropertiesByISBNOpResponse">
+      <wsdl:part name="parameters" element="ns0:Obras"/>
+   </wsdl:message>
+   <wsdl:message name="_get_exemplares_isbnRequest">
+      <wsdl:part name="parameters" element="ns0:_get_exemplares_isbn"/>
+   </wsdl:message>
+   <wsdl:message name="_get_exemplares_isbnResponse">
+      <wsdl:part name="parameters" element="ns0:Obras"/>
+   </wsdl:message>
+   <wsdl:message name="GetObrasWithAllPropertiesOpRequest">
+      <wsdl:part name="parameters" element="ns0:GetObrasWithAllPropertiesOp"/>
+   </wsdl:message>
+   <wsdl:message name="GetObrasWithAllPropertiesOpResponse">
+      <wsdl:part name="parameters" element="ns0:Obras"/>
+   </wsdl:message>
+   <wsdl:message name="_get_exemplaresRequest">
+      <wsdl:part name="parameters" element="ns0:_get_exemplares"/>
+   </wsdl:message>
+   <wsdl:message name="_get_exemplaresResponse">
+      <wsdl:part name="parameters" element="ns0:Obras"/>
+   </wsdl:message>
+   <wsdl:portType name="Polo2ObrasPortType">
+      <wsdl:operation name="_get_exemplares_title">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:_get_exemplares_titleRequest" wsaw:Action="urn:_get_exemplares_title"/>
+         <wsdl:output message="ns0:_get_exemplares_titleResponse" wsaw:Action="urn:_get_exemplares_titleResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:_get_exemplares_titleDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesByTitleOp">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:GetObrasWithAllPropertiesByTitleOpRequest" wsaw:Action="urn:GetObrasWithAllPropertiesByTitleOp"/>
+         <wsdl:output message="ns0:GetObrasWithAllPropertiesByTitleOpResponse" wsaw:Action="urn:GetObrasWithAllPropertiesByTitleOpResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:GetObrasWithAllPropertiesByTitleOpDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesByISBNOp">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:GetObrasWithAllPropertiesByISBNOpRequest" wsaw:Action="urn:GetObrasWithAllPropertiesByISBNOp"/>
+         <wsdl:output message="ns0:GetObrasWithAllPropertiesByISBNOpResponse" wsaw:Action="urn:GetObrasWithAllPropertiesByISBNOpResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:GetObrasWithAllPropertiesByISBNOpDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares_isbn">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:_get_exemplares_isbnRequest" wsaw:Action="urn:_get_exemplares_isbn"/>
+         <wsdl:output message="ns0:_get_exemplares_isbnResponse" wsaw:Action="urn:_get_exemplares_isbnResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:_get_exemplares_isbnDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesOp">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:GetObrasWithAllPropertiesOpRequest" wsaw:Action="urn:GetObrasWithAllPropertiesOp"/>
+         <wsdl:output message="ns0:GetObrasWithAllPropertiesOpResponse" wsaw:Action="urn:GetObrasWithAllPropertiesOpResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:GetObrasWithAllPropertiesOpDataServiceFault"/>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares">
+         <wsdl:documentation/>
+         <wsdl:input message="ns0:_get_exemplaresRequest" wsaw:Action="urn:_get_exemplares"/>
+         <wsdl:output message="ns0:_get_exemplaresResponse" wsaw:Action="urn:_get_exemplaresResponse"/>
+         <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:_get_exemplaresDataServiceFault"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="Polo2ObrasSOAP11Binding" type="ns0:Polo2ObrasPortType">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="_get_exemplares_title">
+         <soap:operation soapAction="urn:_get_exemplares_title" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesByTitleOp">
+         <soap:operation soapAction="urn:GetObrasWithAllPropertiesByTitleOp" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesByISBNOp">
+         <soap:operation soapAction="urn:GetObrasWithAllPropertiesByISBNOp" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares_isbn">
+         <soap:operation soapAction="urn:_get_exemplares_isbn" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesOp">
+         <soap:operation soapAction="urn:GetObrasWithAllPropertiesOp" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares">
+         <soap:operation soapAction="urn:_get_exemplares" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="Polo2ObrasSOAP12Binding" type="ns0:Polo2ObrasPortType">
+      <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="_get_exemplares_title">
+         <soap12:operation soapAction="urn:_get_exemplares_title" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesByTitleOp">
+         <soap12:operation soapAction="urn:GetObrasWithAllPropertiesByTitleOp" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesByISBNOp">
+         <soap12:operation soapAction="urn:GetObrasWithAllPropertiesByISBNOp" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares_isbn">
+         <soap12:operation soapAction="urn:_get_exemplares_isbn" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesOp">
+         <soap12:operation soapAction="urn:GetObrasWithAllPropertiesOp" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares">
+         <soap12:operation soapAction="urn:_get_exemplares" style="document"/>
+         <wsdl:input>
+            <soap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap12:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="DataServiceFault">
+            <soap12:fault use="literal" name="DataServiceFault"/>
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="Polo2ObrasHttpBinding" type="ns0:Polo2ObrasPortType">
+      <http:binding verb="POST"/>
+      <wsdl:operation name="_get_exemplares_title">
+         <http:operation location="/exemplares/(title)"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesByTitleOp">
+         <http:operation location="GetObrasWithAllPropertiesByTitleOp"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesByISBNOp">
+         <http:operation location="GetObrasWithAllPropertiesByISBNOp"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares_isbn">
+         <http:operation location="/exemplares/(isbn)"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="GetObrasWithAllPropertiesOp">
+         <http:operation location="GetObrasWithAllPropertiesOp"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="_get_exemplares">
+         <http:operation location="/exemplares"/>
+         <wsdl:input>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:input>
+         <wsdl:output>
+            <mime:content type="text/xml" part="parameters"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="Polo2Obras">
+      <wsdl:port name="SecureSOAP11Endpoint" binding="ns0:Polo2ObrasSOAP11Binding">
+         <soap:address location="https://freitas-X550CC:8243/services/Polo2Obras.SecureSOAP11Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="SOAP11Endpoint" binding="ns0:Polo2ObrasSOAP11Binding">
+         <soap:address location="http://freitas-X550CC:8280/services/Polo2Obras.SOAP11Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="SecureSOAP12Endpoint" binding="ns0:Polo2ObrasSOAP12Binding">
+         <soap12:address location="https://freitas-X550CC:8243/services/Polo2Obras.SecureSOAP12Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="SOAP12Endpoint" binding="ns0:Polo2ObrasSOAP12Binding">
+         <soap12:address location="http://freitas-X550CC:8280/services/Polo2Obras.SOAP12Endpoint"/>
+      </wsdl:port>
+      <wsdl:port name="SecureHTTPEndpoint" binding="ns0:Polo2ObrasHttpBinding">
+         <http:address location="https://freitas-X550CC:8243/services/Polo2Obras.SecureHTTPEndpoint"/>
+      </wsdl:port>
+      <wsdl:port name="HTTPEndpoint" binding="ns0:Polo2ObrasHttpBinding">
+         <http:address location="http://freitas-X550CC:8280/services/Polo2Obras.HTTPEndpoint"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>
