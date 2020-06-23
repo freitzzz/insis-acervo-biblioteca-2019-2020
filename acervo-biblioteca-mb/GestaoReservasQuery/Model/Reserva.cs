@@ -11,9 +11,17 @@ namespace GestaoReservasQuery.Model
         public string estado { get; set; }
 
         public Reserva() { }
+        public Reserva(string utente, DateTime dataInicio, DateTime dataFim, Obra obra, string estado)
+        {
+            this.utente = utente;
+            this.dataInicio = dataInicio;
+            this.dataFim = dataFim;
+            this.obra = obra;
+            this.estado = estado;
+        }
     }
 
-    public enum ReservaEstado 
+    public enum ReservaEstado
     {
         NaoCumprida = 0,
         EmEspera = 1,
