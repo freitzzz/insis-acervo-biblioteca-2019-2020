@@ -14,7 +14,7 @@ namespace GestaoReservasQuery.Configurations
         private static void useDefault(IConfiguration configuration, IServiceCollection services)
         {
             services.AddTransient<IReservaService, ReservaService>();
-            services.AddHostedService<Receiver>();
+            services.AddHostedService<EventsService>();
             
         }
     }
