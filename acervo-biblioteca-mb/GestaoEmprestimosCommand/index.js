@@ -110,10 +110,10 @@ eventstore.init(function (eventStoreInitError) {
                     case 'nao_existe_reserva':
                       api.onNaoExisteReserva(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, esbHost, geQueryHost, idStream, publishCallback);
                       break;
-                    case 'utente_nao_autorizado':
+                    case 'emprestimo_utente_nao_autorizado':
                       api.onUtenteNaoAutorizado(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, idStream);
                       break;
-                    case 'utente_autorizado':
+                    case 'emprestimo_utente_autorizado':
                       api.onUtenteAutorizado(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, obrasAutorizadas, idStream, esbHost, geQueryHost, publishCallback);
                       break;
                     case 'reserva_recebida':

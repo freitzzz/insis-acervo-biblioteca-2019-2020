@@ -14,11 +14,12 @@ function createEmprestimo(request, response) {
 
   EmprestimosCollection.create(emprestimoInstance, function (error, document) {
     if (error) {
+      console.log(`Failed to retrieve create record of emprestimo due to: ${error}`);
       response.status(500).send();
     } else {
-      const utenteView = emprestimoDocumentToView(document);
+      const emprestimoView = emprestimoDocumentToView(document);
 
-      response.status(201).send(utenteView);
+      response.status(201).send(emprestimoView);
     }
   });
 }
@@ -29,7 +30,8 @@ function getEmprestimo(request, response) {
 
   EmprestimosCollection.findById(id).exec(function (error, document) {
     if (error || document == null) {
-      response.status(404).send();
+      console.log(`Failed to retrieve database record of emprestmo with id ${id} due to: ${error}`);
+      response.status(404).send(`Emprestimo with id ${id} not found`);
     } else {
 
       const emprestimoView = emprestimoDocumentToView(document);
@@ -46,7 +48,8 @@ function updateEmprestimo(request, response) {
 
   EmprestimosCollection.findById(id).exec(function (error, document) {
     if (error || document == null) {
-      response.status(404).send();
+      console.log(`Failed to add the record of emprestimo due to: ${error}`);
+      response.status(404).send(`Emprestimo with id ${id} not found`);
     } else {
 
       const emprestimoInstance = document.toObject();

@@ -23,7 +23,7 @@ To run it is first needed to setup the following environment variables:
 |`PORT`|Port which API will be available on|
 |`RABBIT_MQ_CONNECTION_URL`|Connection String to connect to RabbitMQ server|
 |`GEC_MONGODB_CONNECTION_URL`|Connection String to connect to MongoDB database|
-|`EMPRESTIMO_EXCHANGE`|Exchange identifier for repor estado use case. Defaults to `emprestimo`|
+|`EMPRESTIMO_EXCHANGE`|Exchange identifier for emprestimo use case. Defaults to `emprestimo`|
 |`ESB_HOST`|Connection String to connect to ESB server|
 |`GE_QUERY_HOST`|Connection String to connect to Gestão Emprestimos Query Microservice|
 
