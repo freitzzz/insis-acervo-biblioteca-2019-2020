@@ -60,6 +60,8 @@ namespace GestaoReservasCommand.Services
             _map.Add(EventName.EmprestimoNaoSobreposto.Value, EmprestimoNaoSobreposto);
             _map.Add(EventName.UtenteAutorizado.Value, UtenteAutorizado);
             _map.Add(EventName.UtenteNaoAutorizado.Value, UtenteNaoAutorizado);
+            _map.Add(EventName.ReservaNaoRealizada.Value, ReservaNaoRealizada);
+            _map.Add(EventName.ReservaRealizada.Value, ReservaRealizada);
 
             // create connection  
             var _connection = _factory.CreateConnection();
@@ -99,7 +101,7 @@ namespace GestaoReservasCommand.Services
         {
             EmprestimoSobrepostoEvent emprestimoSobreposto = JsonConvert.DeserializeObject<EmprestimoSobrepostoEvent>(content);
 
-            var routingKey = EventName.ReservaNaoRealizada.Value;
+            var routingKey = EventName.ReservaNaoAceite.Value;
             var json = JsonConvert.SerializeObject(emprestimoSobreposto);
             _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, emprestimoSobreposto.streamId);
         }
@@ -134,7 +136,7 @@ namespace GestaoReservasCommand.Services
         {
             UtenteNaoAutorizadoEvent utenteNaoAutorizado = JsonConvert.DeserializeObject<UtenteNaoAutorizadoEvent>(content);
 
-            var routingKey = EventName.ReservaNaoRealizada.Value;
+            var routingKey = EventName.ReservaNaoAceite.Value;
             var json = JsonConvert.SerializeObject(utenteNaoAutorizado);
             _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, utenteNaoAutorizado.streamId);
         }
@@ -143,7 +145,7 @@ namespace GestaoReservasCommand.Services
         {
             var listaReservas = GetReservas(dataInicio, dataFim, obra);
 
-            var routingKey = EventName.ReservaNaoRealizada.Value;
+            var routingKey = EventName.ReservaNaoAceite.Value;
             var reservaEvent = new ReservaRecebidaEvent(utente, dataInicio, dataFim, obra, streamId);
             var json = JsonConvert.SerializeObject(reservaEvent);
 
@@ -182,9 +184,9 @@ namespace GestaoReservasCommand.Services
                     else
                     {
                         _logger.LogDebug(" -- obrasAutorizadasSemEmprestimoSemReservas {0} -- ", obrasAutorizadasSemEmprestimoSemReservas.Count);
-                        routingKey = EventName.ReservaRealizada.Value;
+                        routingKey = EventName.ReservaAceite.Value;
                         var obraReservar = obrasAutorizadasSemEmprestimoSemReservas[0];
-                        json = JsonConvert.SerializeObject(new ReservaDTO(utente, dataInicio, dataFim, obraReservar));
+                        json = JsonConvert.SerializeObject(new ReservaAceiteEvent(utente, dataInicio, dataFim, obraReservar, streamId));
                         _eventHandler.SendEvent(_factory, ExchangeName, routingKey, json, streamId);
 
                     }
@@ -192,6 +194,15 @@ namespace GestaoReservasCommand.Services
             }
         }
 
+        private void ReservaNaoRealizada(string content)
+        {
+            _logger.LogDebug("ReservaNaoRealizada");
+        }
+        private void ReservaRealizada(string content)
+        {
+            _logger.LogDebug("ReservaRealizada");
+        }
+        
         private List<ReservaDTO> GetReservas(DateTime dataInicio, DateTime dataFim, String obra)
         {
             var inicio = String.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", dataInicio);
