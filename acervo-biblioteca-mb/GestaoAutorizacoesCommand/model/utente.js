@@ -29,5 +29,17 @@ function hasPermissionsToReporEstadoUtente(utente) {
 
 }
 
+// Validates if the utente can reservar ou pedir emprestimo
+function hasPermissionsToRequire(utente, estado) {
+  if(utente.estatuto > 3 && estado == 3){
+    return true;
+  }
+  if(utente.estatuto > 4 && estado < 3){
+    return true;
+  }
+  return false;
+}
+
 module.exports.create = create;
 module.exports.hasPermissionsToReporEstadoUtente = hasPermissionsToReporEstadoUtente;
+module.exports.hasPermissionsToRequire = hasPermissionsToRequire;
