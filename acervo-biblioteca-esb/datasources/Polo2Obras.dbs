@@ -1,0 +1,74 @@
+<data name="Polo2Obras" transports="http https local">
+   <config enableOData="false" id="Polo2ObrasDS">
+      <property name="driverClassName">org.wso2.carbon.dataservices.sql.driver.TDriver</property>
+      <property name="url">jdbc:wso2:excel:filePath=./samples/data-services/resources/Polo2Obras.xls</property>
+   </config>
+   <query id="GetObrasWithAllPropertiesQuery" useConfig="Polo2ObrasDS">
+      <sql>SELECT id, autor1, ISBN, titulo, preco, estado, AdC, ano FROM Sheet1</sql>
+      <result element="Obras" rowName="Obra">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="autor1" name="autor1" xsdType="string"/>
+         <element column="ISBN" name="ISBN" xsdType="string"/>
+         <element column="titulo" name="titulo" xsdType="string"/>
+         <element column="preco" name="preco" xsdType="string"/>
+         <element column="estado" name="estado" xsdType="string"/>
+         <element column="AdC" name="AdC" xsdType="string"/>
+         <element column="ano" name="ano" xsdType="string"/>
+      </result>
+   </query>
+   <query id="GetObraWithAllPropertiesByISBN" useConfig="Polo2ObrasDS">
+      <sql>SELECT id, autor1, autor2, titulo, preco, estado, AdC, ano FROM Sheet1 WHERE ISBN=:isbn</sql>
+      <result element="Obras" rowName="Obra">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="autor1" name="autor1" xsdType="string"/>
+         <element column="autor2" name="autor2" xsdType="string"/>
+         <element column="titul" name="titul" xsdType="string"/>
+         <element column="preco" name="preco" xsdType="string"/>
+         <element column="estado" name="estado" xsdType="string"/>
+         <element column="AdC" name="AdC" xsdType="string"/>
+         <element column="ano" name="ano" xsdType="string"/>
+      </result>
+      <param name="isbn" sqlType="STRING"/>
+   </query>
+   <query id="GetObraWithAllPropertiesByTitle" useConfig="Polo2ObrasDS">
+      <sql>SELECT id, autor1, autor2, titulo, ISBN, preco, estado, AdC, ano FROM Sheet1 WHERE titulo=:title</sql>
+      <result element="Obras" rowName="Obra">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="autor1" name="autor1" xsdType="string"/>
+         <element column="autor2" name="autor2" xsdType="string"/>
+         <element column="titulo" name="titulo" xsdType="string"/>
+         <element column="preco" name="preco" xsdType="string"/>
+         <element column="estado" name="estado" xsdType="string"/>
+         <element column="AdC" name="AdC" xsdType="string"/>
+         <element column="ano" name="ano" xsdType="string"/>
+         <element column="ISBN" name="ISBN" xsdType="string"/>
+      </result>
+      <param name="title" sqlType="STRING"/>
+   </query>
+   <operation name="GetObrasWithAllPropertiesOp">
+      <call-query href="GetObrasWithAllPropertiesQuery"/>
+   </operation>
+   <operation name="GetObrasWithAllPropertiesByISBNOp">
+      <call-query href="GetObraWithAllPropertiesByISBN">
+         <with-param name="isbn" query-param="isbn"/>
+      </call-query>
+   </operation>
+   <operation name="GetObrasWithAllPropertiesByTitleOp">
+      <call-query href="GetObraWithAllPropertiesByTitle">
+         <with-param name="title" query-param="title"/>
+      </call-query>
+   </operation>
+   <resource method="GET" path="/exemplares">
+      <call-query href="GetObrasWithAllPropertiesQuery"/>
+   </resource>
+   <resource method="GET" path="/exemplares/{isbn}">
+      <call-query href="GetObraWithAllPropertiesByISBN">
+         <with-param name="isbn" query-param="isbn"/>
+      </call-query>
+   </resource>
+   <resource method="GET" path="/exemplares/{title}">
+      <call-query href="GetObraWithAllPropertiesByTitle">
+         <with-param name="title" query-param="title"/>
+      </call-query>
+   </resource>
+</data>
