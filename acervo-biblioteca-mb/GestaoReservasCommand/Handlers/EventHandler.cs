@@ -26,7 +26,7 @@ namespace GestaoReservasCommand.Handlers
             using (var channel = connection.CreateModel())
             {
                 channel.ExchangeDeclare(exchange: exchangeName,
-                                        type: "direct");
+                                        type: ExchangeType.Direct);
 
                 var body = Encoding.UTF8.GetBytes(json);
 
@@ -39,43 +39,6 @@ namespace GestaoReservasCommand.Handlers
                 _logger.LogDebug(" [x] Sent {0}", json);
             }
         }
-
-        // public void ReceiveEvent(IModel channel, String exchangeName, String routingKey, Action<string> callBack)
-        // {
-        //     _logger.LogDebug("ReceiveEvent");
-        //     var queueName = channel.QueueDeclare().QueueName;
-        //     _logger.LogDebug("queueName: " + queueName);
-        //     _logger.LogDebug("routingKey: " + routingKey);
-        //     channel.QueueBind(queue: queueName,
-        //                           exchange: exchangeName,
-        //                           routingKey: routingKey);
-
-        //     var consumer = new EventingBasicConsumer(channel);
-        //     consumer.Received += (model, ea) =>
-        //     {
-        //         var message = Encoding.UTF8.GetString(ea.Body.ToArray());
-        //         JObject json = JObject.Parse(message);
-        //         var routingKey = ea.RoutingKey;
-
-
-        //          _eventStoreHandler.AddEvent(json.Value<string>("streamId"), routingKey, message, "{}");
-
-        //         _logger.LogDebug(" [x] Received '{0}':'{1}'",
-        //                           routingKey, json);
-
-        //         callBack(message);
-
-
-
-        //         channel.BasicAck(ea.DeliveryTag, false);
-        //     };
-        //     channel.BasicConsume(queue: queueName,
-        //                          autoAck: true,
-        //                          consumer: consumer);
-
-
-        // }
-
 
         public void BindQueues(IModel channel, string exchangeName, string queueName, List<string> routingKeys)
         {
