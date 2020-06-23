@@ -1,5 +1,6 @@
 const axios = require('axios');
 
+const getValue = require('../model/estado');
 
 function onEmprestimoRecebido(eventstore, utente, obra, dataInicio, dataFim, publishCallback, response) {
 
@@ -417,7 +418,6 @@ function getObrasSemEmprestimo(ebsHost, geQueryHost, obra, dataInicio, dataFim) 
   return obrasExistente.filter(obra => !obrasEncomendadas.includes(obra));
 }
 
-// TODO - ESB retorna estado como string
 function getObraInPolos(ebsHost, obra) {
 
   console.log(`getObraInPolos called with $obra: ${obra}`);
@@ -435,7 +435,7 @@ function getObraInPolos(ebsHost, obra) {
         getObraPolo.states.forEach(estado => {
           var obra = {
             titulo: obra,
-            estado: estado,
+            estado: getValue(estado), //convert string to int
             polo: polo
           }
           obras.push(obra);
