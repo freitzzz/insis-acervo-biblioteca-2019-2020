@@ -90,11 +90,11 @@ amqp.connect(process.env.RABBIT_MQ_CONNECTION_URL, function (errorConnectRabbitM
 
         app.use(express.json());
 
-        app.post('/utentes', api.createEmprestimo);
+        app.post('/emprestimos', api.createEmprestimo);
 
-        app.get('/utentes/:id', api.getEmprestimo);
+        app.get('/emprestimos/:id', api.getEmprestimo);
 
-        app.put('/utentes/:id', api.updateEmprestimo);
+        app.put('/emprestimos/:id', api.updateEmprestimo);
 
         app.listen(process.env.PORT);
 

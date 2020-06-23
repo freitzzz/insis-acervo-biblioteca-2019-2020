@@ -59,6 +59,13 @@ amqp.connect(process.env.RABBIT_MQ_CONNECTION_URL, function (errorConnectRabbitM
           durable: true
         });
 
+        channel.assertExchange(emprestimoExchange, 'direct', {
+          durable: true
+        }); 
+        channel.assertExchange(reservaExchange, 'direct', {
+          durable: true
+        });
+        
         channel.assertQueue('', {
           exclusive: false,
           durable: true
