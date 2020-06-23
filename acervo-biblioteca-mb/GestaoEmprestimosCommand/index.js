@@ -61,7 +61,7 @@ eventstore.init(function (eventStoreInitError) {
 
               let exchange;
 
-              if (message.startsWith('repor_estado')) {
+              if (message.startsWith('emprestimo')) {
 
                 exchange = emprestimoExchange;
 
