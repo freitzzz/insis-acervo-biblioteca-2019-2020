@@ -59,7 +59,7 @@ function onEmprestimoRecebido(eventstore, utente, obra, dataInicio, dataFim, pub
 }
 
 // This obra contais all the information about it (titulo, polo and estado)
-function onExisteReservaUtente(eventstore, utente, dataInicio, dataFim, obra, idStream, ebsHost, geQueryHost, publishCallback) {
+function onExisteReservaUtente(eventstore, utente, dataInicio, dataFim, obra, idStream, esbHost, geQueryHost, publishCallback) {
 
   console.log(`onExisteReservaUtente called with $utente: ${utente}, $dataInicio: ${dataInicio}, $dataFim: ${dataFim}, $obra: ${obra}, $idStream: ${idStream}`);
 
@@ -93,7 +93,7 @@ function onExisteReservaUtente(eventstore, utente, dataInicio, dataFim, obra, id
 
       if (events.utente_autorizado) {
         var obrasAutorizadas = events.utente_autorizado;
-        var obrasSemEmprestimo = getObrasSemEmprestimo(ebsHost, geQueryHost, obra, dataInicio, dataFim)
+        var obrasSemEmprestimo = getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim)
 
         if (obrasAutorizadas != undefined && obrasAutorizadas.includes(obra)) {
           if (obrasSemEmprestimo != undefined && obrasSemEmprestimo.length != 0)
@@ -126,7 +126,7 @@ function onExisteReservaUtente(eventstore, utente, dataInicio, dataFim, obra, id
   });
 }
 
-function onExisteReserva(eventstore, utente, dataInicio, dataFim, obra, obrasReservadas, idStream, ebsHost, geQueryHost, publishCallback) {
+function onExisteReserva(eventstore, utente, dataInicio, dataFim, obra, obrasReservadas, idStream, esbHost, geQueryHost, publishCallback) {
 
   console.log(`onExisteReserva called with $utente: ${utente}, $dataInicio: ${dataInicio}, $dataFim: ${dataFim}, $obra: ${obra}, $idStream: ${idStream}`);
 
@@ -159,7 +159,7 @@ function onExisteReserva(eventstore, utente, dataInicio, dataFim, obra, obrasRes
       const events = foldArrayToObject(stream.events.map((event => event.payload)));
       if (events.utente_autorizado) {
         var obrasAutorizadas = events.utente_autorizado;
-        var obrasSemEmprestimo = getObrasSemEmprestimo(ebsHost, geQueryHost, obra, dataInicio, dataFim)
+        var obrasSemEmprestimo = getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim)
 
         var obrasAutorizadasSemReservas = [];
         if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
@@ -185,7 +185,7 @@ function onExisteReserva(eventstore, utente, dataInicio, dataFim, obra, obrasRes
   });
 }
 
-function onNaoExisteReserva(eventstore, utente, dataInicio, dataFim, obra, idStream, ebsHost, geQueryHost, publishCallback) {
+function onNaoExisteReserva(eventstore, utente, dataInicio, dataFim, obra, idStream, esbHost, geQueryHost, publishCallback) {
 
   console.log(`onNaoExisteReserva called with $utente: ${utente}, $dataInicio: ${dataInicio}, $dataFim: ${dataFim}, $obra: ${obra}, $idStream: ${idStream}`);
 
@@ -219,7 +219,7 @@ function onNaoExisteReserva(eventstore, utente, dataInicio, dataFim, obra, idStr
       const events = foldArrayToObject(stream.events.map((event => event.payload)));
       if (events.utente_autorizado) {
         var obrasAutorizadas = events.utente_autorizado;
-        var obrasSemEmprestimo = getObrasSemEmprestimo(ebsHost, geQueryHost, obra, dataInicio, dataFim)
+        var obrasSemEmprestimo = getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim)
 
         var obrasAutorizadasSemEmprestimos = [];
         if (obrasAutorizadasSemReservas != undefined && obrasAutorizadasSemReservas.length != 0) {
@@ -275,7 +275,7 @@ function onUtenteNaoAutorizado(eventstore, utente, dataInicio, dataFim, obra, id
 
 }
 
-function onUtenteAutorizado(eventstore, utente, dataInicio, dataFim, obra, obrasAutorizadas, idStream, ebsHost, geQueryHost, publishCallback) {
+function onUtenteAutorizado(eventstore, utente, dataInicio, dataFim, obra, obrasAutorizadas, idStream, esbHost, geQueryHost, publishCallback) {
 
   console.log(`onUtenteAutorizado called with $utente: ${utente}, $dataInicio: ${dataInicio}, $dataFim: ${dataFim}, $obra: ${obra}, $idStream: ${idStream}`);
 
@@ -320,7 +320,7 @@ function onUtenteAutorizado(eventstore, utente, dataInicio, dataFim, obra, obras
         console.log("Event nao_existe_reserva already happened");
       }
 
-      var obrasSemEmprestimo = getObrasSemEmprestimo(ebsHost, geQueryHost, obra, dataInicio, dataFim)
+      var obrasSemEmprestimo = getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim)
 
       var obrasAutorizadasSemReservas = [];
       if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
@@ -345,7 +345,7 @@ function onUtenteAutorizado(eventstore, utente, dataInicio, dataFim, obra, obras
   });
 }
 
-function onReservaRecebida(eventstore, utente, dataInicio, dataFim, obra, idStream, ebsHost, geQueryHost, publishCallback) {
+function onReservaRecebida(eventstore, utente, dataInicio, dataFim, obra, idStream, esbHost, geQueryHost, publishCallback) {
 
   console.log(`onReservaRecebida called with $utente: ${utente}, $dataInicio: ${dataInicio}, $dataFim: ${dataFim}, $obra: ${obra}, $idStream: ${idStream}`);
 
@@ -371,7 +371,7 @@ function onReservaRecebida(eventstore, utente, dataInicio, dataFim, obra, idStre
 
           console.log('Successfully added event');
 
-          obrasSemEmprestimo = getObrasSemEmprestimo(ebsHost, geQueryHost, obra, dataInicio, dataFim);
+          obrasSemEmprestimo = getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim);
 
           if (obrasSemEmprestimo == undefined || obrasSemEmprestimo.length == 0) {
 
@@ -411,25 +411,25 @@ function onReservaRecebida(eventstore, utente, dataInicio, dataFim, obra, idStre
 }
 
 // TODO - Utente pode reservar/encomendar uma obra que já tenha um exemplar nas suas mãos???
-function getObrasSemEmprestimo(ebsHost, geQueryHost, obra, dataInicio, dataFim) {
-  obrasExistente = getObraInPolos(ebsHost, obra);
+function getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim) {
+  obrasExistente = getObraInPolos(esbHost, obra);
   obrasEncomendadas = getObrasEncomendadas(geQueryHost, obra, dataInicio, dataFim);
 
   return obrasExistente.filter(obra => !obrasEncomendadas.includes(obra));
 }
 
-function getObraInPolos(ebsHost, obra) {
+function getObraInPolos(esbHost, obra) {
 
   console.log(`getObraInPolos called with $obra: ${obra}`);
 
   var obras = new Array()
 
-  var polos = getPolos(ebsHost);
+  var polos = getPolos(esbHost);
 
   polos.forEach(polo => {
     axios
       .default
-      .get(`${ebsHost}/acervobiblioteca/polos/${polo}/obras/${obra}`)
+      .get(`${esbHost}/acervobiblioteca/polos/${polo}/obras/${obra}`)
       .then(function (getObraPolo) {
 
         getObraPolo.states.forEach(estado => {
@@ -453,13 +453,13 @@ function getObraInPolos(ebsHost, obra) {
 
 }
 
-function getPolos(ebsHost) {
+function getPolos(esbHost) {
 
   console.log(`getPolos`);
 
   axios
     .default
-    .get(`${ebsHost}/acervobiblioteca/polos`)
+    .get(`${esbHost}/acervobiblioteca/polos`)
     .then(function (getPolos) {
 
       var polos = new Array()

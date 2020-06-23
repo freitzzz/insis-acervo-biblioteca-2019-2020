@@ -12,7 +12,7 @@ const foldArrayToObject = (array) => array.length > 0 ? array.reduceRight((p, c)
 
 const emprestimoExchange = process.env.EMPRESTIMO_EXCHANGE || 'emprestimo';
 
-const ebsHost = process.env.ESB_HOST;
+const esbHost = process.env.ESB_HOST;
 
 const geQueryHost = process.env.GE_QUERY_HOST;
 
@@ -102,22 +102,22 @@ eventstore.init(function (eventStoreInitError) {
 
                   switch (message.fields.routingKey) {
                     case 'existe_reserva_utente':
-                      api.onExisteReservaUtente(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, idStream, ebsHost, geQueryHost, publishCallback);
+                      api.onExisteReservaUtente(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, idStream, esbHost, geQueryHost, publishCallback);
                       break;
                     case 'existe_reserva':
-                      api.onExisteReserva(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, body.obrasReservadas, ebsHost, geQueryHost, idStream, publishCallback);
+                      api.onExisteReserva(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, body.obrasReservadas, esbHost, geQueryHost, idStream, publishCallback);
                       break;
                     case 'nao_existe_reserva':
-                      api.onNaoExisteReserva(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, ebsHost, geQueryHost, idStream, publishCallback);
+                      api.onNaoExisteReserva(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, esbHost, geQueryHost, idStream, publishCallback);
                       break;
                     case 'utente_nao_autorizado':
                       api.onUtenteNaoAutorizado(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, idStream);
                       break;
                     case 'utente_autorizado':
-                      api.onUtenteAutorizado(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, obrasAutorizadas, idStream, ebsHost, geQueryHost, publishCallback);
+                      api.onUtenteAutorizado(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, obrasAutorizadas, idStream, esbHost, geQueryHost, publishCallback);
                       break;
                     case 'reserva_recebida':
-                      api.onReservaRecebida(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, idStream, ebsHost, geQueryHost, publishCallback);
+                      api.onReservaRecebida(eventstore, body.utente, body.dataInicio, body.dataFim, body.obra, idStream, esbHost, geQueryHost, publishCallback);
                       break;
                     default:
                       console.warn(`Got unknown message: ${message.fields.routingKey}`);
