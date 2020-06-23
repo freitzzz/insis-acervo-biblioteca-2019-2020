@@ -4,7 +4,8 @@ using GestaoReservasCommand.Events;
 using GestaoReservasCommand.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using GestaoReservasCommand.Event;
 
 namespace GestaoReservasCommand.Controllers
 {
@@ -34,18 +35,22 @@ namespace GestaoReservasCommand.Controllers
         {
             _logger.LogDebug(" -- GetResouceInfo -- ");
             var events = _reservaService.GetStreamInfo(streamId);
+            
             if (events == null || events.Length == 0)
                 return NotFound(new ResponseMessageDTO(String.Format("Command with id: {0} not found", streamId)));
 
-            if (events[0].Event.EventStreamId.Equals(streamId))
-                return Accepted(new ResourceDTO(String.Format("/commands/{0}", streamId)));
+            if (events[0].Event.EventType.Equals(EventName.ReservaRealizada))
+            {
+                var reservaRealizada = JsonConvert.DeserializeObject<ReservaRealizadaEvent>(events[0].Event.Data.ToString());
+                return Accepted(new ResourceDTO(String.Format("/reservas/{0}", reservaRealizada.reservaId)));
+            }
+            if (events[0].Event.EventType.Equals(EventName.ReservaNaoRealizada))
+            {
+                var reservaNaoRealizada = JsonConvert.DeserializeObject<ReservaNaoRealizadaEvent>(events[0].Event.Data.ToString());
+                return Accepted(new ResponseMessageDTO(String.Format("Operation failed due to {0}", reservaNaoRealizada.razao)));
+            }
 
-            // TODO - Corrigir "/reservas/{0}", streamId
-            if (events[0].Event.EventType.Equals("reserva_aceite"))
-                return Accepted(new ResourceDTO(String.Format("/reservas/{0}", streamId)));
-
-            // TODO - acho que falta coisas
-            return Accepted(new ResourceDTO(String.Format("/reservas/{0}", streamId)));
+            return Accepted(new ResourceDTO(String.Format("/commands/{0}", streamId)));
         }
 
         [HttpPost]
