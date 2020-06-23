@@ -156,11 +156,11 @@ eventstore.init(function (eventStoreInitError) {
 
                   } else if (events.emprestimo_recusado) {
 
-                    response.status(400).send({ message: `Encomenda refused` });
+                    response.status(400).send({ message: `Emprestimo refused` });
 
                   } else if (events.emprestimo_realizado) {
 
-                    response.status(200).send({ url: `/encomendas/${events.emprestimo_realizado}` });
+                    response.status(200).send({ url: `/emprestimos/${events.emprestimo_realizado}` });
                   
                   } else {
 
