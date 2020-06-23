@@ -1,10 +1,13 @@
 using System;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using GestaoReservasQuery.Configurations;
 using GestaoReservasQuery.DTO;
+using GestaoReservasQuery.Event;
+using GestaoReservasQuery.Events;
 using GestaoReservasQuery.Model;
 using GestaoReservasQuery.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -18,9 +21,9 @@ using RabbitMQ.Client.Events;
 
 namespace GestaoReservasQuery.Services
 {
-    public class Receiver : BackgroundService
+    public class EventsService : BackgroundService
     {
-        private readonly ILogger<Receiver> _logger;
+        private readonly ILogger<EventsService> _logger;
         private readonly IMapper _mapper;
         private readonly IServiceScopeFactory _services;
         private readonly IReservaSpecification _reservaSpecification;
@@ -31,7 +34,7 @@ namespace GestaoReservasQuery.Services
         private IConnection _connection;
         private String _queueName;
 
-        public Receiver(ILogger<Receiver> logger, IServiceScopeFactory services, IMapper mapper, IReservaSpecification reservaSpecification, IOptions<RabbitMqConfiguration> rabbitMqOptions)
+        public EventsService(ILogger<EventsService> logger, IServiceScopeFactory services, IMapper mapper, IReservaSpecification reservaSpecification, IOptions<RabbitMqConfiguration> rabbitMqOptions)
         {
             _logger = logger;
             _services = services;
@@ -67,7 +70,7 @@ namespace GestaoReservasQuery.Services
             // bind queue
             _channel.QueueBind(queue: _queueName,
                                 exchange: ExchangeName,
-                                routingKey: "reserva_realizada");
+                                routingKey: EventName.ReservaAceite.Value);
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
@@ -91,21 +94,29 @@ namespace GestaoReservasQuery.Services
 
         private void AddReserva(string content)
         {
-            var dto = JsonConvert.DeserializeObject<ReservaDTO>(content);
-            dto.estado = ReservaEstado.NaoCumprida.ToString();
-            Reserva reserva = _mapper.Map<Reserva>(dto);
             using (var scope = _services.CreateScope())
             {
-                if (GetReserva(dto.dataInicio.ToString(), dto.dataFim.ToString(), dto.obra.titulo, dto.utente) == null)
+                var eventReceived = JsonConvert.DeserializeObject<ReservaAceiteEvent>(content);
+                var reserva = new Reserva(eventReceived.utente, eventReceived.dataInicio, eventReceived.dataFim, _mapper.Map<Obra>(eventReceived.obra), ReservaEstado.NaoCumprida.ToString());
+
+                if (GetReserva(reserva.dataInicio.ToString(), reserva.dataFim.ToString(), reserva.obra.titulo, reserva.utente) == null)
                 {
+                    //save on database
                     var dbContext = scope.ServiceProvider.GetRequiredService<GestaoReservasQueryContext>();
                     dbContext.Set<Reserva>().Add(reserva);
                     dbContext.SaveChanges();
-                    
+
+                    // send event
+                    var reservaRealizada = new ReservaRealizadaEvent(reserva.Id, eventReceived.streamId);
+                    SendEvent(EventName.ReservaRealizada.Value, JsonConvert.SerializeObject(reserva));
                     _logger.LogDebug("Reserva was added to DataBase");
                 }
                 else
+                {
+                    var reservaNaoRealizada = new ReservaNaoRealizadaEvent("Reserva already exists on Database", eventReceived.streamId);
+                    SendEvent(EventName.ReservaNaoRealizada.Value, JsonConvert.SerializeObject(reserva));
                     _logger.LogDebug("Reserva was NOT added to DataBase");
+                }
             }
         }
 
@@ -115,18 +126,39 @@ namespace GestaoReservasQuery.Services
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<GestaoReservasQueryContext>();
                 var spec = _reservaSpecification.ReservaInPeriodoOfObraOfUtente(DateTime.Parse(dataInicio), DateTime.Parse(dataFim), obra, utente);
-                
+
                 var lista = dbContext.Set<Reserva>().Include(spec.Include).Where(spec.Criteria).ToList();
-                
+
                 if (lista != null && lista.Count != 0)
                 {
-                    Console.WriteLine("Count " + lista.Count);
+                    _logger.LogDebug("Count " + lista.Count);
                     ReservaDTO reserva = _mapper.Map<ReservaDTO>(lista[0]);
                     return reserva;
                 }
-                
+
                 return null;
             }
         }
+
+        private void SendEvent(string routingKey, string json)
+        {
+            _logger.LogDebug(" [x] Sent to {0}, {1}, {2}", _factory.HostName, _factory.UserName, _factory.Password);
+            using (var connection = _factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.ExchangeDeclare(exchange: ExchangeName,
+                                        type: ExchangeType.Direct);
+
+                var body = Encoding.UTF8.GetBytes(json);
+
+                channel.BasicPublish(exchange: ExchangeName,
+                                    routingKey: routingKey,
+                                    basicProperties: null,
+                                    body: body);
+
+                _logger.LogDebug(" [x] Sent {0}", json);
+            }
+        }
+
     }
 }
