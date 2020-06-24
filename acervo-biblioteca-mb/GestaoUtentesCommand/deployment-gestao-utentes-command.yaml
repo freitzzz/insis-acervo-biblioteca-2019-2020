@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gestao-utentes-command
+  labels:
+    app: gestao-utentes
+    task: command
+    project: insis
+spec:
+  selector:
+    matchLabels:
+      app: gestao-utentes
+      task: command
+      project: insis
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gestao-utentes
+        task: command
+        project: insis
+    spec:
+      containers:
+        - name: gestao-utentes-command
+          image: gestao-utentes-command:1.0
+          env:
+            - name: PORT
+              value: 80
+            - name: RABBIT_MQ_CONNECTION_URL
+              value: "amqp://guest:guest@insis-rabbitmq.northeurope.cloudapp.azure.com"
+            - name: GUC_MONGODB_CONNECTION_URL
+              value: "mongodb+srv://insisinsis:insisinsis@cluster0-6y7rq.mongodb.net/gu-command-event-store?retryWrites=true&w=majority"
+            - name: REPOR_ESTADO_EXCHANGE
+              value: "repor_estado"
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gestao-utentes-command-svc
+spec:
+  selector:
+    app: gestao-utentes
+    task: command
+    project: insis
+  ports:
+    - port: 80
+      targetPort: 80

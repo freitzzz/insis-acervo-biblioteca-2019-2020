@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gestao-autorizacoes-command
+  labels:
+    app: gestao-autorizacoes
+    task: command
+    project: insis
+spec:
+  selector:
+    matchLabels:
+      app: gestao-autorizacoes
+      task: command
+      project: insis
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gestao-autorizacoes
+        task: command
+        project: insis
+    spec:
+      containers:
+        - name: gestao-autorizacoes-command
+          image: gestao-autorizacoes-command:1.0
+          env:
+            - name: RABBIT_MQ_CONNECTION_URL
+              value: "amqp://guest:guest@insis-rabbitmq.northeurope.cloudapp.azure.com"
+            - name: REPOR_ESTADO_EXCHANGE
+              value: "repor_estado"
+            - name: EMPRESTIMO_EXCHANGE
+              value: "emprestimo"
+            - name: GU_QUERY_HOST
+              value: "gestao-utentes-query"
+            - name: ESB_HOST
+              value: "insis-bps-esb.northeurope.cloudapp.azure.com:8280"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gestao-autorizacoes-command-svc
+spec:
+  selector:
+    app: gestao-autorizacoes
+    task: command
+    project: insis

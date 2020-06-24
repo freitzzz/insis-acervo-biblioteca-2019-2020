@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gestao-emprestimos-command
+  labels:
+    app: gestao-emprestimos
+    task: command
+    project: insis
+spec:
+  selector:
+    matchLabels:
+      app: gestao-emprestimos
+      task: command
+      project: insis
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gestao-emprestimos
+        task: command
+        project: insis
+    spec:
+      containers:
+        - name: gestao-emprestimos-command
+          image: gestao-emprestimos-command:1.0
+          env:
+            - name: PORT
+              value: 80
+            - name: RABBIT_MQ_CONNECTION_URL
+              value: "amqp://guest:guest@insis-rabbitmq.northeurope.cloudapp.azure.com"
+            - name: GEC_MONGODB_CONNECTION_URL
+              value: "mongodb+srv://insisinsis:insisinsis@cluster0-6y7rq.mongodb.net/ge-command-event-store?retryWrites=true&w=majority"
+            - name: EMPRESTIMO_EXCHANGE
+              value: "emprestimo"
+            - name: GE_QUERY_HOST
+              value: "gestao-emprestimos-query"
+            - name: ESB_HOST
+              value: "insis-bps-esb.northeurope.cloudapp.azure.com:8280"
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gestao-emprestimos-command-svc
+spec:
+  selector:
+    app: gestao-emprestimos
+    task: command
+    project: insis
+  ports:
+    - port: 80
+      targetPort: 80

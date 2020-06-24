@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gestao-reservas-query
+  labels:
+    app: gestao-reservas
+    task: query
+    project: insis
+spec:
+  selector:
+    matchLabels:
+      app: gestao-reservas
+      task: query
+      project: insis
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gestao-reservas
+        task: query
+        project: insis
+    spec:
+      containers:
+        - name: gestao-reservas-query
+          image: gestao-reservas-query:1.0
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gestao-reservas-query-svc
+spec:
+  selector:
+    app: gestao-reservas
+    task: query
+    project: insis
+  ports:
+    - port: 80
+      targetPort: 80

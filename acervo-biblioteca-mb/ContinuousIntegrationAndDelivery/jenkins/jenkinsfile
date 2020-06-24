@@ -96,6 +96,8 @@ node {
 
   def gestao_autorizacoes_command_path = "${env.WORKSPACE}${resolve_path("/acervo-biblioteca-mb/GestaoAutorizacoesCommand/")}"
 
+  def microservices_automatic_tests_path = "${env.WORKSPACE}${resolve_path("/acervo-biblioteca-mb/MicroservicesAutomaticTests/")}"
+
   setup_node()
 
   stage ("Checkout"){
@@ -105,28 +107,55 @@ node {
 
   stage ("Pre Build Tests"){
 
-      // Unit tests can be run in parallel
-      parallel_steps = [:]
+    // Unit tests can be run in parallel
+    parallel_steps = [:]
 
-      parallel_steps["unit tests gestao utentes query service"] = {
-          run_command("npm install --prefix ${gestao_utentes_query_path}")
-          run_command("npm test --prefix ${gestao_utentes_query_path}")
-      }
-
-      parallel_steps["unit tests gestao utentes command service"] = {
-          run_command("npm install --prefix ${gestao_utentes_command_path}")
-          run_command("npm test --prefix ${gestao_utentes_command_path}")
-      }
-
-      parallel_steps["unit tests gestao autorizacoes command service"] = {
-          run_command("npm install --prefix ${gestao_autorizacoes_command_path}")
-          run_command("npm test --prefix ${gestao_autorizacoes_command_path}")
-      }
-      
-      
-      // Unit Tests Execution
-      
-
-      parallel parallel_steps
+    parallel_steps["unit tests gestao utentes query service"] = {
+      run_command("npm install --prefix ${gestao_utentes_query_path}")
+      run_command("npm test --prefix ${gestao_utentes_query_path}")
     }
+
+    parallel_steps["unit tests gestao utentes command service"] = {
+      run_command("npm install --prefix ${gestao_utentes_command_path}")
+      run_command("npm test --prefix ${gestao_utentes_command_path}")
+    }
+
+    parallel_steps["unit tests gestao autorizacoes command service"] = {
+      run_command("npm install --prefix ${gestao_autorizacoes_command_path}")
+      run_command("npm test --prefix ${gestao_autorizacoes_command_path}")
+    }
+    
+    
+    // Unit Tests Execution
+    
+
+    parallel parallel_steps
+  }
+
+  stage ("Build"){
+
+    // Microservices can be build in parallel
+    parallel_steps = [:]
+
+    parallel parallel_steps
+  }
+
+  stage ("Post Build Tests"){
+
+    // Run Gestao Utentes Query
+
+    run_command("source ${gestao_utentes_query_path}setupenv.sh")
+    run_command("npm start --prefix ${gestao_utentes_query_path}&")
+
+    // Run Gestao Utentes Command
+
+    run_command("source ${gestao_utentes_command_path}setupenv.sh")
+    run_command("npm start --prefix ${gestao_utentes_command_path}&")
+
+    // Run Gestao Autorizacoes Command
+
+    run_command("source ${gestao_autorizacoes_command_path}setupenv.sh")
+    run_command("npm start --prefix ${gestao_autorizacoes_command_path}&")
+    
+  }
 }
