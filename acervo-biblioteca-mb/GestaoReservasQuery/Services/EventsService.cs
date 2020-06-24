@@ -108,13 +108,13 @@ namespace GestaoReservasQuery.Services
 
                     // send event
                     var reservaRealizada = new ReservaRealizadaEvent(reserva.Id, eventReceived.id_stream);
-                    SendEvent(EventName.ReservaRealizada.Value, JsonConvert.SerializeObject(reserva));
+                    SendEvent(EventName.ReservaRealizada.Value, JsonConvert.SerializeObject(reservaRealizada));
                     _logger.LogDebug("Reserva was added to DataBase");
                 }
                 else
                 {
                     var reservaNaoRealizada = new ReservaNaoRealizadaEvent("Reserva already exists on Database", eventReceived.id_stream);
-                    SendEvent(EventName.ReservaNaoRealizada.Value, JsonConvert.SerializeObject(reserva));
+                    SendEvent(EventName.ReservaNaoRealizada.Value, JsonConvert.SerializeObject(reservaNaoRealizada));
                     _logger.LogDebug("Reserva was NOT added to DataBase");
                 }
             }
@@ -142,7 +142,7 @@ namespace GestaoReservasQuery.Services
 
         private void SendEvent(string routingKey, string json)
         {
-            _logger.LogDebug(" [x] Sent to {0}, {1}, {2}", _factory.HostName, _factory.UserName, _factory.Password);
+            _logger.LogDebug(" Sending ExchangeName {0}, routingKey {1}", ExchangeName, routingKey);
             using (var connection = _factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {

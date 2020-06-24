@@ -44,8 +44,7 @@ namespace GestaoReservasCommand.Handlers
         public void BindQueues(IModel channel, string exchangeName, string queueName, List<string> routingKeys)
         {
             _logger.LogDebug("InitializeQueue");
-            _logger.LogDebug("queueName: " + queueName);
-            
+            _logger.LogDebug(" exchangeName {0}, queueName {1}", exchangeName, queueName);
             foreach (var routingKey in routingKeys)
             {
                 _logger.LogDebug("routingKey: " + routingKey);

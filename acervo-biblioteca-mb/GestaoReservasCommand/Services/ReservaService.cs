@@ -225,23 +225,27 @@ namespace GestaoReservasCommand.Services
             return reservasUtente.Count != 0;
         }
 
-        private string ContainsEvent(string streamId, string routingKey)
+        public string ContainsEvent(string streamId, string routingKey)
         {
+            _logger.LogDebug("ContainsEvent : {0} : {1}", streamId, routingKey);
             var events = _eventStoreHandler.GetEvents(streamId);
             foreach (var item in events)
             {
                 if (item.Event.EventType == routingKey)
                 {
-                    return item.Event.Data.ToString();
+                    _logger.LogDebug(Encoding.UTF8.GetString(item.Event.Data));
+                    return Encoding.UTF8.GetString(item.Event.Data);
                 }
             }
             return null;
         }
 
-        public ResolvedEvent[] GetStreamInfo(string streamId)
+        public bool ContainsStream(string streamId)
         {
-            var events = _eventStoreHandler.GetLastEvent(streamId);
-            return events;
+            _logger.LogDebug("ContainsStream : {0} ", streamId);
+            var events = _eventStoreHandler.GetEvents(streamId);
+            _logger.LogDebug("ContainsStream : {0} ", events != null && events.Length != 0);
+            return events != null && events.Length != 0;
         }
     }
 }
