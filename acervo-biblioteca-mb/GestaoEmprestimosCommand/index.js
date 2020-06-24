@@ -142,7 +142,7 @@ eventstore.init(function (eventStoreInitError) {
 
             app.use(express.json());
 
-            app.get('/commands/:id', function (request, response, _) {
+            app.get('/emprestimos/commands/:id', function (request, response, _) {
 
               const streamId = request.params.id;
 
