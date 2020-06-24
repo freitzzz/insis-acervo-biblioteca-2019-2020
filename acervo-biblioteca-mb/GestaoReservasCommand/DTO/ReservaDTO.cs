@@ -1,5 +1,4 @@
 using System;
-using GestaoReservasCommand.DTO;
 
 namespace GestaoReservasCommand.DTO
 {

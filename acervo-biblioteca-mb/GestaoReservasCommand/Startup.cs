@@ -25,6 +25,9 @@ namespace GestaoReservasCommand
             RabbitMqConfiguration.configure(Configuration, services);
             ReservaClienteConfiguration.configure(Configuration, services);
             EventStoreConfiguration.configure(Configuration, services);
+
+            services.AddCors();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,16 +38,19 @@ namespace GestaoReservasCommand
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            
         }
     }
 }
