@@ -193,3 +193,20 @@ test('if utente estatuto == 5, and obra estado == 4 then hasPermissionsToReporEs
   expect(hasPermissionsToRequire).toBe(false);
 
 });
+
+test('if utente estatuto == 6, and obra estado == 6 then hasPermissionsToReporEstadoUtente returns false', function () {
+
+  // Arrange
+
+  const utenteInstance = utente.create('Albale', 'Real');
+  utenteInstance.estatuto = 6;
+
+  // Act
+
+  const hasPermissionsToRequire = utente.hasPermissionsToRequire(utenteInstance, 6);
+
+  // Assert
+
+  expect(hasPermissionsToRequire).toBe(false);
+
+});

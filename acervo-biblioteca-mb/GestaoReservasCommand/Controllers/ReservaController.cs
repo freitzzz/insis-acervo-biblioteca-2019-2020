@@ -34,19 +34,22 @@ namespace GestaoReservasCommand.Controllers
         public ActionResult<ReservaDTO> GetResouceInfo([FromRoute] String streamId)
         {
             _logger.LogDebug(" -- GetResouceInfo -- ");
-            var events = _reservaService.GetStreamInfo(streamId);
-            
-            if (events == null || events.Length == 0)
+
+
+            if (!_reservaService.ContainsStream(streamId))
                 return NotFound(new ResponseMessageDTO(String.Format("Command with id: {0} not found", streamId)));
 
-            if (events[0].Event.EventType.Equals(EventName.ReservaRealizada))
+            var reservaEvent = _reservaService.ContainsEvent(streamId, EventName.ReservaRealizada.Value);
+            if (reservaEvent != null)/*events[0].Event.EventType.Equals(EventName.ReservaRealizada))*/
             {
-                var reservaRealizada = JsonConvert.DeserializeObject<ReservaRealizadaEvent>(events[0].Event.Data.ToString());
+                var reservaRealizada = JsonConvert.DeserializeObject<ReservaRealizadaEvent>(reservaEvent);
                 return Ok(new ResourceDTO(String.Format("/reservas/{0}", reservaRealizada.reservaId)));
             }
-            if (events[0].Event.EventType.Equals(EventName.ReservaNaoRealizada))
+
+            reservaEvent = _reservaService.ContainsEvent(streamId, EventName.ReservaNaoRealizada.Value);
+            if (reservaEvent != null) /*events[0].Event.EventType.Equals(EventName.ReservaNaoRealizada))*/
             {
-                var reservaNaoRealizada = JsonConvert.DeserializeObject<ReservaNaoRealizadaEvent>(events[0].Event.Data.ToString());
+                var reservaNaoRealizada = JsonConvert.DeserializeObject<ReservaNaoRealizadaEvent>(reservaEvent);
                 return BadRequest(new ResponseMessageDTO(String.Format("Operation failed due to {0}", reservaNaoRealizada.razao)));
             }
 
