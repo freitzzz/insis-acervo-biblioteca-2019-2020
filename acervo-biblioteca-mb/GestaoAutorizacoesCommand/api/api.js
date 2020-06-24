@@ -83,7 +83,7 @@ function onReservaRecebida(guQueryHost, esbHost, utente, obra, dataInicio, dataF
     .then(function (getUtente) {
       getUtente = getUtente.data;
       getObraInPolos(esbHost, obra).then(function (obrasExistentes) {
-        console.log(obrasExistentes)
+        
         if (obrasExistentes == undefined || obrasExistentes.length == 0) {
           console.log("Sending reserva_obra_nao_encontrada");
           publishCallback('reserva_obra_nao_encontrada', {
@@ -95,6 +95,7 @@ function onReservaRecebida(guQueryHost, esbHost, utente, obra, dataInicio, dataF
           });
         } else {
           var obrasAutorizadas = getObrasUtenteAutorizado(getUtente, obrasExistentes);
+          
           if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
             console.log("Sending reserva_utente_autorizado");
             publishCallback('reserva_utente_autorizado', {

@@ -98,7 +98,7 @@ eventstore.init(function (eventStoreInitError) {
 
                 channel.bindQueue(queue.queue, reservaExchange, 'existe_reserva_utente');
                 channel.bindQueue(queue.queue, reservaExchange, 'existe_reserva');
-                channel.bindQueue(queue.queue, reservaExchange, 'nao_existe_reserva');
+                channel.bindQueue(queue.queue, emprestimoExchange, 'nao_existe_reserva');
                 channel.bindQueue(queue.queue, emprestimoExchange, 'emprestimo_utente_nao_autorizado');
                 channel.bindQueue(queue.queue, emprestimoExchange, 'emprestimo_utente_autorizado');
                 channel.bindQueue(queue.queue, reservaExchange, 'reserva_recebida');
@@ -106,7 +106,7 @@ eventstore.init(function (eventStoreInitError) {
                 channel.consume(queue.queue, function (message) {
 
                   const body = JSON.parse(message.content);
-                  console.log(body);
+                  
                   const idStream = body.id_stream || '';
 
                   switch (message.fields.routingKey) {

@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const getValue = require('../model/estado');
+const Estado = require('../model/estado');
 
 function onEmprestimoRecebido(eventstore, utente, obra, dataInicio, dataFim, publishCallback, response) {
 
@@ -93,24 +93,12 @@ function onExisteReservaUtente(eventstore, utente, dataInicio, dataFim, obra, id
 
       if (events.utente_autorizado) {
         var obrasAutorizadas = events.utente_autorizado;
-        var obrasSemEmprestimo = getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim)
+        getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim).then(function (obrasSemEmprestimo) {
 
-        if (obrasAutorizadas != undefined && obrasAutorizadas.includes(obra)) {
-          if (obrasSemEmprestimo != undefined && obrasSemEmprestimo.length != 0)
-            if (obrasSemEmprestimo.includes(obra)) {
-              // TODO - É preciso alterar o estado da reserva para em espera 
-              publishCallback('emprestimo_aceite', {
-                utente: utente,
-                dataInicio: dataInicio,
-                dataFim: dataFim,
-                obra: obra,
-                id_stream: idStream
-              });
-            } else {
-              // TODO - Tinha reserva mas já não está autorizado a levar aquele exemplar, por isso vamos emprestar outro
-              // TODO - É preciso alterar o estado da reserva para cancelado 
-              obrasAutorizadasSemEmprestimo = obrasAutorizadas.filter(obra => obrasSemEmprestimo.includes(obra))
-              if (obrasAutorizadasSemEmprestimo != undefined && obrasAutorizadasSemEmprestimo.length != 0) {
+          if (obrasAutorizadas != undefined && obrasAutorizadas.includes(obra)) {
+            if (obrasSemEmprestimo != undefined && obrasSemEmprestimo.length != 0)
+              if (obrasSemEmprestimo.includes(obra)) {
+                // TODO - É preciso alterar o estado da reserva para em espera 
                 publishCallback('emprestimo_aceite', {
                   utente: utente,
                   dataInicio: dataInicio,
@@ -118,9 +106,22 @@ function onExisteReservaUtente(eventstore, utente, dataInicio, dataFim, obra, id
                   obra: obra,
                   id_stream: idStream
                 });
+              } else {
+                // TODO - Tinha reserva mas já não está autorizado a levar aquele exemplar, por isso vamos emprestar outro
+                // TODO - É preciso alterar o estado da reserva para cancelado 
+                obrasAutorizadasSemEmprestimo = obrasAutorizadas.filter(obra => obrasSemEmprestimo.includes(obra))
+                if (obrasAutorizadasSemEmprestimo != undefined && obrasAutorizadasSemEmprestimo.length != 0) {
+                  publishCallback('emprestimo_aceite', {
+                    utente: utente,
+                    dataInicio: dataInicio,
+                    dataFim: dataFim,
+                    obra: obra,
+                    id_stream: idStream
+                  });
+                }
               }
-            }
-        }
+          }
+        });
       }
     }
   });
@@ -370,98 +371,107 @@ function onReservaRecebida(eventstore, utente, dataInicio, dataFim, obra, idStre
 
           console.log('Successfully added event');
 
-          obrasSemEmprestimo = getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim);
+          getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim).then(function (obrasSemEmprestimo) {
+            
+            if (obrasSemEmprestimo == undefined || obrasSemEmprestimo.length == 0) {
 
-          if (obrasSemEmprestimo == undefined || obrasSemEmprestimo.length == 0) {
+              console.log('Emprestimo sobreposto');
 
-            console.log('Emprestimo sobreposto');
+              publishCallback('reserva_emprestimo_sobreposto', {
+                utente: utente,
+                dataInicio: dataInicio,
+                dataFim: dataFim,
+                obra: obra,
+                id_stream: idStream
+              });
 
-            publishCallback('emprestimo_sobreposto', {
-              utente: utente,
-              dataInicio: dataInicio,
-              dataFim: dataFim,
-              obra: obra,
-              id_stream: newId
-            });
+            } else {
 
-          } else {
+              console.log('Emprestimo não sobreposto');
 
-            console.log('Emprestimo não sobreposto');
-
-            publishCallback('emprestimo_nao_sobreposto', {
-              utente: utente,
-              dataInicio: dataInicio,
-              dataFim: dataFim,
-              obra: obra,
-              obrasSemEmprestimo: obrasSemEmprestimo,
-              id_stream: newId
-            });
-
-          }
-
+              publishCallback('reserva_emprestimo_nao_sobreposto', {
+                utente: utente,
+                dataInicio: dataInicio,
+                dataFim: dataFim,
+                obra: obra,
+                obrasSemEmprestimo: obrasSemEmprestimo,
+                id_stream: idStream
+              });
+            }
+          })
         }
-
       });
-
     }
-
   });
-
 }
 
 // TODO - Utente pode reservar/encomendar uma obra que já tenha um exemplar nas suas mãos???
 function getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim) {
-  obrasExistente = getObraInPolos(esbHost, obra);
-  obrasEncomendadas = getObrasEncomendadas(geQueryHost, obra, dataInicio, dataFim);
+  return getObraInPolos(esbHost, obra).then(function (obrasExistentes) {
+    
+    if (obrasExistentes != undefined && obrasExistentes.length != 0) {
+      return getObrasEncomendadas(geQueryHost, obra, dataInicio, dataFim).then(function (obrasEncomendadas) {
+        
+        if (obrasEncomendadas != undefined && obrasEncomendadas.length != 0) {
+          return obrasExistentes.filter(obra => !obrasEncomendadas.includes(obra));
+        }
+        return obrasExistentes;
+      })
+    }
+    return [];
 
-  return obrasExistente.filter(obra => !obrasEncomendadas.includes(obra));
+  });
 }
 
 function getObraInPolos(esbHost, obra) {
 
   console.log(`getObraInPolos called with $obra: ${obra}`);
 
-  var obras = new Array()
-
   var polos = getPolos(esbHost);
 
-  polos.forEach(polo => {
-    axios
-      .default
-      .get(`${esbHost}/acervobiblioteca/polos/${polo}/obras/${obra}`)
-      .then(function (getObraPolo) {
+  const obrasPorPolo = polos.map((polo) => axios.default.get(`${esbHost}/acervobiblioteca/polos/${polo}/obras/${obra}`))
 
-        getObraPolo.states.forEach(estado => {
-          var obra = {
-            titulo: obra,
-            estado: getValue(estado), //convert string to int
-            polo: polo
-          }
-          obras.push(obra);
-        });
+  console.log(obrasPorPolo)
 
-      })
-      .catch(function (errorGetObraPolo) {
+  return Promise.all(obrasPorPolo).then(function (responses) {
+    const obras = [];
 
-        console.log(`getObraInPolos error : ${errorGetObraPolo}`);
+    responses.forEach(function (getObraPolo, index) {
 
+      getObraPolo = getObraPolo.data;
+
+      if (getObraPolo.count != getObraPolo.states.length) {
+        getObraPolo.states = [getObraPolo.states.reduceRight((p, c) => c + p)];
+      }
+
+      getObraPolo.states.forEach(state => {
+        var obra = {
+          titulo: getObraPolo.title,
+          estado: Estado.getValue(state), //convert string to int
+          polo: polos[index]
+        }
+        obras.push(obra);
       });
+    });
+
+    return obras;
+  }).catch(function (erro) {
+    console.log(erro);
+    return [];
   });
-
-  return obras;
-
 }
+
 
 function getPolos(esbHost) {
 
   console.log(`getPolos`);
-
-  axios
+  return ["polo2", "polo3"];
+  /*axios
     .default
     .get(`${esbHost}/acervobiblioteca/polos`)
     .then(function (getPolos) {
 
-      var polos = new Array()
+      var polos = [];
 
       getPolos.forEach(element => {
         polos.push(element.name)
@@ -474,34 +484,30 @@ function getPolos(esbHost) {
       console.log(`getPolos error : ${errorGetPolos}`);
 
       return [];
-    });
+    });*/
 }
 
 function getObrasEncomendadas(geQueryHost, obra, dataInicio, dataFim) {
 
   console.log(`getEncomendas called with $obra: ${obra}, $dataInicio: ${dataInicio}, $dataFim: ${dataFim}`);
 
-  var obras = new Array()
-
-  axios
+  return axios
     .default
     .get(`${geQueryHost}/encomendas/obra/${obra}?dataInicio=${dataInicio}dataFim=${dataFim}`)
     .then(function (getEncomendas) {
-
+      var obras = []
       getEncomendas.forEach(encomenda => {
 
         obras.push(encomenda.obra);
 
       });
-
+      return obras;
     })
     .catch(function (errorGetEncomendas) {
 
       console.log(`getEncomendas error : ${errorGetEncomendas}`);
 
     });
-
-  return obras;
 }
 
 exports.onEmprestimoRecebido = onEmprestimoRecebido;
