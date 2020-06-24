@@ -160,27 +160,31 @@ function onExisteReserva(eventstore, utente, dataInicio, dataFim, obra, obrasRes
       const events = foldArrayToObject(stream.events.map((event => event.payload)));
       if (events.utente_autorizado) {
         var obrasAutorizadas = events.utente_autorizado;
-        var obrasSemEmprestimo = getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim)
+        getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim).then(function (obrasSemEmprestimo) {
 
-        var obrasAutorizadasSemReservas = [];
-        if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
-          obrasAutorizadasSemReservas = obrasAutorizadas.filter(element => !obrasReservadas.includes(element));
-        }
+          var obrasAutorizadasSemReservas = [];
+          if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
+            obrasAutorizadasSemReservas = obrasAutorizadas.filter(element => !obrasReservadas.includes(element));
+          }
 
-        var obrasAutorizadasSemReservasSemEmprestimos = [];
-        if (obrasAutorizadasSemReservas != undefined && obrasAutorizadasSemReservas.length != 0) {
-          obrasAutorizadasSemReservasSemEmprestimos = obrasAutorizadasSemReservas.filter(element => obrasSemEmprestimo.includes(element));
-        }
-
-        if (obrasAutorizadasSemReservasSemEmprestimos != undefined && obrasAutorizadasSemReservasSemEmprestimos.length != 0) {
-          publishCallback('emprestimo_aceite', {
-            utente: utente,
-            dataInicio: dataInicio,
-            dataFim: dataFim,
-            obra: obrasAutorizadasSemReservasSemEmprestimos[0],
-            id_stream: idStream
-          });
-        }
+          var obrasAutorizadasSemReservasSemEmprestimos = [];
+          if (obrasAutorizadasSemReservas != undefined && obrasAutorizadasSemReservas.length != 0) {
+            if (obrasSemEmprestimo != undefined && obrasSemEmprestimo.length != 0) {
+              obrasAutorizadasSemReservasSemEmprestimos = obrasAutorizadasSemReservas.filter(element => obrasSemEmprestimo.includes(element));
+            } else {
+              obrasAutorizadasSemReservasSemEmprestimos = obrasAutorizadasSemReservas;
+            }
+          }
+          if (obrasAutorizadasSemReservasSemEmprestimos != undefined && obrasAutorizadasSemReservasSemEmprestimos.length != 0) {
+            publishCallback('emprestimo_aceite', {
+              utente: utente,
+              dataInicio: dataInicio,
+              dataFim: dataFim,
+              obra: obrasAutorizadasSemReservasSemEmprestimos[0],
+              id_stream: idStream
+            });
+          }
+        });
       }
     }
   });
@@ -219,22 +223,28 @@ function onNaoExisteReserva(eventstore, utente, dataInicio, dataFim, obra, idStr
       const events = foldArrayToObject(stream.events.map((event => event.payload)));
       if (events.utente_autorizado) {
         var obrasAutorizadas = events.utente_autorizado;
-        var obrasSemEmprestimo = getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim)
+        getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim).then(function (obrasSemEmprestimo) {
 
-        var obrasAutorizadasSemEmprestimos = [];
-        if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
-          obrasAutorizadasSemEmprestimos = obrasAutorizadas.filter(element => obrasSemEmprestimo.includes(element));
-        }
+          var obrasAutorizadasSemEmprestimos = [];
+          if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
+            if (obrasSemEmprestimo != undefined && obrasSemEmprestimo.length != 0) {
+              obrasAutorizadasSemEmprestimos = obrasAutorizadas.filter(element => obrasSemEmprestimo.includes(element));
+            } else {
+              obrasAutorizadasSemEmprestimos = obrasAutorizadas;
+            }
 
-        if (obrasAutorizadasSemEmprestimos != undefined && obrasAutorizadasSemEmprestimos.length != 0) {
-          publishCallback('emprestimo_aceite', {
-            utente: utente,
-            dataInicio: dataInicio,
-            dataFim: dataFim,
-            obra: obrasAutorizadasSemEmprestimos[0],
-            id_stream: idStream
-          });
-        }
+          }
+
+          if (obrasAutorizadasSemEmprestimos != undefined && obrasAutorizadasSemEmprestimos.length != 0) {
+            publishCallback('emprestimo_aceite', {
+              utente: utente,
+              dataInicio: dataInicio,
+              dataFim: dataFim,
+              obra: obrasAutorizadasSemEmprestimos[0],
+              id_stream: idStream
+            });
+          }
+        });
       }
     }
   });
@@ -320,27 +330,34 @@ function onUtenteAutorizado(eventstore, utente, dataInicio, dataFim, obra, obras
         console.log("Event nao_existe_reserva already happened");
       }
 
-      var obrasSemEmprestimo = getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim)
+      getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim).then(function (obrasSemEmprestimo) {
 
-      var obrasAutorizadasSemReservas = [];
-      if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
-        obrasAutorizadasSemReservas = obrasAutorizadas.filter(element => !obrasReservadas.includes(element));
-      }
 
-      var obrasAutorizadasSemReservasSemEmprestimos = [];
-      if (obrasAutorizadasSemReservas != undefined && obrasAutorizadasSemReservas.length != 0) {
-        obrasAutorizadasSemReservasSemEmprestimos = obrasAutorizadasSemReservas.filter(element => obrasSemEmprestimo.includes(element));
-      }
+        var obrasAutorizadasSemReservas = [];
+        if (obrasAutorizadas != undefined && obrasAutorizadas.length != 0) {
+          obrasAutorizadasSemReservas = obrasAutorizadas.filter(element => !obrasReservadas.includes(element));
+        }
 
-      if (obrasAutorizadasSemReservasSemEmprestimos != undefined && obrasAutorizadasSemReservasSemEmprestimos.length != 0) {
-        publishCallback('emprestimo_aceite', {
-          utente: utente,
-          dataInicio: dataInicio,
-          dataFim: dataFim,
-          obra: obrasAutorizadasSemReservasSemEmprestimos[0],
-          id_stream: newId
-        });
-      }
+        var obrasAutorizadasSemReservasSemEmprestimos = [];
+        if (obrasAutorizadasSemReservas != undefined && obrasAutorizadasSemReservas.length != 0) {
+          if (obrasSemEmprestimo != undefined && obrasSemEmprestimo.length != 0) {
+            obrasAutorizadasSemReservasSemEmprestimos = obrasAutorizadasSemReservas.filter(element => obrasSemEmprestimo.includes(element));
+          } else {
+            obrasAutorizadasSemReservasSemEmprestimos = obrasAutorizadasSemReservas;
+          }
+
+        }
+
+        if (obrasAutorizadasSemReservasSemEmprestimos != undefined && obrasAutorizadasSemReservasSemEmprestimos.length != 0) {
+          publishCallback('emprestimo_aceite', {
+            utente: utente,
+            dataInicio: dataInicio,
+            dataFim: dataFim,
+            obra: obrasAutorizadasSemReservasSemEmprestimos[0],
+            id_stream: newId
+          });
+        }
+      });
     }
   });
 }
@@ -372,7 +389,7 @@ function onReservaRecebida(eventstore, utente, dataInicio, dataFim, obra, idStre
           console.log('Successfully added event');
 
           getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim).then(function (obrasSemEmprestimo) {
-            
+
             if (obrasSemEmprestimo == undefined || obrasSemEmprestimo.length == 0) {
 
               console.log('Emprestimo sobreposto');
@@ -408,10 +425,10 @@ function onReservaRecebida(eventstore, utente, dataInicio, dataFim, obra, idStre
 // TODO - Utente pode reservar/encomendar uma obra que já tenha um exemplar nas suas mãos???
 function getObrasSemEmprestimo(esbHost, geQueryHost, obra, dataInicio, dataFim) {
   return getObraInPolos(esbHost, obra).then(function (obrasExistentes) {
-    
+
     if (obrasExistentes != undefined && obrasExistentes.length != 0) {
       return getObrasEncomendadas(geQueryHost, obra, dataInicio, dataFim).then(function (obrasEncomendadas) {
-        
+
         if (obrasEncomendadas != undefined && obrasEncomendadas.length != 0) {
           return obrasExistentes.filter(obra => !obrasEncomendadas.includes(obra));
         }
